@@ -35,7 +35,7 @@ export const routes: Routes = [
 ,
 { path: 'statusboard', component: StatusboardComponent, canActivate: [AuthguardService] },
  
- {path: '**', redirectTo: 'https://yyyy.gg'}
+ {path: '**', redirectTo: 'notfound'}
 ];
 
 
