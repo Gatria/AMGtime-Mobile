@@ -1,0 +1,111 @@
+/* Add application styles & imports to this file! */
+@import '~@angular/material/theming';
+@include mat-core();
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+$custom-typography: mat-typography-config(
+  $font-family: 'Raleway, sans-serif',
+  $headline: mat-typography-level(32px, 48px, 700),
+  $body-1: mat-typography-level(16px, 24px, 500)
+);
+
+$my-blue:(
+  600: #e5f0fa,
+  700: #108eb5,
+  800: #0f7da2,
+  900: #005e82,
+  contrast: (
+  600: #005e82,
+  700: #f4f6f8,
+  800: #f4f6f8,
+  900: #f4f6f8,
+  ));
+
+$my-green:(
+  600:#049275,
+  700:#008266,
+  800: #007258,
+  900:#00563c,
+  contrast: (
+  600: #f4f6f8,
+  700: #f4f6f8,
+  800: #f4f6f8,
+  900: #f4f6f8,
+  ));
+
+
+
+$my-app-primary: mat-palette($my-blue, 900,800,700);
+$my-app-accent:  mat-palette($my-green, 700, 900, A100);
+$my-app-warn:    mat-palette($mat-red,800,900,1000);
+$my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
+@include angular-material-theme($my-app-theme);
+@include mat-core($custom-typography);
+
+.topinfo {background-color:mat-color($my-app-primary,600);
+color:mat-color($my-app-primary);
+text-align:center;
+padding:5px;
+border-radius:4px;
+margin:1%;
+}
+
+.mat-drawer-container, .mat-drawer-content {height:100vh!important}
+.mat-list-base .mat-list-item {  color:#f4f6f8!important;   }
+.mat-drawer, .mat-drawer-push {
+        border-radius: 0 25px 25px 0px;
+
+    background-color: mat-color($my-app-primary)!important;
+}
+.mat-toolbar {
+  //  position: sticky;
+  //  top: 0px;
+ //   z-index: 101;
+  background-color: #00000000!important;
+   color: mat-color($my-app-primary)!important;
+}
+
+
+.center {margin:auto}
+.round-corners {border-radius:25px!important }
+
+
+table {width: 98%;margin:0 1% 0 1%;}
+body, .mat-sidenav-content {margin:0px; font-family: 'Raleway', sans-serif!important;
+body {overflow:hidden}
+
+  background-size: 200% 50%;
+background-color:#e5f0fa;
+-webkit-animation: AnimationName 25s ease infinite;
+-moz-animation: AnimationName 25s ease infinite;
+animation: AnimationName 25s ease infinite;
+
+@-webkit-keyframes AnimationName {
+    0%{background-position:43% 0%}
+    50%{background-position:58% 100%}
+    100%{background-position:43% 0%}
+}
+@-moz-keyframes AnimationName {
+    0%{background-position:43% 0%}
+    50%{background-position:58% 100%}
+    100%{background-position:43% 0%}
+}
+@keyframes AnimationName {
+    0%{background-position:43% 0%}
+    50%{background-position:58% 100%}
+    100%{background-position:43% 0%}
+}
+background-image: radial-gradient(circle, rgba(238,238,238,0.19) 0%, rgba(255,255,255,0.49) 12%, rgba(238,238,238,0.19) 19%, rgba(199,199,199,0.19) 33%, rgba(255,255,255,0.49) 46%, rgba(238,238,238,0.19) 68%, rgba(199,199,199,0.19) 83%, rgba(255,255,255,0.49) 92%, rgba(238,238,238,0.19) 100%);
+}
+h2 {color: mat-color($my-app-primary)!important;text-align:center}
+hr.title {
+  width:20vw;
+  border: 2px solid mat-color($my-app-primary);
+}
+
+.mat-list-item-content  {padding: 8px 18px!important;}
+
+.mat-tab-label {display:none!important;min-width:100%!important;padding:0!important}
+mat-ink-bar {display:none}
+
+div.mat-tab-body-wrapper {
+    height: -webkit-fill-available}

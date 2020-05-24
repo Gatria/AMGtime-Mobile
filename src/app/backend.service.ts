@@ -1,0 +1,258 @@
+import { Injectable } from '@angular/core';
+import { LOCAL_STORAGE, StorageService } from 'ngx-webstorage-service';
+import * as CryptoJS from 'crypto-js';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { catchError } from 'rxjs/operators';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { ConfirmDialogComponent,ConfirmDialogModel } from './confirm-dialog/confirm-dialog.component';
+import { Router, CanActivate } from '@angular/router';
+
+@Injectable()
+export class BackendService {
+AMGSettings={}
+timecard=[]
+SummeryInfo=[]
+loggedin=false
+codetoid={}
+empimage={}
+
+url:string='https://3735.us/MobileService/';
+
+ constructor(private data: HttpClient,public _snackBar: MatSnackBar,public dialog: MatDialog,private router: Router) { }
+ private encript(value: string): string {
+    let _key = CryptoJS.enc.Hex.parse("460b89c619206c92d38e8617f9052a56");
+    let _iv = CryptoJS.enc.Hex.parse("0000000000000000");
+    let encrypted = CryptoJS.AES.encrypt(
+      value, _key, {
+        keySize: 16,
+        iv: _iv,
+        mode: CryptoJS.mode.CBC,
+        padding: CryptoJS.pad.Pkcs7
+      });
+
+  return encodeURIComponent(encrypted.toString());
+ }
+
+private buildnavigation()
+{
+this.SideNavigation=[]
+this.SideNavigation.push({icon:"house", text:"Home", action:"/"});
+if (this.AMGSettings.IsEmployee) {
+
+this.SideNavigation.push({icon:"assignment", text:"Timecard", action:"/timecard"});
+this.SideNavigation.push({icon:"schedule", text:"Schedule", action:"/schedule"});
+this.SideNavigation.push({icon:"camera", text:"Open Shifts", action:"/camera"});
+this.SideNavigation.push({icon:"exit_to_app", text:"Shift Requests", action:"/logout"});
+if (this.AMGSettings.Benefits) this.SideNavigation.push({icon:"redeem", text:"Benefits", action:"/benefit"});
+this.SideNavigation.push({icon:"event", text:"Time Off Requests", action:"/timeoff"});
+this.SideNavigation.push({icon:"event", text:"Mileage Tracking", action:"/timeoff"});
+if (this.AMGSettings.Usigned) this.SideNavigation.push({icon:"event", text:"USigned", action:"/usigned"});
+this.SideNavigation.push({icon:"event", text:"Switch to User", action:"/toUser"});
+} else
+{
+this.SideNavigation.push({icon:"exit_to_app", text:"Attendance", action:"/login"});
+this.SideNavigation.push({icon:"exit_to_app", text:"Open Shifts", action:"/login"});
+this.SideNavigation.push({icon:"exit_to_app", text:"Shift Requests", action:"/logout"});
+this.SideNavigation.push({icon:"exit_to_app", text:"Status Board", action:"/statusboard"});
+this.SideNavigation.push({icon:"exit_to_app", text:"Punch Analusis", action:"/logout"});
+this.SideNavigation.push({icon:"event", text:"Time Off Requests", action:"/timeoff"});
+if (this.AMGSettings.Usigned) this.SideNavigation.push({icon:"event", text:"USigned", action:"/usigned"});
+this.SideNavigation.push({icon:"event", text:"Switch to Employee", action:"/toEmp"});
+
+}
+
+this.SideNavigation.push({icon:"exit_to_app", text:"Log Out", action:"/logout"});
+
+} 
+
+
+
+
+private showinfo (error:string) {
+  this._snackBar.open( error, "", { duration: 6000, panelClass: ['mat-toolbar', 'mat-accent'] });
+  console.info(error)
+}
+
+
+private showerror (error:string) {
+  this._snackBar.open( error, "", { duration: 6000, panelClass: ['mat-toolbar', 'mat-warn'] });
+  console.error(error)
+}
+
+
+
+
+
+public datetime():string {
+  let m=new Date();
+  return this.encript(m.getUTCFullYear() + "-" +
+  ("0" + (m.getUTCMonth()+1)).slice(-2) + "-" +
+  ("0" + m.getUTCDate()).slice(-2) + " " +
+  ("0" + m.getUTCHours()).slice(-2) + ":" +
+  ("0" + m.getUTCMinutes()).slice(-2) + ":" +
+  ("0" + m.getUTCSeconds()).slice(-2))
+}
+
+public sendcommand(f:function,command:string, postdata="", httpOptions={withCredentials: true})
+{
+let hash=command+postdata;  
+if (hash.substring(1,hash.search("&time="))!=this.lastcall) {
+this.lastcall=hash.substring(1,hash.search("&time="));
+
+return this.data.post<any>(this.url+command, postdata, httpOptions).subscribe(
+      res => {
+        console.log(res);
+        this.lastcall="";
+        if (res instanceof Blob) f(res); 
+        else 
+        if (res[0]) { f(res[1]);  } else this.showerror(res[1])},
+      error => {
+        this.lastcall="";
+        this.showerror( error)}
+      )
+}}
+
+
+
+getEmpPhoto(id) {
+this.sendcommand((f)=>{
+ if (f.size>10) {
+      var reader = new FileReader();
+reader.readAsDataURL(f); 
+reader.onloadend = ()=> {
+this.empimage[id]= reader.result;
+ }  } 
+},"GetEmployeeImage","id="+this.encript('' +id),{ 
+withCredentials: true, 
+responseType:'blob' as 'json'
+ });
+
+}
+
+
+
+logout () {
+const message = "Do you really want to logout ?";
+    const dialogData = new ConfirmDialogModel("Confirm Action", message);
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      maxWidth: "400px",
+      data: dialogData
+    });
+ 
+    dialogRef.afterClosed().subscribe(dialogResult => {
+  if (dialogResult) { 
+    this.router.navigate(['/login']);
+  }
+    });
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+approverejecttimecard(i,s) {
+ let comment=false;
+ let message= "Do you really want to reject timecard?"
+if (s) message = "Do you really want to approve timecard?"
+ else comment=true
+
+
+    const dialogData = 
+    new ConfirmDialogModel("Confirm Action", message ,comment);
+    console.log(dialogData);
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      maxWidth: "400px",
+      data: dialogData
+    });
+
+ dialogRef.afterClosed().subscribe(dialogResult => {
+  if (dialogResult) { 
+    console.log("Period:"+i+" "+s)
+this.sendcommand((f)=>{},"ApproveRejectTimecard","period="+this.encript('' +i)+"&approve="+this.encript('' +s)+"&comment="
+)
+
+
+   }
+    }); 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+transact (b) {
+const message = "Do you really want to perform "+b+" action ?";
+    const dialogData = new ConfirmDialogModel("Confirm Action", message);
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      maxWidth: "400px",
+      data: dialogData
+    });
+ 
+    dialogRef.afterClosed().subscribe(dialogResult => {
+  if (dialogResult) { 
+var f=()=>{
+if (this.location!=undefined)
+var str="&latitude="+this.encript('' +this.location.latitude )+"&longitude="+this.encript('' +this.location.longitude); else var str="";
+this.sendcommand((f)=>{this.showinfo(f.Message)},"SetPunchAction5","action="+this.encript('' +b)+"&employeeId="+this.encript('' +this.AMGSettings.Id)+str
+)
+}
+this.getLocation(f)
+   }
+    });
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+getLocation(f) {
+  if(navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition((position)=>{
+ this.location = {
+    longitude: position.coords.longitude,
+    latitude: position.coords.latitude
+  }
+  f();
+},()=>{delete(this.location);f()});
+  return true } else {
+    this.senderror("Geo Location not supported");
+    return false;
+  }
+}
+}

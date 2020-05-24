@@ -1,0 +1,57 @@
+
+  <mat-sidenav-container class="example-sidenav-container">
+    <mat-sidenav #snav> 
+<app-mat-sidenav></app-mat-sidenav>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+
+  <mat-toolbar color="primary" class="example-toolbar">
+    <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+    <h1 class="example-app-name">Status Board</h1>
+  </mat-toolbar>
+ 
+  
+
+
+
+<mat-chip-list>
+  <mat-chip>All</mat-chip>
+  <mat-chip>Work</mat-chip>
+  <mat-chip>Out</mat-chip>
+    <mat-chip>ABS</mat-chip>
+    <mat-chip>LUNCH</mat-chip>
+    <mat-chip>BRK</mat-chip>
+</mat-chip-list>
+
+<ng-container  *ngFor="let item of this.bksvc.StatusBoard; let i = index" tabindex="0">
+
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      <app-empphotoicon EmpID="{{this.bksvc.codetoid[item.Code]}}" name="{{item.Name}}"></app-empphotoicon>
+      ({{item.Code}}) {{item.Name}}
+    </mat-panel-title>
+    <mat-panel-description>
+   {{item.StatusStr}}
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+
+  <p>Last Punch: {{item.LastPunch}} </p>
+
+</mat-expansion-panel>
+
+ 
+</ng-container>
+
+
+
+
+
+
+
+
+
+ 
+    </mat-sidenav-content>
+  </mat-sidenav-container>

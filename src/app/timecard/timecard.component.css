@@ -1,0 +1,119 @@
+.hidecell {display:none}
+.noheight {height:0px}
+.newpadding {font-size:small!important;padding: 5px 0 10px 0!important;text-align:left!important}
+.newpadding {font-size:small!important; padding: 5px 0 7px 0!important;text-align:left!important}
+
+table.mat-table {
+    border-spacing: 0;
+	border-radius: 25px;
+    background: #fff;
+}
+
+th.mat-header-cell {
+ background: #fff;
+}
+
+td.mat-footer-cell {
+ background: #fff;
+}
+
+th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
+    padding: 0;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+}
+
+
+th.mat-header-cell {
+   padding: 18px 0px 18px 0px;
+}
+ td.mat-cell {
+   padding: 14px 0px 14px 0px;
+}
+
+td.mat-footer-cell {
+   padding: 4px 0px 4px 0px;
+
+}
+
+.mat-cell, .mat-footer-cell {
+    font-size: 16px;
+    text-align:center;
+}
+
+
+
+
+
+tr.mat-header-row,tr.mat-footer-row  {
+
+filter:drop-shadow(0px 0px 4px #777);}
+
+.newpadding:before    { content: "";
+    display: block;
+    margin-top: -6px;
+    width: 95%;
+    height: 0px;
+    padding-top: 4px;
+    border-top: 1px solid #e0e0e0;}
+
+
+table { border-radius:25px}
+table tr th:last-child, .footer2{
+  border-radius:0 25px 25px 0;
+transition:0.2s;
+transition-property: border-radius;
+}
+
+table tr th {position: relative}
+
+
+
+.sticked1 {
+  border-top-right-radius:0!important;
+ border-top-left-radius:0!important;
+}
+
+
+  table tr th:first-child, .footer1{
+  border-radius:25px 0 0 25px;
+transition:0.2s;
+transition-property: border-radius;
+}
+
+.footer3{
+  border-radius:0 0 25px 0;
+transition:0.2s;
+   position:relative;
+    white-space: nowrap;
+}
+.footer2{
+  border-radius:0 25px 0 0;
+transition:0.2s;
+}
+
+.footer4 {  border-radius:0 25px 25px 0;
+transition:0.2s;
+ height:44px!important; }
+
+.noborder {border:none!important;bottom:27px!important}
+
+
+
+.slider {
+  width: 100vw;
+display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  overflow-y:hidden;
+      scroll-snap-type: x mandatory;
+
+   -webkit-overflow-scrolling: touch;
+}
+.slide {
+  width: 100%;
+ flex: 0 0 auto;  
+}
+
+.snap {  scroll-snap-align: start end;}

@@ -1,0 +1,110 @@
+
+  <mat-sidenav-container class="example-sidenav-container">
+
+
+ <mat-sidenav #snav> 
+<app-mat-sidenav></app-mat-sidenav>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+
+  <mat-toolbar color="primary" class="example-toolbar">
+    <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+    <h1 class="example-app-name"></h1>
+  </mat-toolbar>
+
+
+
+<ng-container *ngIf="this.bksvc.AMGSettings.IsEmployee">
+<ng-container *ngIf="this.bksvc.AMGSettings.CanPunch">
+<mat-form-field  *ngIf="this.bksvc.AMGSettings.Comments" appearance="fill">
+    <mat-label>Comment</mat-label>
+    <input type=text matInput [(ngModel)]="Comment">
+  </mat-form-field>
+
+
+  <button mat-button (click)="this.bksvc.transact(this.bksvc.AMGSettings.ExpectedAction.Value)" color="primary">{{this.bksvc.AMGSettings.ExpectedAction.StrValue}}</button>
+  <br>
+
+
+
+        <ul class="mdc-list">
+          <li  *ngFor="let item of this.bksvc.AMGSettings.DevActions; let i = index" class="mdc-list-item" tabindex="0">
+          {{item.StrValue}}
+          </li>
+          <!-- ... -->
+        </ul>
+</ng-container>
+
+
+
+
+<ng-container *ngIf="this.bksvc.AMGSettings.CanPunch==false">
+Cant Punch
+</ng-container>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ng-container>
+
+
+ 
+
+
+
+
+
+<ng-container *ngIf="this.bksvc.AMGSettings.IsEmployee==false">
+<ng-container *ngIf="this.bksvc.SummeryInfo.length!=0">
+
+<ng-container  *ngFor="let section of this.Sections; let i = index" tabindex="0">
+{{section}}
+<ng-container  *ngFor="let item of this.bksvc.SummeryInfo" class="mdc-list-item" tabindex="0">
+         <div *ngIf="i==item['Section']">{{i}} {{item.Name}} {{item.Count}}</div>
+          </ng-container>
+</ng-container>
+
+</ng-container></ng-container>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </mat-sidenav-content>
+  </mat-sidenav-container>

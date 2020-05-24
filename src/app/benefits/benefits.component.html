@@ -1,0 +1,51 @@
+
+  <mat-sidenav-container class="example-sidenav-container">
+ <mat-sidenav #snav> 
+<app-mat-sidenav></app-mat-sidenav>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+
+  <mat-toolbar color="primary" class="example-toolbar">
+    <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+    <h1 class="example-app-name">Benefits</h1>
+  </mat-toolbar>
+ <table mat-table [dataSource]="benefits" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="Code">
+    <th mat-header-cell *matHeaderCellDef> Code </th>
+    <td mat-cell *matCellDef="let element"> {{element.Code}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="Name">
+    <th mat-header-cell  *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.Name}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="Taken">
+    <th mat-header-cell  *matHeaderCellDef > Taken </th>
+    <td mat-cell *matCellDef="let element"> {{element.Taken}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="Pending">
+    <th mat-header-cell  *matHeaderCellDef > Pending </th>
+    <td mat-cell *matCellDef="let element"> {{element.Pending}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Left">
+    <th mat-header-cell  *matHeaderCellDef> Left </th>
+    <td mat-cell *matCellDef="let element"> {{element.Left}} </td>
+  </ng-container>
+
+  <tr mat-header-row  *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+  
+
+ 
+    </mat-sidenav-content>
+  </mat-sidenav-container>

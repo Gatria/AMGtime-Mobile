@@ -1,0 +1,17 @@
+<h1 mat-dialog-title>
+  {{title}}
+</h1>
+ 
+<div mat-dialog-content>
+  <p>{{message}}</p>
+</div>
+ 
+<mat-form-field  *ngIf="comment" appearance="fill">
+    <mat-label>Comment</mat-label>
+    <input type=text matInput id='dialogcomment'>
+  </mat-form-field>
+
+<div mat-dialog-actions>
+  <button class="round-corners" mat-flat-button (click)="onDismiss()">No</button>
+  <button class="round-corners" mat-flat-button color="primary" (click)="onConfirm()">Yes</button>
+</div>

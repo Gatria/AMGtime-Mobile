@@ -1,0 +1,24 @@
+
+<app-complogo class="center"></app-complogo>
+<hr class="round-corners  title">
+<h2>SIGN IN</h2>
+<div class="mat-elevation-z16 round-corners center">
+
+  <mat-form-field appearance="fill" class="center">
+    <mat-label>Username</mat-label>
+    <input matInput [(ngModel)]="name">
+
+  </mat-form-field>
+  <br> 
+  <br>
+  <mat-form-field appearance="fill" class="center">
+    <mat-label>Password</mat-label>
+    <input type=password matInput [(ngModel)]="password">
+  </mat-form-field>
+<br>
+<mat-checkbox>Remember Me</mat-checkbox>
+
+<a routerLink="/passwordreset">Forgot Password ?</a>
+<br><br><br>
+ <button class="center round-corners" mat-flat-button (click)="login()" color="primary">Login</button>
+</div>
