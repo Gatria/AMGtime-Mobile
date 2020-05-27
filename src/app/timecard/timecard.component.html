@@ -7,7 +7,9 @@
     <mat-sidenav-content (scroll)=onResize()>
 
   <mat-toolbar  color="primary" class="example-toolbar">
-    <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+    <button mat-icon-button (click)="snav.toggle()">
+      <span class='icon-menu'></span>
+      <mat-icon class='icon-menu' >menu</mat-icon></button>
     <h1 class="example-app-name">Timecard</h1>
   </mat-toolbar>
 
