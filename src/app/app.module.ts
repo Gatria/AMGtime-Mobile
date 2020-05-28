@@ -17,7 +17,6 @@ import { ScheduleComponent } from './schedule/schedule.component';
 import { TimeoffComponent } from './timeoff/timeoff.component';
 import { MatSidenavComponent } from './mat-sidenav/mat-sidenav.component';
 import {WebcamModule} from 'ngx-webcam';
-import { ServiceWorkerModule } from '@angular/service-worker';
 import { PasswordresetComponent } from './passwordreset/passwordreset.component';
 import { SettingsComponent } from './settings/settings.component';
 import { ComplogoComponent } from './complogo/complogo.component';
@@ -29,8 +28,7 @@ import { StorageServiceModule } from 'ngx-webstorage-service';
 
 @NgModule({
 
-    imports:      [WebcamModule,AllMaterialModule, AppRouterModule, HttpClientModule ,BrowserAnimationsModule, BrowserModule, FormsModule,StorageServiceModule,
-    ServiceWorkerModule.register('ngsw-worker.js') ],
+    imports:      [WebcamModule,AllMaterialModule, AppRouterModule, HttpClientModule ,BrowserAnimationsModule, BrowserModule, FormsModule,StorageServiceModule ],
   declarations: [ AppComponent, CameraComponent, LoginComponent, HomescreenComponent, EmpphotoiconComponent, TimecardComponent, BenefitsComponent, ScheduleComponent, TimeoffComponent, MatSidenavComponent, PasswordresetComponent, SettingsComponent, ComplogoComponent, EmployeeuserselectorComponent, ConfirmDialogComponent, USignedComponent, StatusboardComponent],
   bootstrap:    [ AppComponent ],
   providers: [BackendService],
