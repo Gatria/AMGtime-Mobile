@@ -37,9 +37,7 @@
               "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
-              "buildOptimizer": true,
-               "serviceWorker": true,
-               "ngswConfigPath": "ngsw-config.json"
+              "buildOptimizer": true
             }
           }
         },

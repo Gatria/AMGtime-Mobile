@@ -33,9 +33,7 @@ export const routes: Routes = [
 ,
 { path: 'usigned', component: USignedComponent, canActivate: [AuthguardService] }
 ,
-{ path: 'statusboard', component: StatusboardComponent, canActivate: [AuthguardService] },
- 
- {path: '**', redirectTo: 'notfound'}
+{ path: 'statusboard', component: StatusboardComponent, canActivate: [AuthguardService] }
 ];
 
 
