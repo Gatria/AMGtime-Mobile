@@ -18,10 +18,10 @@
 
 
    <ng-container *ngIf="item!=null">
-<div class="mat-elevation-z2 topinfo" id=top{{i}}> <a (click)=gototab(-1)><span class="material-icons">navigate_before</span></a>
+<div class="mat-elevation-z2 topinfo" id=top{{i}}> <a (click)=gototab(-1)><span class="material-icons">circle-left</span></a>
 {{item.StartDate}} - 
 {{item.EndDate}}
-<a (click)=gototab(1)><span class="material-icons">navigate_next</span></a>
+<a (click)=gototab(1)><span class="material-icons">circle-right</span></a>
 {{item.Status}}
 {{item.TimeCardApprovalStatus}}
 
