@@ -7,6 +7,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { ConfirmDialogComponent,ConfirmDialogModel } from './confirm-dialog/confirm-dialog.component';
 import { Router, CanActivate } from '@angular/router';
+import { PunchdialogComponent } from './punchdialog/punchdialog.component';
 
 @Injectable()
 export class BackendService {
@@ -127,6 +128,20 @@ this.empimage[id]= reader.result;
 withCredentials: true, 
 responseType:'blob' as 'json'
  });
+
+}
+
+
+
+
+punchmenu () {
+    const dialogRef = this.dialog.open(PunchdialogComponent , {
+      maxWidth: "400px",
+      data: this
+    });
+ 
+    dialogRef.afterClosed().subscribe(dialogResult => {
+    });
 
 }
 

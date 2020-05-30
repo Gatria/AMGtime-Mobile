@@ -33,7 +33,7 @@ import { PunchdialogComponent } from './punchdialog/punchdialog.component';
   declarations: [ AppComponent, CameraComponent, LoginComponent, HomescreenComponent, EmpphotoiconComponent, TimecardComponent, BenefitsComponent, ScheduleComponent, TimeoffComponent, MatSidenavComponent, PasswordresetComponent, SettingsComponent, ComplogoComponent, EmployeeuserselectorComponent, ConfirmDialogComponent, USignedComponent, StatusboardComponent, PunchdialogComponent],
   bootstrap:    [ AppComponent ],
   providers: [BackendService],
-                entryComponents: [EmployeeuserselectorComponent,ConfirmDialogComponent]
+                entryComponents: [EmployeeuserselectorComponent,ConfirmDialogComponent,PunchdialogComponent]
 
                
 })

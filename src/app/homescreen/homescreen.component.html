@@ -25,15 +25,10 @@
 
   <button mat-button (click)="this.bksvc.transact(this.bksvc.AMGSettings.ExpectedAction.Value)" color="primary">{{this.bksvc.AMGSettings.ExpectedAction.StrValue}}</button>
   <br>
+<button mat-button (click)="this.bksvc.punchmenu()" color="primary">{{this.bksvc.AMGSettings.ExpectedAction.StrValue}}</button>
 
 
-
-        <ul class="mdc-list">
-          <li  *ngFor="let item of this.bksvc.AMGSettings.DevActions; let i = index" class="mdc-list-item" tabindex="0">
-           <span class="material-icons">{{item.StrValue}}</span>&nbsp;&nbsp; {{item.StrValue}}
-          </li>
-          <!-- ... -->
-        </ul>
+       
 </ng-container>
 
 
