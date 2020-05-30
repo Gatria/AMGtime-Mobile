@@ -30,7 +30,7 @@
 
         <ul class="mdc-list">
           <li  *ngFor="let item of this.bksvc.AMGSettings.DevActions; let i = index" class="mdc-list-item" tabindex="0">
-          {{item.StrValue}}
+           <span class="material-icons">{{item.StrValue}}</span>&nbsp;&nbsp; {{item.StrValue}}
           </li>
           <!-- ... -->
         </ul>

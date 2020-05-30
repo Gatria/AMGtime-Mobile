@@ -40,29 +40,29 @@ this.SideNavigation=[]
 this.SideNavigation.push({icon:"home", text:"Home", action:"/"});
 if (this.AMGSettings.IsEmployee) {
 
-this.SideNavigation.push({icon:"assignment", text:"Timecard", action:"/timecard"});
+this.SideNavigation.push({icon:"timecard", text:"Timecard", action:"/timecard"});
 this.SideNavigation.push({icon:"schedule", text:"Schedule", action:"/schedule"});
-this.SideNavigation.push({icon:"camera", text:"Open Shifts", action:"/camera"});
-this.SideNavigation.push({icon:"exit_to_app", text:"Shift Requests", action:"/logout"});
-if (this.AMGSettings.Benefits) this.SideNavigation.push({icon:"redeem", text:"Benefits", action:"/benefit"});
-this.SideNavigation.push({icon:"event", text:"Time Off Requests", action:"/timeoff"});
-this.SideNavigation.push({icon:"event", text:"Mileage Tracking", action:"/timeoff"});
-if (this.AMGSettings.Usigned) this.SideNavigation.push({icon:"event", text:"USigned", action:"/usigned"});
-this.SideNavigation.push({icon:"event", text:"Switch to User", action:"/toUser"});
+this.SideNavigation.push({icon:"shift", text:"Open Shifts", action:"/camera"});
+this.SideNavigation.push({icon:"shiftrequest", text:"Shift Requests", action:"/logout"});
+if (this.AMGSettings.Benefits) this.SideNavigation.push({icon:"benefits", text:"Benefits", action:"/benefit"});
+this.SideNavigation.push({icon:"timeoffrequestevent", text:"Time Off Requests", action:"/timeoff"});
+this.SideNavigation.push({icon:"tracking", text:"Mileage Tracking", action:"/timeoff"});
+if (this.AMGSettings.Usigned) this.SideNavigation.push({icon:"usigned", text:"USigned", action:"/usigned"});
+this.SideNavigation.push({icon:"swap", text:"Switch to User", action:"/toUser"});
 } else
 {
-this.SideNavigation.push({icon:"exit_to_app", text:"Attendance", action:"/login"});
-this.SideNavigation.push({icon:"exit_to_app", text:"Open Shifts", action:"/login"});
-this.SideNavigation.push({icon:"exit_to_app", text:"Shift Requests", action:"/logout"});
-this.SideNavigation.push({icon:"exit_to_app", text:"Status Board", action:"/statusboard"});
-this.SideNavigation.push({icon:"exit_to_app", text:"Punch Analusis", action:"/logout"});
-this.SideNavigation.push({icon:"event", text:"Time Off Requests", action:"/timeoff"});
-if (this.AMGSettings.Usigned) this.SideNavigation.push({icon:"event", text:"USigned", action:"/usigned"});
-this.SideNavigation.push({icon:"event", text:"Switch to Employee", action:"/toEmp"});
+this.SideNavigation.push({icon:"attendance", text:"Attendance", action:"/login"});
+this.SideNavigation.push({icon:"shift", text:"Open Shifts", action:"/login"});
+this.SideNavigation.push({icon:"shiftrequest", text:"Shift Requests", action:"/logout"});
+this.SideNavigation.push({icon:"statusboard", text:"Status Board", action:"/statusboard"});
+this.SideNavigation.push({icon:"punchanalysis", text:"Punch Analusis", action:"/logout"});
+this.SideNavigation.push({icon:"timeoffrequest", text:"Time Off Requests", action:"/timeoff"});
+if (this.AMGSettings.Usigned) this.SideNavigation.push({icon:"usigned", text:"USigned", action:"/usigned"});
+this.SideNavigation.push({icon:"swap", text:"Switch to Employee", action:"/toEmp"});
 
 }
 
-this.SideNavigation.push({icon:"exit_to_app", text:"Log Out", action:"/logout"});
+this.SideNavigation.push({icon:"logout", text:"Log Out", action:"/logout"});
 
 } 
 
