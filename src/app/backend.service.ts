@@ -37,7 +37,7 @@ url:string='https://3735.us/MobileService/';
 private buildnavigation()
 {
 this.SideNavigation=[]
-this.SideNavigation.push({icon:"house", text:"Home", action:"/"});
+this.SideNavigation.push({icon:"home", text:"Home", action:"/"});
 if (this.AMGSettings.IsEmployee) {
 
 this.SideNavigation.push({icon:"assignment", text:"Timecard", action:"/timecard"});
