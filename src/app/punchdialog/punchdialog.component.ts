@@ -5,7 +5,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 @Component({
   selector: 'app-punchdialog',
   templateUrl: './punchdialog.component.html',
-  styleUrls: ['./punchdialog.component.css']
+  styleUrls: ['./punchdialog.component.scss']
 })
 export class PunchdialogComponent implements OnInit {
 

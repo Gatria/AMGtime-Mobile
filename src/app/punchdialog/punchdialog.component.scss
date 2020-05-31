@@ -1,0 +1,5 @@
+@import "../variable.scss" ;
+
+.bottom button {margin:auto}
+.scroll {    height: calc(100vh - 200px);  overflow: auto;}
+    prime {   color: mat-color($my-app-primary)}

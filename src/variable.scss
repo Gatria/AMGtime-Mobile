@@ -1,0 +1,32 @@
+
+
+$my-blue:(
+  600: #e5f0fa,
+  700: #108eb5,
+  800: #0f7da2,
+  900: #005e82,
+  contrast: (
+  600: #005e82,
+  700: #f4f6f8,
+  800: #f4f6f8,
+  900: #f4f6f8,
+  ));
+
+$my-green:(
+  600:#049275,
+  700:#008266,
+  800: #007258,
+  900:#00563c,
+  contrast: (
+  600: #f4f6f8,
+  700: #f4f6f8,
+  800: #f4f6f8,
+  900: #f4f6f8,
+  ));
+
+
+
+$my-app-primary: mat-palette($my-blue, 900,800,700);
+$my-app-accent:  mat-palette($my-green, 700, 900, A100);
+$my-app-warn:    mat-palette($mat-red,800,900,1000);
+$my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
