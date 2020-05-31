@@ -2,11 +2,14 @@
     overflow: hidden;
     bottom: 0px;
     width:100%;
+    font-size:9px;
     text-align: center;
     white-space: nowrap;
+    padding:2px ;
     background-color: white;}
 .footer-item {    display:none }
 .footer-item:nth-of-type(-n+5){
+
     display:inline-block;
 }
-  .big {font-size: 11vw;padding:2px 2vw}
+  .big {font-size: 11vw;padding:0px 4vw}
