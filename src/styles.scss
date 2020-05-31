@@ -139,4 +139,6 @@ mat-ink-bar {display:none}
 div.mat-tab-body-wrapper {
     height: -webkit-fill-available}
 
+
+mat-dialog-container {max-height: calc(80vh - 20px)!important;overflow:h!important};
    
