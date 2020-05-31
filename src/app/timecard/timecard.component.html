@@ -4,7 +4,7 @@
 <app-mat-sidenav></app-mat-sidenav>
     </mat-sidenav>
 
-    <mat-sidenav-content (scroll)=onResize()>
+    <mat-sidenav-content class="noscrollbar" (scroll)=onResize()>
 
   <mat-toolbar  color="primary" class="example-toolbar">
     <button mat-icon-button (click)="snav.toggle()">
@@ -13,7 +13,7 @@
   </mat-toolbar>
 
 
-<div id="slider" class="slider" (window:resize)=onResize() (scroll)=onResize()>
+<div id="slider" class="slider noscrollbar" (window:resize)=onResize() (scroll)=onResize()>
 <div id="slide{{i}}" class="slide" *ngFor="let item of this.bksvc.timecard;index as i;"> 
 
 
@@ -70,7 +70,7 @@ close
   <tr [ngClass]="{'hidecell': item.Footer.Details==''}"  class="mat-row"><td 
   
   class="footer3 newpadding mat-footer-cell" colspan=5>{{item.Footer.Details}}</td><tr>
- </table> 
+ </table> <br>
 
  </ng-container>
 <mat-progress-spinner (focus)=getperiod(i) style="margin: auto;margin-top: 30vh" *ngIf="item==null" mode="indeterminate"></mat-progress-spinner>

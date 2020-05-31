@@ -41,9 +41,7 @@ let selector="#tbl"+a+">tr";
 
 if (document.getElementById("tbl"+a)!=null) {
 var pos=document.querySelector("mat-sidenav-content").scrollTop-document.getElementById("tbl"+a).offsetTop;
-console.log(pos)
 
- 
   
  let f=document.querySelectorAll(selector+">th")
   f.forEach((d) => { 
