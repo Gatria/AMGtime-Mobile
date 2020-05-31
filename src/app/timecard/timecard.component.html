@@ -70,26 +70,18 @@ close
   <tr [ngClass]="{'hidecell': item.Footer.Details==''}"  class="mat-row"><td 
   
   class="footer3 newpadding mat-footer-cell" colspan=5>{{item.Footer.Details}}</td><tr>
-
-
-
-
-
-
-
-
-
  </table> 
 
  </ng-container>
 <mat-progress-spinner (focus)=getperiod(i) style="margin: auto;margin-top: 30vh" *ngIf="item==null" mode="indeterminate"></mat-progress-spinner>
   
 </div>  
+
 </div>
- 
+<app-footer></app-footer> 
 
 
-<app-footer></app-footer>
+
  
     </mat-sidenav-content>
   </mat-sidenav-container>

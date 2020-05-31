@@ -1,7 +1,10 @@
 .footer { position: fixed;
     overflow: hidden;
     bottom: 0px;
+    text-align: center;
     white-space: nowrap;
     background-color: white;}
 .footer-item {    display: inline-block;
     padding: 0.5%;}
+
+  .big {font-size: 11vw}
