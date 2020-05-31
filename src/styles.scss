@@ -27,7 +27,7 @@
 
 @import "variable.scss" ;
 @include angular-material-theme($my-app-theme);
-@include mat-core($custom-typography);
+
 
 .topinfo {background-color:mat-color($my-app-primary,600);
 color:mat-color($my-app-primary);
