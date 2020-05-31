@@ -25,12 +25,13 @@ import { USignedComponent } from './usigned/usigned.component';
 import { StatusboardComponent } from './statusboard/statusboard.component';
 import { StorageServiceModule } from 'ngx-webstorage-service';
 import { PunchdialogComponent } from './punchdialog/punchdialog.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
 
     imports:      [WebcamModule,AllMaterialModule, AppRouterModule, HttpClientModule ,BrowserAnimationsModule, BrowserModule, FormsModule,StorageServiceModule ],
-  declarations: [ AppComponent, CameraComponent, LoginComponent, HomescreenComponent, EmpphotoiconComponent, TimecardComponent, BenefitsComponent, ScheduleComponent, TimeoffComponent, MatSidenavComponent, PasswordresetComponent, SettingsComponent, ComplogoComponent, EmployeeuserselectorComponent, ConfirmDialogComponent, USignedComponent, StatusboardComponent, PunchdialogComponent],
+  declarations: [ AppComponent, CameraComponent, LoginComponent, HomescreenComponent, EmpphotoiconComponent, TimecardComponent, BenefitsComponent, ScheduleComponent, TimeoffComponent, MatSidenavComponent, PasswordresetComponent, SettingsComponent, ComplogoComponent, EmployeeuserselectorComponent, ConfirmDialogComponent, USignedComponent, StatusboardComponent, PunchdialogComponent, FooterComponent],
   bootstrap:    [ AppComponent ],
   providers: [BackendService],
                 entryComponents: [EmployeeuserselectorComponent,ConfirmDialogComponent,PunchdialogComponent]

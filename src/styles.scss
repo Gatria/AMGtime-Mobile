@@ -26,7 +26,7 @@
 
 
 @import "variable.scss" ;
-@include angular-material-theme($my-app-theme);
+
 
 
 .topinfo {background-color:mat-color($my-app-primary,600);

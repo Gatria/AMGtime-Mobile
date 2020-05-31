@@ -44,3 +44,5 @@ $my-app-primary: mat-palette($my-blue, 900,800,700);
 $my-app-accent:  mat-palette($my-green, 700, 900, A100);
 $my-app-warn:    mat-palette($mat-red,800,900,1000);
 $my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
+
+@include angular-material-theme($my-app-theme);
