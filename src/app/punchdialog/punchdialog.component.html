@@ -1,5 +1,5 @@
 
-
+<div class=scroll>
 <mat-form-field  *ngIf="data.AMGSettings.Comments" appearance="fill">
     <mat-label>Comment</mat-label>
     <input type=text matInput [(ngModel)]="Comment">
@@ -12,8 +12,8 @@
           <!-- ... -->
    
       </mat-nav-list>
-
-      <div mat-dialog-actions>
+</div>
+      <div mat-dialog-actions class=bottom>
   <button class="round-corners" mat-flat-button (click)="onDismiss()">No</button>
   <button class="round-corners" mat-flat-button color="primary" (click)="onConfirm()">Yes</button>
 </div>
