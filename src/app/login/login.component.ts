@@ -23,6 +23,7 @@ ngOnInit() {
 
 login(a = 0) {
   const b=["","switchToUser="+this.bksvc.encript("false"),"switchToUser="+this.bksvc.encript("true")];
+  const c=[{withCredentials: false},{withCredentials: true},{withCredentials: true}]
   this.bksvc.sendcommand((f)=>{
         this.bksvc.AMGSettings=f;
         if (f.CanSwitchEmployee) {
@@ -41,7 +42,7 @@ login(a = 0) {
           },"GetEmployees")
         this.bksvc.buildnavigation();
         this.router.navigate(['/']);}
-  },"GetLoginNew",b[a]+"&name="+this.bksvc.encript(this.name)+"&password="+this.bksvc.encript(this.password)+"&time="+this.bksvc.datetime());
+  },"GetLoginNew",b[a]+"&name="+this.bksvc.encript(this.name)+"&password="+this.bksvc.encript(this.password)+"&time="+this.bksvc.datetime(),c[a]);
 }
 
 
