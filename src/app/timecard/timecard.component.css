@@ -6,9 +6,6 @@
 .left-button {float:left}
 .right-button {float:right}
 
-.left-button:hover, .right-button:hover {
- color:red 
-}
 
 
 table.mat-table {
