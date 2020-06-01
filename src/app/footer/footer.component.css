@@ -12,4 +12,12 @@
 
     display:inline-block;
 }
-  .big {font-size: 11vw;padding:0px 4vw;}
+
+  .big {font-size: 10vw;padding:0px 4vw;}
+  @media screen and (orientation:landscape) {
+   .big {font-size: 8vh;padding:0px 4vh;} 
+   .footer-item:nth-of-type(-n+8){
+
+    display:inline-block;
+}
+  }

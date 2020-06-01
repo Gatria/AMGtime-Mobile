@@ -3,5 +3,6 @@
 .right {justify-content: flex-end;}
 mat-chip {width: 14%;
     justify-content: center;
+    font-size:3vw;
     text-transform: uppercase;}
     .small {font-size:10px!important}
