@@ -1,5 +1,5 @@
 <div class='footer'>
- <a mat-list-item  routerLink="{{item.action}}"  *ngFor="let item of this.bksvc.SideNavigation; let i = index" class="footer-item mdc-list-item" tabindex="0">
+ <a mat-list-item routerLinkActive="mat-warn-color" routerLink="{{item.action}}"  *ngFor="let item of this.bksvc.SideNavigation; let i = index" class="footer-item mdc-list-item" tabindex="0">
            <span class="big material-icons">{{item.icon}}</span><br>
            {{item.text}}
           </a>

@@ -10,7 +10,7 @@
       </div>
 
       <mat-nav-list>
-      <a mat-list-item  routerLink="{{nav.action}}" *ngFor="let nav of this.bksvc.SideNavigation"> 
+      <a mat-list-item  routerLinkActive="mat-ascent-bg" routerLink="{{nav.action}}" *ngFor="let nav of this.bksvc.SideNavigation"> 
         <span class="material-icons">{{nav.icon}}</span>&nbsp;&nbsp;{{nav.text}}</a>
 
       </mat-nav-list>
