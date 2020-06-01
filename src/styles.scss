@@ -108,3 +108,10 @@ mat-dialog-container {max-height: calc(100vh - 20px)!important;overflow:hidden!i
 .noscrollbar { overflow: -moz-scrollbars-none;  -ms-overflow-style: none; }
 mat-toolbar>button {position:absolute!important}
    
+   .mat-expansion-panel-header {
+    padding: 4px 24px 4px 9px!important;}
+
+  .mat-chip-list-wrapper {justify-content: center;
+   }
+
+ 

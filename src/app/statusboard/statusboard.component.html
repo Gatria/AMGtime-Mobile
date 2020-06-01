@@ -15,7 +15,7 @@
 
 
 
-<mat-chip-list>
+<mat-chip-list class="i">
   <mat-chip>All</mat-chip>
   <mat-chip>Work</mat-chip>
   <mat-chip>Out</mat-chip>
@@ -26,13 +26,13 @@
 
 <ng-container  *ngFor="let item of this.bksvc.StatusBoard; let i = index" tabindex="0">
 
-<mat-expansion-panel>
+<mat-expansion-panel class="stb">
   <mat-expansion-panel-header>
-    <mat-panel-title>
+    <mat-panel-title class="middle">
       <app-empphotoicon EmpID="{{this.bksvc.codetoid[item.Code]}}" name="{{item.Name}}"></app-empphotoicon>
       ({{item.Code}}) {{item.Name}}
     </mat-panel-title>
-    <mat-panel-description>
+    <mat-panel-description class="right middle">
    {{item.StatusStr}}
     </mat-panel-description>
   </mat-expansion-panel-header>
