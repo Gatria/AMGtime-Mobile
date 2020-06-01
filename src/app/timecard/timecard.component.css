@@ -3,8 +3,8 @@
 .newpadding {font-size:small!important;padding: 5px 0 10px 0!important;text-align:left!important}
 .newpadding {font-size:small!important; padding: 5px 0 7px 0!important;text-align:left!important}
 
-.left-button {float:left}
-.right-button {float:right}
+.left-button {margin-right:5px}
+.right-button {margin-left:5px}
 
 
 
