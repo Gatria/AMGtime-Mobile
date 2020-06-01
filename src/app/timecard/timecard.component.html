@@ -26,10 +26,9 @@
   <mat-icon>arrowright</mat-icon>
   </button>
 
-
+  <ng-container *ngIf="i==this.bksvc.AMGSettings.PayPeriodBackLimit-2">
 <div *ngIf='item.TimeCardApprovalStatus==2'>
 
- 
   <button class="center round-corners" mat-flat-button  (click)=this.bksvc.approverejecttimecard(i,true) color="accent"><span class="material-icons">done</span> Approve</button>
 &nbsp;
    <button class="center round-corners" mat-flat-button (click)=this.bksvc.approverejecttimecard(i,false) color="warn"><span class="material-icons">
@@ -45,7 +44,7 @@ close
  <h3> Rejected</h3>
  
 </div> 
-
+  </ng-container>
 </div> 
 
 <table id="tbl{{i}}" class="mat-elevation-z8 mat-table" >

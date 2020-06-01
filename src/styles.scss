@@ -85,6 +85,7 @@ animation: AnimationName 25s ease infinite;
 background-image: radial-gradient(circle, rgba(238,238,238,0.19) 0%, rgba(255,255,255,0.49) 12%, rgba(238,238,238,0.19) 19%, rgba(199,199,199,0.19) 33%, rgba(255,255,255,0.49) 46%, rgba(238,238,238,0.19) 68%, rgba(199,199,199,0.19) 83%, rgba(255,255,255,0.49) 92%, rgba(238,238,238,0.19) 100%);
 }
 h2 {color: mat-color($my-app-primary)!important;text-align:center}
+h3 {margin-block-start: 0.6em;margin-block-end: 0.6em;}
 .example-app-name {text-align:center;width:100%}
 hr.title {
   width:20vw;
