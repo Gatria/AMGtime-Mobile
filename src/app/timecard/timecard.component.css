@@ -3,6 +3,14 @@
 .newpadding {font-size:small!important;padding: 5px 0 10px 0!important;text-align:left!important}
 .newpadding {font-size:small!important; padding: 5px 0 7px 0!important;text-align:left!important}
 
+.left-button {float:left}
+.right-button {float:right}
+
+.left-button:hover, .right-button:hover {
+ color:red 
+}
+
+
 table.mat-table {
     border-spacing: 0;
 	border-radius: 25px;
