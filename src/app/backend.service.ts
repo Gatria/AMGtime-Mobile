@@ -71,13 +71,13 @@ this.SideNavigation.push({icon:"logout", text:"Log Out", action:"/logout"});
 
 
 private showinfo (error:string) {
-  this._snackBar.open( error, "", { duration: 6000, panelClass: ['mat-toolbar', 'mat-accent'] });
+  this._snackBar.open( error, "", { duration: 6000, panelClass: [ 'mat-accent-bg'] });
   console.info(error)
 }
 
 
 private showerror (error:string) {
-  this._snackBar.open( error, "", { duration: 6000, panelClass: ['mat-toolbar', 'mat-warn'] });
+  this._snackBar.open( error, "", { duration: 6000, panelClass: ['mat-warn-bg'] });
   console.error(error)
 }
 
@@ -183,6 +183,7 @@ const message = "Do you really want to logout ?";
 
 
 approverejecttimecard(i,s) {
+  i=this.AMGSettings.PayPeriodBackLimit-i-1;
  let comment=false;
  let message= "Do you really want to reject timecard?"
 if (s) message = "Do you really want to approve timecard?"
@@ -191,7 +192,6 @@ if (s) message = "Do you really want to approve timecard?"
 
     const dialogData = 
     new ConfirmDialogModel("Confirm Action", message ,comment);
-    console.log(dialogData);
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       maxWidth: "400px",
       data: dialogData
