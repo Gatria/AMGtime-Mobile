@@ -24,6 +24,7 @@ export const routes: Routes = [
 { path: 'logout', component: LoginComponent, canActivate: [AuthguardService] },
 { path: 'passwordreset', component: PasswordresetComponent  },
 { path: 'settings', component:  SettingsComponent },
+{ path: 'home', component:   HomescreenComponent, canActivate: [AuthguardService] },
 { path: '', component:   HomescreenComponent, canActivate: [AuthguardService] },
 { path: 'timecard', component:   TimecardComponent, canActivate: [AuthguardService] },
 { path: 'benefit', component:   BenefitsComponent, canActivate: [AuthguardService] },
