@@ -3,12 +3,11 @@
     bottom: 0px;
     width:100%;
     font-size:2.5vw;
-    text-decoration: none!important;
     text-align: center;
     white-space: nowrap;
     padding:1vw ;
     background-color: white;}
-.footer-item {    display:none }
+.footer-item {     text-decoration: none;   display:none }
 .footer-item:nth-of-type(-n+5){
 
     display:inline-block;

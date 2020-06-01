@@ -16,12 +16,12 @@
 
 
 <mat-chip-list class="i">
-  <mat-chip>All</mat-chip>
-  <mat-chip>Work</mat-chip>
-  <mat-chip>Out</mat-chip>
-    <mat-chip>ABS</mat-chip>
-    <mat-chip>LUNCH</mat-chip>
-    <mat-chip>BRK</mat-chip>
+  <mat-chip (click)="chips(0)" >All</mat-chip>
+  <mat-chip (click)="chips(1)">Work</mat-chip>
+  <mat-chip (click)="chips(2)">Out</mat-chip>
+    <mat-chip (click)="chips(3)">ABS</mat-chip>
+    <mat-chip (click)="chips(4)">LUNCH</mat-chip>
+    <mat-chip (click)="chips(5)">BRK</mat-chip>
 </mat-chip-list>
 
 <mat-progress-spinner (focus)=getperiod(i) style="margin: auto;margin-top: 30vh" *ngIf="this.bksvc.StatusBoard==null" mode="indeterminate"></mat-progress-spinner>
