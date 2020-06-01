@@ -24,6 +24,8 @@
     <mat-chip>BRK</mat-chip>
 </mat-chip-list>
 
+<mat-progress-spinner (focus)=getperiod(i) style="margin: auto;margin-top: 30vh" *ngIf="this.bksvc.StatusBoard==null" mode="indeterminate"></mat-progress-spinner>
+
 <ng-container  *ngFor="let item of this.bksvc.StatusBoard; let i = index" tabindex="0">
 
 <mat-expansion-panel class="stb">
@@ -33,7 +35,7 @@
       ({{item.Code}}) {{item.Name}}
     </mat-panel-title>
     <mat-panel-description class="right middle">
-   <span class="material-icons">infofull</span>&nbsp;{{item.StatusStr}}
+   <span class="small material-icons">infofull</span>&nbsp;{{item.StatusStr}}
     </mat-panel-description>
   </mat-expansion-panel-header>
 

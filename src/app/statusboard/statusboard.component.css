@@ -4,3 +4,4 @@
 mat-chip {width: 14%;
     justify-content: center;
     text-transform: uppercase;}
+    .small {font-size:10px!important}
