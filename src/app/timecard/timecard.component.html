@@ -14,7 +14,7 @@
 
 
 <div id="slider" class="slider noscrollbar" (window:resize)=onResize() (scroll)=onResize()>
-<div id="slide{{i}}" class="slide" *ngFor="let item of this.bksvc.timecard;index as i;"> 
+<div id="slide{{i}}" class="slide" *ngFor="let item of this.bksvc.timecard;index as i;"> {{i}}
 
 
    <ng-container *ngIf="item!=null">

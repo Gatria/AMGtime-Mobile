@@ -30,8 +30,12 @@ setTimeout(()=>{document.getElementById("slide"+p).classList.add("snap");this.on
 
 gototab(a)
 {
-document.querySelector("div.slider").scrollLeft=document.querySelector("div.slider").scrollLeft+a*document.querySelector("div.slider").parentElement.clientWidth;
+let swidth=document.querySelector("div.slider").parentElement.clientWidth;
+let cpos=document.querySelector("div.slider").scrollLeft;  
+let currentslide=Math.round((cpos+a*swidth)/swidth);
 
+document.getElementById("slide"+currentslide).classList.add("snap");  
+setTimeout(()=>{document.querySelector("div.slider").scrollLeft=cpos+a*swidth},10);
 }
 
 onResize() {
