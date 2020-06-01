@@ -37,11 +37,14 @@ close
 </span> Reject</button>
 </div> 
 
-<div *ngIf='item.TimeCardApprovalStatus==1'>
+<div *ngIf='item.TimeCardApprovalStatus==1' class='mat-accent-color'>
  <h3> Approved</h3>
  
 </div> 
-
+<div *ngIf='item.TimeCardApprovalStatus==0' class='mat-warn-color'>
+ <h3> Rejected</h3>
+ 
+</div> 
 
 </div> 
 

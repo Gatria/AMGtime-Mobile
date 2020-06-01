@@ -93,6 +93,10 @@ hr.title {
 
 .mat-accent-bg {background-color:mat-color($my-app-accent)}
 .mat-warn-bg {background-color:mat-color($my-app-warn)}
+.mat-accent-color {color:mat-color($my-app-accent)}
+.mat-warn-color {color:mat-color($my-app-warn)}
+
+
 
 .mat-tab-label {display:none!important;min-width:100%!important;padding:0!important}
 mat-ink-bar {display:none}
