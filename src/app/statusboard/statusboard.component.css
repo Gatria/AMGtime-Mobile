@@ -1,3 +1,6 @@
 .stb {margin:4px}
 .middle {align-items: center;}
 .right {justify-content: flex-end;}
+mat-chip {width: 14%;
+    justify-content: center;
+    text-transform: uppercase;}

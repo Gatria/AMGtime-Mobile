@@ -41,7 +41,7 @@ login(a = 0) {
               if (Array.isArray(f)) f.forEach(e => this.bksvc.codetoid[e.Code]=e.Id);
           },"GetEmployees")
         this.bksvc.buildnavigation();
-        this.router.navigate(['/']);}
+        this.router.navigate(['/home']);}
   },"GetLoginNew",b[a]+"&name="+this.bksvc.encript(this.name)+"&password="+this.bksvc.encript(this.password)+"&time="+this.bksvc.datetime(),c[a]);
 }
 
