@@ -22,6 +22,5 @@ this.bksvc.sendcommand((f)=>{this.bksvc.StatusBoard=f;
 
 chips(a) {
 this.filter= this.filter ^ a;  
-console.log(this.filter );
 }
 }
