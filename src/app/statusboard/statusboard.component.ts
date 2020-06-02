@@ -19,4 +19,7 @@ this.bksvc.sendcommand((f)=>{this.bksvc.StatusBoard=f;
 },"GetStatusBoard","_in="+tt+"&_out="+tt+"&_lunch="+tt+"&_break="+tt+"&absent="+tt+"time="+this.bksvc.datetime())  
   }
 
+chips(a) {
+console.log(a);
+}
 }
