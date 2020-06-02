@@ -10,6 +10,17 @@
     <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
     <h1 class="example-app-name">Benefits</h1>
   </mat-toolbar>
+
+<ng-container *ngFor="let item of benefits; let i = index" >
+<mat-card>
+<mat-card-title>{{item.Code}} </mat-card-title>
+<mat-card-content>Taken: {{item.Taken}}</mat-card-content>
+<mat-card-content>Pending: {{item.Pending}}</mat-card-content>
+<mat-card-content>Left: {{item.Left}}</mat-card-content>
+</mat-card>
+</ng-container>
+
+
  <table mat-table [dataSource]="benefits" class="mat-elevation-z8">
 
   <ng-container matColumnDef="Code">
