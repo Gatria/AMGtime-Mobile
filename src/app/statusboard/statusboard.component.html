@@ -11,12 +11,9 @@
     <h1 class="example-app-name">Status Board</h1>
   </mat-toolbar>
  
-  
-
-{{filter}}
 
 <mat-chip-list class="i" multiple="true">
-  <mat-chip (click)="chips(31)" color="accent" >All</mat-chip>
+  <mat-chip selected (click)="chips(31)" color="accent" >All</mat-chip>
   <mat-chip [selected]="filter % 2 >= 1" (click)="chips(1)">Work</mat-chip>
   <mat-chip  [selected]="filter % 4 >= 2"  (click)="chips(2)">Out</mat-chip>
     <mat-chip [selected]="filter % 8 >= 4"  (click)="chips(4)">ABS</mat-chip>
