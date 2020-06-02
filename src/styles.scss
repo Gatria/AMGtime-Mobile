@@ -39,7 +39,7 @@ margin:1%;
 
 .mat-drawer-container, .mat-drawer-content {
   overflow-x:hidden!important;
-  height:calc(100vh - 12vw)!important}
+  height:calc(100vh - 14vw)!important}
 .mat-list-base .mat-list-item {  color:#f4f6f8!important;   }
 .mat-drawer, .mat-drawer-push {
         border-radius: 0 25px 25px 0px;
@@ -94,8 +94,8 @@ hr.title {
   border: 2px solid mat-color($my-app-primary);
 }
 
-.mat-accent-bg {background-color:mat-color($my-app-accent)}
-.mat-warn-bg {background-color:mat-color($my-app-warn)}
+.mat-accent-bg {background-color:mat-color($my-app-accent)!important}
+.mat-warn-bg {background-color:mat-color($my-app-warn)!important}
 .mat-accent-color {color:mat-color($my-app-accent)}
 .mat-warn-color {color:mat-color($my-app-warn)}
 

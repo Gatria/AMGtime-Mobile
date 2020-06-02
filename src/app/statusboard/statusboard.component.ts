@@ -12,6 +12,7 @@ export class StatusboardComponent implements OnInit {
   constructor(private bksvc:BackendService) { }
 
   ngOnInit() {
+    this.filter=31;
 let tt=this.bksvc.encript("true");
 this.bksvc.sendcommand((f)=>{this.bksvc.StatusBoard=f;
 
@@ -20,6 +21,7 @@ this.bksvc.sendcommand((f)=>{this.bksvc.StatusBoard=f;
   }
 
 chips(a) {
-console.log(a);
+this.filter= this.filter ^ a;  
+console.log(this.filter );
 }
 }
