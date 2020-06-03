@@ -11,3 +11,9 @@ mat-chip {width: 14%;
     text-align: center;
     width: 100%;margin-top:15px}
     .list {margin-top:-30px}
+
+    .Work {color: green}
+    .Out {color:blueviolet}
+    .Absent{color: brown}
+    .Lunch {color:chocolate}
+    .Break {color:darkblue}
