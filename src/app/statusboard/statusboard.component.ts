@@ -14,10 +14,7 @@ export class StatusboardComponent implements OnInit {
   ngOnInit() {
     this.filter=31;
 let tt=this.bksvc.encript("true");
-this.bksvc.sendcommand((f)=>{this.bksvc.StatusBoard=f;
-
-
-},"GetStatusBoard","_in="+tt+"&_out="+tt+"&_lunch="+tt+"&_break="+tt+"&absent="+tt+"time="+this.bksvc.datetime())  
+this.bksvc.sendcommand((f)=>{this.bksvc.StatusBoard=f},"GetStatusBoard","_in="+tt+"&_out="+tt+"&_lunch="+tt+"&_break="+tt+"&absent="+tt+"time="+this.bksvc.datetime())  
   }
 
 chips(a) {

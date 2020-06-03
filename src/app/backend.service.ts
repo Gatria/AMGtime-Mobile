@@ -101,7 +101,8 @@ public sendcommand(f:function,command:string, postdata="", httpOptions={withCred
 let hash=command+postdata;  
 if (hash.substring(1,hash.search("&time="))!=this.lastcall) {
 this.lastcall=hash.substring(1,hash.search("&time="));
-if (command[0]=="*") let q=this.url.replace("MobileService","MobileApi")+command.substr(1); else let q=this.url+command; 
+if (command[0]=="*") const q=this.url.replace("MobileService","MobileApi")+command.substr(1); else const q=this.url+command;
+console.log(q) 
 return this.data.post<any>(q, postdata, httpOptions).subscribe(
       res => {
         console.log(res);
