@@ -11,7 +11,16 @@
     <h1 class="example-app-name">Usigned</h1>
   </mat-toolbar>
  
-  
+  <ng-container *ngFor="let item of Document; let i = index" >
+<mat-card class="stb mat-elevation-z4">
+
+<mat-card-subtitle>{{item.DisplayName}} </mat-card-subtitle>
+<mat-card-content>Modified: {{item.ChangeDate}}</mat-card-content>
+<mat-card-content>Owner: {{item.Owner}}</mat-card-content>
+<mat-card-content>Status: {{item.StatusStr}}</mat-card-content>
+</mat-card>
+</ng-container>
+
 
 <app-footer></app-footer>
  

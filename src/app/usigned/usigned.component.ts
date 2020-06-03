@@ -6,14 +6,14 @@ import {BackendService} from '../backend.service'
   styleUrls: ['./usigned.component.css']
 })
 export class USignedComponent implements OnInit  {
-
+Document=[];
   constructor(private bksvc:BackendService) { }
   ngOnInit() {
     
-this.bksvc.sendcommand((f)=>{this.bksvc.StatusBoard=f;
+this.bksvc.sendcommand((f)=>{this.Document=f;
 
 
-},"*GetDocumentsMenu")  
+},"*GetDocuments")  
   }
 
 }
