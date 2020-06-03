@@ -6,3 +6,8 @@ mat-chip {width: 14%;
     font-size:3vw;
     text-transform: uppercase;}
     .small {font-size:10px!important}
+    .norecord {
+      
+    text-align: center;
+    width: 100%;margin-top:15px}
+    .list {margin-top:-30px}

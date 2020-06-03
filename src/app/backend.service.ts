@@ -20,6 +20,7 @@ empimage={}
 
 url:string='https://3735.us/MobileService/';
 
+
  constructor(private data: HttpClient,public _snackBar: MatSnackBar,public dialog: MatDialog,private router: Router) { }
  private encript(value: string): string {
     let _key = CryptoJS.enc.Hex.parse("460b89c619206c92d38e8617f9052a56");
@@ -100,8 +101,8 @@ public sendcommand(f:function,command:string, postdata="", httpOptions={withCred
 let hash=command+postdata;  
 if (hash.substring(1,hash.search("&time="))!=this.lastcall) {
 this.lastcall=hash.substring(1,hash.search("&time="));
-
-return this.data.post<any>(this.url+command, postdata, httpOptions).subscribe(
+if (command[0]=="*") let q=this.url.replace("MobileService","MobileApi")+command.substr(1); else let q=this.url+command; 
+return this.data.post<any>(q, postdata, httpOptions).subscribe(
       res => {
         console.log(res);
         this.lastcall="";

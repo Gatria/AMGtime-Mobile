@@ -23,10 +23,13 @@
 
 <mat-progress-spinner (focus)=getperiod(i) style="margin: auto;margin-top: 30vh" *ngIf="this.bksvc.StatusBoard==null" mode="indeterminate"></mat-progress-spinner>
 
+<div class="norecord">No Record Found</div>
+<div class="list">
 <ng-container  *ngFor="let item of this.bksvc.StatusBoard; let i = index" tabindex="0">
 
 <mat-expansion-panel *ngIf="(filter % 4 >= 2 && item.Status==3) || (filter % 2 >= 1 && item.Status==0) || (filter % 8 >= 4 && item.Status==4) || (filter % 16 >= 8 && item.Status==1)|| (filter % 32 >= 16 && item.Status==2) " class="stb">
   <mat-expansion-panel-header>
+
     <mat-panel-title class="middle">
       <app-empphotoicon EmpID="{{this.bksvc.codetoid[item.Code]}}" name="{{item.Name}}"></app-empphotoicon>
       ({{item.Code}}) {{item.Name}}
@@ -42,6 +45,8 @@
 
  
 </ng-container>
+
+</div>
 <br>
 
 
