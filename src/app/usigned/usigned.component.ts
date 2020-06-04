@@ -10,15 +10,13 @@ Document=[];
   constructor(private bksvc:BackendService) { }
   ngOnInit() {
     
-this.bksvc.sendcommand((f)=>{this.Document=f;
-
-
-},"*GetDocuments")  
+this.bksvc.sendcommand((f)=>{this.Document=f;},"*GetDocuments")  
   }
 
 
 getdocument(a) {
-consoloe.log(a)
+  this.bksvc.sendcommand((f)=>{this.Image=f;},"*GetDocumentImage","imageName=file_1.png&docId="+a)  
+console.log(a)
 }
 
 }

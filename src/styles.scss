@@ -121,4 +121,18 @@ mat-toolbar>button {position:absolute!important}
   .mat-chip-list-wrapper {justify-content: center;
    }
 
- 
+ .slider {
+  width: 100vw;
+display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  overflow-y:hidden;
+      scroll-snap-type: x mandatory;
+
+   -webkit-overflow-scrolling: touch;
+}
+.slide {
+  width: 100%;
+ flex: 0 0 auto;  
+}

@@ -11,6 +11,10 @@
     <h1 class="example-app-name">Usigned</h1>
   </mat-toolbar>
  
+<div id="slider" class="slider noscrollbar" >
+<div id="slide0" class="slide">
+
+
 <mat-progress-spinner (focus)=getperiod(i) style="margin: auto;margin-top: 30vh" *ngIf="Document==null" mode="indeterminate"></mat-progress-spinner>
 
 <div class="norecord">No Record Found</div>
@@ -29,11 +33,12 @@
 
 
  <mat-action-row>
-      <button mat-button color="prime" (click)="getdocument(item.DocId)">Show</button>
+      <button mat-stroked-button color="primary" (click)="getdocument(item.DocId)">Show</button>
     
     </mat-action-row>
 </mat-expansion-panel>
 </div>
+</div></div>
 
 <app-footer></app-footer>
  

@@ -105,20 +105,6 @@ transition:0.2s;
 
 
 
-.slider {
-  width: 100vw;
-display: flex;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  overflow-y:hidden;
-      scroll-snap-type: x mandatory;
 
-   -webkit-overflow-scrolling: touch;
-}
-.slide {
-  width: 100%;
- flex: 0 0 auto;  
-}
 
 .snap {  scroll-snap-align: start end;}
