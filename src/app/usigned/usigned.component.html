@@ -39,9 +39,11 @@
 </mat-expansion-panel>
 </div>
 </div>
-<div *ngIf="Image!=null" id="slide1" class="slide snap">
-<img  [src]="Image" />
+<ng-container *ngFor="let item of Image; let i = index" > 
+<div *ngIf="item!=null" id="slide{{i}}" class="slide snap">
+<img  [src]="item" />
 </div>
+</ng-container>
 </div>
 
 <app-footer></app-footer>
