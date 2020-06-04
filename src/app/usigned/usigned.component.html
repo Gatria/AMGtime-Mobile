@@ -23,20 +23,20 @@
 <div id="slider" class="slider noscrollbar" >
 <div id="slide0" class="slide snap">
 <mat-chip-list class="i" multiple="true">
-  <mat-chip selected (click)="chips(31)" color="accent" >All</mat-chip>
-  <mat-chip [selected]="filter % 2 >= 1" (click)="chips(1)">Work</mat-chip>
-  <mat-chip [selected]="filter % 4 >= 2"  (click)="chips(2)">Out</mat-chip>
-    <mat-chip [selected]="filter % 8 >= 4"  (click)="chips(4)">ABS</mat-chip>
-    <mat-chip [selected]="filter % 16 >= 8" (click)="chips(8)">LUNCH</mat-chip>
-    <mat-chip [selected]="filter % 32 >= 16"  (click)="chips(16)">BRK</mat-chip>
+  <mat-chip [selected]="filter % 2 >= 1" (click)="chips(1)">Signed</mat-chip>
+  <mat-chip [selected]="filter % 4 >= 2"  (click)="chips(2)">Declined</mat-chip>
+    <mat-chip [selected]="filter % 8 >= 4"  (click)="chips(4)">Canceled</mat-chip>
+    <mat-chip [selected]="filter % 16 >= 8" (click)="chips(8)">Drafts</mat-chip>
+    <mat-chip [selected]="filter % 32 >= 16"  (click)="chips(16)">For Me</mat-chip>
+        <mat-chip [selected]="filter % 64 >= 32"  (click)="chips(32)">Others</mat-chip>
 </mat-chip-list>
 
-<mat-progress-spinner (focus)=getperiod(i) style="margin: auto;margin-top: 30vh" *ngIf="Document==null" mode="indeterminate"></mat-progress-spinner>
+<mat-progress-spinner style="margin: auto;margin-top: 30vh" *ngIf="Document==null" mode="indeterminate"></mat-progress-spinner>
 
 <div class="norecord">No Documents Found</div>
 <div class="list">
-
-<mat-expansion-panel  class="stb" *ngFor="let item of Document; let i = index" >
+<ng-container *ngFor="let item of Document; let i = index">
+<mat-expansion-panel  class="stb" *ngIf="(filter % 4 >= 2 && item.Status==4) || (filter % 2 >= 1 && item.Status==1) || (filter % 8 >= 4 && item.Status==5) || (filter % 16 >= 8 && item.Status==0)|| (filter % 32 >= 16 && item.Status==2)|| (filter % 64 >= 32 && item.Status==3) " >
 <mat-expansion-panel-header>
 <mat-panel-title class="middle">{{item.DisplayName}} </mat-panel-title >
 <mat-panel-description class="right middle">
@@ -53,6 +53,7 @@
     
     </mat-action-row>
 </mat-expansion-panel>
+</ng-container>
 </div>
 </div>
 <ng-container *ngFor="let item of Image; let i = index" > 

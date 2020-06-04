@@ -27,7 +27,7 @@ this.Image=[];
  
   this.bksvc.sendcommand((f)=>{this.Image[i]=this.domSanitizer.bypassSecurityTrustUrl("data:image/png;base64, "+f.image);
 
- setTimeout(()=>{document.getElementById("slider").scrollLeft=document.getElementById("slider").parentElement.clientWidth+5},300);
+ setTimeout(()=>{document.getElementById("slider").scrollLeft=document.getElementById("slider").parentElement.clientWidth+5},100);
   },"*GetDocumentImage","imageName="+d.FileName+"&docId="+a)
   
    }) 
@@ -38,4 +38,8 @@ this.Image=[];
 
 }
 
+
+chips(a) {
+this.filter= this.filter ^ a;  
+}
 }
