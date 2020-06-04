@@ -123,6 +123,7 @@ mat-toolbar>button {position:absolute!important}
 
  .slider {
   width: 100vw;
+
 display: flex;
   flex-wrap: nowrap;
   overflow-x: auto;
@@ -135,6 +136,7 @@ display: flex;
 .slide {
   width: 100%;
  flex: 0 0 auto;  
+
 }
 
 .snap {  scroll-snap-align: start end;}

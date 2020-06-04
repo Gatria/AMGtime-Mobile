@@ -9,7 +9,7 @@ import {DomSanitizer} from "@angular/platform-browser";
 })
 export class USignedComponent implements OnInit  {
 Document=[];
-
+filter=63;
   constructor(private bksvc:BackendService,private domSanitizer: DomSanitizer) { }
   ngOnInit() {
     
