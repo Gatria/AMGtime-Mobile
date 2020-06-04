@@ -12,7 +12,7 @@
   </mat-toolbar>
  
 <div id="slider" class="slider noscrollbar" >
-<div id="slide0" class="slide">
+<div id="slide0" class="slide snap">
 
 
 <mat-progress-spinner (focus)=getperiod(i) style="margin: auto;margin-top: 30vh" *ngIf="Document==null" mode="indeterminate"></mat-progress-spinner>
@@ -38,7 +38,11 @@
     </mat-action-row>
 </mat-expansion-panel>
 </div>
-</div></div>
+</div>
+<div id="slide1" class="slide snap">
+<img *ngIf="Image!=null" src="{{Image.image}}" />
+</div>
+</div>
 
 <app-footer></app-footer>
  
