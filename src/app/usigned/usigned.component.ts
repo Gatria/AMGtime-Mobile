@@ -10,13 +10,23 @@ import {DomSanitizer} from "@angular/platform-browser";
 export class USignedComponent implements OnInit  {
 Document=[];
 filter=63;
+first=true;
+
   constructor(private bksvc:BackendService,private domSanitizer: DomSanitizer) { }
   ngOnInit() {
     
 this.bksvc.sendcommand((f)=>{this.Document=f;},"*GetDocuments")  
   }
 
+scrollto(a)
+{
+console.log("Scrool");
+setTimeout(()=>{document.getElementById("slider").scrollLeft=document.getElementById("slider").parentElement.clientWidth*a},100);  
+}
 
+scroll() {
+ this.first= document.getElementById("slider").scrollLeft==0;
+}
 getdocument(a) {
   
 this.Image=[];
@@ -27,7 +37,7 @@ this.Image=[];
  
   this.bksvc.sendcommand((f)=>{this.Image[i]=this.domSanitizer.bypassSecurityTrustUrl("data:image/png;base64, "+f.image);
 
- setTimeout(()=>{document.getElementById("slider").scrollLeft=document.getElementById("slider").parentElement.clientWidth+5},100);
+this.scrollto(1);
   },"*GetDocumentImage","imageName="+d.FileName+"&docId="+a)
   
    }) 
@@ -40,6 +50,7 @@ this.Image=[];
 
 
 chips(a) {
+  this.Image=[];
 this.filter= this.filter ^ a;  
 }
 }

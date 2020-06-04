@@ -12,7 +12,8 @@
 
 
   <mat-toolbar color="primary" class="example-toolbar">
-    <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+    <button *ngIf="first" mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+    <button *ngIf="!first" (click)=scrollto(0) mat-icon-button><mat-icon>arrowleft</mat-icon></button>
     <h1 class="example-app-name">Usigned</h1>
   </mat-toolbar>
  
@@ -20,7 +21,7 @@
 
 
 
-<div id="slider" class="slider noscrollbar" >
+<div id="slider" (scroll)=scroll() class="slider noscrollbar" >
 <div id="slide0" class="slide snap">
 <mat-chip-list class="i" multiple="true">
   <mat-chip [selected]="filter % 2 >= 1" (click)="chips(1)">Signed</mat-chip>
@@ -58,7 +59,7 @@
 </div>
 <ng-container *ngFor="let item of Image; let i = index" > 
 <div *ngIf="item!=null" id="slide{{i}}" class="slide snap">
-<img class="img"  [src]="item" />
+<div class="mat-elevation-z2 imageframe"> <img class="img"  [src]="item" /></div>
 </div>
 </ng-container>
 </div>
