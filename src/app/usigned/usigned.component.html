@@ -6,14 +6,30 @@
 
     <mat-sidenav-content class="noscrollbar">
 
+
+
+
+
+
   <mat-toolbar color="primary" class="example-toolbar">
     <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
     <h1 class="example-app-name">Usigned</h1>
   </mat-toolbar>
  
+
+
+
+
 <div id="slider" class="slider noscrollbar" >
 <div id="slide0" class="slide snap">
-
+<mat-chip-list class="i" multiple="true">
+  <mat-chip selected (click)="chips(31)" color="accent" >All</mat-chip>
+  <mat-chip [selected]="filter % 2 >= 1" (click)="chips(1)">Work</mat-chip>
+  <mat-chip [selected]="filter % 4 >= 2"  (click)="chips(2)">Out</mat-chip>
+    <mat-chip [selected]="filter % 8 >= 4"  (click)="chips(4)">ABS</mat-chip>
+    <mat-chip [selected]="filter % 16 >= 8" (click)="chips(8)">LUNCH</mat-chip>
+    <mat-chip [selected]="filter % 32 >= 16"  (click)="chips(16)">BRK</mat-chip>
+</mat-chip-list>
 
 <mat-progress-spinner (focus)=getperiod(i) style="margin: auto;margin-top: 30vh" *ngIf="Document==null" mode="indeterminate"></mat-progress-spinner>
 

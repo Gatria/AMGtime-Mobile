@@ -26,9 +26,8 @@ this.Image=[];
  f.Pages.forEach ((d,i)=> {    
  
   this.bksvc.sendcommand((f)=>{this.Image[i]=this.domSanitizer.bypassSecurityTrustUrl("data:image/png;base64, "+f.image);
-  console.log(this.Image);
-  console.log(d.FileName);
-  
+
+ setTimeout(()=>{document.getElementById("slider").scrollLeft=document.getElementById("slider").parentElement.clientWidth+5},300);
   },"*GetDocumentImage","imageName="+d.FileName+"&docId="+a)
   
    }) 
