@@ -99,8 +99,13 @@ public datetime():string {
 public sendcommand(f:function,command:string, postdata="", httpOptions={withCredentials: true})
 {
 let hash=command+postdata;  
-if (hash.substring(1,hash.search("&time="))!=this.lastcall) {
-this.lastcall=hash.substring(1,hash.search("&time="));
+
+if (hash.search("&time=")>0) hash=hash.substring(1,hash.search("&time="));
+
+if (hash!=this.lastcall)
+ {
+this.lastcall=hash;
+
 if (command[0]=="*") const q=this.url.replace("MobileService","MobileApi")+command.substr(1); else const q=this.url+command;
 console.log(q) 
 return this.data.post<any>(q, postdata, httpOptions).subscribe(
