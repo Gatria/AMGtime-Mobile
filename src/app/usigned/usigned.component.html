@@ -17,7 +17,7 @@
 
 <mat-progress-spinner (focus)=getperiod(i) style="margin: auto;margin-top: 30vh" *ngIf="Document==null" mode="indeterminate"></mat-progress-spinner>
 
-<div class="norecord">No Record Found</div>
+<div class="norecord">No Documents Found</div>
 <div class="list">
 
 <mat-expansion-panel  class="stb" *ngFor="let item of Document; let i = index" >
@@ -39,8 +39,8 @@
 </mat-expansion-panel>
 </div>
 </div>
-<div id="slide1" class="slide snap">
-<img *ngIf="Image!=null" [src]="Image" />
+<div *ngIf="Image!=null" id="slide1" class="slide snap">
+<img  [src]="Image" />
 </div>
 </div>
 

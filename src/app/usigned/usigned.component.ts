@@ -17,8 +17,20 @@ this.bksvc.sendcommand((f)=>{this.Document=f;},"*GetDocuments")
 
 
 getdocument(a) {
-  this.bksvc.sendcommand((f)=>{this.Image=this.domSanitizer.bypassSecurityTrustUrl("data:image/png;base64, "+f.image);},"*GetDocumentImage","imageName=file_1.png&docId="+a)  
-console.log(a)
+  Image=Null;
+
+  this.bksvc.sendcommand(
+    (f)=>{
+ f.Pages.forEach(d,i) => {    
+   
+  this.bksvc.sendcommand((f)=>{this.Image[i]=this.domSanitizer.bypassSecurityTrustUrl("data:image/png;base64, "+f.image);},"*GetDocumentImage","imageName="+d.FileName+"&docId="+a)
+  
+   } 
+   
+   
+   
+    },"*GetDocument","docId="+a)
+
 }
 
 }
