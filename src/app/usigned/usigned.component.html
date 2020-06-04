@@ -11,7 +11,7 @@
     <h1 class="example-app-name">Usigned</h1>
   </mat-toolbar>
  
-<mat-progress-spinner (focus)=getperiod(i) style="margin: auto;margin-top: 30vh" *ngIf="this.bksvc.StatusBoard==null" mode="indeterminate"></mat-progress-spinner>
+<mat-progress-spinner (focus)=getperiod(i) style="margin: auto;margin-top: 30vh" *ngIf="Document==null" mode="indeterminate"></mat-progress-spinner>
 
 <div class="norecord">No Record Found</div>
 <div class="list">
@@ -19,13 +19,20 @@
 <mat-expansion-panel  class="stb" *ngFor="let item of Document; let i = index" >
 <mat-expansion-panel-header>
 <mat-panel-title class="middle">{{item.DisplayName}} </mat-panel-title >
-<mat-panel-description class="right middle"><span class="small material-icons">infofull</span>&nbsp; {{item.StatusStr}}</mat-panel-description>
+<mat-panel-description class="right middle">
+  <span class="small material-icons">infofull</span><span class="m4">{{item.StatusStr}}</span>
+ 
+  </mat-panel-description>
 </mat-expansion-panel-header>
 <p>Modified: {{item.ChangeDate}}</p>
 <p>Owner: {{item.Owner}}</p>
 
-</mat-expansion-panel>
 
+ <mat-action-row>
+      <button mat-button color="prime" (click)="getdocument(item.DocId)">Show</button>
+    
+    </mat-action-row>
+</mat-expansion-panel>
 </div>
 
 <app-footer></app-footer>

@@ -17,3 +17,8 @@ mat-chip {width: 14%;
     .Absent{color: brown}
     .Lunch {color:chocolate}
     .Break {color:darkblue}
+
+    .m4 {
+    width: 80px;
+    text-align: center;
+}

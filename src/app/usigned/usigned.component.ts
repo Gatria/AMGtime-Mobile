@@ -16,4 +16,9 @@ this.bksvc.sendcommand((f)=>{this.Document=f;
 },"*GetDocuments")  
   }
 
+
+getdocument(a) {
+consoloe.log(a)
+}
+
 }
