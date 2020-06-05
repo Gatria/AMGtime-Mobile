@@ -9,11 +9,17 @@ import {BackendService} from '../backend.service'
 export class TimeoffComponent implements OnInit {
 
   constructor(private bksvc:BackendService) { }
-
+first=true;
   ngOnInit() {
        this.filter=7;
-     this.bksvc.sendcommand((f)=>{ this.timeofrequests=f},"GetTimeOffs","date="+ this.bksvc.datetime(),{ withCredentials: true});
+     this.bksvc.sendcommand((f)=>{ this.bksvc.timeofrequests=f},"GetTimeOffs","date="+ this.bksvc.datetime(),{ withCredentials: true});
   }
+
+
+scroll() {
+ this.first= document.getElementById("slider").scrollLeft==0;
+}
+
 chips(a) {
 this.filter= this.filter ^ a;  
 }

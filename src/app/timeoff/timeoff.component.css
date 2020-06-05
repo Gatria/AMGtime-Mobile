@@ -48,3 +48,5 @@ mat-chip {width: 20%;
      .Approved {color:green}
      .Pending {color:darkorange}
      .Denied {color:darkred}
+
+     .float {position:fixed;right:10px}

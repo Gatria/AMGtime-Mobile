@@ -7,9 +7,15 @@
     <mat-sidenav-content class="noscrollbar">
 
   <mat-toolbar color="primary" class="example-toolbar">
-    <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+ <button *ngIf="first" mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+    <button *ngIf="!first" (click)=scrollto(0) mat-icon-button><mat-icon>arrowleft</mat-icon></button>
     <h1 class="example-app-name">Time Off Requests</h1>
   </mat-toolbar>
+
+
+  
+<div id="slider" (scroll)=scroll() class="slider noscrollbar" >
+<div id="slide0" class="slide snap">
  
 <mat-chip-list class="i" multiple="true">
   <mat-chip selected (click)="chips(31)" color="accent" >All</mat-chip>
@@ -18,11 +24,11 @@
     <mat-chip [selected]="filter % 8 >= 4"  (click)="chips(4)">Denied</mat-chip>
 </mat-chip-list>
 
- <mat-progress-spinner style="margin: auto;margin-top: 30vh" *ngIf="timeofrequests==null" mode="indeterminate"></mat-progress-spinner>
+ <mat-progress-spinner style="margin: auto;margin-top: 30vh" *ngIf="bksvc.timeofrequests==null" mode="indeterminate"></mat-progress-spinner>
 
 <div class="norecord">No Request Found</div>
  <div class="list"> 
-<ng-container *ngFor="let item of timeofrequests; let i = index" >
+<ng-container *ngFor="let item of bksvc.timeofrequests; let i = index" >
 <mat-card *ngIf="(filter % 4 >= 2 && item.Status==0) || (filter % 2 >= 1 && item.Status==1) || (filter % 8 >= 4 && item.Status==2) " class="stb mat-elevation-z4">
 <mat-card-subtitle class=date>{{item.Date}}
  
@@ -45,6 +51,48 @@ close
 </mat-card>
 </ng-container>
 </div>
+<button color="primary" mat-fab class="float"><mat-icon>plus</mat-icon></button>
+</div></div>
+<div id="slide1" class="slide snap">
+  <mat-form-field>
+  <mat-label>Choose Category</mat-label>
+  <mat-select>
+    <mat-option *ngFor="let food of foods" [value]="food.value">
+      {{food.viewValue}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-radio-group aria-label="Select an option">
+  <mat-radio-button value="1">Option 1</mat-radio-button>
+  <mat-radio-button value="2">Option 2</mat-radio-button>
+</mat-radio-group>
+
+<mat-form-field>
+  <input matInput [matDatepicker]="myDatepicker">
+  <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+  <mat-datepicker #myDatepicker></mat-datepicker>
+</mat-form-field>
+
+ <mat-form-field appearance="fill">
+    <mat-label>Input</mat-label>
+    <input matInput>
+  </mat-form-field>
+   <mat-form-field appearance="fill">
+    <mat-label>Input</mat-label>
+    <input matInput>
+  </mat-form-field>
+   <mat-form-field appearance="fill">
+    <mat-label>Input</mat-label>
+    <input matInput>
+  </mat-form-field>
+   <mat-form-field appearance="fill">
+    <mat-label>Input</mat-label>
+    <input matInput>
+  </mat-form-field>
+
+
+  </div>
  <app-footer></app-footer>
     </mat-sidenav-content>
   </mat-sidenav-container>
