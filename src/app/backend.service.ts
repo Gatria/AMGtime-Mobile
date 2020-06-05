@@ -253,7 +253,32 @@ this.getLocation(f)
 
 
 
+canceltimeoff(a)
+{
 
+ let comment=false;
+ let message= "Do you really want to cancel time off reques?"
+
+
+    const dialogData = 
+    new ConfirmDialogModel("Confirm Action", message ,comment);
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      maxWidth: "400px",
+      data: dialogData
+    });
+
+ dialogRef.afterClosed().subscribe(dialogResult => {
+  if (dialogResult) { 
+this.sendcommand((f)=>{
+this.sendcommand((f)=>{ this.timeofrequests=f},"GetTimeOffs","date="+ this.datetime(),{ withCredentials: true});
+
+},"DeleteTimeOff","id="+this.encript('' +a))
+
+
+   }
+    }); 
+
+}
 
 
 

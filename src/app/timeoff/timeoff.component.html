@@ -29,10 +29,10 @@
    </mat-card-subtitle>
 
 <mat-card-title class=title>{{item.Category}} 
- <button *ngIf="item.Status!=2" mat-stroked-button color="warn" class="button"><span class="material-icons">
+ <button *ngIf="item.Status!=2" mat-stroked-button color="warn" class="button" (click)=this.bksvc.canceltimeoff(item.Id)><span class="material-icons">
 close
 </span>Cancel</button>
-<mat-card-content>{{item.StatusStr}}</mat-card-content>
+<mat-card-content ngClass="{{item.StatusStr}}">{{item.StatusStr}}</mat-card-content>
 
 <mat-card-content class="t3">Taken: {{item.Duration}}</mat-card-content>
 <mat-card-content class="t3">Left: {{item.HoursLeft}}</mat-card-content>
