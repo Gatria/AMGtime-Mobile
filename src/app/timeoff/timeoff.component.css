@@ -8,7 +8,7 @@
      display: inline-block;
       border-left: 3px solid #eee;
     padding-left: 1.2vw; 
-    width:calc(100% - 100px)
+      width: calc(100% - 107px - 2.2vw);
 }
 
 .t3 {display:inline-block;width:50%}
