@@ -21,3 +21,10 @@ mat-chip {width: 20%;
     border-radius: 25px;
     overflow: hidden;
     }
+
+     @media screen and (orientation:landscape) {
+       mat-chip {width: 15%;
+    justify-content: center;
+    font-size:2.4vh;
+    }
+     }
