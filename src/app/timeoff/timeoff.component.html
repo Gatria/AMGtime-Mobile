@@ -10,7 +10,7 @@
     <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
     <h1 class="example-app-name">Time Off Requests</h1>
   </mat-toolbar>
-
+ 
 <mat-chip-list class="i" multiple="true">
   <mat-chip selected (click)="chips(31)" color="accent" >All</mat-chip>
   <mat-chip [selected]="filter % 2 >= 1" (click)="chips(1)">Approved</mat-chip>
