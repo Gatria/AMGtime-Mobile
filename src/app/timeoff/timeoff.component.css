@@ -12,9 +12,9 @@
     text-align: center;
 }
 .img {width:100%}
-mat-chip {width: 14%;
+mat-chip {width: 20%;
     justify-content: center;
-    font-size:2.7vw;
+    font-size:3vw;
     }
     .imageframe {
       margin: 4px;
