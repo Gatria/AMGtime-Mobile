@@ -10,17 +10,32 @@
     <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
     <h1 class="example-app-name">Time Off Requests</h1>
   </mat-toolbar>
- 
-  
+
+<mat-chip-list class="i" multiple="true">
+  <mat-chip selected (click)="chips(31)" color="accent" >All</mat-chip>
+  <mat-chip [selected]="filter % 2 >= 1" (click)="chips(1)">Work</mat-chip>
+  <mat-chip [selected]="filter % 4 >= 2"  (click)="chips(2)">Out</mat-chip>
+    <mat-chip [selected]="filter % 8 >= 4"  (click)="chips(4)">ABS</mat-chip>
+    <mat-chip [selected]="filter % 16 >= 8" (click)="chips(8)">LUNCH</mat-chip>
+    <mat-chip [selected]="filter % 32 >= 16"  (click)="chips(16)">BRK</mat-chip>
+</mat-chip-list>
+
+ <mat-progress-spinner style="margin: auto;margin-top: 30vh" *ngIf="timeofrequests==null" mode="indeterminate"></mat-progress-spinner>
+
+<div class="norecord">No Request Found</div>
+ <div class="list"> 
 <ng-container *ngFor="let item of timeofrequests; let i = index" >
 <mat-card class="stb mat-elevation-z4">
 <mat-card-subtitle>{{item.Date}} </mat-card-subtitle>
+<mat-card-title>{{item.Category}} </mat-card-title>
+<mat-card-content class="t3">Taken: {{item.Comment}}</mat-card-content>
+<mat-card-content class="t3">Taken: {{item.StatusStr}}</mat-card-content>
 <mat-card-content class="t3">Taken: {{item.Duration}}</mat-card-content>
 <mat-card-content class="t3">Pending: {{item.HoursLeft}}</mat-card-content>
-<mat-card-content class="t3">Left: {{item.Left}}</mat-card-content>
+<mat-card-content class="t3">Left: {{item.HoursLeft}}</mat-card-content>
 </mat-card>
 </ng-container>
-
+</div>
  <app-footer></app-footer>
     </mat-sidenav-content>
   </mat-sidenav-container>
