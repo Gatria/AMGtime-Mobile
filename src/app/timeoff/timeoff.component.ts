@@ -11,6 +11,7 @@ export class TimeoffComponent implements OnInit {
   constructor(private bksvc:BackendService) { }
 
   ngOnInit() {
+     this.bksvc.sendcommand((f)=>{ this.timeofrequests=f},"GetTimeOffs","date="+ this.bksvc.datetime(),{ withCredentials: true});
   }
 
 }
