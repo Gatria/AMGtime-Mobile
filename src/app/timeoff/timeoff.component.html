@@ -24,13 +24,17 @@
  <div class="list"> 
 <ng-container *ngFor="let item of timeofrequests; let i = index" >
 <mat-card *ngIf="(filter % 4 >= 2 && item.Status==0) || (filter % 2 >= 1 && item.Status==1) || (filter % 8 >= 4 && item.Status==2) " class="stb mat-elevation-z4">
-<mat-card-subtitle>{{item.Date}} </mat-card-subtitle>
-<mat-card-title>{{item.Category}} </mat-card-title>
+<mat-card-subtitle class=date>{{item.Date}} </mat-card-subtitle>
+<mat-card-title class=title>{{item.Category}} 
+<mat-card-content>{{item.StatusStr}}</mat-card-content>
 
-<mat-card-content class="t3">{{item.StatusStr}}</mat-card-content>
 <mat-card-content class="t3">Taken: {{item.Duration}}</mat-card-content>
 <mat-card-content class="t3">Left: {{item.HoursLeft}}</mat-card-content>
-<mat-card-content class="t3">Cament: {{item.Comment}}
+</mat-card-title>
+
+
+
+<mat-card-content>Cament: {{item.Comment}}
 <mat-card-actions> <button  mat-stroked-button color="warn">Cancel</button>
 </mat-card-actions>
 </mat-card-content>
