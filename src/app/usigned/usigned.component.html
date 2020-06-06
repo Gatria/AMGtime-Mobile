@@ -28,7 +28,7 @@
   <mat-chip [selected]="filter % 4 >= 2"  (click)="chips(2)">Declined</mat-chip>
     <mat-chip [selected]="filter % 8 >= 4"  (click)="chips(4)">Canceled</mat-chip>
     <mat-chip [selected]="filter % 16 >= 8" (click)="chips(8)">Drafts</mat-chip>
-    <mat-chip [selected]="filter % 32 >= 16"  (click)="chips(16)">For Me</mat-chip>
+    <mat-chip [selected]="filter % 32 >= 16"  (click)="chips(16)">Me</mat-chip>
         <mat-chip [selected]="filter % 64 >= 32"  (click)="chips(32)">Others</mat-chip>
 </mat-chip-list>
 
