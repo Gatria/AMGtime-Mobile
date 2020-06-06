@@ -37,14 +37,22 @@ mat-chip {width: 20%;
     overflow: hidden;
     }
 
+
+     .float {position:fixed;right:10px;bottom:17vw}
+
      @media screen and (orientation:landscape) {
        mat-chip {width: 15%;
     justify-content: center;
     font-size:2.4vh;
     }
+
+     .float {position:fixed;right:10px;bottom:15vh}
+    .title {
+    padding-left: 1.8vw;
+    width: calc(100% - 107px - 5vw);
+}
      }
      .Approved {color:green}
      .Pending {color:darkorange}
      .Denied {color:darkred}
 
-     .float {position:fixed;right:10px}
