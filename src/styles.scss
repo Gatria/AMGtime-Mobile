@@ -153,4 +153,4 @@ display: flex;
 .middle {align-items: center;}
 .right {justify-content: flex-end;}
 
-.disablelink {color:#999}
+.disablelink {color:#999;pointer-events: none;}

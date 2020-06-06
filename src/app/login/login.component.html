@@ -6,6 +6,7 @@
 
   <mat-form-field appearance="fill" class="center">
     <mat-label>Username</mat-label>
+     <mat-icon class="icon mat-primary-color" matPrefix>user</mat-icon>
     <input matInput [(ngModel)]="name">
 
   </mat-form-field>
@@ -13,12 +14,13 @@
   <br>
   <mat-form-field appearance="fill" class="center">
     <mat-label>Password</mat-label>
+     <mat-icon class="icon mat-primary-color"  matPrefix>lock</mat-icon>
     <input type=password matInput [(ngModel)]="password">
   </mat-form-field>
 <br>
 <mat-checkbox class="mat-primary-color">Remember Me</mat-checkbox>
 
-<a class="mat-primary-color" [ngClass]="{'disablelink':ValidateEmail(name)}" routerLink="/passwordreset">Forgot Password ?</a>
+<a class="mat-primary-color" [ngClass]="{'disablelink':!ValidateEmail(name)}" routerLink="/passwordreset">Forgot Password ?</a>
 <br><br><br>
  <button class="center round-corners" mat-flat-button (click)="login()" color="primary">Login</button>
 </div>
