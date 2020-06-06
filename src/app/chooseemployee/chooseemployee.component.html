@@ -2,14 +2,21 @@
 
 
 <mat-card class="stb">
-  <mat-card-subtitle  *ngFor="let item of bksvc.employeelist; let i = index">
 
+  <mat-form-field class="block">
+    <mat-label>Filter by Code or Name</mat-label>
   
-      <app-empphotoicon EmpID="{{this.bksvc.codetoid[item.Code]}}" name="{{item.Name}}"></app-empphotoicon>
+    <input type="text" matInput placeholder="">
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+<ng-container *ngFor="let item of bksvc.employeelist; let i = index">
+  <a class="click" (click)="chooseme(item.Id)">
+   <app-empphotoicon EmpID="{{this.bksvc.codetoid[item.Code]}}" name="{{item.Name}}"></app-empphotoicon>
+  <mat-card-subtitle class="name">  
       ({{item.Code}}) {{item.Name}}
-<mat-divider></mat-divider>
-  </mat-card-subtitle>
-
+  </mat-card-subtitle></a>
+  <mat-divider class="limited"></mat-divider>
+</ng-container>
 
 </mat-card>
 

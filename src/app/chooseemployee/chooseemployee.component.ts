@@ -13,5 +13,7 @@ export class ChooseemployeeComponent implements OnInit {
   ngOnInit() {
     console.log(this.bksvc.employeelist);
   }
-
+chooseme(i) {
+  console.log(i)
+}
 }
