@@ -18,7 +18,7 @@
 <br>
 <mat-checkbox class="mat-primary-color">Remember Me</mat-checkbox>
 
-<a class="mat-primary-color" *ngIf="ValidateEmail(name.value)" routerLink="/passwordreset">Forgot Password ?</a>
+<a class="mat-primary-color" [ngClass]="{'disablelink':ValidateEmail(name)}" routerLink="/passwordreset">Forgot Password ?</a>
 <br><br><br>
  <button class="center round-corners" mat-flat-button (click)="login()" color="primary">Login</button>
 </div>
