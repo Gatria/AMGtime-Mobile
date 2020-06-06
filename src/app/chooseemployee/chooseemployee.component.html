@@ -1,0 +1,18 @@
+<div class="list">
+
+
+<mat-card class="stb">
+  <mat-card-subtitle  *ngFor="let item of bksvc.employeelist; let i = index">
+
+  
+      <app-empphotoicon EmpID="{{this.bksvc.codetoid[item.Code]}}" name="{{item.Name}}"></app-empphotoicon>
+      ({{item.Code}}) {{item.Name}}
+<mat-divider></mat-divider>
+  </mat-card-subtitle>
+
+
+</mat-card>
+
+ 
+
+</div>

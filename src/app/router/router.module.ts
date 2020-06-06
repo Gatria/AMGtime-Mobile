@@ -12,12 +12,13 @@ import { TimeoffComponent } from '../timeoff/timeoff.component';
 import { PasswordresetComponent } from '../passwordreset/passwordreset.component';
 import { SettingsComponent } from '../settings/settings.component';
 import { USignedComponent } from '../usigned/usigned.component';
+import { ChooseemployeeComponent } from '../chooseemployee/chooseemployee.component';
 import { StatusboardComponent } from '../statusboard/statusboard.component';
 
 
 
 export const routes: Routes = [
- 
+ { path: 'test', component: ChooseemployeeComponent},
 { path: 'toEmp', component: LoginComponent },
 { path: 'toUser', component: LoginComponent },  
 { path: 'login', component: LoginComponent },
