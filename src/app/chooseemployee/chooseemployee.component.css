@@ -5,10 +5,11 @@ mat-divider:last-of-type {display:none}
 .block {display:block!important}
 .name {
     display: inline-block;
+        line-height: 160%;
     margin-bottom: 0px!important;
     max-width: calc(100% - 66px);
     vertical-align: middle;}
     .click {display: block;
     margin: -7px -16px;
     padding: 7px 16px;}
-    .click:hover {}
+    .click:hover {background-color:#eee}

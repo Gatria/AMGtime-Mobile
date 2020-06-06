@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {BackendService} from '../backend.service'
 
 @Component({
   selector: 'app-passwordreset',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PasswordresetComponent implements OnInit {
 
-  constructor() { }
+  constructor(private bksvc:BackendService) { }
 
   ngOnInit() {
   }

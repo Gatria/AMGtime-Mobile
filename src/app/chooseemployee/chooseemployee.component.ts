@@ -16,4 +16,8 @@ export class ChooseemployeeComponent implements OnInit {
 chooseme(i) {
   console.log(i)
 }
+filterme(a,i) {
+  //console.log(a,i);
+  return a.includes(i);
+}
 }

@@ -6,16 +6,18 @@
   <mat-form-field class="block">
     <mat-label>Filter by Code or Name</mat-label>
   
-    <input type="text" matInput placeholder="">
+    <input type="text" #filter matInput placeholder="">
     <mat-icon matSuffix>search</mat-icon>
   </mat-form-field>
 <ng-container *ngFor="let item of bksvc.employeelist; let i = index">
-  <a class="click" (click)="chooseme(item.Id)">
-   <app-empphotoicon EmpID="{{this.bksvc.codetoid[item.Code]}}" name="{{item.Name}}"></app-empphotoicon>
+  <ng-container *ngIf="filterme(item.Code+item.Name,filter.value)">
+  <a class="click" matRipple (click)="chooseme(item.Id)">
+   <app-empphotoicon EmpID="{{bksvc.codetoid[item.Code]}}" name="{{item.Name}}"></app-empphotoicon>
   <mat-card-subtitle class="name">  
       ({{item.Code}}) {{item.Name}}
   </mat-card-subtitle></a>
   <mat-divider class="limited"></mat-divider>
+</ng-container>
 </ng-container>
 
 </mat-card>

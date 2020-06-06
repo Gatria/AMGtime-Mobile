@@ -21,6 +21,14 @@ ngOnInit() {
     if (this.router.url=="/login") this.bksvc.loggedin=false; 
   }
 
+
+ValidateEmail(mail) 
+{
+return mail.inputText.value.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)
+}
+
+
+
 login(a = 0) {
   const b=["","switchToUser="+this.bksvc.encript("false"),"switchToUser="+this.bksvc.encript("true")];
   const c=[{withCredentials: false},{withCredentials: true},{withCredentials: true}]
@@ -46,6 +54,28 @@ login(a = 0) {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 
@@ -63,6 +93,8 @@ export class EmployeeuserselectorComponent implements OnInit {
   }
 
   
+
+
 
 
 }
