@@ -40,7 +40,7 @@
 <mat-expansion-panel  class="stb" *ngIf="(filter % 4 >= 2 && item.Status==4) || (filter % 2 >= 1 && item.Status==1) || (filter % 8 >= 4 && item.Status==5) || (filter % 16 >= 8 && item.Status==0)|| (filter % 32 >= 16 && item.Status==2)|| (filter % 64 >= 32 && item.Status==3) " >
 <mat-expansion-panel-header>
 <mat-panel-title class="middle">{{item.DisplayName}} </mat-panel-title >
-<mat-panel-description class="right middle">
+<mat-panel-description class="right middle" ngClass="{{item.StatusStr}}">
   <span class="small material-icons">infofull</span><span class="m4">{{item.StatusStr}}</span>
  
   </mat-panel-description>

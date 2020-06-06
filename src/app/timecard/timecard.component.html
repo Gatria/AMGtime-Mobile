@@ -14,24 +14,24 @@
 
 
 <div id="slider" class="slider noscrollbar" (window:resize)=onResize() (scroll)=onResize()>
-<div id="slide{{i}}" class="slide" *ngFor="let item of this.bksvc.timecard;index as i;">
+<div id="slide{{i}}" class="slide" *ngFor="let item of bksvc.timecard;index as i;">
+<mat-progress-spinner style="margin: auto;margin-top: 30vh" *ngIf="bksvc.loading" mode="indeterminate"></mat-progress-spinner>
 
-
-   <ng-container *ngIf="item!=null">
+   <ng-container *ngIf="item!=null && bksvc.loading==false">
 <div class="mat-elevation-z2 topinfo" id=top{{i}}> 
   <button mat-mini-fab color="primary" class="left-button" [disabled]="i==0" (click)=gototab(-1)>  <mat-icon>arrowleft</mat-icon></button>
 {{item.StartDate}} - 
 {{item.EndDate}}
-<button  mat-mini-fab color="primary" class="right-button" [disabled]="i==this.bksvc.AMGSettings.PayPeriodBackLimit-1" (click)=gototab(1)>
+<button  mat-mini-fab color="primary" class="right-button" [disabled]="i==bksvc.AMGSettings.PayPeriodBackLimit-1" (click)=gototab(1)>
   <mat-icon>arrowright</mat-icon>
   </button>
 
-  <ng-container *ngIf="i==this.bksvc.AMGSettings.PayPeriodBackLimit-2">
+  <ng-container *ngIf="i==bksvc.AMGSettings.PayPeriodBackLimit-2">
 <div *ngIf='item.TimeCardApprovalStatus==2'>
 
-  <button class="center round-corners" mat-flat-button  (click)=this.bksvc.approverejecttimecard(i,true) color="accent"><span class="material-icons">done</span> Approve</button>
+  <button class="center round-corners" mat-flat-button  (click)=bksvc.approverejecttimecard(i,true) color="accent"><span class="material-icons">done</span> Approve</button>
 &nbsp;
-   <button class="center round-corners" mat-flat-button (click)=this.bksvc.approverejecttimecard(i,false) color="warn"><span class="material-icons">
+   <button class="center round-corners" mat-flat-button (click)=bksvc.approverejecttimecard(i,false) color="warn"><span class="material-icons">
 close
 </span> Reject</button>
 </div> 

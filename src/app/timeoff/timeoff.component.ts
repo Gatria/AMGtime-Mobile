@@ -20,6 +20,13 @@ scroll() {
  this.first= document.getElementById("slider").scrollLeft==0;
 }
 
+scrollto(a)
+{
+console.log("Scrool");
+setTimeout(()=>{document.getElementById("slider").scrollLeft=document.getElementById("slider").parentElement.clientWidth*a},100);  
+}
+
+
 chips(a) {
 this.filter= this.filter ^ a;  
 }

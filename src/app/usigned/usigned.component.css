@@ -1,6 +1,4 @@
-.stb {margin:4px}
-.middle {align-items: center;}
-.right {justify-content: flex-end;}
+
 .small {font-size:10px!important}
 .norecord {
       
@@ -28,3 +26,9 @@ mat-chip {width: 14%;
     font-size:2.4vh;
     }
      }
+
+     .Canceled{color:darkorange}
+     .Declined{color:darkred}
+     .Signed{color:green}
+
+        

@@ -74,12 +74,14 @@ this.SideNavigation.push({icon:"logout", text:"Log Out", action:"/logout"});
 private showinfo (error:string) {
   this._snackBar.open( error, "", { duration: 6000, panelClass: [ 'mat-accent-bg'] });
   console.info(error)
+  this.loading=false
 }
 
 
 private showerror (error:string) {
   this._snackBar.open( error, "", { duration: 6000, panelClass: ['mat-warn-bg'] });
   console.error(error)
+  this.loading=false
 }
 
 
@@ -193,9 +195,9 @@ approverejecttimecard(i,s) {
   i=this.AMGSettings.PayPeriodBackLimit-i-1;
  let comment=false;
  let message= "Do you really want to reject timecard?"
-if (s) message = "Do you really want to approve timecard?"
+const code=0 
+if (s) { message = "Do you really want to approve timecard?";code=1}
  else comment=true
-
 
     const dialogData = 
     new ConfirmDialogModel("Confirm Action", message ,comment);
@@ -206,12 +208,19 @@ if (s) message = "Do you really want to approve timecard?"
 
  dialogRef.afterClosed().subscribe(dialogResult => {
   if (dialogResult) { 
-    console.log("Period:"+i+" "+s)
-this.sendcommand((f)=>{},"ApproveRejectTimecard","period="+this.encript('' +i)+"&approve="+this.encript('' +s)+"&comment="
+this.loading=true
+
+
+
+
+this.sendcommand((f)=>{
+this.timecard[this.AMGSettings.PayPeriodBackLimit-1-i].TimeCardApprovalStatus=code;
+this.loading=false;
+},"ApproveRejectTimecard","period="+this.encript('' +i)+"&approve="+this.encript('' +s)+"&comment="
 )
 
 
-   }
+   } 
     }); 
 }
 

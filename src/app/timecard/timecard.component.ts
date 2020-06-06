@@ -20,9 +20,8 @@ if (this.bksvc.timecard[p]==null) this.bksvc.sendcommand((f)=>{
 let tmp=f.Timecard.pop();
 this.bksvc.timecard[p]=f;
 this.bksvc.timecard[p].Footer=tmp;
-
 setTimeout(()=>{document.getElementById("slide"+p).classList.add("snap");this.onResize()},1000);
-} ,"GetEmployeeTimeCard","id="+ this.bksvc.encript('' +this.bksvc.AMGSettings.Id)+"&period="+ this.bksvc.encript(''+((this.bksvc.AMGSettings.PayPeriodBackLimit-1)-p)),{ withCredentials: true});
+} ,"GetEmployeeTimeCard","id="+ this.bksvc.encript('' +this.bksvc.AMGSettings.Id)+"&period="+ this.bksvc.encript(''+(this.bksvc.AMGSettings.PayPeriodBackLimit-1-p)));
 
 
 }
@@ -70,6 +69,7 @@ document.querySelector(selector+">th:last-child").classList.add('sticked1');
  
 
 ngOnInit() {
+  this.bksvc.loading=false;this.bksvc.timecard=[];
 this.bksvc.timecard=new Array(this.bksvc.AMGSettings.PayPeriodBackLimit);
 document.getElementById("slider").scrollLeft=document.getElementById("slider").clientWidth;
 this.getperiod(this.bksvc.AMGSettings.PayPeriodBackLimit-1)
