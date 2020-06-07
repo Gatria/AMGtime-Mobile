@@ -1,4 +1,4 @@
-
+@import "../../variable.scss" ;
 mat-chip {width: 14%;
     justify-content: center;
     font-size:3vw;
@@ -17,7 +17,7 @@ mat-chip {width: 14%;
     .Break {color:darkblue}
 
     .m4 {
-    width: 80px;
+    width: 70px;
     text-align: center;
 }
 
@@ -28,13 +28,13 @@ mat-chip {width: 14%;
     }
      }
 
-
+.nomargin {margin:0px!important}
 
 
      .limited {    margin: 6px 0 6px 1%;
     max-width: 98%;
     position: relative!important;}
-mat-divider:last-of-type {display:none}
+.chart {width:20%;display:inline-flex}
 
 .name {
     display: inline-block;
