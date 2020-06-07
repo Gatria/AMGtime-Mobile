@@ -97,7 +97,7 @@ hr.title {
 .mat-accent-bg {background-color:mat-color($my-app-accent)!important}
 .mat-warn-bg {background-color:mat-color($my-app-warn)!important}
 .mat-accent-color {color:mat-color($my-app-accent)}
-.mat-warn-color {color:mat-color($my-app-warn)}
+.mat-warn-color {color:mat-color($my-app-warn)!important}
 .mat-grey-color {color:#999}
 .mat-primary-color {color:mat-color($my-app-primary);text-decoration: none}
 

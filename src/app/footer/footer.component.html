@@ -1,6 +1,6 @@
 <div class='footer mat-elevation-z16'>
    <ng-container  *ngFor="let item of this.bksvc.SideNavigation; let i = index" >
- <a *ngIf="item.footer" mat-list-item routerLinkActive="mat-warn-color" routerLink="{{item.action}}" class="footer-item mdc-list-item" tabindex="0">
+ <a *ngIf="item.footer" mat-list-item routerLinkActive="mat-warn-color" routerLink="{{item.action}}" class="mat-primary-color footer-item mdc-list-item" tabindex="0">
            <span class="big material-icons">{{item.icon}}</span><br>
            {{item.text}}
           </a>
