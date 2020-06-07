@@ -60,13 +60,13 @@ close
   <mat-select>
     <ng-container *ngIf="bksvc.Categories!=null">
     <mat-option *ngFor="let item of bksvc.Categories.Categories" [value]="item.Id">
-      {{item.Display}} Left: {{item.Left}}
+      {{item.Display}} <span class="mat-grey-color">Left:</span> {{item.Left}}
     </mat-option>
     </ng-container>
   </mat-select>
 </mat-form-field>
  
-<mat-radio-group aria-label="Select an option" class="block mat-form-field-wrapper">
+<mat-radio-group [(ngModel)]="type" aria-label="Select an option" class="block mat-form-field-wrapper">
   <mat-radio-button value="1" class="t3">Full Day</mat-radio-button>
   <mat-radio-button value="2" class="t3">Partial Day</mat-radio-button>
 </mat-radio-group>
@@ -83,6 +83,7 @@ close
     <input matInput type=number>
   </mat-form-field>
 
+ <ng-container *ngIf="type==2">
    <mat-form-field appearance="outline" class="t1">
     <mat-label>Start Times</mat-label>
     <input matInput type=time>
@@ -92,13 +93,14 @@ close
     <mat-label>Number of hours</mat-label>
     <input matInput type=number>
   </mat-form-field>
+   </ng-container>
    <mat-form-field appearance="outline" class="block">
     <mat-label>Comments</mat-label>
     <input matInput>
     
   </mat-form-field>
 </mat-card>
-
+<br><br>
   </div></div>
  <app-footer></app-footer>
     </mat-sidenav-content>
