@@ -21,37 +21,39 @@
     <mat-chip [selected]="filter % 32 >= 16"  (click)="chips(16)">BRK</mat-chip>
 </mat-chip-list>
 
-<mat-progress-spinner (focus)=getperiod(i) style="margin: auto;margin-top: 30vh" *ngIf="this.bksvc.StatusBoard==null" mode="indeterminate"></mat-progress-spinner>
+<mat-progress-spinner (focus)=getperiod(i) style="margin: auto;margin-top: 30vh" *ngIf="bksvc.StatusBoard==null" mode="indeterminate"></mat-progress-spinner>
 
 <div class="norecord">No Record Found</div>
-<div class="list">
-<ng-container  *ngFor="let item of this.bksvc.StatusBoard; let i = index">
+<div class="list" *ngIf="bksvc.StatusBoard!=null">
+
+
+<mat-card class="mat-elevation-z16 stb">
  <mat-form-field class="block">
     <mat-label>Filter by Code or Name</mat-label>
-  
-    <input type="text" #filter matInput placeholder="">
+    <input type="text" #filter1 matInput placeholder="">
     <mat-icon matSuffix>search</mat-icon>
   </mat-form-field>
-  
-<mat-expansion-panel *ngIf="(filter % 4 >= 2 && item.Status==3) || (filter % 2 >= 1 && item.Status==0) || (filter % 8 >= 4 && item.Status==4) || (filter % 16 >= 8 && item.Status==1)|| (filter % 32 >= 16 && item.Status==2) " class="stb">
-  <mat-expansion-panel-header>
+<ng-container  *ngFor="let item of bksvc.StatusBoard; let i = index">
 
-    <mat-panel-title class="middle">
-      <app-empphotoicon EmpID="{{this.bksvc.codetoid[item.Code]}}" name="{{item.Name}}"></app-empphotoicon>
-      ({{item.Code}}) {{item.Name}}
-    </mat-panel-title>
-    <mat-panel-description class="right middle" ngClass="{{item.StatusStr}}">
+   <ng-container *ngIf="filterme(item.Code+item.Name,filter1.value) && ((filter % 4 >= 2 && item.Status==3) || (filter % 2 >= 1 && item.Status==0) || (filter % 8 >= 4 && item.Status==4) || (filter % 16 >= 8 && item.Status==1)|| (filter % 32 >= 16 && item.Status==2))">
+
+
+      <app-empphotoicon EmpID="{{bksvc.codetoid[item.Code]}}" name="{{item.Name}}"></app-empphotoicon>
+     <mat-card-subtitle class="name"> ({{item.Code}}) {{item.Name}}
+  <span *ngIf="item.LastPunch>''"><small><br>Last Punch: {{item.LastPunch}}</small> </span>
+    </mat-card-subtitle>
+    
+    <mat-card-subtitle class="right middle inflex" ngClass="{{item.StatusStr}}">
    <span class="small material-icons">infofull</span><span class="m4">{{item.StatusStr}}</span>
-    </mat-panel-description>
-  </mat-expansion-panel-header>
+    </mat-card-subtitle>
+  <mat-divider class="limited"></mat-divider>
 
-  <p>Last Punch: {{item.LastPunch}} </p>
 
-</mat-expansion-panel>
 
- 
+
+ </ng-container>
 </ng-container>
-
+</mat-card> 
 </div>
 <br>
 

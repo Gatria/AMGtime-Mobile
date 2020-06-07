@@ -18,6 +18,6 @@ chooseme(i) {
 }
 filterme(a,i) {
   //console.log(a,i);
-  return a.includes(i);
+  return a.toLowerCase().includes(i.toLowerCase());
 }
 }

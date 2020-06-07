@@ -16,7 +16,10 @@ export class StatusboardComponent implements OnInit {
 let tt=this.bksvc.encript("true");
 this.bksvc.sendcommand((f)=>{this.bksvc.StatusBoard=f},"GetStatusBoard","_in="+tt+"&_out="+tt+"&_lunch="+tt+"&_break="+tt+"&_absent="+tt+"&time="+this.bksvc.datetime())  
   }
-
+filterme(a,i) {
+  //console.log(a,i);
+  return a.toLowerCase().includes(i.toLowerCase());
+}
 chips(a) {
 this.filter= this.filter ^ a;  
 }
