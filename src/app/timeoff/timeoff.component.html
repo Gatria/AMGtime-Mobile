@@ -58,9 +58,11 @@ close
   <mat-form-field class="block" appearance="outline">
   <mat-label>Choose Category</mat-label>
   <mat-select>
+    <ng-container *ngIf="bksvc.Categories!=null">
     <mat-option *ngFor="let item of bksvc.Categories.Categories" [value]="item.Id">
       {{item.Display}} Left: {{item.Left}}
     </mat-option>
+    </ng-container>
   </mat-select>
 </mat-form-field>
  
