@@ -26,7 +26,13 @@
 <div class="norecord">No Record Found</div>
 <div class="list">
 <ng-container  *ngFor="let item of this.bksvc.StatusBoard; let i = index">
-
+ <mat-form-field class="block">
+    <mat-label>Filter by Code or Name</mat-label>
+  
+    <input type="text" #filter matInput placeholder="">
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+  
 <mat-expansion-panel *ngIf="(filter % 4 >= 2 && item.Status==3) || (filter % 2 >= 1 && item.Status==0) || (filter % 8 >= 4 && item.Status==4) || (filter % 16 >= 8 && item.Status==1)|| (filter % 32 >= 16 && item.Status==2) " class="stb">
   <mat-expansion-panel-header>
 
