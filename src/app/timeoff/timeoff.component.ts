@@ -24,6 +24,9 @@ scrollto(a)
 {
 
 setTimeout(()=>{document.getElementById("slider").scrollLeft=document.getElementById("slider").parentElement.clientWidth*a},100);  
+
+  if (a==1)  this.bksvc.sendcommand((f)=>{ this.bksvc.Categories=f},"GetCategoriesAndUsers");
+
 }
 
 

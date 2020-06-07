@@ -54,43 +54,46 @@ close
 <button *ngIf="first" (click)="scrollto(1)" color="primary" mat-fab class="float"><mat-icon>plus</mat-icon></button>
 </div>
 <div id="slide1" class="slide snap">
-  <mat-card class="stb"> 
-  <mat-form-field class="block">
+  <mat-card class="mat-elevation-z16 stb"> 
+  <mat-form-field class="block" appearance="outline">
   <mat-label>Choose Category</mat-label>
   <mat-select>
-    <mat-option *ngFor="let food of foods" [value]="food.value">
-      {{food.viewValue}}
+    <mat-option *ngFor="let item of bksvc.Categories.Categories" [value]="item.Id">
+      {{item.Display}} Left: {{item.Left}}
     </mat-option>
   </mat-select>
 </mat-form-field>
-
-<mat-radio-group aria-label="Select an option" class="block">
-  <mat-radio-button value="1">Full Day</mat-radio-button>
-  <mat-radio-button value="2">Partial Day</mat-radio-button>
+ 
+<mat-radio-group aria-label="Select an option" class="block mat-form-field-wrapper">
+  <mat-radio-button value="1" class="t3">Full Day</mat-radio-button>
+  <mat-radio-button value="2" class="t3">Partial Day</mat-radio-button>
 </mat-radio-group>
 
-<mat-form-field>
+<mat-form-field appearance="outline" class="t1">
+   <mat-label>Star Days</mat-label>
   <input matInput [matDatepicker]="myDatepicker">
   <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
   <mat-datepicker #myDatepicker></mat-datepicker>
 </mat-form-field>
 
- <mat-form-field appearance="fill">
-    <mat-label>Input</mat-label>
-    <input matInput>
+ <mat-form-field appearance="outline" class="t2">
+    <mat-label>Number of work days</mat-label>
+    <input matInput type=number>
   </mat-form-field>
 
-   <mat-form-field appearance="fill">
-    <mat-label>Input</mat-label>
-    <input matInput>
+   <mat-form-field appearance="outline" class="t1">
+    <mat-label>Start Times</mat-label>
+    <input matInput type=time>
   </mat-form-field>
-   <mat-form-field appearance="fill">
-    <mat-label>Input</mat-label>
-    <input matInput>
+
+   <mat-form-field appearance="outline" class="t2">
+    <mat-label>Number of hours</mat-label>
+    <input matInput type=number>
   </mat-form-field>
-   <mat-form-field appearance="fill">
-    <mat-label>Input</mat-label>
+   <mat-form-field appearance="outline" class="block">
+    <mat-label>Comments</mat-label>
     <input matInput>
+    
   </mat-form-field>
 </mat-card>
 

@@ -37,6 +37,9 @@ mat-chip {width: 20%;
     overflow: hidden;
     }
 
+.t1{width:60%}
+.t2{width: 38%; margin: 0 0 0 2%}
+.t3{width:50%}
 
      .float {position:fixed;right:10px;bottom:17vw}
 
