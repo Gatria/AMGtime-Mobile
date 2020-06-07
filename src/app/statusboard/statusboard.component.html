@@ -4,7 +4,7 @@
 <app-mat-sidenav></app-mat-sidenav>
     </mat-sidenav>
 
-    <mat-sidenav-content  class="noscrollbar">
+    <mat-sidenav-content  (window:resize)=onResize() class="noscrollbar">
 
   <mat-toolbar color="primary" class="example-toolbar">
     <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
@@ -29,7 +29,7 @@
 
 
 <mat-accordion  multi displayMode="flat">
-<mat-expansion-panel expanded>
+<mat-expansion-panel expanded class="nopadding">
   <mat-expansion-panel-header>
        </mat-expansion-panel-header>
    <ngx-charts-pie-grid
