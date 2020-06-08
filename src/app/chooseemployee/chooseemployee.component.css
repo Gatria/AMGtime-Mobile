@@ -13,3 +13,6 @@ mat-divider:last-of-type {display:none}
     margin: -7px -16px;
     padding: 7px 16px;}
     .click:hover {background-color:#eee}
+    .icon {padding: 0px 6px 0px 0px;
+    font-size: 31px;
+}

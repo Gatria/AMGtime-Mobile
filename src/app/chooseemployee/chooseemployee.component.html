@@ -7,7 +7,7 @@
     <mat-label>Filter by Code or Name</mat-label>
   
     <input type="text" #filter matInput placeholder="">
-    <mat-icon matSuffix>search</mat-icon>
+    <mat-icon class="icon mat-primary-color" matSuffix>search</mat-icon>
   </mat-form-field>
 <ng-container *ngFor="let item of bksvc.employeelist; let i = index">
   <ng-container *ngIf="filterme(item.Code+item.Name,filter.value)">

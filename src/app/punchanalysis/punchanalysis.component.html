@@ -33,7 +33,7 @@
  <mat-form-field class="block" appearance="outline">
     <mat-label>Filter by Code or Name</mat-label>
     <input type="text" #filter1 matInput placeholder="">
-    <mat-icon matSuffix>search</mat-icon>
+    <mat-icon class="icon mat-primary-color" matSuffix>search</mat-icon>
   </mat-form-field>
       
 
@@ -45,16 +45,16 @@
 
        <mat-card-content class="nomargin middle inflex"><app-empphotoicon EmpID="{{bksvc.codetoid[item.Code]}}" name="{{item.Name}}"></app-empphotoicon> </mat-card-content>
      <mat-card-subtitle class="nomargin middle name inflex"> ({{item.Code}}) {{item.Name}}</mat-card-subtitle>
-     <mat-card-content><table class="dd"><tr><th><th>Scheduled</th><th>Actual</th><th>Differance</th></tr>
-     <tr><th class='zz'>Work<td>{{item.TotalScheduled}}</td><td>{{item.TotalActual}}</td><td>{{item.TotalDifference}}
+     <mat-card-content><table class="dd"><tr *ngIf="((filter % 4 >= 2) || (filter % 2 >= 1) || (filter % 8 >= 4) || (filter % 16 >= 8)|| (filter % 32 >= 16))"><th><th>Scheduled</th><th>Actual</th><th>Differance</th></tr>
+     <tr *ngIf="(filter % 2 >= 1)"><th class='zz'>Work<td>{{item.TotalScheduled}}</td><td>{{item.TotalActual}}</td><td>{{item.TotalDifference}}
        </td></tr>
-      <tr><th class='zz'>In<td>{{item.InScheduled}}</td><td>{{item.InActual}}</td><td>{{item.InDifference}}
+      <tr *ngIf="(filter % 4 >= 2)"><th class='zz'>In<td>{{item.InScheduled}}</td><td>{{item.InActual}}</td><td>{{item.InDifference}}
        </td></tr>
-      <tr><th class='zz'>Out<td>{{item.OutScheduled}}</td><td>{{item.OutActual}}</td><td>{{item.OutDifference}}
+      <tr *ngIf="(filter % 8 >= 4)"><th class='zz'>Out<td>{{item.OutScheduled}}</td><td>{{item.OutActual}}</td><td>{{item.OutDifference}}
        </td></tr>
-       <tr><th class='zz'>Lunch<td>{{item.LunchScheduled}}</td><td>{{item.LunchActual}}</td><td>{{item.LunchDifference}}
+       <tr *ngIf="(filter % 16 >= 8)"><th class='zz'>Lunch<td>{{item.LunchScheduled}}</td><td>{{item.LunchActual}}</td><td>{{item.LunchDifference}}
        </td></tr>
-       <tr><th class='zz'>Break<td>{{item.BreakScheduled}}</td><td>{{item.BreakActual}}</td><td>{{item.BreakDifference}}
+       <tr *ngIf="(filter % 32 >= 16)"><th class='zz'>Break<td>{{item.BreakScheduled}}</td><td>{{item.BreakActual}}</td><td>{{item.BreakDifference}}
        </td></tr>  
      </table></mat-card-content>
       <mat-divider class="limited"></mat-divider>

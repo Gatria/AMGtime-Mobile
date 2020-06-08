@@ -10,6 +10,7 @@ export class PunchanalysisComponent implements OnInit {
   constructor(private bksvc:BackendService) { }
 
   ngOnInit() {
+      this.filter=31;
    let tt=this.bksvc.encript("true");
 this.bksvc.sendcommand((f)=>{this.bksvc.PunchAnalysis=f;},"GetPunchAnalyzis","&rounding="+tt+"&date="+this.bksvc.datetime("2020-04-04"))   
   }
@@ -18,4 +19,9 @@ filterme(a,i) {
   //console.log(a,i);
   return a.toLowerCase().includes(i.toLowerCase());
 }
+
+chips(a) {
+this.filter= this.filter ^ a; }
+
+
 }
