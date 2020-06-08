@@ -11,7 +11,7 @@ mat-chip {width: 14%;
     .list {margin-top:-30px}
 
     .Work {color:#0f7da2}
-    .Out {color:#e2620c}
+    .Out {color:#049275}
     .Absent{color:#c62828}
     .Lunch {color:#AAAAAA}
     .Break {color:#008266}
@@ -44,4 +44,8 @@ mat-chip {width: 14%;
     margin-bottom: 0px!important;
    width: calc(100% - 156px)!important;
     vertical-align: middle;}
-  .mat-form-field-wrapper {padding:0px!important}
+ /deep/  .mat-form-field-wrapper {padding:0px!important}
+ /deep/  .mat-expansion-panel-body {
+    padding: 0 74px 10px!important;
+    line-height: 1.9em!important;
+}

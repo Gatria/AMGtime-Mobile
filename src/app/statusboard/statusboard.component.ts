@@ -58,7 +58,7 @@ if (this.work+":"+this.out+":"+this.abs+":"+this.lunch+":"+this.br!=this.checksu
 this.single=[];
 this.colorScheme.domain=[];
 if (this.work>0) {this.colorScheme.domain.push('#0f7da2'); this.single.push({"name": "Work","value": this.work });}
-if (this.out>0) {this.colorScheme.domain.push('#e2620c'); this.single.push({"name": "Out","value": this.out });}
+if (this.out>0) {this.colorScheme.domain.push('#049275'); this.single.push({"name": "Out","value": this.out });}
 if (this.abs>0) {this.colorScheme.domain.push('#c62828'); this.single.push({"name": "Absent","value": this.abs });}
 if (this.lunch>0) {this.colorScheme.domain.push('#AAAAAA'); this.single.push({"name": "Lunch","value": this.lunch });}
 if (this.br>0) {this.colorScheme.domain.push('#008266'); this.single.push({"name": "Break","value": this.br });}
