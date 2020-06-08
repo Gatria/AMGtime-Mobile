@@ -10,23 +10,9 @@
     <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
     <h1 class="example-app-name">Status Board</h1>
   </mat-toolbar>
- 
-<mat-chip-list class="i" multiple="true">
-  <mat-chip selected (click)="chips(31)" color="accent" >All</mat-chip>
-  <mat-chip [selected]="filter % 2 >= 1" (click)="chips(1)">Work</mat-chip>
-  <mat-chip [selected]="filter % 4 >= 2"  (click)="chips(2)">Out</mat-chip>
-    <mat-chip [selected]="filter % 8 >= 4"  (click)="chips(4)">ABS</mat-chip>
-    <mat-chip [selected]="filter % 16 >= 8" (click)="chips(8)">LUNCH</mat-chip>
-    <mat-chip [selected]="filter % 32 >= 16"  (click)="chips(16)">BRK</mat-chip>
-</mat-chip-list>
 
 
-
-
-<mat-progress-spinner (focus)=getperiod(i) style="margin: auto;margin-top: 30vh" *ngIf="bksvc.StatusBoard==null" mode="indeterminate"></mat-progress-spinner>
-
-<div class="sm-round-corners mat-elevation-z16 stb" *ngIf="bksvc.StatusBoard!=null">
- <mat-action-row class="nopadding noborder">
+   <mat-action-row *ngIf="bksvc.StatusBoard!=null" class="nopadding noborder">
    <ngx-charts-pie-grid
 
   animations=true
@@ -36,6 +22,23 @@
   
 </ngx-charts-pie-grid>
 </mat-action-row>
+ 
+<mat-chip-list class="i" multiple="true">
+  <mat-chip selected (click)="chips(31)" color="accent" >All</mat-chip>
+  <mat-chip [disabled]="this.work==0" [selected]="filter % 2 >= 1" (click)="chips(1)">Work</mat-chip>
+  <mat-chip [disabled]="this.out==0" [selected]="filter % 4 >= 2"  (click)="chips(2)">Out</mat-chip>
+    <mat-chip [disabled]="this.abs==0" [selected]="filter % 8 >= 4"  (click)="chips(4)">ABS</mat-chip>
+    <mat-chip [disabled]="this.lunch==0" [selected]="filter % 16 >= 8" (click)="chips(8)">LUNCH</mat-chip>
+    <mat-chip [disabled]="this.br==0" [selected]="filter % 32 >= 16"  (click)="chips(16)">BRK</mat-chip>
+</mat-chip-list>
+
+
+
+
+<mat-progress-spinner style="margin: auto;margin-top: 30vh" *ngIf="bksvc.StatusBoard==null" mode="indeterminate"></mat-progress-spinner>
+
+<div class="sm-round-corners mat-elevation-z16 stb" *ngIf="bksvc.StatusBoard!=null">
+
 <mat-card>
  <mat-form-field class="block" appearance="outline">
     <mat-label>Filter by Code or Name</mat-label>
