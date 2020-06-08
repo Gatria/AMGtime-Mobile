@@ -11,9 +11,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 export class StatusboardComponent implements OnInit {
 
   constructor(private bksvc:BackendService) { }
-onResize() {
- this.views=[document.querySelector("mat-sidenav-container").clientWidth-20,0]; console.log(this.views);
-}
+
 
   ngOnInit() {
     this.filter=31;

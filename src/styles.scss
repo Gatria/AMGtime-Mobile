@@ -57,7 +57,7 @@ border-radius:4px;
 
 .center {margin:auto}
 .round-corners {border-radius:25px!important }
-
+.sm-round-corners {border-radius:4px!important }
 
 table {width: 98%;margin:0 1% 0 1%;}
 body, .mat-sidenav-content {margin:0px; font-family: 'Raleway', sans-serif!important;
@@ -156,3 +156,5 @@ display: flex;
 .block {display:block!important}
 .inflex {display:inline-flex!important}
 .disablelink {color:#999;pointer-events: none;}
+
+.mat-form-field-wrapper {padding:0px!important}
