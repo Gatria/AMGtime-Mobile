@@ -14,7 +14,7 @@ import { SettingsComponent } from '../settings/settings.component';
 import { USignedComponent } from '../usigned/usigned.component';
 import { ChooseemployeeComponent } from '../chooseemployee/chooseemployee.component';
 import { StatusboardComponent } from '../statusboard/statusboard.component';
-
+import { PunchanalysisComponent } from '../punchanalysis/punchanalysis.component';
 
 
 export const routes: Routes = [
@@ -31,10 +31,9 @@ export const routes: Routes = [
 { path: 'benefit', component:   BenefitsComponent, canActivate: [AuthguardService] },
 { path: 'schedule', component:   ScheduleComponent , canActivate: [AuthguardService] },
 { path: 'timeoff', component: TimeoffComponent, canActivate: [AuthguardService] },
-{ path: 'camera', component: CameraComponent, canActivate: [AuthguardService] }
-,
-{ path: 'usigned', component: USignedComponent, canActivate: [AuthguardService] }
-,
+{ path: 'camera', component: CameraComponent, canActivate: [AuthguardService] },
+{ path: 'usigned', component: USignedComponent, canActivate: [AuthguardService] },
+{ path: 'punchanalysis', component:  PunchanalysisComponent, canActivate: [AuthguardService] },
 { path: 'statusboard', component: StatusboardComponent, canActivate: [AuthguardService] }
 ];
 

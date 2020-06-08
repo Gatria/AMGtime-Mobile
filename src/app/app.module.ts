@@ -28,12 +28,13 @@ import { PunchdialogComponent } from './punchdialog/punchdialog.component';
 import { FooterComponent } from './footer/footer.component';
 import { ChooseemployeeComponent } from './chooseemployee/chooseemployee.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { PunchanalysisComponent } from './punchanalysis/punchanalysis.component';
 
 
 @NgModule({
 
     imports:      [WebcamModule,AllMaterialModule, AppRouterModule, HttpClientModule ,BrowserAnimationsModule, BrowserModule, FormsModule,StorageServiceModule,NgxChartsModule],
-  declarations: [ AppComponent, CameraComponent, LoginComponent, HomescreenComponent, EmpphotoiconComponent, TimecardComponent, BenefitsComponent, ScheduleComponent, TimeoffComponent, MatSidenavComponent, PasswordresetComponent, SettingsComponent, ComplogoComponent, EmployeeuserselectorComponent, ConfirmDialogComponent, USignedComponent, StatusboardComponent, PunchdialogComponent, FooterComponent,ChooseemployeeComponent],
+  declarations: [ AppComponent, CameraComponent, LoginComponent, HomescreenComponent, EmpphotoiconComponent, TimecardComponent, BenefitsComponent, ScheduleComponent, TimeoffComponent, MatSidenavComponent, PasswordresetComponent, SettingsComponent, ComplogoComponent, EmployeeuserselectorComponent, ConfirmDialogComponent, USignedComponent, StatusboardComponent, PunchdialogComponent, FooterComponent,ChooseemployeeComponent, PunchanalysisComponent],
   bootstrap:    [ AppComponent ],
   providers: [BackendService],
                 entryComponents: [EmployeeuserselectorComponent,ConfirmDialogComponent,PunchdialogComponent]

@@ -1,0 +1,51 @@
+@import "../../variable.scss" ;
+mat-chip {width: 14%;
+    justify-content: center;
+    font-size:3vw;
+    text-transform: uppercase;}
+    .small {font-size:10px!important}
+    .norecord {
+      
+    text-align: center;
+    width: 100%;margin-top:15px}
+    .list {margin-top:-30px}
+
+    .Work {color:#0f7da2}
+    .Out {color:#049275}
+    .Absent{color:#c62828}
+    .Lunch {color:#AAAAAA}
+    .Break {color:#008266}
+
+    .m4 {
+    width: 70px;
+    text-align: center;
+}
+
+
+    @media screen and (orientation:landscape) {
+       mat-chip {width: 15%;
+    font-size:2.4vh;
+    }
+     }
+
+.nomargin {margin:0px!important}
+.nopadding {padding:0px!important}
+.noborder {border:unset!important}
+
+
+     .limited {    margin: 6px 0 6px 1%;
+    max-width: 98%;
+    position: relative!important;}
+.chart {width:20%;display:inline-flex}
+
+.name {
+    display: inline-block;
+        line-height: 160%;
+    margin-bottom: 0px!important;
+   width: calc(100% - 156px)!important;
+    vertical-align: middle;}
+ /deep/  .mat-form-field-wrapper {padding:0px!important}
+ /deep/  .mat-expansion-panel-body {
+    padding: 0 74px 10px!important;
+    line-height: 1.9em!important;
+}
