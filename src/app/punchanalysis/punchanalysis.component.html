@@ -12,6 +12,29 @@
   </mat-toolbar>
 
 
+
+
+
+
+<div class="mat-elevation-z2 topinfo" id=top{{i}}> 
+  <button mat-mini-fab color="primary" class="left-button" (click)=gototab(-1)>  <mat-icon>arrowleft</mat-icon></button>
+<mat-form-field class="example-full-width">
+  <mat-label>Choose a date</mat-label>
+  <input matInput [matDatepicker]="picker">
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker [dateClass]="dateClass" #picker></mat-datepicker>
+</mat-form-field>
+<button  mat-mini-fab color="primary" class="right-button" (click)=gototab(1)>
+  <mat-icon>arrowright</mat-icon>
+  </button>
+</div> 
+
+
+
+
+
+
+
 <mat-chip-list class="i" multiple="true">
   <mat-chip selected (click)="chips(31)" color="accent" >All</mat-chip>
   <mat-chip [disabled]="this.work==0" [selected]="filter % 2 >= 1" (click)="chips(1)">Work</mat-chip>
