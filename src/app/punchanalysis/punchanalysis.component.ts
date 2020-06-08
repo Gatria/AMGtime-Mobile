@@ -11,7 +11,7 @@ export class PunchanalysisComponent implements OnInit {
 
   ngOnInit() {
    let tt=this.bksvc.encript("true");
-this.bksvc.sendcommand((f)=>{this.bksvc.PunchAnalysis=f;},"GetPunchAnalyzis","&rounding="+tt+"date="+this.bksvc.datetime())   
+this.bksvc.sendcommand((f)=>{this.bksvc.PunchAnalysis=f;},"GetPunchAnalyzis","&rounding="+tt+"&date="+this.bksvc.datetime("2020-04-04"))   
   }
 
 filterme(a,i) {

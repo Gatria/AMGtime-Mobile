@@ -32,20 +32,21 @@ mat-chip {width: 14%;
 .nopadding {padding:0px!important}
 .noborder {border:unset!important}
 
-
-     .limited {    margin: 6px 0 6px 1%;
+.limited {    margin: 6px 0 6px 1%;
     max-width: 98%;
     position: relative!important;}
+mat-divider:last-of-type {display:none}
+
 .chart {width:20%;display:inline-flex}
 
 .name {
     display: inline-block;
         line-height: 160%;
+        width: calc(100% - 70px);
     margin-bottom: 0px!important;
-   width: calc(100% - 156px)!important;
     vertical-align: middle;}
- /deep/  .mat-form-field-wrapper {padding:0px!important}
- /deep/  .mat-expansion-panel-body {
-    padding: 0 74px 10px!important;
-    line-height: 1.9em!important;
-}
+.dd {    font-size: 12px;
+    color: #757575;}
+.dd td {text-align: center}
+.dd th {width:25%;color:#005e82;font-size: 15px;font-weight: 300}
+.zz {text-align:right}

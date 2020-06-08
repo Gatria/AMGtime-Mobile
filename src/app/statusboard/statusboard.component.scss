@@ -44,8 +44,18 @@ mat-chip {width: 14%;
     margin-bottom: 0px!important;
    width: calc(100% - 156px)!important;
     vertical-align: middle;}
- /deep/  .mat-form-field-wrapper {padding:0px!important}
- /deep/  .mat-expansion-panel-body {
-    padding: 0 74px 10px!important;
-    line-height: 1.9em!important;
+
+
+
+ .mm {
+       padding: 14px 14px 0px 14px!important;;
+ }
+ .pp {
+    margin: 0 50px 0px !important;
+    line-height: 1.9em !important;
+    display: inline-block;
+    width: calc(100% - 80px);
+    border-top: 1px solid #eee;
 }
+
+

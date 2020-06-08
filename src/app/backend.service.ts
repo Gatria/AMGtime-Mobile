@@ -88,8 +88,14 @@ private showerror (error:string) {
 
 
 
-public datetime():string {
-  let m=new Date();
+public datetime(a=""):string {
+  if (a=="") let m=new Date(); else let m=new Date(a);
+  console.log(m.getUTCFullYear() + "-" +
+  ("0" + (m.getUTCMonth()+1)).slice(-2) + "-" +
+  ("0" + m.getUTCDate()).slice(-2) + " " +
+  ("0" + m.getUTCHours()).slice(-2) + ":" +
+  ("0" + m.getUTCMinutes()).slice(-2) + ":" +
+  ("0" + m.getUTCSeconds()).slice(-2))
   return this.encript(m.getUTCFullYear() + "-" +
   ("0" + (m.getUTCMonth()+1)).slice(-2) + "-" +
   ("0" + m.getUTCDate()).slice(-2) + " " +
