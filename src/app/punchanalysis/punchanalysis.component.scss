@@ -47,11 +47,10 @@ mat-divider:last-of-type {display:none}
     vertical-align: middle;}
 .dd {    font-size: 12px;
     color: #757575;}
-.dd td {text-align: center}
-.dd th {width:25%;color:mat-color($my-app-primary);font-size: 14px;font-weight: 300;padding-bottom:4px}
+.dd td {text-align: center;width:25%}
+.dd th {color:mat-color($my-app-primary);font-size: 14px;font-weight: 300;padding-bottom:4px}
 .zz {text-align:right}
 .icon {padding: 0px 6px 0px 0px;
     font-size: 31px;
 }
 
-.sticky {display:sticky} 

@@ -68,7 +68,7 @@
 
        <mat-card-content class="nomargin middle inflex"><app-empphotoicon EmpID="{{bksvc.codetoid[item.Code]}}" name="{{item.Name}}"></app-empphotoicon> </mat-card-content>
      <mat-card-subtitle class="nomargin middle name inflex"> ({{item.Code}}) {{item.Name}}</mat-card-subtitle>
-     <mat-card-content><table class="dd"><tr *ngIf="i==0 && ((filter % 4 >= 2) || (filter % 2 >= 1) || (filter % 8 >= 4) || (filter % 16 >= 8)|| (filter % 32 >= 16))"><th class="sticky"><th class="sticky" >Scheduled</th><th class="sticky">Actual</th><th class="sticky">Differance</th></tr>
+     <mat-card-content><table class="dd"><tr *ngIf="i==0 && ((filter % 4 >= 2) || (filter % 2 >= 1) || (filter % 8 >= 4) || (filter % 16 >= 8)|| (filter % 32 >= 16))"><th ><th>Scheduled</th><th>Actual</th><th>Differance</th></tr>
      <tr *ngIf="(filter % 2 >= 1)"><th class='zz'>Work<td>{{item.TotalScheduled}}</td><td>{{item.TotalActual}}</td><td>{{item.TotalDifference}}
        </td></tr>
       <tr *ngIf="(filter % 4 >= 2)"><th class='zz'>In<td>{{item.InScheduled}}</td><td>{{item.InActual}}</td><td>{{item.InDifference}}
