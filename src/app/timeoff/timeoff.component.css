@@ -43,17 +43,20 @@ mat-chip {width: 20%;
 
      .float {position:fixed;right:10px;bottom:17vw}
 
+
+     input::-webkit-calendar-picker-indicator {
+  font-size:24px;
+  color:#757575!important;
+
+}
+
      @media screen and (orientation:landscape) {
        mat-chip {width: 15%;
     justify-content: center;
     font-size:2.4vh;
     }
-input::-webkit-calendar-picker-indicator {
-  font-size:24px;
-  color:#757575!important;
 
-}
-     .float {position:fixed;right:10px;bottom:15vh}
+     .float {position:fixed;right:10px;bottom:10px}
     .title {
     padding-left: 1.8vw;
     width: calc(100% - 107px - 5vw);

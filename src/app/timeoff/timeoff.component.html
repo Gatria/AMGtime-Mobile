@@ -66,14 +66,14 @@ close
   </mat-select>
 </mat-form-field>
  
-<mat-radio-group [(ngModel)]="type" aria-label="Select an option" class="block mat-form-field-wrapper">
+<mat-radio-group [(ngModel)]="dtype" aria-label="Select an option" class="block mat-form-field-wrapper">
   <mat-radio-button value="1" class="t3">Full Day</mat-radio-button>
   <mat-radio-button value="2" class="t3">Partial Day</mat-radio-button>
 </mat-radio-group>
 
 <mat-form-field appearance="outline" class="t1">
    <mat-label>Star Days</mat-label>
-  <input matInput [(ngModel)]="date" [matDatepicker]="myDatepicker">
+  <input touchUi matInput [(ngModel)]="date" [matDatepicker]="myDatepicker">
   <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
   <mat-datepicker #myDatepicker></mat-datepicker>
 </mat-form-field>
@@ -83,7 +83,7 @@ close
     <input matInput min=1 type=number [(ngModel)]="days" >
   </mat-form-field>
 
- <ng-container *ngIf="type==2">
+ <ng-container *ngIf="dtype==2">
    <mat-form-field appearance="outline" class="t1">
     <mat-label>Start Times</mat-label>
     <input matInput type=time [(ngModel)]="time">
@@ -91,7 +91,7 @@ close
 
    <mat-form-field appearance="outline" class="t2">
     <mat-label>Number of hours</mat-label>
-    <input matInput type=time min=1 max=24 [(ngModel)]="hours">
+    <input matInput type=number min=1 max=24 [(ngModel)]="hours">
   </mat-form-field>
    </ng-container>
    <mat-form-field appearance="outline" class="block">
