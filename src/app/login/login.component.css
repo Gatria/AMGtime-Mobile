@@ -4,7 +4,7 @@ div {background-color:#fff}
 mat-checkbox {float:left}
 a {float:right}
 button.round-corners {width:50%;padding:1vw;font-size:4vw}
-app-complogo {max-width:300px; display: block;width:40%;margin:4vh auto}
+app-complogo {max-width:300px; display: block;width:40%;margin:0px auto 4vh auto}
 @media screen and (orientation:landscape) {
  button.round-corners { padding:1vh;font-size:3vh;
 
@@ -13,3 +13,4 @@ app-complogo {max-width:300px; display: block;width:40%;margin:4vh auto}
 .icon {padding: 0px 20px 0px 0px;
     font-size: 31px;
 }
+.settings {    right: 4px;}

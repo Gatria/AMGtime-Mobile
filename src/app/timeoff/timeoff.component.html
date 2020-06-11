@@ -35,7 +35,7 @@
    </mat-card-subtitle>
 
 <mat-card-title class=title>{{item.Category}} 
- <button *ngIf="item.Status!=2" mat-stroked-button color="warn" class="button" (click)=this.bksvc.canceltimeoff(item.Id)><span class="material-icons">
+ <button *ngIf="item.Status!=2" mat-stroked-button color="warn" class="round-corners button" (click)=this.bksvc.canceltimeoff(item.Id)><span class="material-icons">
 close
 </span>Cancel</button>
 <mat-card-content ngClass="{{item.StatusStr}}">{{item.StatusStr}}</mat-card-content>

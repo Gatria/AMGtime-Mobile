@@ -111,10 +111,10 @@ div.mat-tab-body-wrapper {
 
 
 mat-dialog-container {max-height: calc(100vh - 20px)!important;overflow:hidden!important};
-   .noscrollbar::-webkit-scrollbar  {
+   .noscrollbar::-webkit-scrollbar, .mat-drawer-inner-container::-webkit-scrollbar  {
     width: 0 !important }
 
-.noscrollbar { overflow: -moz-scrollbars-none!important;  -ms-overflow-style: none!important; }
+.noscrollbar, .mat-drawer-inner-container { overflow: -moz-scrollbars-none!important;  -ms-overflow-style: none!important; }
 mat-toolbar>button {position:absolute!important}
    
    .mat-expansion-panel-header {
