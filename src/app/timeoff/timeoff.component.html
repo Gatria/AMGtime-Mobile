@@ -57,7 +57,7 @@ close
   <mat-card class="mat-elevation-z8 stb"> 
   <mat-form-field class="block" appearance="outline">
   <mat-label>Choose Category</mat-label>
-  <mat-select>
+  <mat-select [(ngModel)]="category">
     <ng-container *ngIf="bksvc.Categories!=null">
     <mat-option *ngFor="let item of bksvc.Categories.Categories" [value]="item.Id">
       {{item.Display}} <span class="mat-grey-color">Left:</span> {{item.Left}}

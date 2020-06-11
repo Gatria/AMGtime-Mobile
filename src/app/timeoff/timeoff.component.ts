@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges } from '@angular/core'
+import { Component, OnInit, DoCheck } from '@angular/core'
 import {BackendService} from '../backend.service'
 
 @Component({
@@ -6,7 +6,7 @@ import {BackendService} from '../backend.service'
   templateUrl: './timeoff.component.html',
   styleUrls: ['./timeoff.component.css']
 })
-export class TimeoffComponent implements OnInit,OnChanges {
+export class TimeoffComponent implements OnInit,DoCheck{
 
   constructor(private bksvc:BackendService) { }
 first=true;
@@ -15,7 +15,6 @@ first=true;
      this.bksvc.sendcommand((f)=>{ this.bksvc.timeofrequests=f},"GetTimeOffs","date="+ this.bksvc.datetime(),{ withCredentials: true});
      this.date="2020-08-04"
      this.days=1
-     this.dtype=1
      this.time="01:01"
      this.hours="2"
   }
@@ -35,9 +34,9 @@ setTimeout(()=>{document.querySelector("mat-sidenav-content").scrollTop=0;docume
   },"GetCategoriesAndUsers");
 
 }
-ngOnChanges(changes: SimpleChanges) {
+ngDoCheck(a) {
 
- console.log(changes); 
+console.log(this.category+" "+this.dtype);
 }
 
 chips(a) {

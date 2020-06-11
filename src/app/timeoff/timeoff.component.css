@@ -44,9 +44,10 @@ mat-chip {width: 20%;
      .float {position:fixed;right:10px;bottom:17vw}
 
 
-     input::-webkit-calendar-picker-indicator {
-  font-size:24px;
-  color:#757575!important;
+  input[type="time"]::-webkit-calendar-picker-indicator {
+  font-size:23px;
+  opacity:0.7;
+  margin:-5px 4px -4px 0px;
 
 }
 

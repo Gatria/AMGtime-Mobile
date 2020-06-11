@@ -1,10 +1,13 @@
-      <app-complogo class="center"></app-complogo>
-      <div>
-      <app-empphotoicon EmpID="{{this.bksvc.AMGSettings.Id}}" name="{{this.bksvc.AMGSettings.FullName}}"></app-empphotoicon>
-      <span>
+      <app-complogo  class="logo"></app-complogo>
+      <div class="ss">
+  
+      <app-empphotoicon class="emp" EmpID="{{this.bksvc.AMGSettings.Id}}" name="{{this.bksvc.AMGSettings.FullName}}"></app-empphotoicon>
+      <span class="span">
       <strong>{{this.bksvc.AMGSettings.FullName}}</strong>
       <br>
+      <span class="trans">
       {{this.bksvc.AMGSettings.CompanyName}}
+      </span>
       </span>
 
       </div>

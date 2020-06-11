@@ -1,4 +1,10 @@
 app-complogo {display: inline-block;width:40%;filter:contrast(0.1) brightness(10);}
-span {display: inline-block;color:white;margin-left:13px}
-
+.span {display: inline-block;color:white;vertical-align: middle;    padding-right: 15px;
+    line-height: 1.4em;}
+    .logo {right: 20px;
+    top: 15px;
+    position: absolute;}
+    .trans { color:#bbb}
+    .emp {padding-left:14px}
+.ss {    margin-top: 70px;}
 
