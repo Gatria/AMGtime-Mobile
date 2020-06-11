@@ -156,4 +156,6 @@ display: flex;
 .block {display:block!important}
 .inflex {display:inline-flex!important}
 .disablelink {color:#999;pointer-events: none;}
+.mid-title {    width: calc(100% - 120px);display: inline-block;    font-size: 20px;    margin: -15px 0px;
+    padding: 0px 15px;}
 

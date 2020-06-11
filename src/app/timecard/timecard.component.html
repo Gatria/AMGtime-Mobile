@@ -20,8 +20,9 @@
    <ng-container *ngIf="item!=null && bksvc.loading==false">
 <div class="mat-elevation-z2 topinfo" id=top{{i}}> 
   <button mat-mini-fab color="primary" class="left-button" [disabled]="i==0" (click)=gototab(-1)>  <mat-icon>arrowleft</mat-icon></button>
+  <div  class="mid-title">
 {{item.StartDate}} - 
-{{item.EndDate}}
+{{item.EndDate}}</div>
 <button  mat-mini-fab color="primary" class="right-button" [disabled]="i==bksvc.AMGSettings.PayPeriodBackLimit-1" (click)=gototab(1)>
   <mat-icon>arrowright</mat-icon>
   </button>

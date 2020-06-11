@@ -40,8 +40,8 @@ close
 </span>Cancel</button>
 <mat-card-content ngClass="{{item.StatusStr}}">{{item.StatusStr}}</mat-card-content>
 
-<mat-card-content class="t3">Duration: {{item.Duration}}</mat-card-content>
-<mat-card-content class="t3">Left: {{item.HoursLeft}}</mat-card-content>
+<mat-card-content *ngIf="item.Duration>''" class="t3">Duration: {{item.Duration}}</mat-card-content>
+<mat-card-content *ngIf="item.HoursLeft>''" class="t3">Left: {{item.HoursLeft}}</mat-card-content>
 
 </mat-card-title>
 
@@ -73,7 +73,7 @@ close
 
 <mat-form-field appearance="outline" class="t1">
    <mat-label>Star Days</mat-label>
-  <input touchUi matInput [(ngModel)]="date" [matDatepicker]="myDatepicker">
+  <input touchUi=true matInput [(ngModel)]="date" [matDatepicker]="myDatepicker">
   <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
   <mat-datepicker #myDatepicker></mat-datepicker>
 </mat-form-field>
