@@ -15,15 +15,6 @@ export class EmpphotoiconComponent implements OnInit {
 
 
 
-stringToHslColor(str, s, l) {
-  var hash = 0;
-  for (var i = 0; i < str.length; i++) {
-    hash = str.charCodeAt(i) + ((hash << 5) - hash);
-  }
-
-  var h = hash % 360;
-  return {'color': 'hsl('+h+', '+30+'%, '+30+'%)','background-color': 'hsl('+h+', '+60+'%, '+85+'%)'};
-}
 
   ngOnInit() {
  //if (this.bksvc.empimage[this.EmpID]==undefined) this.bksvc.getEmpPhoto(this.EmpID)

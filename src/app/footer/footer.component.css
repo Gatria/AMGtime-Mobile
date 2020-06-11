@@ -15,9 +15,7 @@
 
   .big {font-size: 10vw;padding:0px 4vw;}
   @media screen and (orientation:landscape) {
-.footer {
-   padding:1vh ;  
-    font-size:2vh;}
+.footer {display:none}
 
    .big {font-size: 8vh;padding:0px 6vh;} 
    .footer-item:nth-of-type(-n+8){

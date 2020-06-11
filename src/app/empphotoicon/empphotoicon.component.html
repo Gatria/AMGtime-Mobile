@@ -1,7 +1,6 @@
-<img *ngIf="this.bksvc.empimage[EmpID]!=null" src="{{this.bksvc.empimage[EmpID]}}" />
-<p [ngStyle]="this.stringToHslColor(this.Initials)"
-*ngIf="this.bksvc.empimage[EmpID]==null">
-{{this.Initials}}</p>
+<img *ngIf="bksvc.empimage[EmpID]!=null" src="{{bksvc.empimage[EmpID]}}" />
+<p [ngStyle]="bksvc.stringToHslColor(Initials)" *ngIf="bksvc.empimage[EmpID]==null">
+{{Initials}}</p>
 
 
 

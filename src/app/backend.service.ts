@@ -298,6 +298,16 @@ this.sendcommand((f)=>{ this.timeofrequests=f},"GetTimeOffs","date="+ this.datet
 
 
 
+stringToHslColor(str, bk=false) {
+  var hash = 0;
+  for (var i = 0; i < str.length; i++) {
+    hash = str.charCodeAt(i) + ((hash << 5) - hash);
+  }
+
+  var h = hash % 360;
+  if (bk) { let bkc="#fff";let col='hsl('+h+', '+50+'%, '+50+'%)'}  else  {let bkc='hsl('+h+', '+60+'%, '+85+'%)';let col='hsl('+h+', '+30+'%, '+30+'%)'}
+  return {'color':col ,'background-color': bkc };
+}
 
 
 
