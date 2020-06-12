@@ -11,9 +11,9 @@ export class PasswordresetComponent implements OnInit {
   constructor(private bksvc:BackendService) { }
 
   ngOnInit() {
-    this.bksvc.sendcommand((f)=>{  },"ForgotPassword","email="+this.bksvc.encript(this.bksvc.name))
+   
   }
 validate() {
-    this.bksvc.sendcommand((f)=>{  },"ResetPassword","email="+this.bksvc.encript(this.bksvc.name)+"&password="+this.bksvc.encript(this.bksvc.password)+"&securityCode="+this.bksvc.encript(this.bksvc.validation))
+    this.bksvc.sendcommand((f)=>{  },"ResetPassword","email="+this.bksvc.encript(this.bksvc.name)+"&password="+this.bksvc.encript(this.bksvc.password)+"&securityCode="+this.bksvc.encript(this.validation))
   }
 }

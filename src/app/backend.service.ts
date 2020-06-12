@@ -107,7 +107,7 @@ public datetime(a=""):string {
   ("0" + m.getUTCSeconds()).slice(-2))
 }
 
-public sendcommand(f:function,command:string, postdata="", httpOptions={withCredentials: true})
+public sendcommand(f:function,command:string, postdata="", httpOptions={withCredentials: true}):Observable<boolean>
 {
 let hash=command+postdata;  
 
@@ -119,7 +119,8 @@ this.lastcall=hash;
 
 if (command[0]=="*") const q=this.url.replace("MobileService","MobileApi")+command.substr(1); else const q=this.url+command;
 console.log(q) 
-return this.data.post<any>(q, postdata, httpOptions).subscribe(
+let m= this.data.post<Observable>(q, postdata, httpOptions)
+m.subscribe(
       res => {
         console.log(res);
         this.lastcall="";
@@ -128,8 +129,11 @@ return this.data.post<any>(q, postdata, httpOptions).subscribe(
         if (res[0]) { f(res[1]);  } else this.showerror(res[1])},
       error => {
         this.lastcall="";
+
         this.showerror( error)}
       )
+
+    return m   
 }}
 
 

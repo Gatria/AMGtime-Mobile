@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+import {BackendService} from '../backend.service'
 
 @Component({
   selector: 'app-settings',
   templateUrl: './settings.component.html',
-  styleUrls: ['./settings.component.css']
+styleUrls: ['../login/login.component.css']
 })
 export class SettingsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private bksvc:BackendService) { }
 
   ngOnInit() {
   }

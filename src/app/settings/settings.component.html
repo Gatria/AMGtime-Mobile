@@ -1,3 +1,22 @@
-<p>
-settings works!
-</p>
+
+  <mat-toolbar color="primary" class="example-toolbar">
+    <a class="mat-primary-color" routerLink="/login" ><button  mat-icon-button><mat-icon>arrowleft</mat-icon></button></a>
+
+</mat-toolbar>
+
+<app-complogo class="center"></app-complogo>
+<hr class="round-corners  title">
+<h2>Settings</h2>
+<div class="mat-elevation-z16 round-corners center">
+
+  <mat-form-field appearance="outline" class="center">
+    <mat-label>IP Address of Host Name</mat-label>
+    <input matInput [(ngModel)]="bksvc.url">
+
+  </mat-form-field>
+
+<br>
+ <button class="center round-corners" mat-flat-button (click)="validate()" color="primary">Check</button>
+  <br><br>
+  <button class="center round-corners"mat-stroked-button (click)="validate()" color="primary">Restore Defaults</button>
+</div>
