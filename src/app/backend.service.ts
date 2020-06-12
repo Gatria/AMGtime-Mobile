@@ -17,6 +17,9 @@ SummeryInfo=[]
 loggedin=false
 codetoid={}
 empimage={}
+name:string="testaccount@amgtime.com";
+password:string="testaccount@amgtime.com1";
+
 
 url:string='https://3735.us/MobileService/';
 

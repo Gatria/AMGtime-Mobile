@@ -10,8 +10,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 })
 
 export class LoginComponent implements OnInit {
-name:string="testaccount@amgtime.com";
-password:string="testaccount@amgtime.com1";
+
 
 constructor(private bksvc:BackendService,private router: Router,public dialog: MatDialog) { }
 
@@ -51,7 +50,7 @@ login(a = 0) {
           },"GetEmployees")
         this.bksvc.buildnavigation();
         this.router.navigate(['/home']);}
-  },"GetLoginNew",b[a]+"&name="+this.bksvc.encript(this.name)+"&password="+this.bksvc.encript(this.password)+"&time="+this.bksvc.datetime(),c[a]);
+  },"GetLoginNew",b[a]+"&name="+this.bksvc.encript(this.bksvc.name)+"&password="+this.bksvc.encript(this.bksvc.password)+"&time="+this.bksvc.datetime(),c[a]);
 }
 
 

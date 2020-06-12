@@ -13,4 +13,4 @@ app-complogo {max-width:300px; display: block;width:40%;margin:0px auto 4vh auto
 .icon {padding: 0px 20px 0px 0px;
     font-size: 31px;
 }
-.settings {    right: 4px;}
+.settings {    position: absolute;    right: 4px;}

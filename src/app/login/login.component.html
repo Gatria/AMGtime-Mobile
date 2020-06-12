@@ -1,6 +1,6 @@
 
   <mat-toolbar color="primary" class="example-toolbar">
-    <button class="settings" mat-icon-button routerlink="settings"><mat-icon>iconsettings</mat-icon></button>
+   <a class="mat-primary-color settings" routerLink="/settings"><button  mat-icon-button ><mat-icon>iconsettings</mat-icon></button></a>
 </mat-toolbar>
 
 <app-complogo class="center"></app-complogo>
@@ -11,7 +11,7 @@
   <mat-form-field appearance="outline" class="center">
     <mat-label>Username</mat-label>
      <mat-icon class="icon mat-primary-color" matPrefix>user</mat-icon>
-    <input matInput [(ngModel)]="name">
+    <input matInput [(ngModel)]="bksvc.name">
 
   </mat-form-field>
   <br> 
@@ -19,12 +19,12 @@
   <mat-form-field appearance="outline" class="center">
     <mat-label>Password</mat-label>
      <mat-icon class="icon mat-primary-color"  matPrefix>lock</mat-icon>
-    <input type=password matInput [(ngModel)]="password">
+    <input type=password matInput [(ngModel)]="bksvc.password">
   </mat-form-field>
 <br>
 <mat-checkbox class="mat-primary-color">Remember Me</mat-checkbox>
 
-<a class="mat-primary-color" [ngClass]="{'disablelink':!ValidateEmail(name)}" routerLink="/passwordreset">Forgot Password ?</a>
+<a class="mat-primary-color" [ngClass]="{'disablelink':!ValidateEmail(bksvc.name)}" routerLink="/passwordreset">Forgot Password ?</a>
 <br><br><br>
  <button class="center round-corners" mat-flat-button (click)="login()" color="primary">Login</button>
 </div>
