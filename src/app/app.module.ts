@@ -5,7 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { CameraComponent } from './camera/camera.component';
-import { LoginComponent,EmployeeuserselectorComponent } from './login/login.component';
+import { LoginComponent} from './login/login.component';
 import { BackendService } from './backend.service';
 import { HomescreenComponent } from './homescreen/homescreen.component';
 import { AppRouterModule } from './router/router.module';
@@ -34,10 +34,10 @@ import { PunchanalysisComponent } from './punchanalysis/punchanalysis.component'
 @NgModule({
 
     imports:      [WebcamModule,AllMaterialModule, AppRouterModule, HttpClientModule ,BrowserAnimationsModule, BrowserModule, FormsModule,StorageServiceModule,NgxChartsModule],
-  declarations: [ AppComponent, CameraComponent, LoginComponent, HomescreenComponent, EmpphotoiconComponent, TimecardComponent, BenefitsComponent, ScheduleComponent, TimeoffComponent, MatSidenavComponent, PasswordresetComponent, SettingsComponent, ComplogoComponent, EmployeeuserselectorComponent, ConfirmDialogComponent, USignedComponent, StatusboardComponent, PunchdialogComponent, FooterComponent,ChooseemployeeComponent, PunchanalysisComponent],
+  declarations: [ AppComponent, CameraComponent, LoginComponent, HomescreenComponent, EmpphotoiconComponent, TimecardComponent, BenefitsComponent, ScheduleComponent, TimeoffComponent, MatSidenavComponent, PasswordresetComponent, SettingsComponent, ComplogoComponent,  ConfirmDialogComponent, USignedComponent, StatusboardComponent, PunchdialogComponent, FooterComponent,ChooseemployeeComponent, PunchanalysisComponent],
   bootstrap:    [ AppComponent ],
   providers: [BackendService],
-                entryComponents: [EmployeeuserselectorComponent,ConfirmDialogComponent,PunchdialogComponent]
+                entryComponents: [ConfirmDialogComponent,PunchdialogComponent]
 
                
 })

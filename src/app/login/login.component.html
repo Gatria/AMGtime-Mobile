@@ -7,7 +7,7 @@
 <hr class="round-corners  title">
 <h2>SIGN IN</h2>
 <div class="mat-elevation-z16 round-corners center">
-
+<ng-container *ngIf="!show">
   <mat-form-field appearance="outline" class="center">
     <mat-label>Username</mat-label>
      <mat-icon class="icon mat-primary-color" matPrefix>user</mat-icon>
@@ -27,4 +27,10 @@
 <a class="mat-primary-color" [ngClass]="{'disablelink':!ValidateEmail(bksvc.name)}" routerLink="/passwordreset">Forgot Password ?</a>
 <br><br><br>
  <button class="center round-corners" mat-flat-button (click)="login()" color="primary">Login</button>
+ </ng-container>
+<ng-container *ngIf="show" >
+ <button class="center round-corners" mat-flat-button [mat-dialog-close]="1" color="primary">Employee</button><br><br><button class="center round-corners" mat-flat-button [mat-dialog-close]="2" color="primary">User</button>
+</ng-container>
 </div>
+
+

@@ -12,5 +12,8 @@ export class SettingsComponent implements OnInit {
 
   ngOnInit() {
   }
+  check() {
+  this.bksvc.sendcommand((f)=>{ this.bksvc.showinfo("Service is Working")},"CheckService")  
+  }
 
 }

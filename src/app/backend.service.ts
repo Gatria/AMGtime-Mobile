@@ -22,7 +22,7 @@ password:string="testaccount@amgtime.com1";
 
 
 url:string='https://3735.us/MobileService/';
-
+defurl:string='https://3735.us/MobileService/';
 
  constructor(private data: HttpClient,public _snackBar: MatSnackBar,public dialog: MatDialog,private router: Router) { }
  private encript(value: string): string {
@@ -81,7 +81,8 @@ private showinfo (error:string) {
 }
 
 
-private showerror (error:string) {
+private showerror (error) {
+  if (error.statusText!=undefined) error=error.statusText;
   this._snackBar.open( error, "", { duration: 6000, panelClass: ['mat-warn-bg'] });
   console.error(error)
   this.loading=false
@@ -184,21 +185,6 @@ const message = "Do you really want to logout ?";
     });
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

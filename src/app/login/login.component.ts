@@ -1,7 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import {BackendService} from '../backend.service'
 import { Router} from '@angular/router';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+
 
 @Component({
   selector: 'app-login',
@@ -12,9 +12,12 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 export class LoginComponent implements OnInit {
 
 
-constructor(private bksvc:BackendService,private router: Router,public dialog: MatDialog) { }
+constructor(private bksvc:BackendService,private router: Router) { }
 
 ngOnInit() {
+this.show=false
+
+
     if (this.router.url=="/toUser") this.login(2); 
     if (this.router.url=="/toEmp") this.login(1);
     if (this.router.url=="/login") this.bksvc.loggedin=false; 
@@ -35,13 +38,8 @@ login(a = 0) {
   this.bksvc.sendcommand((f)=>{
         this.bksvc.AMGSettings=f;
         if (f.CanSwitchEmployee) {
-          let dialogRef = this.dialog.open(EmployeeuserselectorComponent, {
-            height: '80vh',
-            width: '80vw',
-          });
-          dialogRef.afterClosed().subscribe(result => {
-             if (result>0) this.login(result);
-            });
+          this.show=true
+        
         } else {     
         this.bksvc.loggedin=true;
           if (a==2) this.bksvc.sendcommand((f)=>{
@@ -56,45 +54,5 @@ login(a = 0) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
 
-
-
-@Component({
-
-  template: ' <button class="center round-corners" mat-flat-button [mat-dialog-close]="1" color="primary">Employee</button> <button class="center round-corners" mat-flat-button [mat-dialog-close]="2" color="primary">User</button>'
-
-})
-export class EmployeeuserselectorComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-  
-
-
-
-
-}
