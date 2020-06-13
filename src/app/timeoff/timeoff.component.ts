@@ -1,4 +1,4 @@
-import { Component, OnInit, DoCheck } from '@angular/core'
+import { Component, OnInit } from '@angular/core'
 import {BackendService} from '../backend.service'
 
 @Component({
@@ -14,7 +14,7 @@ first=true;
        this.filter=7;
      this.bksvc.sendcommand((f)=>{ this.bksvc.timeofrequests=f},"GetTimeOffs","date="+ this.bksvc.datetime(),{ withCredentials: true});
      this.date="2020-08-04"
-     this.days=1
+     this.days="1"
      this.time="01:01"
      this.hours="2"
   }
@@ -34,11 +34,11 @@ setTimeout(()=>{document.querySelector("mat-sidenav-content").scrollTop=0;docume
   },"GetCategoriesAndUsers");
 
 }
-ngDoCheck(a) {
+change() {
 
-console.log(this.category+" "+this.dtype);
+this.bksvc.sendcommand((f)=>{ this.AvailableWorkDays=f},"GetEmployeeAvailableWorkDays","date="+ this.bksvc.datetime(this.date)+"&days"+this.bksvc.encript(this.days)+"&hours"+this.bksvc.encript(this.hours),{ withCredentials: true});
+
 }
-
 chips(a) {
 this.filter= this.filter ^ a;  
 }

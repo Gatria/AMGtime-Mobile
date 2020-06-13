@@ -57,7 +57,7 @@ close
   <mat-card class="mat-elevation-z8 stb"> 
   <mat-form-field class="block" appearance="outline">
   <mat-label>Choose Category</mat-label>
-  <mat-select [(ngModel)]="category">
+  <mat-select [(ngModel)]="category" (ngModelChange)="change()">
     <ng-container *ngIf="bksvc.Categories!=null">
     <mat-option *ngFor="let item of bksvc.Categories.Categories" [value]="item.Id">
       {{item.Display}} <span class="mat-grey-color">Left:</span> {{item.Left}}
@@ -73,25 +73,25 @@ close
 
 <mat-form-field appearance="outline" class="t1">
    <mat-label>Star Days</mat-label>
-  <input touchUi=true matInput [(ngModel)]="date" [matDatepicker]="myDatepicker">
+  <input (ngModelChange)="change()" touchUi=true matInput [(ngModel)]="date" [matDatepicker]="myDatepicker">
   <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
   <mat-datepicker #myDatepicker></mat-datepicker>
 </mat-form-field>
 
  <mat-form-field appearance="outline" class="t2">
     <mat-label>Number of work days</mat-label>
-    <input matInput min=1 type=number [(ngModel)]="days" >
+    <input (ngModelChange)="change()" matInput min=1 type=number [(ngModel)]="days" >
   </mat-form-field>
 
  <ng-container *ngIf="dtype==2">
    <mat-form-field appearance="outline" class="t1">
     <mat-label>Start Times</mat-label>
-    <input matInput type=time [(ngModel)]="time">
+    <input (ngModelChange)="change()" matInput type=time [(ngModel)]="time">
   </mat-form-field>
 
    <mat-form-field appearance="outline" class="t2">
     <mat-label>Number of hours</mat-label>
-    <input matInput type=number min=1 max=24 [(ngModel)]="hours">
+    <input (ngModelChange)="change()" matInput type=number min=1 max=24 [(ngModel)]="hours">
   </mat-form-field>
    </ng-container>
    <mat-form-field appearance="outline" class="block">
