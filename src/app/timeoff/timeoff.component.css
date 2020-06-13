@@ -67,3 +67,11 @@ mat-chip {width: 20%;
      .Pending {color:darkorange}
      .Denied {color:darkred}
 
+.limited {    margin: 6px 0 6px 6px;
+    max-width: 98%;
+    position: relative!important;}
+.limited:last-of-type {display:none}
+
+.st {text-align:center;font-size: 17px;
+    margin: 17px 0px;}
+.t3 {width:40%;display:inline-block}

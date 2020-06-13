@@ -99,8 +99,20 @@ close
     <input matInput>
     
   </mat-form-field>
+
+
+<ng-container *ngIf="AvailableWorkDays!=undefined">
+  <mat-card-subtitle class="st mat-primary-color">Preview of Requested Dates and Hours</mat-card-subtitle>
+ <mat-card-content id="div">
+  <ng-container *ngFor="let item of AvailableWorkDays.Schedules">
+  <span class="t3"> {{item.Date}}</span><span class="t3">{{item.DurationStr}}</span>
+     <mat-divider class="limited"></mat-divider>
+</ng-container>  
+  </mat-card-content>
+  
+<button  color="primary" mat-fab class="float"><mat-icon>plus</mat-icon></button>
+</ng-container>
 </mat-card>
-<br><br>
   </div></div>
  <app-footer></app-footer>
     </mat-sidenav-content>

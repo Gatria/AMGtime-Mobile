@@ -159,3 +159,6 @@ display: flex;
 .mid-title {    width: calc(100% - 120px);display: inline-block;    font-size: 20px;    margin: -15px 0px;
     padding: 0px 15px;}
 
+.arrow-button {background-color:#04729d55!important;color: mat-color($my-app-primary)!important}
+.arrow-button:disabled {background-color:#ccc!important;color:#666!important}
+

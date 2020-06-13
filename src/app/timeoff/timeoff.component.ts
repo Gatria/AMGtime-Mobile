@@ -36,7 +36,7 @@ setTimeout(()=>{document.querySelector("mat-sidenav-content").scrollTop=0;docume
 }
 change() {
 
-this.bksvc.sendcommand((f)=>{ this.AvailableWorkDays=f},"GetEmployeeAvailableWorkDays","date="+ this.bksvc.datetime(this.date)+"&days"+this.bksvc.encript(this.days)+"&hours"+this.bksvc.encript(this.hours),{ withCredentials: true});
+this.bksvc.sendcommand((f)=>{ this.AvailableWorkDays=f},"GetEmployeeAvailableWorkDays","start="+ this.bksvc.datetime(this.date)+"&days="+this.bksvc.encript(""+this.days)+"&hours="+this.bksvc.encript(""+this.hours),{ withCredentials: true});
 
 }
 chips(a) {
