@@ -8,7 +8,7 @@
 
   <mat-toolbar color="primary" class="example-toolbar">
  <button *ngIf="first" mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
-    <button *ngIf="!first" (click)=scrollto(0) mat-icon-button><mat-icon>arrowleft</mat-icon></button>
+    <button *ngIf="!first" (click)=scrollto(0) mat-icon-button><mat-icon>arrow_back_ios</mat-icon></button>
     <h1 class="example-app-name">Time Off Requests</h1>
   </mat-toolbar>
 
@@ -73,30 +73,33 @@ close
 
 <mat-form-field appearance="outline" class="t1">
    <mat-label>Star Days</mat-label>
-  <input (ngModelChange)="change()" touchUi=true matInput [(ngModel)]="date" [matDatepicker]="myDatepicker">
+  <input (ngModelChange)="change()" required touchUi=true matInput [(ngModel)]="date" [matDatepicker]="myDatepicker">
   <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
   <mat-datepicker #myDatepicker></mat-datepicker>
 </mat-form-field>
 
  <mat-form-field appearance="outline" class="t2">
     <mat-label>Number of work days</mat-label>
-    <input (ngModelChange)="change()" matInput min=1 type=number [(ngModel)]="days" >
+    <input (ngModelChange)="change()" required matInput min=1 type=number [(ngModel)]="days" >
   </mat-form-field>
 
  <ng-container *ngIf="dtype==2">
    <mat-form-field appearance="outline" class="t1">
     <mat-label>Start Times</mat-label>
-    <input (ngModelChange)="change()" matInput type=time [(ngModel)]="time">
+    <input (ngModelChange)="change()" required matInput type=time [(ngModel)]="time">
   </mat-form-field>
 
    <mat-form-field appearance="outline" class="t2">
     <mat-label>Number of hours</mat-label>
-    <input (ngModelChange)="change()" matInput type=number min=1 max=24 [(ngModel)]="hours">
+    <input (ngModelChange)="change()" required matInput type=number min=1 max=24 [(ngModel)]="hours">
   </mat-form-field>
    </ng-container>
    <mat-form-field appearance="outline" class="block">
     <mat-label>Comments</mat-label>
-    <input matInput>
+    <textarea matInput  cdkTextareaAutosize
+            #autosize="cdkTextareaAutosize"
+            cdkAutosizeMinRows="1"
+            cdkAutosizeMaxRows="5"></textarea>
     
   </mat-form-field>
 
@@ -110,7 +113,7 @@ close
 </ng-container>  
   </mat-card-content>
   
-<button  color="primary" mat-fab class="float"><mat-icon>plus</mat-icon></button>
+<button  color="primary" mat-fab class="float"><mat-icon>save</mat-icon></button>
 </ng-container>
 </mat-card>
   </div></div>
