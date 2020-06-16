@@ -18,7 +18,11 @@ this.reset_time_off_form()
 
 
 scroll() {
+ 
  this.first= document.getElementById("slider").scrollLeft==0;
+ 
+ 
+ if ( this.first) delete(this.AvailableWorkDays); 
 }
 
 scrollto(a)
@@ -39,11 +43,13 @@ reset_time_off_form ()
      this.time="01:01"
      this.hours="2"
      this.dtype="1"
+     delete(this.category)
 } 
 change() {
 
 if (this.days!=null && this.date!=null && (this.dtype==1 || (this.time!=null && this.hours!=null)) )  
 this.bksvc.sendcommand((f)=>{ this.AvailableWorkDays=f},"GetEmployeeAvailableWorkDays","start="+ this.bksvc.datetime(this.date)+"&days="+this.bksvc.encript(""+this.days)+"&hours="+this.bksvc.encript(""+this.hours),{ withCredentials: true});
+else delete(this.AvailableWorkDays)
 }
 
 

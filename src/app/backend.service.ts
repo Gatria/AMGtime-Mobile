@@ -259,7 +259,32 @@ this.getLocation(f)
     
 }
 
+sendrequest(a)
+{
+   let comment=false;
+ let message= "Send Time Off Request?"
 
+
+    const dialogData = 
+    new ConfirmDialogModel("Confirm Action", message ,comment);
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      maxWidth: "400px",
+      data: dialogData
+    });
+
+ dialogRef.afterClosed().subscribe(dialogResult => {
+  if (dialogResult) { 
+
+
+  "CategoryId="+this.encript("1")+"&Comment="+this.encript("rrr")+"&StartTime="+ tdatetime()+"&JsonData="+this.encript('{Date:02/02/2020,HoursAmount:8,Hour:8,Days:1}')+"&ForceAdd="+this.encript(true)+"&FullDay="+this.encript(true)
+
+this.sendcommand((f)=>{},"AddTimeOffRequests4(","id="+this.encript('' +a))
+
+
+   }
+    }); 
+
+}
 
 canceltimeoff(a)
 {

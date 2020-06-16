@@ -35,7 +35,7 @@
    </mat-card-subtitle>
 
 <mat-card-title class=title>{{item.Category}} 
- <button *ngIf="item.Status!=2" mat-stroked-button color="warn" class="round-corners button" (click)=this.bksvc.canceltimeoff(item.Id)><span class="material-icons">
+ <button *ngIf="item.Status!=2" mat-stroked-button color="warn" class="round-corners button" (click)=bksvc.canceltimeoff(item.Id)><span class="material-icons">
 close
 </span>Cancel</button>
 <mat-card-content ngClass="{{item.StatusStr}}">{{item.StatusStr}}</mat-card-content>
@@ -60,7 +60,7 @@ close
   <mat-select [(ngModel)]="category" (ngModelChange)="change()">
     <ng-container *ngIf="bksvc.Categories!=null">
     <mat-option *ngFor="let item of bksvc.Categories.Categories" [value]="item.Id">
-      {{item.Display}} <span class="mat-grey-color">Left:</span> {{item.Left}}
+      {{item.Display}} <span style="float:right"><span class="mat-grey-color">Left:</span> {{item.Left}}</span>
     </mat-option>
     </ng-container>
   </mat-select>
@@ -113,7 +113,7 @@ close
 </ng-container>  
   </mat-card-content>
   
-<button  color="primary" mat-fab class="float"><mat-icon>save</mat-icon></button>
+<button  *ngIf="AvailableWorkDays!=undefined" (click)=bksvc.sendrequest(this) color="primary" mat-fab class="float"><mat-icon>save</mat-icon></button>
 
 </ng-container>
 </mat-card>
