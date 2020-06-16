@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild , forwardRef } from '@angular/core';
 import {BackendService} from '../backend.service'
 import {DomSanitizer} from "@angular/platform-browser";
+
+
 
 @Component({
   selector: 'app-usigned',
@@ -53,3 +55,5 @@ chips(a) {
 this.filter= this.filter ^ a;  
 }
 }
+
+

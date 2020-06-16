@@ -59,7 +59,24 @@
 </div>
 <ng-container *ngFor="let item of Image; let i = index" > 
 <div *ngIf="item!=null" id="slide{{i}}" class="slide snap">
-<div class="mat-elevation-z2 imageframe"> <img class="img"  [src]="item" /></div>
+<div class="mat-elevation-z7 imageframe round-corners"> <img class="img round-corners"  [src]="item" />
+
+<div class="sigbody">
+  <button class="center round-corners" mat-flat-button color="primary">Sign</button>
+  <button class="center round-corners" mat-stroked-button >Cancel</button>
+<ng-signature-pad
+ responsive
+   showDoneButton
+  showClearButton
+ backgroundColor="#fff"
+ penColor="#005e82"
+  format="base64">
+
+</ng-signature-pad>
+</div>
+
+
+</div><br>
 </div>
 </ng-container>
 </div>

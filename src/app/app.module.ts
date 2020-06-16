@@ -29,11 +29,12 @@ import { FooterComponent } from './footer/footer.component';
 import { ChooseemployeeComponent } from './chooseemployee/chooseemployee.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { PunchanalysisComponent } from './punchanalysis/punchanalysis.component';
+import { SignaturePadModule } from '@ng-plus/signature-pad';
 
 
 @NgModule({
 
-    imports:      [WebcamModule,AllMaterialModule, AppRouterModule, HttpClientModule ,BrowserAnimationsModule, BrowserModule, FormsModule,StorageServiceModule,NgxChartsModule],
+    imports:      [SignaturePadModule ,WebcamModule,AllMaterialModule, AppRouterModule, HttpClientModule ,BrowserAnimationsModule, BrowserModule, FormsModule,StorageServiceModule,NgxChartsModule],
   declarations: [ AppComponent, CameraComponent, LoginComponent, HomescreenComponent, EmpphotoiconComponent, TimecardComponent, BenefitsComponent, ScheduleComponent, TimeoffComponent, MatSidenavComponent, PasswordresetComponent, SettingsComponent, ComplogoComponent,  ConfirmDialogComponent, USignedComponent, StatusboardComponent, PunchdialogComponent, FooterComponent,ChooseemployeeComponent, PunchanalysisComponent],
   bootstrap:    [ AppComponent ],
   providers: [BackendService],
