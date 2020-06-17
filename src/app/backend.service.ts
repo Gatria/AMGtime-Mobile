@@ -13,6 +13,7 @@ import { PunchdialogComponent } from './punchdialog/punchdialog.component';
 export class BackendService {
 AMGSettings={}
 timecard=[]
+timeoff={}
 SummeryInfo=[]
 loggedin=false
 codetoid={}
@@ -259,7 +260,7 @@ this.getLocation(f)
     
 }
 
-sendrequest(a)
+sendtimeoffrequest(a)
 {
    let comment=false;
  let message= "Send Time Off Request?"
@@ -276,9 +277,11 @@ sendrequest(a)
   if (dialogResult) { 
 
 
-  "CategoryId="+this.encript("1")+"&Comment="+this.encript("rrr")+"&StartTime="+ tdatetime()+"&JsonData="+this.encript('{Date:02/02/2020,HoursAmount:8,Hour:8,Days:1}')+"&ForceAdd="+this.encript(true)+"&FullDay="+this.encript(true)
 
-this.sendcommand((f)=>{},"AddTimeOffRequests4(","id="+this.encript('' +a))
+let fd=this.timeoff.dtype==1
+  let nn="CategoryId="+this.encript(""+this.timeoff.category)+"&Comment="+this.encript(this.timeoff.comment)+"&StartTime="+ this.encript(this.timeoff.date+" "+this.timeoff.time)+"&JsonData="+this.encript(JSON.stringify(this.timeoff.AvailableWorkDays.Schedules))+"&ForceAdd="+this.encript("false")+"&FullDay="+this.encript(fd.toString())
+
+this.sendcommand((f)=>{},"AddTimeOffRequests4",nn)
 
 
    }

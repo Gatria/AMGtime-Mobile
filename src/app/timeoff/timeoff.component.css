@@ -63,14 +63,14 @@ mat-chip {width: 20%;
     width: calc(100% - 107px - 5vw);
 }
      }
-     .Approved {color:green}
-     .Pending {color:darkorange}
+     .Approved {color:#049275}
+     .Pending {color:#888}
      .Denied {color:darkred}
 
 .limited {    margin: 6px 0 6px 6px;
     max-width: 98%;
     position: relative!important;}
-.limited:last-of-type {display:none}
+.limited:last-of-type {border-color:#0f7da2}
 
 .st {text-align:center;font-size: 17px;
     margin: 17px 0px;}

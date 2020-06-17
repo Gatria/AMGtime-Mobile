@@ -57,7 +57,7 @@ close
   <mat-card class="mat-elevation-z8 stb"> 
   <mat-form-field class="block" appearance="outline">
   <mat-label>Choose Category</mat-label>
-  <mat-select [(ngModel)]="category" (ngModelChange)="change()">
+  <mat-select [(ngModel)]="bksvc.timeoff.category" (ngModelChange)="change()">
     <ng-container *ngIf="bksvc.Categories!=null">
     <mat-option *ngFor="let item of bksvc.Categories.Categories" [value]="item.Id">
       {{item.Display}} <span style="float:right"><span class="mat-grey-color">Left:</span> {{item.Left}}</span>
@@ -66,32 +66,32 @@ close
   </mat-select>
 </mat-form-field>
  
-<mat-radio-group [(ngModel)]="dtype" aria-label="Select an option" class="block mat-form-field-wrapper">
+<mat-radio-group [(ngModel)]="bksvc.timeoff.dtype" aria-label="Select an option" class="block mat-form-field-wrapper">
   <mat-radio-button value="1" class="t3">Full Day</mat-radio-button>
   <mat-radio-button value="2" class="t3">Partial Day</mat-radio-button>
 </mat-radio-group>
 
 <mat-form-field appearance="outline" class="t1">
    <mat-label>Star Days</mat-label>
-  <input (ngModelChange)="change()" required touchUi=true matInput [(ngModel)]="date" [matDatepicker]="myDatepicker">
+  <input (ngModelChange)="change()" required touchUi=true matInput [(ngModel)]="bksvc.timeoff.date" [matDatepicker]="myDatepicker">
   <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
   <mat-datepicker #myDatepicker></mat-datepicker>
 </mat-form-field>
 
  <mat-form-field appearance="outline" class="t2">
     <mat-label>Number of work days</mat-label>
-    <input (ngModelChange)="change()" required matInput min=1 type=number [(ngModel)]="days" >
+    <input (ngModelChange)="change()" required matInput min=1 type=number [(ngModel)]="bksvc.timeoff.days" >
   </mat-form-field>
 
- <ng-container *ngIf="dtype==2">
+ <ng-container *ngIf="bksvc.timeoff.dtype==2">
    <mat-form-field appearance="outline" class="t1">
     <mat-label>Start Times</mat-label>
-    <input (ngModelChange)="change()" required matInput type=time [(ngModel)]="time">
+    <input (ngModelChange)="change()" required matInput type=time [(ngModel)]="bksvc.timeoff.time">
   </mat-form-field>
 
    <mat-form-field appearance="outline" class="t2">
     <mat-label>Number of hours</mat-label>
-    <input (ngModelChange)="change()" required matInput type=number min=1 max=24 [(ngModel)]="hours">
+    <input (ngModelChange)="change()" required matInput type=number min=1 max=24 [(ngModel)]="bksvc.timeoff.hours">
   </mat-form-field>
    </ng-container>
    <mat-form-field appearance="outline" class="block">
@@ -99,21 +99,23 @@ close
     <textarea matInput  cdkTextareaAutosize
             #autosize="cdkTextareaAutosize"
             cdkAutosizeMinRows="1"
+            [(ngModel)]="bksvc.timeoff.comment"
             cdkAutosizeMaxRows="5"></textarea>
     
   </mat-form-field>
 
 
-<ng-container *ngIf="AvailableWorkDays!=undefined">
+<ng-container *ngIf="bksvc.timeoff.AvailableWorkDays!=undefined">
   <mat-card-subtitle class="st mat-primary-color">Preview of Requested Dates and Hours</mat-card-subtitle>
  <mat-card-content id="div">
-  <ng-container *ngFor="let item of AvailableWorkDays.Schedules">
+  <ng-container *ngFor="let item of bksvc.timeoff.AvailableWorkDays.Schedules">
   <span class="t3"> {{item.Date}}</span><span class="t3">{{item.DurationStr}}</span>
      <mat-divider class="limited"></mat-divider>
-</ng-container>  
+</ng-container> 
+   <span class="t3 mat-primary-color">Total:</span><span class="t3 mat-primary-color">{{bksvc.timeoff.AvailableWorkDays.Total}}</span>
   </mat-card-content>
   
-<button  *ngIf="AvailableWorkDays!=undefined" (click)=bksvc.sendrequest(this) color="primary" mat-fab class="float"><mat-icon>save</mat-icon></button>
+<button  *ngIf="bksvc.timeoff.AvailableWorkDays!=undefined" (click)=bksvc.sendtimeoffrequest(this) color="primary" mat-fab class="float"><mat-icon>floppy</mat-icon></button>
 
 </ng-container>
 </mat-card>
