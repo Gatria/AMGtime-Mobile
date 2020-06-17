@@ -17,7 +17,7 @@ first=true;
   constructor(private bksvc:BackendService,private domSanitizer: DomSanitizer) { }
   ngOnInit() {
     
-this.bksvc.sendcommand((f)=>{this.Document=f;},"*GetDocuments")  
+this.bksvc.sendcommand((f)=>{this.Document1=f;},"*GetDocuments")  
   }
 
 scrollto(a)

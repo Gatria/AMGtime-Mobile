@@ -11,6 +11,11 @@
     <h1 class="example-app-name">Benefits</h1>
   </mat-toolbar>
 
+<mat-progress-spinner style="margin: 30vh auto" *ngIf="benefits==undefined" mode="indeterminate"></mat-progress-spinner>
+
+<div *ngIf="benefits==null" class="norecord">No Benefit Found</div>
+
+
 <ng-container *ngFor="let item of benefits; let i = index" >
 <mat-card class="stb mat-elevation-z4">
 <mat-card-subtitle [ngStyle]="bksvc.stringToHslColor(item.Name.substring(0,2),true)">{{item.Name}} </mat-card-subtitle>
@@ -19,7 +24,6 @@
 <mat-card-content class="t3">Left: {{item.Left}}</mat-card-content>
 </mat-card>
 </ng-container>
-
 
   
 <app-footer></app-footer>

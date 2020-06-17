@@ -24,18 +24,20 @@
     <mat-chip [selected]="filter % 8 >= 4"  (click)="chips(4)">Denied</mat-chip>
 </mat-chip-list>
 
- <mat-progress-spinner style="margin: auto;margin-top: 30vh" *ngIf="bksvc.timeofrequests==null" mode="indeterminate"></mat-progress-spinner>
+ <mat-progress-spinner style="margin: 30vh auto" *ngIf="bksvc.timeofrequests==undefined" mode="indeterminate"></mat-progress-spinner>
 
-<div class="norecord">No Request Found</div>
- <div class="list"> 
+<div *ngIf="bksvc.timeofrequests==null" class="norecord">No Request Found</div>
+
 <ng-container *ngFor="let item of bksvc.timeofrequests; let i = index" >
 <mat-card *ngIf="(filter % 4 >= 2 && item.Status==0) || (filter % 2 >= 1 && item.Status==1) || (filter % 8 >= 4 && item.Status==2) " class="stb mat-elevation-z4">
-<mat-card-subtitle class=date>{{item.Date}}
+<mat-card-subtitle class=date>
+   <mat-progress-spinner style="margin:-5px 2px -25px" *ngIf="bksvc.cancel[i]==1" mode="indeterminate"></mat-progress-spinner>
+ <span *ngIf="bksvc.cancel[i]==undefined"> {{item.Date}}</span>
  
    </mat-card-subtitle>
 
 <mat-card-title class=title>{{item.Category}} 
- <button *ngIf="item.Status!=2" mat-stroked-button color="warn" class="round-corners button" (click)=bksvc.canceltimeoff(item.Id)><span class="material-icons">
+ <button *ngIf="item.Status!=2" mat-stroked-button color="warn" class="round-corners button" (click)="bksvc.canceltimeoff(item.Id,i)"><span class="material-icons">
 close
 </span>Cancel</button>
 <mat-card-content ngClass="{{item.StatusStr}}">{{item.StatusStr}}</mat-card-content>
@@ -50,7 +52,7 @@ close
 
 </mat-card>
 </ng-container>
-</div>
+
 <button *ngIf="first" (click)="scrollto(1)" color="primary" mat-fab class="float"><mat-icon>plus</mat-icon></button>
 </div>
 <div id="slide1" class="slide snap">
@@ -106,13 +108,13 @@ close
 
 
 <ng-container *ngIf="bksvc.timeoff.AvailableWorkDays!=undefined">
-  <mat-card-subtitle class="st mat-primary-color">Preview of Requested Dates and Hours</mat-card-subtitle>
+  <mat-card-subtitle class="st mat-primary-color"><h4>Preview of Requested Dates and Hours</h4></mat-card-subtitle>
  <mat-card-content id="div">
   <ng-container *ngFor="let item of bksvc.timeoff.AvailableWorkDays.Schedules">
   <span class="t3"> {{item.Date}}</span><span class="t3">{{item.DurationStr}}</span>
      <mat-divider class="limited"></mat-divider>
 </ng-container> 
-   <span class="t3 mat-primary-color">Total:</span><span class="t3 mat-primary-color">{{bksvc.timeoff.AvailableWorkDays.Total}}</span>
+   <h3 class="t3 mat-primary-color">Total Hours:</h3><h3 class="t3 mat-primary-color">{{bksvc.timeoff.AvailableWorkDays.Total}}</h3>
   </mat-card-content>
   
 <button  *ngIf="bksvc.timeoff.AvailableWorkDays!=undefined" (click)=bksvc.sendtimeoffrequest(this) color="primary" mat-fab class="float"><mat-icon>floppy</mat-icon></button>

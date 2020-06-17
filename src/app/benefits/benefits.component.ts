@@ -8,7 +8,7 @@ import {BackendService} from '../backend.service'
 
 export class BenefitsComponent implements OnInit {
   displayedColumns: string[] = ['Code', 'Name', 'Pending', 'Taken','Left']; 
-  benefits=[];
+
   
   constructor(private bksvc:BackendService) { }
 

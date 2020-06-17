@@ -15,6 +15,7 @@ AMGSettings={}
 timecard=[]
 timeoff={}
 SummeryInfo=[]
+cancel=[]
 loggedin=false
 codetoid={}
 empimage={}
@@ -279,9 +280,9 @@ sendtimeoffrequest(a)
 
 
 let fd=this.timeoff.dtype==1
-  let nn="CategoryId="+this.encript(""+this.timeoff.category)+"&Comment="+this.encript(this.timeoff.comment)+"&StartTime="+ this.encript(this.timeoff.date+" "+this.timeoff.time)+"&JsonData="+this.encript(JSON.stringify(this.timeoff.AvailableWorkDays.Schedules))+"&ForceAdd="+this.encript("false")+"&FullDay="+this.encript(fd.toString())
+  let nn="CategoryId="+this.encript(""+this.timeoff.category)+"&Comment="+this.encript(this.timeoff.comment)+"&StartTime="+ this.encript(this.timeoff.date+" "+this.timeoff.time)+"&JsonData="+this.encript(JSON.stringify(this.timeoff.AvailableWorkDays.Schedules))+"&ForceAdd="+this.encript('false')+"&FullDay="+this.encript(fd.toString())
 
-this.sendcommand((f)=>{},"AddTimeOffRequests4",nn)
+this.sendcommand((f)=>{a.scrollto(0)},"AddTimeOffRequests4",nn)
 
 
    }
@@ -289,7 +290,7 @@ this.sendcommand((f)=>{},"AddTimeOffRequests4",nn)
 
 }
 
-canceltimeoff(a)
+canceltimeoff(a,i)
 {
 
  let comment=false;
@@ -305,8 +306,10 @@ canceltimeoff(a)
 
  dialogRef.afterClosed().subscribe(dialogResult => {
   if (dialogResult) { 
+  this.cancel[i]=1;  
 this.sendcommand((f)=>{
-this.sendcommand((f)=>{ this.timeofrequests=f},"GetTimeOffs","date="+ this.datetime(),{ withCredentials: true});
+this.sendcommand((f)=>{ delete(this.cancel[i]);
+this.timeofrequests=f},"GetTimeOffs","date="+ this.datetime(),{ withCredentials: true});
 
 },"DeleteTimeOff","id="+this.encript('' +a))
 

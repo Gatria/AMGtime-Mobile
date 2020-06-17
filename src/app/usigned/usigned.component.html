@@ -32,7 +32,7 @@
         <mat-chip [selected]="filter % 64 >= 32"  (click)="chips(32)">Others</mat-chip>
 </mat-chip-list>
 
-<mat-progress-spinner style="margin: auto;margin-top: 30vh" *ngIf="Document==null" mode="indeterminate"></mat-progress-spinner>
+<mat-progress-spinner style="margin: 30vh auto" *ngIf="Document==null" mode="indeterminate"></mat-progress-spinner>
 
 <div class="norecord">No Documents Found</div>
 <div class="list">
