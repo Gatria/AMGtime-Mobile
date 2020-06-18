@@ -41,8 +41,7 @@ defurl:string='https://3735.us/MobileService/';
   return encodeURIComponent(encrypted.toString());
  }
 
-private buildnavigation()
-{
+private buildnavigation() {
 this.SideNavigation=[]
 this.SideNavigation.push({icon:"home", text:"Home", action:"/home",footer:"true"});
 if (this.AMGSettings.IsEmployee) {
@@ -91,9 +90,6 @@ private showerror (error) {
 }
 
 
-
-
-
 public datetime(a=""):string {
   if (a=="") let m=new Date(); else let m=new Date(a);
   console.log(m.getUTCFullYear() + "-" +
@@ -110,9 +106,13 @@ public datetime(a=""):string {
   ("0" + m.getUTCSeconds()).slice(-2))
 }
 
-public sendcommand(f:function,command:string, postdata="", httpOptions={withCredentials: true}):Observable<boolean>
+public sendcommand(f,command:string, postdata="", httpOptions={withCredentials: true}):Observable<boolean>
 {
 let hash=command+postdata;  
+if (Array.isArray(f)) {
+  var exit=f[1];
+  f=f[0]}
+
 
 if (hash.search("&time=")>0) hash=hash.substring(1,hash.search("&time="));
 
@@ -129,10 +129,12 @@ m.subscribe(
         this.lastcall="";
         if (res instanceof Blob) f(res); 
         else 
-        if (res[0]) { f(res[1]);  } else this.showerror(res[1])},
+        if (res[0]) { f(res[1]);  } else { this.showerror(res[1])
+        if (typeof exit === "function") exit();
+        }},
       error => {
         this.lastcall="";
-
+if (typeof exit === "function") exit();
         this.showerror( error)}
       )
 
@@ -280,9 +282,7 @@ sendtimeoffrequest(a)
 
 
 let fd=this.timeoff.dtype==1
-  let nn="CategoryId="+this.encript(""+this.timeoff.category)+"&Comment="+this.encript(this.timeoff.comment)+"&StartTime="+ this.encript(this.timeoff.date+" "+this.timeoff.time)+"&JsonData="+this.encript(JSON.stringify(this.timeoff.AvailableWorkDays.Schedules))+"&ForceAdd="+this.encript('false')+"&FullDay="+this.encript(fd.toString())
-
-this.sendcommand((f)=>{a.scrollto(0)},"AddTimeOffRequests4",nn)
+this.sendcommand((f)=>{a.scrollto(0)},"AddTimeOffRequests4","CategoryId="+this.encript(""+this.timeoff.category)+"&forceAdd="+this.encript('false')+"&FullDay="+this.encript(fd.toString())+"&Comment="+this.encript(this.timeoff.comment)+"&StartTime="+ this.encript(this.timeoff.date+" "+this.timeoff.time)+"&JsonData="+this.encript(JSON.stringify(this.timeoff.AvailableWorkDays.Schedules)))
 
 
    }
@@ -290,7 +290,7 @@ this.sendcommand((f)=>{a.scrollto(0)},"AddTimeOffRequests4",nn)
 
 }
 
-canceltimeoff(a,i)
+canceltimeoff(a)
 {
 
  let comment=false;
@@ -306,12 +306,15 @@ canceltimeoff(a,i)
 
  dialogRef.afterClosed().subscribe(dialogResult => {
   if (dialogResult) { 
-  this.cancel[i]=1;  
-this.sendcommand((f)=>{
-this.sendcommand((f)=>{ delete(this.cancel[i]);
+  this.cancel[a]=1;  
+this.sendcommand(
+ [ (f)=>{
+this.sendcommand((f)=>{ delete(this.cancel[a]);
 this.timeofrequests=f},"GetTimeOffs","date="+ this.datetime(),{ withCredentials: true});
 
-},"DeleteTimeOff","id="+this.encript('' +a))
+},(f)=>{delete(this.cancel[a])}]
+
+,"DeleteTimeOff","id="+this.encript('' +a))
 
 
    }

@@ -51,11 +51,11 @@ reset_time_off_form ()
      this.bksvc.timeoff.hours="1"
      this.bksvc.timeoff.dtype="1"
      this.bksvc.timeoff.comment=""
-     this.bksvc.timeoff.category=""
+     this.bksvc.timeoff.category=null
  } 
 change() {
 
-if (this.bksvc.timeoff.days!=null && this.bksvc.timeoff.date!=null && (this.bksvc.timeoff.dtype==1 || (this.bksvc.timeoff.time!=null && this.bksvc.timeoff.hours!=null)) )  
+if (this.bksvc.timeoff.category!=null && this.bksvc.timeoff.days!=null && this.bksvc.timeoff.date!=null && (this.bksvc.timeoff.dtype==1 || (this.bksvc.timeoff.time!=null && this.bksvc.timeoff.hours!=null)) )  
 this.bksvc.sendcommand((f)=>{ this.bksvc.timeoff.AvailableWorkDays=f},"GetEmployeeAvailableWorkDays","start="+ this.bksvc.datetime(this.bksvc.timeoff.date)+"&days="+this.bksvc.encript(""+this.bksvc.timeoff.days)+"&hours="+this.bksvc.encript(""+this.bksvc.timeoff.hours),{ withCredentials: true});
 else delete(this.bksvc.timeoff.AvailableWorkDays)
 }

@@ -31,13 +31,13 @@
 <ng-container *ngFor="let item of bksvc.timeofrequests; let i = index" >
 <mat-card *ngIf="(filter % 4 >= 2 && item.Status==0) || (filter % 2 >= 1 && item.Status==1) || (filter % 8 >= 4 && item.Status==2) " class="stb mat-elevation-z4">
 <mat-card-subtitle class=date>
-   <mat-progress-spinner style="margin:-5px 2px -25px" *ngIf="bksvc.cancel[i]==1" mode="indeterminate"></mat-progress-spinner>
- <span *ngIf="bksvc.cancel[i]==undefined"> {{item.Date}}</span>
+   <mat-progress-spinner style="margin:-5px 2px -25px" *ngIf="bksvc.cancel[item.Id]==1" mode="indeterminate"></mat-progress-spinner>
+ <span *ngIf="bksvc.cancel[item.Id]==undefined"> {{item.Date}}</span>
  
    </mat-card-subtitle>
 
 <mat-card-title class=title>{{item.Category}} 
- <button *ngIf="item.Status!=2" mat-stroked-button color="warn" class="round-corners button" (click)="bksvc.canceltimeoff(item.Id,i)"><span class="material-icons">
+ <button *ngIf="item.Status!=2" mat-stroked-button color="warn" class="round-corners button" (click)="bksvc.canceltimeoff(item.Id)"><span class="material-icons">
 close
 </span>Cancel</button>
 <mat-card-content ngClass="{{item.StatusStr}}">{{item.StatusStr}}</mat-card-content>
