@@ -10,9 +10,23 @@
     <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
     <h1 class="example-app-name">Schedule</h1>
   </mat-toolbar>
- 
-  
+ <mat-card class="stb">
+  <ng-container *ngFor="let item of bksvc.AdvancedScheduling.Coworkers; let i = index">
 
+   <app-empphotoicon EmpID="{{item.EmployeeId}}" name="{{item.Name}} {{item.LastName}}"></app-empphotoicon>
+  <mat-card-subtitle class="name">  
+   
+  <h3 class="mat-primary-color">{{item.Name}} {{item.LastName}}</h3>
+  <span class="t3" *ngIf='item.DepName>""'>Department: {{item.DepName}} </span>
+ 
+   <span class="t3" *ngIf='item.DivisionName>""'>Division: {{item.DivisionName}} </span>
+   <span class="t3" *ngIf='item.JobName>""'>Job: {{item.JobName}} </span>
+   <span class="t3" *ngIf='item.Shift>""'>Shift: {{item.Shift}} </span> 
+
+  </mat-card-subtitle>
+  <mat-divider class="limited"></mat-divider>
+</ng-container>
+</mat-card>
 <app-footer></app-footer>
  
     </mat-sidenav-content>

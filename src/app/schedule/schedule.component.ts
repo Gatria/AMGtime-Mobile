@@ -11,6 +11,7 @@ export class ScheduleComponent implements OnInit {
   constructor(private bksvc:BackendService) { }
 
   ngOnInit() {
+  this.bksvc.sendcommand((f)=>{this.bksvc.AdvancedScheduling=f;},"GetAdvancedScheduling","date="+this.bksvc.datetime()+"&viewMode="+this.bksvc.encript("0"))    
   }
 
 }

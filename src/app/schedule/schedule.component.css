@@ -1,0 +1,18 @@
+.limited {    margin: 6px 0 6px 1%;
+    max-width: 98%;
+    position: relative!important;}
+mat-divider:last-of-type {display:none}
+.t3 {width:30%;display:inline-block}
+.name {
+    display: inline-block;
+        line-height: 160%;
+    margin-bottom: 0px!important;
+    max-width: calc(100% - 66px);
+    vertical-align: middle;}
+    .click {display: block;
+    margin: -7px -16px;
+    padding: 7px 16px;}
+    .click:hover {background-color:#eee}
+    .icon {padding: 0px 6px 0px 0px;
+    font-size: 31px;
+}
