@@ -49,7 +49,13 @@ this.scrollto(1);
 
 }
 sign() {
-
+       let dialogRef = this.dialog.open(EmployeeuserselectorComponent, {
+            height: '80vh',
+            width: '80vw',
+          });
+          dialogRef.afterClosed().subscribe(result => {
+            
+            });
 }
 
 cancel() {
@@ -63,3 +69,20 @@ this.filter= this.filter ^ a;
 }
 
 
+
+
+
+
+
+@Component({
+
+  template: ' <button class="center round-corners" mat-flat-button [mat-dialog-close]="1" color="primary">Employee</button> <button class="center round-corners" mat-flat-button [mat-dialog-close]="2" color="primary">User</button>'
+
+})
+export class EmployeeuserselectorComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+}
