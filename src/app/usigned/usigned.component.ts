@@ -14,7 +14,7 @@ Document=[];
 filter=63;
 first=true;
 
-  constructor(private bksvc:BackendService,private domSanitizer: DomSanitizer) { }
+  constructor(private bksvc:BackendService,private domSanitizer: DomSanitizer,public dialog: MatDialog) { }
   ngOnInit() {
     
 this.bksvc.sendcommand((f)=>{this.Document=f;},"*GetDocuments")  
@@ -33,7 +33,8 @@ getdocument(a) {
 this.Image=[];
   this.bksvc.sendcommand(
     (f)=>{
-
+this.bksvc.currentDocument=f;
+this.bksvc.currentDocument.Sign=this.domSanitizer.bypassSecurityTrustUrl("data:image/png;base64, "+f.Sign)
  f.Pages.forEach ((d,i)=> {    
  
   this.bksvc.sendcommand((f)=>{this.Image[i]=this.domSanitizer.bypassSecurityTrustUrl("data:image/png;base64, "+f.image);
@@ -49,9 +50,9 @@ this.scrollto(1);
 
 }
 sign() {
-       let dialogRef = this.dialog.open(EmployeeuserselectorComponent, {
-            height: '80vh',
-            width: '80vw',
+       let dialogRef = this.dialog.open(SignitureComponent, {
+            height: '210px',
+            width: '90vw',
           });
           dialogRef.afterClosed().subscribe(result => {
             
@@ -75,13 +76,13 @@ this.filter= this.filter ^ a;
 
 
 @Component({
-
-  template: ' <button class="center round-corners" mat-flat-button [mat-dialog-close]="1" color="primary">Employee</button> <button class="center round-corners" mat-flat-button [mat-dialog-close]="2" color="primary">User</button>'
+  styleUrls: ['./usigned.component.css'],
+  template: '<img [src]="this.bksvc.currentDocument.Sign"><ng-signature-pad responsive showDoneButton showClearButton backgroundColor="#fff" penColor="#005e82" format="base64"></ng-signature-pad><div class="sigpad"><button class="round-corners" mat-flat-button color="primary">OK</button><button class="round-corners" mat-stroked-button >Cancel</button></div>'
 
 })
-export class EmployeeuserselectorComponent implements OnInit {
+export class SignitureComponent implements OnInit {
 
-  constructor() { }
+  constructor(private bksvc:BackendService) { }
 
   ngOnInit() {
   }

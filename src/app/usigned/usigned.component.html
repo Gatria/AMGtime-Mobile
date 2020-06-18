@@ -61,18 +61,17 @@
 <div *ngIf="item!=null" id="slide{{i}}" class="slide snap">
 <div class="mat-elevation-z7 imageframe round-corners"> <img class="img round-corners"  [src]="item" />
 
-<div class="sigbody">
-  <button (click)=sign() class="center round-corners" mat-flat-button color="primary">Sign</button>
-  <button (click)=cancel() class="center round-corners" mat-stroked-button >Cancel</button>
-<ng-signature-pad
- responsive
-   showDoneButton
-  showClearButton
- backgroundColor="#fff"
- penColor="#005e82"
-  format="base64">
+<div *ngIf="this.bksvc.currentDocument.CanSign" class="sigbody">
+  <button  (click)=sign() class="center round-corners" mat-flat-button color="primary">
+    <mat-icon>quill</mat-icon>
+    Sign</button>
+  <button (click)=cancel() class="center round-corners" mat-flat-button  color="warn">
+    <mat-icon>close</mat-icon>
+    Decline</button>
+   <button (click)=cancel() class="center round-corners" mat-stroked-button  color="warn">
+    <mat-icon>trash</mat-icon>
+    Cancel</button>  
 
-</ng-signature-pad>
 </div>
 
 

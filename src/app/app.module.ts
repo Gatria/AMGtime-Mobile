@@ -21,7 +21,7 @@ import { PasswordresetComponent } from './passwordreset/passwordreset.component'
 import { SettingsComponent } from './settings/settings.component';
 import { ComplogoComponent } from './complogo/complogo.component';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
-import { USignedComponent } from './usigned/usigned.component';
+import { USignedComponent,SignitureComponent } from './usigned/usigned.component';
 import { StatusboardComponent } from './statusboard/statusboard.component';
 import { StorageServiceModule } from 'ngx-webstorage-service';
 import { PunchdialogComponent } from './punchdialog/punchdialog.component';
@@ -35,10 +35,10 @@ import { SignaturePadModule } from '@ng-plus/signature-pad';
 @NgModule({
 
     imports:      [SignaturePadModule ,WebcamModule,AllMaterialModule, AppRouterModule, HttpClientModule ,BrowserAnimationsModule, BrowserModule, FormsModule,StorageServiceModule,NgxChartsModule],
-  declarations: [ AppComponent, CameraComponent, LoginComponent, HomescreenComponent, EmpphotoiconComponent, TimecardComponent, BenefitsComponent, ScheduleComponent, TimeoffComponent, MatSidenavComponent, PasswordresetComponent, SettingsComponent, ComplogoComponent,  ConfirmDialogComponent, USignedComponent, StatusboardComponent, PunchdialogComponent, FooterComponent,ChooseemployeeComponent, PunchanalysisComponent],
+  declarations: [ AppComponent, CameraComponent, LoginComponent, HomescreenComponent, EmpphotoiconComponent, TimecardComponent, BenefitsComponent, ScheduleComponent, TimeoffComponent, MatSidenavComponent, PasswordresetComponent, SettingsComponent, ComplogoComponent,  ConfirmDialogComponent, USignedComponent,SignitureComponent, StatusboardComponent, PunchdialogComponent, FooterComponent,ChooseemployeeComponent, PunchanalysisComponent],
   bootstrap:    [ AppComponent ],
   providers: [BackendService],
-                entryComponents: [ConfirmDialogComponent,PunchdialogComponent]
+                entryComponents: [SignitureComponent,ConfirmDialogComponent,PunchdialogComponent]
 
                
 })
