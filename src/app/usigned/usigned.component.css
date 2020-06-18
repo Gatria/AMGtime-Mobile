@@ -22,6 +22,8 @@ mat-chip {width: 14%;
     background-color:white;
     }
 .sigbody button {width:130px;margin:10px}
+.sigimg, .signature-pad {width:100%;height:auto;border:1px solid #888}
+
 
         @media screen and (orientation:landscape) {
        mat-chip {width: 15%;
@@ -29,8 +31,8 @@ mat-chip {width: 14%;
     }
      }
 
-     .Canceled{color:darkorange}
+     .Canceled{color:#888}
      .Declined{color:darkred}
-     .Signed{color:green}
+     .Signed{color:#049275}
 
         

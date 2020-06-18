@@ -7,7 +7,7 @@ mat-divider:last-of-type {display:none}
     display: inline-block;
         line-height: 160%;
     margin-bottom: 0px!important;
-    max-width: calc(100% - 66px);
+    width: calc(100% - 66px);
     vertical-align: middle;}
     .click {display: block;
     margin: -7px -16px;
