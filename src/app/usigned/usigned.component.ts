@@ -1,7 +1,7 @@
 import { Component, OnInit,ViewChild , forwardRef } from '@angular/core';
 import {BackendService} from '../backend.service'
 import {DomSanitizer} from "@angular/platform-browser";
-
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 
 @Component({
@@ -48,7 +48,13 @@ this.scrollto(1);
     },"*GetDocument","docId="+a)
 
 }
+sign() {
 
+}
+
+cancel() {
+  
+}
 
 chips(a) {
   this.Image=[];

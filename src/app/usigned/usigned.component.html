@@ -13,7 +13,7 @@
 
   <mat-toolbar color="primary" class="example-toolbar">
     <button *ngIf="first" mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
-    <button *ngIf="!first" (click)=scrollto(0) mat-icon-button><mat-icon>arrowleft</mat-icon></button>
+    <button *ngIf="!first" (click)=scrollto(0) mat-icon-button><mat-icon>arrow_back_ios</mat-icon></button>
     <h1 class="example-app-name">Usigned</h1>
   </mat-toolbar>
  
@@ -62,8 +62,8 @@
 <div class="mat-elevation-z7 imageframe round-corners"> <img class="img round-corners"  [src]="item" />
 
 <div class="sigbody">
-  <button class="center round-corners" mat-flat-button color="primary">Sign</button>
-  <button class="center round-corners" mat-stroked-button >Cancel</button>
+  <button (click)=sign() class="center round-corners" mat-flat-button color="primary">Sign</button>
+  <button (click)=cancel() class="center round-corners" mat-stroked-button >Cancel</button>
 <ng-signature-pad
  responsive
    showDoneButton
