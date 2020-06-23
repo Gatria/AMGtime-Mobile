@@ -282,7 +282,14 @@ sendtimeoffrequest(a)
 
 
 let fd=this.timeoff.dtype==1
-this.sendcommand((f)=>{a.scrollto(0)},"AddTimeOffRequests4","CategoryId="+this.encript(""+this.timeoff.category)+"&forceAdd="+this.encript('false')+"&FullDay="+this.encript(fd.toString())+"&Comment="+this.encript(this.timeoff.comment)+"&StartTime="+ this.encript(this.timeoff.date+" "+this.timeoff.time)+"&JsonData="+this.encript(JSON.stringify(this.timeoff.AvailableWorkDays.Schedules)))
+const m=new Date(this.timeoff.date)
+const s=("0" + (m.getUTCMonth()+1)).slice(-2)+"/"+ ("0" + m.getUTCDate()).slice(-2) +"/"+m.getUTCFullYear();
+
+if (fd) s=s+" 00:00:00"; else s=s+" "this.timeoff.time; 
+
+console.log(s );
+
+this.sendcommand((f)=>{a.scrollto(0)},"AddTimeOffRequests4","CategoryId="+this.encript(""+this.timeoff.category)+"&forceAdd="+this.encript('false')+"&FullDay="+this.encript(fd.toString())+"&Comment="+this.encript(this.timeoff.comment)+"&StartTime="+s+"&JsonData="+this.encript(JSON.stringify(this.timeoff.AvailableWorkDays.Schedules)))
 
 
    }

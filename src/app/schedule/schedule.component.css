@@ -2,7 +2,7 @@
     max-width: 98%;
     position: relative!important;}
 mat-divider:last-of-type {display:none}
-.t3 {width:30%;display:inline-block}
+.t3 {width:50%;display:inline-block}
 .name {
     display: inline-block;
         line-height: 160%;
