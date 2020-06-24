@@ -2,7 +2,7 @@ import { Component, OnInit,ViewChild , forwardRef } from '@angular/core';
 import {BackendService} from '../backend.service'
 import {DomSanitizer} from "@angular/platform-browser";
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-
+import { ConfirmDialogComponent,ConfirmDialogModel } from '../confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-usigned',
@@ -60,6 +60,26 @@ sign() {
 }
 
 cancel() {
+      const dialogData = 
+    new ConfirmDialogModel("Confirm Action","Are you sure you want to cancel document ?",true);
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      maxWidth: "400px",
+      data: dialogData
+    });
+
+
+ dialogRef.afterClosed().subscribe(dialogResult => {
+  if (dialogResult) { 
+  this.cancel[a]=1;  
+this.sendcommand((f)=>{ a.scrollto(0);},"AddTimeOffRequests4","CategoryId="+this.encript(""+this.timeoff.category)+"&forceAdd="+this.encript('true')+"&FullDay="+this.encript(fd.toString())+"&Comment="+this.encript(this.timeoff.comment)+"&StartTime="+this.timeoff.AvailableWorkDays.Schedules[0].DateTime+"&JsonData="+this.encript(JSON.stringify(this.timeoff.AvailableWorkDays.Schedules)))
+
+
+   }
+    }); 
+}
+
+
+decline() {
   
 }
 
