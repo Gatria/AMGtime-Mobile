@@ -33,7 +33,7 @@
 <mat-card-subtitle class=date>
    <mat-progress-spinner style="margin:-5px 2px -25px" *ngIf="bksvc.cancel[item.Id]==1" mode="indeterminate"></mat-progress-spinner>
  <span *ngIf="bksvc.cancel[item.Id]==undefined"> {{item.Date}}</span>
- 
+  <button  class="mat-primary-color" *ngIf="item.Comment" mat-icon-button (click)="showDiv = !showDiv"><mat-icon>info</mat-icon></button>
    </mat-card-subtitle>
 
 <mat-card-title class=title>{{item.Category}} 
@@ -46,8 +46,11 @@ close
 <mat-card-content *ngIf="item.HoursLeft>''" class="t3">Left: {{item.HoursLeft}}</mat-card-content>
 
 </mat-card-title>
-<mat-card-title *ngIf="item.Comment>''">{{item.Comment}} </mat-card-title>
 
+<ng-container *ngIf="item.Comment">
+
+<mat-card-title *ngIf="showDiv">{{item.Comment}} </mat-card-title>
+</ng-container>
 
 
 </mat-card>

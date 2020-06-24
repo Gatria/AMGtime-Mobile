@@ -3,12 +3,18 @@
     line-height: 2em;
    vertical-align: text-bottom;
     padding-right: 1.8vw;
-    display: inline-block;}
+    margin:0px;
+    display: inline-block;
+    }
+   .date button top: -7px;
+    display: block;
+    height: 0px;} 
 .title {
      display: inline-block;
     border-left: 3px solid #eee;
     padding-left: 1.8vw;
     width: calc(100% - 107px - 3vw);
+    vertical-align: top;
 }
 .button {float:right}
 .button .material-icons {    font-size: 17px;
