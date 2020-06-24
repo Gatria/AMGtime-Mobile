@@ -71,7 +71,7 @@ cancel() {
  dialogRef.afterClosed().subscribe(dialogResult => {
   if (dialogResult) { 
   this.cancel[a]=1;  
-this.sendcommand((f)=>{ a.scrollto(0);},"AddTimeOffRequests4","CategoryId="+this.encript(""+this.timeoff.category)+"&forceAdd="+this.encript('true')+"&FullDay="+this.encript(fd.toString())+"&Comment="+this.encript(this.timeoff.comment)+"&StartTime="+this.timeoff.AvailableWorkDays.Schedules[0].DateTime+"&JsonData="+this.encript(JSON.stringify(this.timeoff.AvailableWorkDays.Schedules)))
+this.sendcommand((f)=>{ },"*Cancel","DocId="+this.encript(""+this.timeoff.category)+"&Comment="+this.encript(this.timeoff.comment))
 
 
    }
