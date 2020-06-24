@@ -6,7 +6,7 @@
     margin:0px;
     display: inline-block;
     }
-   .date button {top: -7px;
+   .date button {bottom: 0px;
     display: block;
     height: 0px;} 
 .comment {
