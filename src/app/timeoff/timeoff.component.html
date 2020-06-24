@@ -46,7 +46,7 @@ close
 <mat-card-content *ngIf="item.HoursLeft>''" class="t3">Left: {{item.HoursLeft}}</mat-card-content>
 
 </mat-card-title>
-
+<mat-card-title *ngIf="item.Comment>''">{{item.Comment}} </mat-card-title>
 
 
 
