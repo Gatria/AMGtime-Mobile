@@ -6,9 +6,13 @@
     margin:0px;
     display: inline-block;
     }
-   .date button top: -7px;
+   .date button {top: -7px;
     display: block;
     height: 0px;} 
+.comment {
+margin: 10px 0 0 !important;
+    font-style: italic;
+}    
 .title {
      display: inline-block;
     border-left: 3px solid #eee;
