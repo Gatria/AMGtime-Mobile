@@ -129,7 +129,7 @@ this.filter= this.filter ^ a;
 
 @Component({
   styleUrls: ['./usigned.component.css'],
-  template: '<h2>Signiture Pad</h2><img *ngIf="sign==0" class="sm-round-corners sigimg" (click)="this.sign=1" [src]="this.bksvc.currentDocument.Sign"><ng-signature-pad  id="sig" (done)=getSig($event) *ngIf="sign==1" showDoneButton showClearButton backgroundColor="#fff" penColor="#005e82" format="base64"></ng-signature-pad><div class=" sigbody"><button class="round-corners" mat-flat-button (click)="onSign()" color="primary">OK</button><button class="round-corners" mat-stroked-button (click)="onDismiss()">Cancel</button></div>'
+  template: '<h2>Signiture Pad</h2><img *ngIf="sign==0" class="sm-round-corners sigimg" (click)="this.sign=1" [src]="this.bksvc.currentDocument.Sign"><ng-signature-pad  id="sig" (done)=getSig($event) *ngIf="sign==1" doneButtonClass="none" showClearButton backgroundColor="#fff" penColor="#005e82" format="base64"></ng-signature-pad><div class=" sigbody"><button class="round-corners" mat-flat-button (click)="onSign()" color="primary">OK</button><button class="round-corners" mat-stroked-button (click)="onDismiss()">Cancel</button></div>'
 
 })
 export class SignitureComponent implements OnInit {
@@ -138,12 +138,13 @@ export class SignitureComponent implements OnInit {
 
  onDismiss() {this.dialogRef.close(false)}
  getSig(e) {
-  console.log(e)
+  this.dialogRef.close(true)
  }
+
 onSign() {
 
-      document.querySelector('.btn').dispatchEvent (new Event('click'));
-  //this.dialogRef.close(true)
+      document.querySelector('.none').dispatchEvent (new Event('click'));
+  //
   }
   ngOnInit() {
     this.sign=0
