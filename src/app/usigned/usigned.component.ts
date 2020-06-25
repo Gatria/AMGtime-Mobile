@@ -35,9 +35,9 @@ this.Image=[];
     (f)=>{
 this.bksvc.currentDocument=f;
 this.bksvc.currentDocument.DocId=a;
-this.bksvc.currentDocument.RawSign=f.Sign;
 this.bksvc.currentDocument.Sign=this.domSanitizer.bypassSecurityTrustUrl("data:image/png;base64, "+f.Sign)
-console.log(this.bksvc.currentDocument.RawSign.length)
+
+
 
 
  f.Pages.forEach ((d,i)=> {    
@@ -61,11 +61,21 @@ sign() {
           });
           dialogRef.afterClosed().subscribe(dialogResult => {
   if (dialogResult)   {
+
+ console.log(typeof this.bksvc.currentDocument.Sign)
+ if (typeof this.bksvc.currentDocument.Sign=="object") 
+
+const sigimg=this.bksvc.currentDocument.Sign.changingThisBreaksApplicationSecurity.split("base64,")
+else 
+const sigimg=this.bksvc.currentDocument.Sign.split("base64,")
+
+console.log(sigimg[1])
+
     this.bksvc.sendcommand((f)=>{
   delete(this.Document);
   this.bksvc.sendcommand((f)=>{this.Document=f;},"*GetDocuments"); 
 this.scrollto(0);  
-   },"*Sign","docId="+this.bksvc.currentDocument.DocId+"&signature="+this.bksvc.currentDocument.RawSign)
+   },"*Sign","docId="+this.bksvc.currentDocument.DocId+"&signature="+encodeURIComponent(sigimg[1]))
   }       
             });
 }
@@ -138,12 +148,14 @@ export class SignitureComponent implements OnInit {
 
  onDismiss() {this.dialogRef.close(false)}
  getSig(e) {
+  this.bksvc.currentDocument.Sign=e;
   this.dialogRef.close(true)
  }
 
 onSign() {
 
-      document.querySelector('.none').dispatchEvent (new Event('click'));
+   if (this.sign==1)  document.querySelector('.none').dispatchEvent (new Event('click')); else   this.dialogRef.close(true)
+
   //
   }
   ngOnInit() {
