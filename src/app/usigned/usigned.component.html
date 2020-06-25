@@ -68,7 +68,7 @@
   <button (click)=decline() class="center round-corners" mat-flat-button  color="warn">
     <mat-icon>close</mat-icon>
     Decline</button>
-   <button (click)=cancel() class="center round-corners" mat-stroked-button  color="warn">
+   <button *ngIf="this.bksvc.currentDocument.IsOwner" (click)=cancel() class="center round-corners" mat-stroked-button  color="warn">
     <mat-icon>trash</mat-icon>
     Cancel</button>  
 

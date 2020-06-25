@@ -36,6 +36,8 @@ this.Image=[];
 this.bksvc.currentDocument=f;
 this.bksvc.currentDocument.DocId=a;
 this.bksvc.currentDocument.Sign=this.domSanitizer.bypassSecurityTrustUrl("data:image/png;base64, "+f.Sign)
+this.bksvc.currentDocument.RawSign=f.Sign;
+
  f.Pages.forEach ((d,i)=> {    
  
   this.bksvc.sendcommand((f)=>{this.Image[i]=this.domSanitizer.bypassSecurityTrustUrl("data:image/png;base64, "+f.image);
@@ -51,12 +53,18 @@ this.scrollto(1);
 
 }
 sign() {
-       let dialogRef = this.dialog.open(SignitureComponent, {
+       const dialogRef = this.dialog.open(SignitureComponent, {
             height: 'auto',
-            width: '90vw',
+            width: '90vw'
           });
-          dialogRef.afterClosed().subscribe(result => {
-            
+          dialogRef.afterClosed().subscribe(dialogResult => {
+  if (dialogResult)   {
+    this.bksvc.sendcommand((f)=>{
+  delete(this.Document);
+  this.bksvc.sendcommand((f)=>{this.Document=f;},"*GetDocuments"); 
+this.scrollto(0);  
+   },"*Sign","docId="+this.bksvc.currentDocument.DocId+"&signature="+this.bksvc.currenDocument.RawSign)
+  }       
             });
 }
 
@@ -70,10 +78,12 @@ cancel() {
 
 
  dialogRef.afterClosed().subscribe(dialogResult => {
-   console.log(dialogResult +" "+ (typeof dialogResult=="string"))
-  if (dialogResult | typeof dialogResult=="string") { 
-   console.log("docId="+this.bksvc.currentDocument.DocId+"&comment="+dialogResult); 
-this.bksvc.sendcommand((f)=>{ },"*Cancel","docId="+this.bksvc.encript(""+this.bksvc.currentDocument.DocId)+"&comment="+this.bksvc.encript(dialogResult))
+if (dialogResult | typeof dialogResult=="string") { 
+this.bksvc.sendcommand((f)=>{
+  delete(this.Document);
+  this.bksvc.sendcommand((f)=>{this.Document=f;},"*GetDocuments"); 
+this.scrollto(0);  
+   },"*Cancel","docId="+this.bksvc.currentDocument.DocId+"&comment="+dialogResult)
 
 
    }
@@ -89,12 +99,14 @@ decline() {
       data: dialogData
     });
 
-
  dialogRef.afterClosed().subscribe(dialogResult => {
-   console.log(dialogResult +" "+ (typeof dialogResult=="string"))
   if (dialogResult | typeof dialogResult=="string") { 
-   console.log("docId="+this.bksvc.currentDocument.DocId+"&comment="+dialogResult); 
-this.bksvc.sendcommand((f)=>{ },"*Decline","docId="+this.bksvc.encript(""+this.bksvc.currentDocument.DocId)+"&comment="+this.bksvc.encript(dialogResult))
+this.bksvc.sendcommand((f)=>{ 
+delete(this.Document);
+  this.bksvc.sendcommand((f)=>{this.Document=f;},"*GetDocuments"); 
+this.scrollto(0);
+
+},"*Decline","docId="+this.bksvc.currentDocument.DocId+"&comment="+dialogResult)
 
 
    }
@@ -115,13 +127,15 @@ this.filter= this.filter ^ a;
 
 @Component({
   styleUrls: ['./usigned.component.css'],
-  template: '<h2>Signiture Pad</h2><img *ngIf="sign==0" class="sm-round-corners sigimg" (click)="this.sign=1" [src]="this.bksvc.currentDocument.Sign"><ng-signature-pad  *ngIf="sign==1" showDoneButton showClearButton backgroundColor="#fff" penColor="#005e82" format="base64"></ng-signature-pad><div class=" sigbody"><button class="round-corners" mat-flat-button color="primary">OK</button><button class="round-corners" mat-stroked-button >Cancel</button></div>'
+  template: '<h2>Signiture Pad</h2><img *ngIf="sign==0" class="sm-round-corners sigimg" (click)="this.sign=1" [src]="this.bksvc.currentDocument.Sign"><ng-signature-pad  *ngIf="sign==1" showDoneButton showClearButton backgroundColor="#fff" penColor="#005e82" format="base64"></ng-signature-pad><div class=" sigbody"><button class="round-corners" mat-flat-button (click)="onSign()" color="primary">OK</button><button class="round-corners" mat-stroked-button (click)="onDismiss()">Cancel</button></div>'
 
 })
 export class SignitureComponent implements OnInit {
 
-  constructor(private bksvc:BackendService) { }
+  constructor(public dialogRef: MatDialogRef<ConfirmDialogComponent>,private bksvc:BackendService) { }
 
+ onDismiss() {this.dialogRef.close(false)}
+onSign() {this.dialogRef.close(true)}
   ngOnInit() {
     this.sign=0
   }
