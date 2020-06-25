@@ -8,7 +8,7 @@
  
 <mat-form-field  *ngIf="comment" appearance="outline">
     <mat-label>Comment</mat-label>
-    <input type=text matInput id='dialogcomment'>
+    <input [(ngModel)]="mycomment"  type=text matInput id='dialogcomment'>
   </mat-form-field>
 
 <div mat-dialog-actions>

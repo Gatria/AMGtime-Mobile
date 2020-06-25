@@ -10,6 +10,7 @@ export class ConfirmDialogComponent implements OnInit {
   title: string;
   message: string;
   comment:boolean;
+  mycomment:string="";
  
   constructor(public dialogRef: MatDialogRef<ConfirmDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: ConfirmDialogModel) {
@@ -21,7 +22,7 @@ export class ConfirmDialogComponent implements OnInit {
   
   onConfirm(): void {
     // Close the dialog, return true
-    this.dialogRef.close(true);
+    if  (this.comment) this.dialogRef.close(this.mycomment); else this.dialogRef.close(true);
   }
  
   onDismiss(): void {
@@ -37,6 +38,6 @@ export class ConfirmDialogComponent implements OnInit {
  */
 export class ConfirmDialogModel {
  
-  constructor(public title: string, public message: string, public comment:boolean) {
+  constructor(public title: string, public message: string, public comment:boolea=false) {
   }
 }

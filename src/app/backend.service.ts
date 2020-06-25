@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable} from '@angular/core';
 import { LOCAL_STORAGE, StorageService } from 'ngx-webstorage-service';
 import * as CryptoJS from 'crypto-js';
 import { HttpClient, HttpParams } from '@angular/common/http';
@@ -213,13 +213,10 @@ if (s) { message = "Do you really want to approve timecard?";code=1}
   if (dialogResult) { 
 this.loading=true
 
-
-
-
 this.sendcommand((f)=>{
 this.timecard[this.AMGSettings.PayPeriodBackLimit-1-i].TimeCardApprovalStatus=code;
 this.loading=false;
-},"ApproveRejectTimecard","period="+this.encript('' +i)+"&approve="+this.encript('' +s)+"&comment="
+},"ApproveRejectTimecard","period="+this.encript('' +i)+"&approve="+this.encript('' +s)+"&comment="+this.encript('')
 )
 
 
@@ -265,12 +262,10 @@ this.getLocation(f)
 
 sendtimeoffrequest(a)
 {
-   let comment=false;
  let message= "Send Time Off Request?"
 
-
     const dialogData = 
-    new ConfirmDialogModel("Confirm Action", message ,comment);
+    new ConfirmDialogModel("Confirm Action", message);
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       maxWidth: "400px",
       data: dialogData
@@ -287,7 +282,7 @@ if (f=="") a.scrollto(0); else  {
 
 
     const dialogData = 
-    new ConfirmDialogModel("Confirm Action", f.DuplicateTimeOff,comment);
+    new ConfirmDialogModel("Confirm Action", f.DuplicateTimeOff);
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       maxWidth: "400px",
       data: dialogData
@@ -306,21 +301,6 @@ this.sendcommand((f)=>{ a.scrollto(0);},"AddTimeOffRequests4","CategoryId="+this
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
 
 },"AddTimeOffRequests4","CategoryId="+this.encript(""+this.timeoff.category)+"&forceAdd="+this.encript('false')+"&FullDay="+this.encript(fd.toString())+"&Comment="+this.encript(this.timeoff.comment)+"&StartTime="+this.timeoff.AvailableWorkDays.Schedules[0].DateTime+"&JsonData="+this.encript(JSON.stringify(this.timeoff.AvailableWorkDays.Schedules)))
@@ -334,12 +314,12 @@ this.sendcommand((f)=>{ a.scrollto(0);},"AddTimeOffRequests4","CategoryId="+this
 canceltimeoff(a)
 {
 
- let comment=false;
+
  let message= "Do you really want to cancel time off reques?"
 
 
     const dialogData = 
-    new ConfirmDialogModel("Confirm Action", message ,comment);
+    new ConfirmDialogModel("Confirm Action", message);
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       maxWidth: "400px",
       data: dialogData

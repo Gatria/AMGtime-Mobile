@@ -34,6 +34,7 @@ this.Image=[];
   this.bksvc.sendcommand(
     (f)=>{
 this.bksvc.currentDocument=f;
+this.bksvc.currentDocument.DocId=a;
 this.bksvc.currentDocument.Sign=this.domSanitizer.bypassSecurityTrustUrl("data:image/png;base64, "+f.Sign)
  f.Pages.forEach ((d,i)=> {    
  
@@ -69,9 +70,10 @@ cancel() {
 
 
  dialogRef.afterClosed().subscribe(dialogResult => {
-  if (dialogResult) { 
-  this.cancel[a]=1;  
-this.sendcommand((f)=>{ },"*Cancel","DocId="+this.encript(""+this.timeoff.category)+"&Comment="+this.encript(this.timeoff.comment))
+   console.log(dialogResult +" "+ (typeof dialogResult=="string"))
+  if (dialogResult | typeof dialogResult=="string") { 
+   console.log("docId="+this.bksvc.currentDocument.DocId+"&comment="+dialogResult); 
+this.bksvc.sendcommand((f)=>{ },"*Cancel","docId="+this.bksvc.encript(""+this.bksvc.currentDocument.DocId)+"&comment="+this.bksvc.encript(dialogResult))
 
 
    }
@@ -80,7 +82,23 @@ this.sendcommand((f)=>{ },"*Cancel","DocId="+this.encript(""+this.timeoff.catego
 
 
 decline() {
-  
+       const dialogData = 
+    new ConfirmDialogModel("Confirm Action","Are you sure you want to decline signing ?",true);
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      maxWidth: "400px",
+      data: dialogData
+    });
+
+
+ dialogRef.afterClosed().subscribe(dialogResult => {
+   console.log(dialogResult +" "+ (typeof dialogResult=="string"))
+  if (dialogResult | typeof dialogResult=="string") { 
+   console.log("docId="+this.bksvc.currentDocument.DocId+"&comment="+dialogResult); 
+this.bksvc.sendcommand((f)=>{ },"*Decline","docId="+this.bksvc.encript(""+this.bksvc.currentDocument.DocId)+"&comment="+this.bksvc.encript(dialogResult))
+
+
+   }
+    }); 
 }
 
 chips(a) {
