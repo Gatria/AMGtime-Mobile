@@ -1,4 +1,4 @@
-import { Component, OnInit,ViewChild , forwardRef } from '@angular/core';
+import { EventEmitter ,Component, OnInit,ViewChild , forwardRef } from '@angular/core';
 import {BackendService} from '../backend.service'
 import {DomSanitizer} from "@angular/platform-browser";
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
@@ -138,12 +138,13 @@ export class SignitureComponent implements OnInit {
 
  onDismiss() {this.dialogRef.close(false)}
  getSig(e) {
-  console.log("ffff"+e)
+  console.log(e)
  }
 onSign() {
 
-      document.getElementById('sig').dispatchEvent(new Event('done'));
-  this.dialogRef.close(true)}
+      document.querySelector('.btn').dispatchEvent (new Event('click'));
+  //this.dialogRef.close(true)
+  }
   ngOnInit() {
     this.sign=0
   }
