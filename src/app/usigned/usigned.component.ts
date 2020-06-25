@@ -35,8 +35,10 @@ this.Image=[];
     (f)=>{
 this.bksvc.currentDocument=f;
 this.bksvc.currentDocument.DocId=a;
-this.bksvc.currentDocument.Sign=this.domSanitizer.bypassSecurityTrustUrl("data:image/png;base64, "+f.Sign)
 this.bksvc.currentDocument.RawSign=f.Sign;
+this.bksvc.currentDocument.Sign=this.domSanitizer.bypassSecurityTrustUrl("data:image/png;base64, "+f.Sign)
+console.log(this.bksvc.currentDocument.RawSign.length)
+
 
  f.Pages.forEach ((d,i)=> {    
  
@@ -63,7 +65,7 @@ sign() {
   delete(this.Document);
   this.bksvc.sendcommand((f)=>{this.Document=f;},"*GetDocuments"); 
 this.scrollto(0);  
-   },"*Sign","docId="+this.bksvc.currentDocument.DocId+"&signature="+this.bksvc.currenDocument.RawSign)
+   },"*Sign","docId="+this.bksvc.currentDocument.DocId+"&signature="+this.bksvc.currentDocument.RawSign)
   }       
             });
 }
@@ -127,7 +129,7 @@ this.filter= this.filter ^ a;
 
 @Component({
   styleUrls: ['./usigned.component.css'],
-  template: '<h2>Signiture Pad</h2><img *ngIf="sign==0" class="sm-round-corners sigimg" (click)="this.sign=1" [src]="this.bksvc.currentDocument.Sign"><ng-signature-pad  *ngIf="sign==1" showDoneButton showClearButton backgroundColor="#fff" penColor="#005e82" format="base64"></ng-signature-pad><div class=" sigbody"><button class="round-corners" mat-flat-button (click)="onSign()" color="primary">OK</button><button class="round-corners" mat-stroked-button (click)="onDismiss()">Cancel</button></div>'
+  template: '<h2>Signiture Pad</h2><img *ngIf="sign==0" class="sm-round-corners sigimg" (click)="this.sign=1" [src]="this.bksvc.currentDocument.Sign"><ng-signature-pad  id="sig" (done)=getSig($event) *ngIf="sign==1" showDoneButton showClearButton backgroundColor="#fff" penColor="#005e82" format="base64"></ng-signature-pad><div class=" sigbody"><button class="round-corners" mat-flat-button (click)="onSign()" color="primary">OK</button><button class="round-corners" mat-stroked-button (click)="onDismiss()">Cancel</button></div>'
 
 })
 export class SignitureComponent implements OnInit {
@@ -135,7 +137,13 @@ export class SignitureComponent implements OnInit {
   constructor(public dialogRef: MatDialogRef<ConfirmDialogComponent>,private bksvc:BackendService) { }
 
  onDismiss() {this.dialogRef.close(false)}
-onSign() {this.dialogRef.close(true)}
+ getSig(e) {
+  console.log("ffff"+e)
+ }
+onSign() {
+
+      document.getElementById('sig').dispatchEvent(new Event('done'));
+  this.dialogRef.close(true)}
   ngOnInit() {
     this.sign=0
   }
