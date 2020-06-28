@@ -275,6 +275,7 @@ sendtimeoffrequest(a)
   if (dialogResult) { 
 
 let fd=this.timeoff.dtype==1
+this.bksvc.loading=true
 this.sendcommand((f)=>{
 if (f=="") a.scrollto(0); else  {
 

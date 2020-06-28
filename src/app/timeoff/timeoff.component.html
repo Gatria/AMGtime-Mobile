@@ -61,6 +61,12 @@ close
 <button *ngIf="first" (click)="scrollto(1)" color="primary" mat-fab class="float"><mat-icon>plus</mat-icon></button>
 </div>
 <div id="slide1" class="slide snap">
+
+<mat-progress-spinner style="margin: auto;margin-top: 30vh" *ngIf="bksvc.loading" mode="indeterminate"></mat-progress-spinner>
+
+<ng-container *ngIf="!bksvc.loading">
+
+
   <mat-card class="mat-elevation-z8 stb"> 
   <mat-form-field class="block" appearance="outline">
   <mat-label>Choose Category</mat-label>
@@ -126,6 +132,7 @@ close
 
 </ng-container>
 </mat-card>
+</ng-container>
   </div></div>
  <app-footer></app-footer>
     </mat-sidenav-content>

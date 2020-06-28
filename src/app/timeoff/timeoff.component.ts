@@ -16,6 +16,7 @@ first=true;
        this.bksvc.cancel=[];
      this.bksvc.sendcommand((f)=>{ this.bksvc.timeofrequests=f},"GetTimeOffs","date="+ this.bksvc.datetime(),{ withCredentials: true});
 this.reset_time_off_form()   
+this.bksvc.loading=false
   }
 
 
@@ -35,6 +36,7 @@ setTimeout(()=>{document.querySelector("mat-sidenav-content").scrollTop=0;docume
   if (a==1)  { 
     this.reset_time_off_form()     
   this.bksvc.sendcommand((f)=>{ this.bksvc.Categories=f},"GetCategoriesAndUsers");} else { delete(this.bksvc.timeofrequests); delete(this.bksvc.timeoff.AvailableWorkDays)
+    this.loading=false
   this.bksvc.sendcommand((f)=>{this.bksvc.timeofrequests=f},"GetTimeOffs","date="+ this.bksvc.datetime(),{ withCredentials: true});
   }
 } 
