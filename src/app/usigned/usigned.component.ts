@@ -10,19 +10,19 @@ import { ConfirmDialogComponent,ConfirmDialogModel } from '../confirm-dialog/con
   styleUrls: ['./usigned.component.css']
 })
 export class USignedComponent implements OnInit  {
-Document=[];
+Document=nu;
 filter=63;
 first=true;
 
   constructor(private bksvc:BackendService,private domSanitizer: DomSanitizer,public dialog: MatDialog) { }
   ngOnInit() {
     
-this.bksvc.sendcommand((f)=>{this.Document=f;},"*GetDocuments")  
+//this.bksvc.sendcommand((f)=>{this.Document=f;},"*GetDocuments")  
   }
 
 scrollto(a,z=true)
 {
-if (z) setTimeout(()=>{document.querySelector("mat-sidenav-content").scrollTop=0;document.getElementById("slider").scrollLeft=document.getElementById("slider").parentElement.clientWidth*a},100);  
+setTimeout(()=>{if (z) document.querySelector("mat-sidenav-content").scrollTop=0;document.getElementById("slider").scrollLeft=document.getElementById("slider").parentElement.clientWidth*a},100);  
 }
 
 scroll() {
