@@ -14,8 +14,7 @@ viewmode=0
     this.mydate=new Date();
     this.chips(this.viewmode) 
   }
-  change(e) 
-  {console.log(e)}
+
 chips(b,a=0)
 {this.viewmode=b
  var tomorrow = new Date();
