@@ -20,4 +20,4 @@ mat-divider:last-of-type {display:none}
 mat-chip {margin: 0 -15px 15px!important;
     justify-content: center; width: 130px;justify-content: center;}
 
-.limit {width:130px}
+.limit {width:150px}
