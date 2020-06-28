@@ -11,9 +11,24 @@
     <h1 class="example-app-name">Schedule</h1>
   </mat-toolbar>
 
+<div class="mat-elevation-z2 topinfo" id=top{{i}}> 
+  <button mat-mini-fab class="arrow-button left-button" (click)=chips(viewmode,-1)>  <mat-icon>arrowleft</mat-icon></button>
+  <div class="mid-title">
+<mat-form-field class="limit">
+   <input matInput touchUi=true (ngModelChange)=chips(viewmode) [(ngModel)]="mydate" [matDatepicker]="picker">
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker [dateClass]="dateClass" #picker></mat-datepicker>
+</mat-form-field></div>
+<button  mat-mini-fab class="arrow-button right-button" (click)=chips(viewmode,1)>
+  <mat-icon>arrowright</mat-icon>
+  </button>
+</div> 
+
+
+
 <mat-chip-list class="i" >
-  <mat-chip [selected]="filter % 2 >= 1" (click)="chips(1)">Daily</mat-chip>
-  <mat-chip [selected]="filter % 4 >= 2"  (click)="chips(2)">Weekly</mat-chip>
+  <mat-chip [selected]="viewmode==0" (click)="chips(0)">Daily</mat-chip>
+  <mat-chip [selected]="viewmode==1"  (click)="chips(1)">Weekly</mat-chip>
    </mat-chip-list>
 
  <mat-card class="stb">
