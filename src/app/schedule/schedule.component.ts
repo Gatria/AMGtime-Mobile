@@ -49,11 +49,11 @@ viewmode=0
 
 chips(b,a=0)
 {this.viewmode=b
-    console.log(this.mydate)
+   // console.log(this.mydate)
  var tomorrow = new Date(this.mydate);
-    tomorrow.setDate(this.mydate.getDate() + a);
+    tomorrow.setDate(tomorrow.getDate() + a);
     this.mydate = tomorrow;
-    console.log(this.mydate)
+   // console.log(this.mydate)
 this.bksvc.sendcommand((f)=>{this.bksvc.AdvancedScheduling=f;},"GetAdvancedScheduling","date="+this.bksvc.datetime(this.mydate)+"&viewMode="+this.bksvc.encript(""+this.viewmode)) 
 }
 
