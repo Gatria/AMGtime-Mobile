@@ -10,6 +10,12 @@
     <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
     <h1 class="example-app-name">Schedule</h1>
   </mat-toolbar>
+
+<mat-chip-list class="i" >
+  <mat-chip [selected]="filter % 2 >= 1" (click)="chips(1)">Daily</mat-chip>
+  <mat-chip [selected]="filter % 4 >= 2"  (click)="chips(2)">Weekly</mat-chip>
+   </mat-chip-list>
+
  <mat-card class="stb">
   <ng-container *ngFor="let item of bksvc.AdvancedScheduling.Coworkers; let i = index">
 
