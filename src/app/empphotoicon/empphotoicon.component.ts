@@ -19,8 +19,8 @@ export class EmpphotoiconComponent implements OnInit {
   ngOnInit() {
 
 
-             if (Array.isArray(this.bksvc.employeelist))   this.bksvc.employeelist.some(
-               e => {if (this.EmpID==e.Id) {this.HasImage=e.HasImage;return true}});
+   if (Array.isArray(this.bksvc.employeelist))   this.bksvc.employeelist.some(
+               e => {if (this.EmpID==e.Id) {this.HasImage=e.HasImage;return true}}); else this.HasImage=true;
           
 
  if (this.HasImage) this.bksvc.getEmpPhoto(this.EmpID)

@@ -19,16 +19,29 @@
 
 <ng-container *ngIf="viewmode==1">
 <div class="mat-elevation-z2 topinfo" id=top{{i}}> 
-  <button mat-mini-fab class="arrow-button left-button" (click)=chips(viewmode,-1)>  <mat-icon>arrowleft</mat-icon></button>
+  <button mat-mini-fab class="arrow-button left-button" (click)=chips(viewmode,-7)>  <mat-icon>arrowleft</mat-icon></button>
   <div class="mid-title">
-<mat-form-field class="limit">
-   <input type=week matInput touchUi=true (ngModelChange)=chips(viewmode) [(ngModel)]="mydate" [matDatepicker]="picker">
-</mat-form-field></div>
-<button  mat-mini-fab class="arrow-button right-button" (click)=chips(viewmode,1)>
+{{mydate}}</div>
+<button  mat-mini-fab class="arrow-button right-button" (click)=chips(viewmode,7)>
   <mat-icon>arrowright</mat-icon>
   </button>
 </div> 
+<mat-card  *ngFor="let item of bksvc.AdvancedScheduling.Schedules; let i = index">Simple card
+{{item.CanDrop}}
+{{item.CanPickup}}
+{{item.CanSwap}}
+{{item.Date}}
+{{item.DepName}}
+{{item.DivisionName}}
+{{item.GroupName}}
+{{item.Id}}
+{{item.IsDraft}}
+{{item.JobName}}
+{{item.Shift}}
+{{item.SkillName}}
 
+
+</mat-card>
 
 
 </ng-container>
@@ -54,7 +67,7 @@
 
 
 
-   <mat-expansion-panel [expanded]="true" class="stb" *ngIf='bksvc.AdvancedScheduling.Coworkers.length>0'>
+   <mat-expansion-panel [expanded]="true" class="stb" *ngIf='bksvc.AdvancedScheduling!=undefined && bksvc.AdvancedScheduling.Coworkers.length>0'>
       <mat-expansion-panel-header>
       <mat-panel-title><h2>Coworkers</h2></mat-panel-title>
        </mat-expansion-panel-header>
