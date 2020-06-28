@@ -10,14 +10,14 @@ import { ConfirmDialogComponent,ConfirmDialogModel } from '../confirm-dialog/con
   styleUrls: ['./usigned.component.css']
 })
 export class USignedComponent implements OnInit  {
-Document=nu;
+Document=null;
 filter=63;
 first=true;
 
   constructor(private bksvc:BackendService,private domSanitizer: DomSanitizer,public dialog: MatDialog) { }
   ngOnInit() {
     
-//this.bksvc.sendcommand((f)=>{this.Document=f;},"*GetDocuments")  
+this.bksvc.sendcommand((f)=>{this.Document=f;},"*GetDocuments")  
   }
 
 scrollto(a,z=true)
