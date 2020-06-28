@@ -275,7 +275,7 @@ sendtimeoffrequest(a)
   if (dialogResult) { 
 
 let fd=this.timeoff.dtype==1
-this.bksvc.loading=true
+this.loading=true
 this.sendcommand((f)=>{
 if (f=="") a.scrollto(0); else  {
 
@@ -291,8 +291,10 @@ if (f=="") a.scrollto(0); else  {
 
 
  dialogRef.afterClosed().subscribe(dialogResult => {
+  this.loading=false 
   if (dialogResult) { 
   this.cancel[a]=1;  
+  this.loading=true
 this.sendcommand((f)=>{ a.scrollto(0);},"AddTimeOffRequests4","CategoryId="+this.encript(""+this.timeoff.category)+"&forceAdd="+this.encript('true')+"&FullDay="+this.encript(fd.toString())+"&Comment="+this.encript(this.timeoff.comment)+"&StartTime="+this.timeoff.AvailableWorkDays.Schedules[0].DateTime+"&JsonData="+this.encript(JSON.stringify(this.timeoff.AvailableWorkDays.Schedules)))
 
 
