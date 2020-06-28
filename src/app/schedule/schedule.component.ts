@@ -12,7 +12,7 @@ const moment = _rollupMoment || _moment;
 // https://momentjs.com/docs/#/displaying/format/
 export const MY_FORMATS = {
   parse: {
-    dateInput: 'LL',
+    dateInput: 'YYYY-MM-DD',
   },
   display: {
     dateInput: 'DD MMM YYYY',
@@ -49,7 +49,8 @@ viewmode=0
 
 chips(b,a=0)
 {this.viewmode=b
- var tomorrow = new Date();
+    console.log(this.mydate)
+ var tomorrow = new Date(this.mydate);
     tomorrow.setDate(this.mydate.getDate() + a);
     this.mydate = tomorrow;
     console.log(this.mydate)
