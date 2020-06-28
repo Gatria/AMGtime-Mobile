@@ -20,9 +20,9 @@ first=true;
 this.bksvc.sendcommand((f)=>{this.Document=f;},"*GetDocuments")  
   }
 
-scrollto(a)
+scrollto(a,z=true)
 {
-setTimeout(()=>{document.querySelector("mat-sidenav-content").scrollTop=0;document.getElementById("slider").scrollLeft=document.getElementById("slider").parentElement.clientWidth*a},100);  
+if (z) setTimeout(()=>{document.querySelector("mat-sidenav-content").scrollTop=0;document.getElementById("slider").scrollLeft=document.getElementById("slider").parentElement.clientWidth*a},100);  
 }
 
 scroll() {

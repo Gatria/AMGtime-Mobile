@@ -76,6 +76,11 @@
 
 
 </div><br>
+<div class="pagination" *ngIf="Image.length>1">
+<ng-container *ngFor="let item1 of Image;let page = index" >
+ <button [disabled]="page==i" mat-mini-fab (click)="scrollto(page+1,false)" >{{page+1}}</button> 
+ </ng-container>
+</div>
 </div>
 </ng-container>
 </div>

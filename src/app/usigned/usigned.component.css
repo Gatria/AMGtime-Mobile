@@ -30,6 +30,8 @@ mat-chip {width: 14%;
     font-size:2.4vh;
     }
      }
+.pagination button {margin:4px}
+.pagination {text-align:center}
 
      .Canceled{color:#888}
      .Declined{color:darkred}
