@@ -40,8 +40,8 @@
   <button mat-mini-fab class="arrow-button left-button" (click)=chips(viewmode,-1)>  <mat-icon>arrowleft</mat-icon></button>
   <div class="mid-title">
 <mat-form-field class="limit">
-   <input matInput (ngModelChange)="mydate=$event;chips(viewmode)" [(ngModel)]="mydate" [matDatepicker]="picker">
-  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+   <input matInput readonly (ngModelChange)="mydate=$event;chips(viewmode)" [(ngModel)]="mydate" [matDatepicker]="picker">
+  <mat-datepicker-toggle  class="mat-primary-color" matSuffix [for]="picker"></mat-datepicker-toggle>
   <mat-datepicker touchUi [dateClass]="dateClass" #picker></mat-datepicker>
 </mat-form-field></div>
 <button  mat-mini-fab class="arrow-button right-button" (click)=chips(viewmode,1)>
@@ -53,7 +53,11 @@
 
 
 
- <mat-card class="stb" *ngIf='bksvc.AdvancedScheduling.Coworkers.length>0'>
+
+   <mat-expansion-panel [expanded]="true" class="stb" *ngIf='bksvc.AdvancedScheduling.Coworkers.length>0'>
+      <mat-expansion-panel-header>
+      <mat-panel-title><h2>Coworkers</h2></mat-panel-title>
+       </mat-expansion-panel-header>
   <ng-container *ngFor="let item of bksvc.AdvancedScheduling.Coworkers; let i = index">
 
    <app-empphotoicon EmpID="{{item.EmployeeId}}" name="{{item.Name}} {{item.LastName}}"></app-empphotoicon>
@@ -69,7 +73,8 @@
   </mat-card-subtitle>
   <mat-divider class="limited"></mat-divider>
 </ng-container>
-</mat-card>
+ </mat-expansion-panel>
+
 </ng-container>
 <app-footer></app-footer>
  

@@ -86,9 +86,9 @@ close
 
 <mat-form-field appearance="outline" class="t1">
    <mat-label>Star Days</mat-label>
-  <input (ngModelChange)="change()" required touchUi=true matInput [(ngModel)]="bksvc.timeoff.date" [matDatepicker]="myDatepicker">
+  <input (ngModelChange)="change()" required matInput [(ngModel)]="bksvc.timeoff.date" [matDatepicker]="myDatepicker">
   <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
-  <mat-datepicker #myDatepicker></mat-datepicker>
+  <mat-datepicker touchUi #myDatepicker></mat-datepicker>
 </mat-form-field>
 
  <mat-form-field appearance="outline" class="t2">

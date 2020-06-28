@@ -20,9 +20,9 @@
   <button mat-mini-fab class="arrow-button left-button" (click)=godate(-1)>  <mat-icon>arrowleft</mat-icon></button>
   <div class="mid-title">
 <mat-form-field class="limit">
-   <input matInput touchUi=true (ngModelChange)=godate(0) [(ngModel)]="mydate" [matDatepicker]="picker">
+   <input matInput readonly (ngModelChange)=godate(0) [(ngModel)]="mydate" [matDatepicker]="picker">
   <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-  <mat-datepicker [dateClass]="dateClass" #picker></mat-datepicker>
+  <mat-datepicker touchUi [dateClass]="dateClass" #picker></mat-datepicker>
 </mat-form-field></div>
 <button  mat-mini-fab class="arrow-button right-button" (click)=godate(1)>
   <mat-icon>arrowright</mat-icon>
