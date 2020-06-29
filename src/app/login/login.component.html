@@ -1,5 +1,5 @@
 
-  <app-datechooser [mydate]="2020-07-07"></app-datechooser>
+  <app-datechooser myfunction="(e)=>{consoloe.log(e);}" datemode=0 thdate="01-01-2020"></app-datechooser>
   
   <mat-toolbar color="primary" class="example-toolbar">
       <button  (click)="show=false" *ngIf="show" mat-icon-button><mat-icon>arrow_back_ios</mat-icon></button>

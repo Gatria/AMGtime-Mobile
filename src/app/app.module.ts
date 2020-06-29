@@ -46,7 +46,6 @@ Date.prototype.f1 = function () {
   ("0" + this.getSeconds()).slice(-2)
 };
 
-
 @NgModule({
 
     imports:      [SignaturePadModule ,WebcamModule,AllMaterialModule, AppRouterModule, HttpClientModule ,BrowserAnimationsModule, BrowserModule, FormsModule,StorageServiceModule,NgxChartsModule],
