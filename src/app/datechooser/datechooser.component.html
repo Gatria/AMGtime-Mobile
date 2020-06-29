@@ -1,0 +1,12 @@
+<div class="mat-elevation-z2 topinfo" id=top{{i}}> 
+  <button mat-mini-fab class="arrow-button left-button" (click)=change(viewmode,-1)>  <mat-icon>arrowleft</mat-icon></button>
+  <div class="mid-title">
+<mat-form-field class="limit">
+   <input matInput readonly (ngModelChange)="mydate=$event;chips(viewmode)" [(ngModel)]="mydate" [matDatepicker]="picker">
+  <mat-datepicker-toggle  class="mat-primary-color" matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker touchUi [dateClass]="dateClass" #picker></mat-datepicker>
+</mat-form-field></div>
+<button  mat-mini-fab class="arrow-button right-button" (click)=change(viewmode,1)>
+  <mat-icon>arrowright</mat-icon>
+  </button>
+</div> 
