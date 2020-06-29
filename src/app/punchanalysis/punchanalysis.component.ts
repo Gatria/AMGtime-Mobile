@@ -53,12 +53,12 @@ export class PunchanalysisComponent implements OnInit {
 godate(a)
 {
   delete(this.bksvc.PunchAnalysis);
-   var tomorrow = new Date();
-    tomorrow.setDate(this.mydate.getDate() + a);
+ var tomorrow = new Date(this.mydate);
+    tomorrow.setDate(tomorrow.getDate() + a);
     this.mydate = tomorrow;
 
     let tt=this.bksvc.encript("true");
-this.bksvc.sendcommand((f)=>{this.bksvc.PunchAnalysis=f;},"GetPunchAnalyzis","&rounding="+tt+"&date="+this.bksvc.datetime(this.mydate) )
+this.bksvc.sendcommand((f)=>{this.bksvc.PunchAnalysis=f;},"GetPunchAnalyzis","rounding="+tt+"&date="+this.bksvc.datetime(this.mydate) )
 
 }
 
