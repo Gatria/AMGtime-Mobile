@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {BackendService} from '../backend.service'
 
 
@@ -7,11 +7,9 @@ import {BackendService} from '../backend.service'
   templateUrl: './mat-sidenav.component.html',
   styleUrls: ['./mat-sidenav.component.css']
 })
-export class MatSidenavComponent implements OnInit {
+export class MatSidenavComponent {
 
   constructor(private bksvc:BackendService) { }
 
-  ngOnInit() {
-  }
 
 }

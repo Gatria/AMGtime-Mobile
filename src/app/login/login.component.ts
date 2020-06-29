@@ -17,6 +17,12 @@ constructor(private bksvc:BackendService,private router: Router) { }
 ngOnInit() {
 this.show=false
 
+this.datemode=2
+this.mydate=new Date()
+this.myfunction=(e)=>{
+  
+  console.log("::::"+e)}
+
 
     if (this.router.url=="/toUser") this.login(2); 
     if (this.router.url=="/toEmp") this.login(1);

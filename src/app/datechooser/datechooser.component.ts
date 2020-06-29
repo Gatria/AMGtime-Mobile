@@ -1,4 +1,4 @@
-import { Component,Input, OnInit } from '@angular/core';
+import { Component,Input, OnInit,Output, EventEmitter } from '@angular/core';
 import {MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter';
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
 import * as _moment from 'moment';
@@ -40,16 +40,27 @@ export const MY_FORMATS = {
 })
 export class DatechooserComponent  implements OnInit  {
  @Input() thdate:string; 
-  @Input() datemode:BigInteger;
-  @Input() myfunction:function;
+ @Input() datemode=0;
+ @Input() buttons=[];
+ @Input() futureonly=0;
+
+ @Output() thdateChange: EventEmitter<any> = new EventEmitter();
+@Output() datemodeChange: EventEmitter<any> = new EventEmitter();
+
+topbuttonclick(a){
+  this.datemode=a;
+  this.datemodeChange.emit(this.datemode)
+  this.change()  
+} 
+
 change(a=0) {
 const step1=[1,7,30]  
 a=a*step1[this.datemode];
-console.log(this.datemode)
+
 var tomorrow = new Date(this.mydate);
     tomorrow.setDate(tomorrow.getDate() + a);
     this.mydate = tomorrow;
-   if (typeof this.myfunction=="function") this.myfunction(this.mydate)
+    this.thdateChange.emit(this.mydate);
 }
     constructor() { }
   ngOnInit()  {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
 import {BackendService} from '../backend.service'
 
 @Component({
@@ -6,14 +6,12 @@ import {BackendService} from '../backend.service'
   templateUrl: './passwordreset.component.html',
  styleUrls: ['../login/login.component.css']
 })
-export class PasswordresetComponent implements OnInit {
+export class PasswordresetComponent {
 
   constructor(private bksvc:BackendService) { }
 
-  ngOnInit() {
-   
-  }
+
 validate() {
-    this.bksvc.sendcommand((f)=>{  },"ResetPassword","email="+this.bksvc.encript(this.bksvc.name)+"&password="+this.bksvc.encript(this.bksvc.password)+"&securityCode="+this.bksvc.encript(this.validation))
+    this.bksvc.sendcommand((f)=>{  },"ResetPassword",{email:this.bksvc.name,password:this.bksvc.password,securityCode:this.validation})
   }
 }

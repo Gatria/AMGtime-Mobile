@@ -44,16 +44,12 @@ export class ScheduleComponent implements OnInit {
 viewmode=0
   ngOnInit() {
     this.mydate=new Date();
-    this.chips(this.viewmode) 
+    this.godate() 
   }
 
-chips(b,a=0)
-{this.viewmode=b
-   // console.log(this.mydate)
- var tomorrow = new Date(this.mydate);
-    tomorrow.setDate(tomorrow.getDate() + a);
-    this.mydate = tomorrow;
-   // console.log(this.mydate)
+godate(a=0)
+{
+ if (a!==0) this.mydate=a;
 this.bksvc.sendcommand((f)=>{this.bksvc.AdvancedScheduling=f;},"GetAdvancedScheduling",{date:this.mydate.f1(),viewMode:this.viewmode}) 
 }
 

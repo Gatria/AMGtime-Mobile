@@ -1,3 +1,10 @@
+<mat-chip-list *ngIf='buttons.length>0' class="i" >
+  <mat-chip *ngIf=buttons.includes(0) [selected]="datemode==0" (click)="topbuttonclick(0)">Daily</mat-chip>
+  <mat-chip *ngIf=buttons.includes(1) [selected]="datemode==1"  (click)="topbuttonclick(1)">Weekly</mat-chip>
+  <mat-chip *ngIf=buttons.includes(2) [selected]="datemode==2"  (click)="topbuttonclick(2)">Monthly</mat-chip>
+</mat-chip-list>
+
+
 <div class="mat-elevation-z2 topinfo" id=top{{i}}> 
   <button mat-mini-fab class="arrow-button left-button" (click)=change(-1)>  <mat-icon>arrowleft</mat-icon></button>
   <div class="mid-title">
@@ -10,3 +17,4 @@
   <mat-icon>arrowright</mat-icon>
   </button>
 </div> 
+<ng-content></ng-content>

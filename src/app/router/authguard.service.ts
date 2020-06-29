@@ -17,7 +17,7 @@ export class AuthguardService implements CanActivate {
 
 canActivate(route,state): Observable <boolean> | boolean { 
 if (state.url=='/passwordreset') {
-  let m=this.bksvc.sendcommand((f)=>{},"ForgotPassword","email="+this.bksvc.encript(this.bksvc.name));
+  let m=this.bksvc.sendcommand((f)=>{},"ForgotPassword",{email:this.bksvc.name});
  m.subscribe(
 res => {
  if (res[0])   this.router.navigate(['/passwordreset1']);

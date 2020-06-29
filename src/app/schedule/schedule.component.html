@@ -10,22 +10,11 @@
     <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
     <h1 class="example-app-name">Schedule</h1>
   </mat-toolbar>
-<mat-chip-list class="i" >
-  <mat-chip [selected]="viewmode==0" (click)="chips(0)">Daily</mat-chip>
-  <mat-chip [selected]="viewmode==1"  (click)="chips(1)">Weekly</mat-chip>
-   </mat-chip-list>
+ 
 
-
+  <app-datechooser buttons=[0,1,2] [(datemode)]="viewmode" (thdateChange)=godate($event) [(thdate)]="mydate">
 
 <ng-container *ngIf="viewmode==1">
-<div class="mat-elevation-z2 topinfo" id=top{{i}}> 
-  <button mat-mini-fab class="arrow-button left-button" (click)=chips(viewmode,-7)>  <mat-icon>arrowleft</mat-icon></button>
-  <div class="mid-title">
-{{mydate}}</div>
-<button  mat-mini-fab class="arrow-button right-button" (click)=chips(viewmode,7)>
-  <mat-icon>arrowright</mat-icon>
-  </button>
-</div> 
 <mat-card  *ngFor="let item of bksvc.AdvancedScheduling.Schedules; let i = index">Simple card
 {{item.CanDrop}}
 {{item.CanPickup}}
@@ -38,9 +27,7 @@
 {{item.IsDraft}}
 {{item.JobName}}
 {{item.Shift}}
-{{item.SkillName}}
-
-
+{{item.SkillName: ""
 </mat-card>
 
 
@@ -49,24 +36,6 @@
 
 
 <ng-container *ngIf="viewmode==0">
-<div class="mat-elevation-z2 topinfo" id=top{{i}}> 
-  <button mat-mini-fab class="arrow-button left-button" (click)=chips(viewmode,-1)>  <mat-icon>arrowleft</mat-icon></button>
-  <div class="mid-title">
-<mat-form-field class="limit">
-   <input matInput readonly (ngModelChange)="mydate=$event;chips(viewmode)" [(ngModel)]="mydate" [matDatepicker]="picker">
-  <mat-datepicker-toggle  class="mat-primary-color" matSuffix [for]="picker"></mat-datepicker-toggle>
-  <mat-datepicker touchUi [dateClass]="dateClass" #picker></mat-datepicker>
-</mat-form-field></div>
-<button  mat-mini-fab class="arrow-button right-button" (click)=chips(viewmode,1)>
-  <mat-icon>arrowright</mat-icon>
-  </button>
-</div> 
-
-
-
-
-
-
    <mat-expansion-panel [expanded]="true" class="stb" *ngIf='bksvc.AdvancedScheduling!=undefined && bksvc.AdvancedScheduling.Coworkers.length>0'>
       <mat-expansion-panel-header>
       <mat-panel-title><h2>Coworkers</h2></mat-panel-title>
@@ -89,6 +58,10 @@
  </mat-expansion-panel>
 
 </ng-container>
+
+
+  </app-datechooser>
+
 <app-footer></app-footer>
  
     </mat-sidenav-content>

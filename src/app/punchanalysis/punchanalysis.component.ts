@@ -46,18 +46,14 @@ export class PunchanalysisComponent implements OnInit {
   ngOnInit() {
       this.filter=31;
       this.mydate=new Date();
-      this.godate(0);
+      this.godate();
 
   }
 
-godate(a)
+godate(a=0)
 {
-  delete(this.bksvc.PunchAnalysis);
- var tomorrow = new Date(this.mydate);
-    tomorrow.setDate(tomorrow.getDate() + a);
-    this.mydate = tomorrow;
-
-
+ if (a!==0) this.mydate=a;
+delete(this.bksvc.PunchAnalysis);
 this.bksvc.sendcommand((f)=>{this.bksvc.PunchAnalysis=f;},"GetPunchAnalyzis",{rounding:true,date:this.mydate.f1()} )
 
 }
