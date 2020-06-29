@@ -27,8 +27,7 @@ this.intervalid=setInterval(()=>this.loaddata(),100000 )
   }
 
 loaddata() {
-let tt=this.bksvc.encript("true");
-this.bksvc.sendcommand((f)=>{this.bksvc.StatusBoard=f;this.recalculate()},"GetStatusBoard","_in="+tt+"&_out="+tt+"&_lunch="+tt+"&_break="+tt+"&_absent="+tt+"&time="+this.bksvc.datetime())  
+this.bksvc.sendcommand((f)=>{this.bksvc.StatusBoard=f;this.recalculate()},"GetStatusBoard",{_in:true,_out:true,_lunch:true,_break:true,_absent:true,time:new Date().f1()})  
 }
 
 recalculate()

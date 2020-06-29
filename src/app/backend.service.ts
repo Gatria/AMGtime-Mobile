@@ -94,12 +94,6 @@ private showerror (error) {
 }
 
 
-public datetime(a=""):string {
-  if (a=="") let m=new Date(); else let m=new Date(a);
-  console.log(m.f1())
-  return this.encript(m.f1())
-}
-
 public sendcommand(f,command:string, postdata="", httpOptions={withCredentials: true}):Observable<boolean>
 {
 let hash=command+postdata;  
@@ -114,7 +108,8 @@ if (typeof postdata == "object") {
 var s="";
 console.log(postdata);
 
-Object.keys(postdata).forEach(key => { s=s+"&"+key + "=" + this.encript(""+postdata[key]);
+Object.keys(postdata).forEach(key => { 
+  if (command[0]=="*") s=s+"&"+key + "=" + postdata[key]; else s=s+"&"+key + "=" + this.encript(""+postdata[key]);
  });
 
 console.log(s);
@@ -255,8 +250,8 @@ const message = "Do you really want to perform "+b+" action ?";
   if (dialogResult) { 
 var f=()=>{
 if (this.location!=undefined)
-var str="&latitude="+this.encript('' +this.location.latitude )+"&longitude="+this.encript('' +this.location.longitude); else var str="";
-this.sendcommand((f)=>{this.showinfo(f.Message)},"SetPunchAction5","action="+this.encript('' +b)+"&employeeId="+this.encript('' +this.AMGSettings.Id)+str
+var str={latitude:this.location.latitude,longitude:this.location.longitude}; else var str={};
+this.sendcommand((f)=>{this.showinfo(f.Message)},"SetPunchAction5",Object.assign({action:b,employeeId:this.AMGSettings.Id},str)
 )
 }
 this.getLocation(f)

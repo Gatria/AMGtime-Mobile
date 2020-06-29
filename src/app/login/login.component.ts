@@ -33,7 +33,7 @@ const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0
 
 
 login(a = 0) {
-  const b=["","switchToUser="+this.bksvc.encript("false"),"switchToUser="+this.bksvc.encript("true")];
+  const b=[{},{switchToUser:false},{switchToUser:true}]
   const c=[{withCredentials: false},{withCredentials: true},{withCredentials: true}]
   this.bksvc.sendcommand((f)=>{
         this.bksvc.AMGSettings=f;
@@ -48,7 +48,7 @@ login(a = 0) {
           },"GetEmployees")
         this.bksvc.buildnavigation();
         this.router.navigate(['/home']);}
-  },"GetLoginNew",b[a]+"&name="+this.bksvc.encript(this.bksvc.name)+"&password="+this.bksvc.encript(this.bksvc.password)+"&time="+this.bksvc.datetime(),c[a]);
+  },"GetLoginNew",Object.assign(b[a],{name:this.bksvc.name,password:this.bksvc.password,time:new Date().f1()}),c[a]);
 }
 
 

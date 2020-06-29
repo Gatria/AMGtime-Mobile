@@ -75,7 +75,7 @@ console.log(sigimg[1])
   delete(this.Document);
   this.bksvc.sendcommand((f)=>{this.Document=f;},"*GetDocuments"); 
 this.scrollto(0);  
-   },"*Sign","docId="+this.bksvc.currentDocument.DocId+"&signature="+encodeURIComponent(sigimg[1]))
+   },"*Sign",{docId:this.bksvc.currentDocument.DocId,signature:encodeURIComponent(sigimg[1])})
   }       
             });
 }
@@ -95,7 +95,7 @@ this.bksvc.sendcommand((f)=>{
   delete(this.Document);
   this.bksvc.sendcommand((f)=>{this.Document=f;},"*GetDocuments"); 
 this.scrollto(0);  
-   },"*Cancel","docId="+this.bksvc.currentDocument.DocId+"&comment="+dialogResult)
+   },"*Cancel",{docId:this.bksvc.currentDocument.DocId,comment:dialogResult})
 
 
    }
@@ -118,7 +118,7 @@ delete(this.Document);
   this.bksvc.sendcommand((f)=>{this.Document=f;},"*GetDocuments"); 
 this.scrollto(0);
 
-},"*Decline","docId="+this.bksvc.currentDocument.DocId+"&comment="+dialogResult)
+},"*Decline",{docId:this.bksvc.currentDocument.DocId,comment:dialogResult})
 
 
    }

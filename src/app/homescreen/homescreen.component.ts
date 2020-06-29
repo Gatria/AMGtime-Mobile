@@ -23,7 +23,7 @@ GetSummaryInfo() {
 this.bksvc.sendcommand((f)=>{this.bksvc.SummeryInfo=f;
 console.log(this.bksvc.SummeryInfo);
 
-},"GetSummaryInfo","&time="+this.bksvc.datetime())  
+},"GetSummaryInfo",{time:new Date().f1()})  
 
   
 

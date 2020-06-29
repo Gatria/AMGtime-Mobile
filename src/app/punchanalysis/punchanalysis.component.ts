@@ -57,8 +57,8 @@ godate(a)
     tomorrow.setDate(tomorrow.getDate() + a);
     this.mydate = tomorrow;
 
-    let tt=this.bksvc.encript("true");
-this.bksvc.sendcommand((f)=>{this.bksvc.PunchAnalysis=f;},"GetPunchAnalyzis","rounding="+tt+"&date="+this.bksvc.datetime(this.mydate) )
+
+this.bksvc.sendcommand((f)=>{this.bksvc.PunchAnalysis=f;},"GetPunchAnalyzis",{rounding:true,date:this.mydate.f1()} )
 
 }
 
