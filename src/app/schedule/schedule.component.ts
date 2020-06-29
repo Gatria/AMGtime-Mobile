@@ -54,7 +54,7 @@ chips(b,a=0)
     tomorrow.setDate(tomorrow.getDate() + a);
     this.mydate = tomorrow;
    // console.log(this.mydate)
-this.bksvc.sendcommand((f)=>{this.bksvc.AdvancedScheduling=f;},"GetAdvancedScheduling","date="+this.bksvc.datetime(this.mydate)+"&viewMode="+this.bksvc.encript(""+this.viewmode)) 
+this.bksvc.sendcommand((f)=>{this.bksvc.AdvancedScheduling=f;},"GetAdvancedScheduling",{date:this.mydate.f1(),viewMode:this.viewmode}) 
 }
 
 }

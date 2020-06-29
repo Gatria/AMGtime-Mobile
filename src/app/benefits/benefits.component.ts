@@ -13,7 +13,7 @@ export class BenefitsComponent implements OnInit {
   constructor(private bksvc:BackendService) { }
 
   ngOnInit() {
-  this.bksvc.sendcommand((f)=>{ this.benefits=f},"GetEmployeeBenefits","id="+ this.bksvc.encript('' +this.bksvc.AMGSettings.Id),{ withCredentials: true});
+  this.bksvc.sendcommand((f)=>{ this.benefits=f},"GetEmployeeBenefits",{id:this.bksvc.AMGSettings.Id},{ withCredentials: true});
 
 }
 

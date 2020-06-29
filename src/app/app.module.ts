@@ -31,6 +31,20 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { PunchanalysisComponent } from './punchanalysis/punchanalysis.component';
 import { SignaturePadModule } from '@ng-plus/signature-pad';
 
+interface Date {
+    f1(): number;
+}
+
+// Add the implementation
+Date.prototype.f1 = function () {
+  return this.getFullYear() + "-" +
+  ("0" + (this.getMonth()+1)).slice(-2) + "-" +
+  ("0" + this.getDate()).slice(-2) + " " +
+  ("0" + this.getHours()).slice(-2) + ":" +
+  ("0" + this.getMinutes()).slice(-2) + ":" +
+  ("0" + this.getSeconds()).slice(-2)
+};
+
 
 @NgModule({
 

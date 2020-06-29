@@ -9,6 +9,10 @@ import { ConfirmDialogComponent,ConfirmDialogModel } from './confirm-dialog/conf
 import { Router, CanActivate } from '@angular/router';
 import { PunchdialogComponent } from './punchdialog/punchdialog.component';
 
+
+
+
+
 @Injectable()
 export class BackendService {
 AMGSettings={}
@@ -92,18 +96,8 @@ private showerror (error) {
 
 public datetime(a=""):string {
   if (a=="") let m=new Date(); else let m=new Date(a);
-  console.log(m.getFullYear() + "-" +
-  ("0" + (m.getMonth()+1)).slice(-2) + "-" +
-  ("0" + m.getDate()).slice(-2) + " " +
-  ("0" + m.getHours()).slice(-2) + ":" +
-  ("0" + m.getMinutes()).slice(-2) + ":" +
-  ("0" + m.getSeconds()).slice(-2))
-  return this.encript(m.getFullYear() + "-" +
-  ("0" + (m.getMonth()+1)).slice(-2) + "-" +
-  ("0" + m.getDate()).slice(-2) + " " +
-  ("0" + m.getHours()).slice(-2) + ":" +
-  ("0" + m.getMinutes()).slice(-2) + ":" +
-  ("0" + m.getSeconds()).slice(-2))
+  console.log(m.f1())
+  return this.encript(m.f1())
 }
 
 public sendcommand(f,command:string, postdata="", httpOptions={withCredentials: true}):Observable<boolean>
@@ -115,6 +109,18 @@ if (Array.isArray(f)) {
 
 
 if (hash.search("&time=")>0) hash=hash.substring(1,hash.search("&time="));
+
+if (typeof postdata == "object") {
+var s="";
+console.log(postdata);
+
+Object.keys(postdata).forEach(key => { s=s+"&"+key + "=" + this.encript(""+postdata[key]);
+ });
+
+console.log(s);
+postdata=s;
+
+}
 
 if (hash!=this.lastcall)
  {
@@ -151,7 +157,7 @@ reader.readAsDataURL(f);
 reader.onloadend = ()=> {
 this.empimage[id]= reader.result;
  }  } 
-},"GetEmployeeImage","id="+this.encript('' +id),{ 
+},"GetEmployeeImage",{id:id},{ 
 withCredentials: true, 
 responseType:'blob' as 'json'
  });
@@ -216,8 +222,7 @@ this.loading=true
 this.sendcommand((f)=>{
 this.timecard[this.AMGSettings.PayPeriodBackLimit-1-i].TimeCardApprovalStatus=code;
 this.loading=false;
-},"ApproveRejectTimecard","period="+this.encript('' +i)+"&approve="+this.encript('' +s)+"&comment="+this.encript('')
-)
+},"ApproveRejectTimecard",{period:i,approve:s,comment:''})
 
 
    } 
@@ -279,9 +284,6 @@ this.loading=true
 this.sendcommand((f)=>{
 if (f=="") a.scrollto(0); else  {
 
-
-
-
     const dialogData = 
     new ConfirmDialogModel("Confirm Action", f.DuplicateTimeOff);
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
@@ -295,7 +297,8 @@ if (f=="") a.scrollto(0); else  {
   if (dialogResult) { 
   this.cancel[a]=1;  
   this.loading=true
-this.sendcommand((f)=>{ a.scrollto(0);},"AddTimeOffRequests4","CategoryId="+this.encript(""+this.timeoff.category)+"&forceAdd="+this.encript('true')+"&FullDay="+this.encript(fd.toString())+"&Comment="+this.encript(this.timeoff.comment)+"&StartTime="+this.timeoff.AvailableWorkDays.Schedules[0].DateTime+"&JsonData="+this.encript(JSON.stringify(this.timeoff.AvailableWorkDays.Schedules)))
+this.sendcommand((f)=>{ a.scrollto(0);},"AddTimeOffRequests4",{
+CategoryId:this.timeoff.category,forceAdd:true,FullDay:fd.toString(),Comment:this.timeoff.comment,StartTime:this.timeoff.AvailableWorkDays.Schedules[0].DateTime,JsonData:JSON.stringify(this.timeoff.AvailableWorkDays.Schedules)})
 
 
    }
@@ -306,7 +309,7 @@ this.sendcommand((f)=>{ a.scrollto(0);},"AddTimeOffRequests4","CategoryId="+this
 
 }
 
-},"AddTimeOffRequests4","CategoryId="+this.encript(""+this.timeoff.category)+"&forceAdd="+this.encript('false')+"&FullDay="+this.encript(fd.toString())+"&Comment="+this.encript(this.timeoff.comment)+"&StartTime="+this.timeoff.AvailableWorkDays.Schedules[0].DateTime+"&JsonData="+this.encript(JSON.stringify(this.timeoff.AvailableWorkDays.Schedules)))
+},"AddTimeOffRequests4",{CategoryId:this.timeoff.category,forceAdd:false,FullDay:fd.toString(),Comment:this.timeoff.comment,StartTime:this.timeoff.AvailableWorkDays.Schedules[0].DateTime,JsonData:JSON.stringify(this.timeoff.AvailableWorkDays.Schedules)})
 
 
    }
@@ -334,11 +337,11 @@ canceltimeoff(a)
 this.sendcommand(
  [ (f)=>{
 this.sendcommand((f)=>{ delete(this.cancel[a]);
-this.timeofrequests=f},"GetTimeOffs","date="+ this.datetime(),{ withCredentials: true});
+this.timeofrequests=f},"GetTimeOffs",{date:new Date().f1()},{ withCredentials: true});
 
 },(f)=>{delete(this.cancel[a])}]
 
-,"DeleteTimeOff","id="+this.encript('' +a))
+,"DeleteTimeOff",{id:a})
 
 
    }
