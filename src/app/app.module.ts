@@ -34,9 +34,19 @@ import { DatechooserComponent } from './datechooser/datechooser.component';
 
 interface Date {
     f1(): number;
+    week1(): string;
+    month1():string;
 }
 
 // Add the implementation
+Date.prototype.week1 = function () {}
+Date.prototype.month1 = function () {
+const options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
+var firstDay = new Date(this.getFullYear(), this.getMonth(), 1);
+var lastDay = new Date(this.getFullYear(), this.getMonth() + 1, 0);
+return firstDay.toLocaleDateString(undefined, options)+" - "+lastDay.toLocaleDateString(undefined, options) 
+}
+
 Date.prototype.f1 = function () {
   return this.getFullYear() + "-" +
   ("0" + (this.getMonth()+1)).slice(-2) + "-" +
