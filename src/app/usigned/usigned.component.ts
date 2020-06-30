@@ -80,6 +80,71 @@ this.scrollto(0);
             });
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+DropOpenShift(id) {
+      const dialogData = 
+    new ConfirmDialogModel("Confirm Action","Are you sure you want to drop shift?",true);
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      maxWidth: "400px",
+      data: dialogData
+    });
+
+
+ dialogRef.afterClosed().subscribe(dialogResult => {
+if (dialogResult || typeof dialogResult=="string") { 
+this.bksvc.sendcommand((f)=>{
+
+  this.bksvc.sendcommand((f)=>{this.Document=f;},"DropOpenShift"); 
+
+   },"*Cancel",{id:id,comment:dialogResult})
+
+
+   }
+    }); 
+}
+
+PickupOpenShift(id) {
+      const dialogData = 
+    new ConfirmDialogModel("Confirm Action","Are you sure you want to pickup shift?",true);
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      maxWidth: "400px",
+      data: dialogData
+    });
+
+
+ dialogRef.afterClosed().subscribe(dialogResult => {
+if (dialogResult || typeof dialogResult=="string") { 
+this.bksvc.sendcommand((f)=>{
+
+  this.bksvc.sendcommand((f)=>{this.Document=f;},"PickupOpenShift"); 
+ 
+   },"*Cancel",{id:id,comment:dialogResult})
+
+
+   }
+    }); 
+}
+
+
+
+
 cancel() {
       const dialogData = 
     new ConfirmDialogModel("Confirm Action","Are you sure you want to cancel document ?",true);
@@ -90,7 +155,7 @@ cancel() {
 
 
  dialogRef.afterClosed().subscribe(dialogResult => {
-if (dialogResult | typeof dialogResult=="string") { 
+if (dialogResult || typeof dialogResult=="string") { 
 this.bksvc.sendcommand((f)=>{
   delete(this.Document);
   this.bksvc.sendcommand((f)=>{this.Document=f;},"*GetDocuments"); 
@@ -112,7 +177,7 @@ decline() {
     });
 
  dialogRef.afterClosed().subscribe(dialogResult => {
-  if (dialogResult | typeof dialogResult=="string") { 
+  if (dialogResult || typeof dialogResult=="string") { 
 this.bksvc.sendcommand((f)=>{ 
 delete(this.Document);
   this.bksvc.sendcommand((f)=>{this.Document=f;},"*GetDocuments"); 

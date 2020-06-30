@@ -14,29 +14,6 @@
 
   <app-datechooser buttons=[0,1] [(datemode)]="viewmode" (thdateChange)=godate($event) [(thdate)]="mydate">
 
-<ng-container *ngIf="viewmode==1">
-<mat-card  class="stb"  *ngFor="let item of bksvc.AdvancedScheduling.Schedules; let i = index">Simple card
-{{item.CanDrop}}
-{{item.CanPickup}}
-{{item.CanSwap}}
-{{item.Date}}
-{{item.DepName}}
-{{item.DivisionName}}
-{{item.GroupName}}
-{{item.Id}}
-{{item.IsDraft}}
-{{item.JobName}}
-{{item.Shift}}
-{{item.SkillName: ""
-</mat-card>
-
-
-</ng-container>
-
-
-
-<ng-container *ngIf="viewmode==0">
-
 <mat-card  class="stb" *ngFor="let item of bksvc.AdvancedScheduling.Schedules; let i = index">
 <button class="round-corners"  mat-stroked-button color="warn" *ngIf="!item.CanDrop"> <mat-icon>close</mat-icon> Drop</button>
 
@@ -75,14 +52,16 @@
 <mat-card-content>{{item.SkillName}}</mat-card-content>
 </ng-container>
 
-
-{{item.GroupName}}
+{{item.Date}}
 {{item.Id}}
 {{item.IsDraft}}
-{{item.JobName}}
-{{item.Shift}}
-{{item.SkillName}}
+
 </mat-card>
+
+
+<ng-container *ngIf="viewmode==0">
+
+
 
 
    <mat-expansion-panel [expanded]="true" class="stb" *ngIf='bksvc.AdvancedScheduling!=undefined && bksvc.AdvancedScheduling.Coworkers.length>0'>

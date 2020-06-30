@@ -56,7 +56,7 @@ this.SideNavigation.push({icon:"shift", text:"Open Shifts", action:"/openshift",
 this.SideNavigation.push({icon:"shiftrequest", text:"Shift Requests", action:"/shiftrequest",footer:false});
 if (this.AMGSettings.Benefits) this.SideNavigation.push({icon:"benefits", text:"Benefits", action:"/benefit",footer:true});
 this.SideNavigation.push({icon:"timeoffrequestevent", text:"Time Off Requests", action:"/timeoff",footer:true});
-this.SideNavigation.push({icon:"tracking", text:"Mileage Tracking", action:"/timeoff",footer:false});
+this.SideNavigation.push({icon:"tracking", text:"Mileage Tracking", action:"/tracking",footer:false});
 if (this.AMGSettings.Usigned) this.SideNavigation.push({icon:"usigned", text:"USigned", action:"/usigned",footer:false});
 this.SideNavigation.push({icon:"swap", text:"Switch to User", action:"/toUser",footer:false});
 } else

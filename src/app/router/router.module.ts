@@ -17,6 +17,7 @@ import { StatusboardComponent } from '../statusboard/statusboard.component';
 import { PunchanalysisComponent } from '../punchanalysis/punchanalysis.component';
 import { OpenshiftComponent } from '../openshift/openshift.component';
 import { ShiftrequestComponent } from '../shiftrequest/shiftrequest.component';
+import { TrackingComponent } from '../tracking/tracking.component';
 
 export const routes: Routes = [
  { path: 'test', component: ChooseemployeeComponent},
@@ -41,6 +42,9 @@ export const routes: Routes = [
 { path: 'openshift', component: OpenshiftComponent, canActivate: [AuthguardService] }
 ,
 { path: 'shiftrequest', component:  ShiftrequestComponent, canActivate: [AuthguardService] }
+,
+{ path: 'tracking', component:  TrackingComponent , canActivate: [AuthguardService] }
+
 ];
 
 
