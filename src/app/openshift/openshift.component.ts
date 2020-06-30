@@ -17,6 +17,6 @@ viewmode=0
 godate(a=0)
 {
  if (a!==0) this.mydate=a;
-this.bksvc.sendcommand((f)=>{this.bksvc.AdvancedScheduling=f;},"GetAdvancedScheduling",{date:this.mydate.f1(),viewMode:this.viewmode}) 
+this.bksvc.sendcommand((f)=>{this.bksvc.OpenShifts=f;},"GetOpenShifts",{date:this.mydate.f1(),viewMode:this.viewmode}) 
 }
 }
