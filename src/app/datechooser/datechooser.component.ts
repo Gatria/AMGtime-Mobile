@@ -36,6 +36,7 @@ a=a*this.step1[this.datemode];
 
 var tomorrow = new Date(this.mydate);
     tomorrow.setDate(tomorrow.getDate() + a);
+    tomorrow.setHours(0,0,0,0)
     this.mydate = tomorrow;
     this.thdateChange.emit(this.mydate);
 }

@@ -15,47 +15,63 @@
   <app-datechooser buttons=[0,1] [(datemode)]="viewmode" (thdateChange)=godate($event) [(thdate)]="mydate">
 
 <mat-card  class="stb" *ngFor="let item of bksvc.AdvancedScheduling.Schedules; let i = index">
-<button (click)=this.bksvc.DropOpenShift(item.Id) class="round-corners"  mat-stroked-button color="warn" *ngIf="!item.CanDrop"> <mat-icon>close</mat-icon> Drop</button>
 
-<button class="round-corners"  mat-flat-button color="accent" *ngIf="!item.CanSwap"> <mat-icon>swap</mat-icon> Swap</button>
 
-<button (click)=this.bksvc.PickupOpenShift(item.Id) class="round-corners"  mat-stroked-button color="primary" *ngIf="!item.CanPickup"> <mat-icon>done</mat-icon> Pickup</button>
+
+
+
+
+
+
+<mat-card-subtitle class=date>
+   <mat-progress-spinner style="margin:-5px 2px -25px" *ngIf="bksvc.cancel[item.Id]==1" mode="indeterminate"></mat-progress-spinner>
+ <span *ngIf="bksvc.cancel[item.Id]==undefined"> {{item.Date}}
+   
+
+{{item.Shift}}
+  </span>
+   </mat-card-subtitle>
+<mat-card-title class=title>
+
+
+
+
+
+
+
+
+
+
+
+
+<button (click)=this.bksvc.DropOpenShift(item.Id) class="round-corners"  mat-stroked-button color="warn" *ngIf="item.CanDrop"> <mat-icon>close</mat-icon> Drop</button>
+
+<button class="round-corners"  mat-flat-button color="accent" *ngIf="item.CanSwap"> <mat-icon>swap</mat-icon> Swap</button>
+
+<button (click)=this.bksvc.PickupOpenShift(item.Id) class="round-corners"  mat-stroked-button color="primary" *ngIf="item.CanPickup"> <mat-icon>done</mat-icon> Pickup</button>
 
 
 <ng-container *ngIf="item.DepName>''">
-<mat-card-subtitle>Department:</mat-card-subtitle>
-<mat-card-content>{{item.DepName}}</mat-card-content>
+<mat-card-content class="t3">Department: {{item.DepName}}</mat-card-content>
 </ng-container>
 
 <ng-container *ngIf="item.DivisionName>''">
-<mat-card-subtitle>Division:</mat-card-subtitle>
-<mat-card-content>{{item.DivisionName}}</mat-card-content>
+<mat-card-content class="t3">Division: {{item.DivisionName}}</mat-card-content>
 </ng-container>
 
 <ng-container *ngIf="item.GroupName>''">
-<mat-card-subtitle>Group:</mat-card-subtitle>
-<mat-card-content>{{item.GroupName}}</mat-card-content>
+<mat-card-content class="t3">Group: {{item.GroupName}}</mat-card-content>
 </ng-container>
 
 <ng-container *ngIf="item.JobName>''">
-<mat-card-subtitle>Job:</mat-card-subtitle>
-<mat-card-content>{{item.JobName}}</mat-card-content>
+<mat-card-content class="t3">Job: {{item.JobName}}</mat-card-content>
 </ng-container>
 
-<ng-container *ngIf="item.Shift>''">
-<mat-card-subtitle>Shift:</mat-card-subtitle>
-<mat-card-content>{{item.Shift}}</mat-card-content>
-</ng-container>
 
 <ng-container *ngIf="item.SkillName>''">
-<mat-card-subtitle>Skill:</mat-card-subtitle>
-<mat-card-content>{{item.SkillName}}</mat-card-content>
+<mat-card-content class="t3">Skill: {{item.SkillName}}</mat-card-content>
 </ng-container>
-
-{{item.Date}}
-{{item.Id}}
-{{item.IsDraft}}
-
+</mat-card-title>
 </mat-card>
 
 

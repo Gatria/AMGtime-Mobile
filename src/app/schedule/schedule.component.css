@@ -20,3 +20,91 @@ mat-divider:last-of-type {display:none}
 
 
 .limit {width:200px}
+
+
+
+
+
+
+
+
+
+
+
+
+.date { width: 100px;
+    text-align: center;
+    line-height: 2em;
+   vertical-align: text-bottom;
+    padding-right: 1.8vw;
+    margin:0px;
+    display: inline-block;
+    }
+   .date button {bottom: 0px;
+    display: block;
+    height: 0px;} 
+.comment {
+margin: 10px 0 0 !important;
+    font-style: italic;
+}    
+.title {
+     display: inline-block;
+    border-left: 3px solid #eee;
+    padding-left: 1.8vw;
+    width: calc(100% - 107px - 3vw);
+    vertical-align: top;
+}
+.button {float:right}
+.button .material-icons {    font-size: 17px;
+    margin: 0px 5px 2px -5px;
+}
+.t3 {display:inline-block;width:45%;margin-bottom: 0px}
+
+.small {font-size:10px!important}
+
+    .list {margin-top:-30px}
+    .m4 {
+    width: 90px;
+    text-align: center;
+}
+.img {width:100%}
+mat-chip {width: 20%;
+    justify-content: center;
+    font-size:3vw;
+    }
+    .imageframe {
+      margin: 4px;
+    border-radius: 25px;
+    overflow: hidden;
+    }
+
+.t1{width:60%}
+.t2{width: 38%; margin: 0 0 0 2%}
+.t3{width:50%}
+
+     .float {position:fixed;right:10px;bottom:17vw}
+
+
+  input[type="time"]::-webkit-calendar-picker-indicator {
+  font-size:23px;
+  opacity:0.7;
+  margin:-5px 4px -4px 0px;
+
+}
+
+     @media screen and (orientation:landscape) {
+       mat-chip {width: 15%;
+    justify-content: center;
+    font-size:2.4vh;
+    }
+
+     .float {position:fixed;right:10px;bottom:10px}
+    .title {
+    padding-left: 1.8vw;
+    width: calc(100% - 107px - 5vw);
+}
+     }
+.limited:last-of-type {border-color:#0f7da2}
+
+.st {text-align:center;font-size: 17px;
+    margin: 17px 0px;}
