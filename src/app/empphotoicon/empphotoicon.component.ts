@@ -23,7 +23,7 @@ export class EmpphotoiconComponent implements OnInit {
                e => {if (this.EmpID==e.Id) {this.HasImage=e.HasImage;return true}}); else this.HasImage=true;
           
 
- if (this.HasImage) this.bksvc.getEmpPhoto(this.EmpID)
+ if (this.HasImage && this.bksvc.empimage[this.EmpID]==undefined) this.bksvc.getEmpPhoto(this.EmpID)
 this.Initials=this.name.split(" ").map((n)=>n[0]).join("").substring(0,2);
 }
   }

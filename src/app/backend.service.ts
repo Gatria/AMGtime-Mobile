@@ -211,13 +211,13 @@ if (s) { message = "Do you really want to approve timecard?";code=1}
     });
 
  dialogRef.afterClosed().subscribe(dialogResult => {
-  if (dialogResult) { 
+  if (dialogResult || typeof dialogResult=="string") { 
 this.loading=true
 
 this.sendcommand((f)=>{
 this.timecard[this.AMGSettings.PayPeriodBackLimit-1-i].TimeCardApprovalStatus=code;
 this.loading=false;
-},"ApproveRejectTimecard",{period:i,approve:s,comment:''})
+},"ApproveRejectTimecard",{period:i,approve:s,comment:dialogResult})
 
 
    } 
@@ -347,6 +347,79 @@ stringToHslColor(str, bk=false) {
   var h = hash % 360;
   if (bk) { let bkc="#fff";let col='hsl('+h+', '+50+'%, '+50+'%)'}  else  {let bkc='hsl('+h+', '+60+'%, '+85+'%)';let col='hsl('+h+', '+30+'%, '+30+'%)'}
   return {'color':col ,'background-color': bkc };
+}
+
+
+
+DropOpenShift(id) {
+      const dialogData = 
+    new ConfirmDialogModel("Confirm Action","Are you sure you want to drop shift?",true);
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      maxWidth: "400px",
+      data: dialogData
+    });
+ dialogRef.afterClosed().subscribe(dialogResult => {
+if (dialogResult || typeof dialogResult=="string") { 
+  this.sendcommand((f)=>{},"DropOpenShift",{id:id,comment:dialogResult})
+   }
+    }); 
+}
+
+PickupOpenShift(id) {
+      const dialogData = 
+    new ConfirmDialogModel("Confirm Action","Are you sure you want to pickup shift?",true);
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      maxWidth: "400px",
+      data: dialogData
+    });
+ dialogRef.afterClosed().subscribe(dialogResult => {
+if (dialogResult || typeof dialogResult=="string") { 
+  this.sendcommand((f)=>{},"PickupOpenShift",{id:id,comment:dialogResult})
+   }
+    }); 
+}
+
+
+
+
+CancelTrip() {
+   const dialogData = 
+    new ConfirmDialogModel("Confirm Action","Are you sure you want to cancel trip?");
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      maxWidth: "400px",
+      data: dialogData
+    });
+
+
+ dialogRef.afterClosed().subscribe(dialogResult => {
+if (dialogResult) { 
+  this.sendcommand((f)=>{},"CancelTrip",{tripId:this.lasttrip.Id})
+   }
+    }); 
+}
+
+
+
+EndTrip() {
+   const dialogData = 
+    new ConfirmDialogModel("Confirm Action","Are you sure you want to finish trip?");
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      maxWidth: "400px",
+      data: dialogData
+    });
+
+
+ dialogRef.afterClosed().subscribe(dialogResult => {
+if (dialogResult) { 
+
+  this.getLocation(()=>{
+this.sendcommand((f)=>{},"ConfirmTripFinished",{date:new Date().f1(),tripId:this.lasttrip.Id,latitude:this.location.latitude,longitude:this.location.longitude}) 
+ }) 
+
+
+
+   }
+    }); 
 }
 
 
