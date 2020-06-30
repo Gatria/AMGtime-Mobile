@@ -39,12 +39,16 @@ interface Date {
 }
 
 // Add the implementation
-Date.prototype.week1 = function () {}
+Date.prototype.week1 = function () {  
+const firstDay = new Date(this.getFullYear(), this.getMonth(), this.getDate() - this.getDay())
+const lastDay = new Date(this.getFullYear(), this.getMonth(), firstDay.getDate() + 6);
+return firstDay.toDateString()+" - "+lastDay.toDateString()   
+}
+
 Date.prototype.month1 = function () {
-const options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
-var firstDay = new Date(this.getFullYear(), this.getMonth(), 1);
-var lastDay = new Date(this.getFullYear(), this.getMonth() + 1, 0);
-return firstDay.toLocaleDateString(undefined, options)+" - "+lastDay.toLocaleDateString(undefined, options) 
+const firstDay = new Date(this.getFullYear(), this.getMonth(), 1);
+const lastDay = new Date(this.getFullYear(), this.getMonth() + 1, 0);
+return firstDay.toDateString()+" - "+lastDay.toDateString() 
 }
 
 Date.prototype.f1 = function () {
