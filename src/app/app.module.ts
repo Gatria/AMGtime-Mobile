@@ -31,6 +31,8 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { PunchanalysisComponent } from './punchanalysis/punchanalysis.component';
 import { SignaturePadModule } from '@ng-plus/signature-pad';
 import { DatechooserComponent } from './datechooser/datechooser.component';
+import { OpenshiftComponent } from './openshift/openshift.component';
+import { ShiftrequestComponent } from './shiftrequest/shiftrequest.component';
 
 interface Date {
     f1(): number;
@@ -63,7 +65,7 @@ Date.prototype.f1 = function () {
 @NgModule({
 
     imports:      [SignaturePadModule ,WebcamModule,AllMaterialModule, AppRouterModule, HttpClientModule ,BrowserAnimationsModule, BrowserModule, FormsModule,StorageServiceModule,NgxChartsModule],
-  declarations: [ AppComponent, CameraComponent, LoginComponent, HomescreenComponent, EmpphotoiconComponent, TimecardComponent, BenefitsComponent, ScheduleComponent, TimeoffComponent, MatSidenavComponent, PasswordresetComponent, SettingsComponent, ComplogoComponent,  ConfirmDialogComponent, USignedComponent,SignitureComponent, StatusboardComponent, PunchdialogComponent, FooterComponent,ChooseemployeeComponent, PunchanalysisComponent, DatechooserComponent],
+  declarations: [ AppComponent, CameraComponent, LoginComponent, HomescreenComponent, EmpphotoiconComponent, TimecardComponent, BenefitsComponent, ScheduleComponent, TimeoffComponent, MatSidenavComponent, PasswordresetComponent, SettingsComponent, ComplogoComponent,  ConfirmDialogComponent, USignedComponent,SignitureComponent, StatusboardComponent, PunchdialogComponent, FooterComponent,ChooseemployeeComponent, PunchanalysisComponent, DatechooserComponent, OpenshiftComponent, ShiftrequestComponent],
   bootstrap:    [ AppComponent ],
   providers: [BackendService],
                 entryComponents: [SignitureComponent,ConfirmDialogComponent,PunchdialogComponent]

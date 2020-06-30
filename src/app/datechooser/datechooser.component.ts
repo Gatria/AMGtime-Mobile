@@ -10,10 +10,10 @@ export class DatechooserComponent  implements OnInit  {
  @Input() thdate:string; 
  @Input() datemode=0;
  @Input() buttons=[];
- @Input() futureonly=0;
-
+ @Input() futureonly=false;
+ step1=[1,7,30]
  @Output() thdateChange: EventEmitter<any> = new EventEmitter();
-@Output() datemodeChange: EventEmitter<any> = new EventEmitter();
+ @Output() datemodeChange: EventEmitter<any> = new EventEmitter();
 
 topbuttonclick(a){
   this.datemode=a;
@@ -21,9 +21,18 @@ topbuttonclick(a){
   this.change()  
 } 
 
+checkfuture()
+{
+ var d1 = new Date(this.mydate);
+    d1.setDate(d1.getDate() - this.step1[this.datemode])
+    d1.setHours(23,59,59);
+return (d1<new Date() && this.futureonly)
+
+}
+
 change(a=0) {
-const step1=[1,7,30]  
-a=a*step1[this.datemode];
+  
+a=a*this.step1[this.datemode];
 
 var tomorrow = new Date(this.mydate);
     tomorrow.setDate(tomorrow.getDate() + a);
@@ -33,6 +42,5 @@ var tomorrow = new Date(this.mydate);
     constructor() { }
   ngOnInit()  {
     this.mydate=new Date(this.thdate)
-    console.log(this.mydate) 
-    console.log(this.thdate)   }
+   }
 }

@@ -52,8 +52,8 @@ if (this.AMGSettings.IsEmployee) {
 
 this.SideNavigation.push({icon:"timecard", text:"Timecard", action:"/timecard",footer:true});
 this.SideNavigation.push({icon:"schedule", text:"Schedule", action:"/schedule",footer:true});
-this.SideNavigation.push({icon:"shift", text:"Open Shifts", action:"/camera",footer:false});
-this.SideNavigation.push({icon:"shiftrequest", text:"Shift Requests", action:"/logout",footer:false});
+this.SideNavigation.push({icon:"shift", text:"Open Shifts", action:"/openshift",footer:false});
+this.SideNavigation.push({icon:"shiftrequest", text:"Shift Requests", action:"/shiftrequest",footer:false});
 if (this.AMGSettings.Benefits) this.SideNavigation.push({icon:"benefits", text:"Benefits", action:"/benefit",footer:true});
 this.SideNavigation.push({icon:"timeoffrequestevent", text:"Time Off Requests", action:"/timeoff",footer:true});
 this.SideNavigation.push({icon:"tracking", text:"Mileage Tracking", action:"/timeoff",footer:false});
@@ -62,8 +62,8 @@ this.SideNavigation.push({icon:"swap", text:"Switch to User", action:"/toUser",f
 } else
 {
 this.SideNavigation.push({icon:"attendance", text:"Attendance", action:"/test",footer:true});
-this.SideNavigation.push({icon:"shift", text:"Open Shifts", action:"/login"});
-this.SideNavigation.push({icon:"shiftrequest", text:"Shift Requests", action:"/logout",footer:false});
+this.SideNavigation.push({icon:"shift", text:"Open Shifts", action:"/openshift"});
+this.SideNavigation.push({icon:"shiftrequest", text:"Shift Requests", action:"/shiftrequest",footer:false});
 this.SideNavigation.push({icon:"statusboard", text:"Status Board", action:"/statusboard",footer:true});
 this.SideNavigation.push({icon:"punchanalysis", text:"Punch Analysis", action:"/punchanalysis",footer:true});
 this.SideNavigation.push({icon:"timeoffrequest", text:"Time Off Requests", action:"/timeoff",footer:true});
@@ -262,10 +262,7 @@ this.getLocation(f)
 
 sendtimeoffrequest(a)
 {
- let message= "Send Time Off Request?"
-
-    const dialogData = 
-    new ConfirmDialogModel("Confirm Action", message);
+    const dialogData = new ConfirmDialogModel("Confirm Action", "Send Time Off Request?");
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       maxWidth: "400px",
       data: dialogData
@@ -314,13 +311,7 @@ CategoryId:this.timeoff.category,forceAdd:true,FullDay:fd.toString(),Comment:thi
 
 canceltimeoff(a)
 {
-
-
- let message= "Do you really want to cancel time off reques?"
-
-
-    const dialogData = 
-    new ConfirmDialogModel("Confirm Action", message);
+    const dialogData = new ConfirmDialogModel("Confirm Action", "Do you really want to cancel time off reques?");
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       maxWidth: "400px",
       data: dialogData

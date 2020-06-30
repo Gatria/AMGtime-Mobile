@@ -15,7 +15,8 @@ import { USignedComponent } from '../usigned/usigned.component';
 import { ChooseemployeeComponent } from '../chooseemployee/chooseemployee.component';
 import { StatusboardComponent } from '../statusboard/statusboard.component';
 import { PunchanalysisComponent } from '../punchanalysis/punchanalysis.component';
-
+import { OpenshiftComponent } from '../openshift/openshift.component';
+import { ShiftrequestComponent } from '../shiftrequest/shiftrequest.component';
 
 export const routes: Routes = [
  { path: 'test', component: ChooseemployeeComponent},
@@ -36,6 +37,10 @@ export const routes: Routes = [
 { path: 'usigned', component: USignedComponent, canActivate: [AuthguardService] },
 { path: 'punchanalysis', component:  PunchanalysisComponent, canActivate: [AuthguardService] },
 { path: 'statusboard', component: StatusboardComponent, canActivate: [AuthguardService] }
+,
+{ path: 'openshift', component: OpenshiftComponent, canActivate: [AuthguardService] }
+,
+{ path: 'shiftrequest', component:  ShiftrequestComponent, canActivate: [AuthguardService] }
 ];
 
 
