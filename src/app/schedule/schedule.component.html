@@ -12,7 +12,7 @@
   </mat-toolbar>
  
 
-  <app-datechooser buttons=[0,1,2] [(datemode)]="viewmode" (thdateChange)=godate($event) [(thdate)]="mydate">
+  <app-datechooser buttons=[0,1] [(datemode)]="viewmode" (thdateChange)=godate($event) [(thdate)]="mydate">
 
 <ng-container *ngIf="viewmode==1">
 <mat-card  *ngFor="let item of bksvc.AdvancedScheduling.Schedules; let i = index">Simple card
