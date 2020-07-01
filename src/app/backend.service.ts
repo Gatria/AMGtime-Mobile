@@ -207,7 +207,8 @@ this.loading=true
 
 this.sendcommand((f)=>{
 this.loading=false;
-},"ApproveOrDenyTimeOf",{id:id,status:1,approve:a==0,comment:dialogResult})
+this.timeofrequests=f;
+},"ApproveOrDenyTimeOff",{id:id,status:1,approve:a==0,comment:dialogResult})
 
 
    } 
