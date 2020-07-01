@@ -56,7 +56,16 @@ Cant Punch
 </ng-container>
 
 
- 
+   <mat-action-row *ngIf="bksvc.StatusBoard!=null" class="nopadding noborder">
+   <ngx-charts-pie-grid
+
+  animations=true
+  [scheme]="colorScheme"
+  [results]="single"
+  >
+  
+</ngx-charts-pie-grid>
+</mat-action-row>
 
 
 
