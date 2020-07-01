@@ -14,7 +14,7 @@
 
 
 <div class="stb sm-round-corners  mat-elevation-z2 topinfo" > 
-  <button  (click)="this.bksvc.getLocation()" mat-mini-fab color=primary> <mat-icon>tracking</mat-icon></button> Current Location
+ <h3> <button  (click)="this.bksvc.getLocation()" mat-mini-fab color=primary> <mat-icon>tracking</mat-icon></button> Current Location</h3>
 <agm-map *ngIf="bksvc.location!=undefined" class="sm-round-corners" (mapReady)="mapReady()" [zoom]=18 [latitude]="bksvc.location.latitude" [longitude]="bksvc.location.longitude">
 <agm-marker [latitude]="bksvc.location.latitude" [longitude]="bksvc.location.longitude"></agm-marker>
 </agm-map>
