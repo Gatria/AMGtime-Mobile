@@ -21,7 +21,6 @@ export class ChooseemployeeComponent implements OnInit {
 chooseme(i) {
   this.ngModel=i
   this.ngModelChange.emit(i)
-  console.log(i)
 }
 filterme(a,i) {
   //console.log(a,i);

@@ -5,7 +5,7 @@
 </mat-chip-list>
 
 
-<div class="round-corners mat-elevation-z2 topinfo" id=top{{i}}> 
+<div class="stb round-corners mat-elevation-z2 topinfo" id=top{{i}}> 
   <button [disabled]="checkfuture()" mat-mini-fab class="arrow-button left-button" (click)=change(-1)>  <mat-icon>arrowleft</mat-icon></button>
   <div class="mid-title">
    <span *ngIf="datemode==1">{{mydate.week1()}}</span>

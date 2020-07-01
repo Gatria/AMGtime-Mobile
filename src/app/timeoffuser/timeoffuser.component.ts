@@ -17,10 +17,7 @@ first=true;
      this.bksvc.sendcommand((f)=>{ this.bksvc.timeofrequests=f;this.chips(0)},"GetTimeOffs",{date:new Date().f1()},{ withCredentials: true});
 this.bksvc.loading=false
   }
-chooseemployee(e) {
-this.myEmplyee=e;
-this.scrollto(1)  
-}
+
 scroll() {
  this.first= document.getElementById("slider").scrollLeft==0;
 }
