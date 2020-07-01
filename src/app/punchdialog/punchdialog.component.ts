@@ -10,6 +10,6 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 export class PunchdialogComponent  {
 
   constructor(public dialogRef: MatDialogRef,
-    @Inject(MAT_DIALOG_DATA) public data) { }
+    @Inject(MAT_DIALOG_DATA) public data) { this.MAT_DIALOG_DATA.MaxWidth="200px"}
 
 }

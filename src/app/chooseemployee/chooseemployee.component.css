@@ -16,3 +16,13 @@ mat-divider:last-of-type {display:none}
     .icon {padding: 0px 6px 0px 0px;
     font-size: 31px;
 }
+.rightside {    border-left: 2px solid #eee;
+    width: 50px;
+    height: 20px;
+    padding: 14px 0px;
+    margin: auto;
+    display: inline-block;
+    right: 20px;
+    font-size: 18px;
+    position: fixed;
+    text-align: center;}

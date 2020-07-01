@@ -66,7 +66,7 @@ this.SideNavigation.push({icon:"shift", text:"Open Shifts", action:"/openshift"}
 this.SideNavigation.push({icon:"shiftrequest", text:"Shift Requests", action:"/shiftrequest",footer:false});
 this.SideNavigation.push({icon:"statusboard", text:"Status Board", action:"/statusboard",footer:true});
 this.SideNavigation.push({icon:"punchanalysis", text:"Punch Analysis", action:"/punchanalysis",footer:true});
-this.SideNavigation.push({icon:"timeoffrequest", text:"Time Off Requests", action:"/timeoff",footer:true});
+this.SideNavigation.push({icon:"timeoff", text:"Time Off Requests", action:"/timeoffuser",footer:true});
 if (this.AMGSettings.Usigned) this.SideNavigation.push({icon:"usigned", text:"USigned", action:"/usigned",footer:false});
 this.SideNavigation.push({icon:"swap", text:"Switch to Employee", action:"/toEmp",footer:false});
 
@@ -179,7 +179,6 @@ logout () {
 const message = "Do you really want to logout ?";
     const dialogData = new ConfirmDialogModel("Confirm Action", message);
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
-      maxWidth: "400px",
       data: dialogData
     });
  
@@ -206,7 +205,6 @@ if (s) { message = "Do you really want to approve timecard?";code=1}
     const dialogData = 
     new ConfirmDialogModel("Confirm Action", message ,comment);
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
-      maxWidth: "400px",
       data: dialogData
     });
 
@@ -242,7 +240,6 @@ transact (b) {
 const message = "Do you really want to perform "+b+" action ?";
     const dialogData = new ConfirmDialogModel("Confirm Action", message);
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
-      maxWidth: "400px",
       data: dialogData
     });
  
@@ -264,7 +261,6 @@ sendtimeoffrequest(a)
 {
     const dialogData = new ConfirmDialogModel("Confirm Action", "Send Time Off Request?");
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
-      maxWidth: "400px",
       data: dialogData
     });
 
@@ -279,7 +275,6 @@ if (f=="") a.scrollto(0); else  {
     const dialogData = 
     new ConfirmDialogModel("Confirm Action", f.DuplicateTimeOff);
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
-      maxWidth: "400px",
       data: dialogData
     });
 
@@ -313,7 +308,6 @@ canceltimeoff(a)
 {
     const dialogData = new ConfirmDialogModel("Confirm Action", "Do you really want to cancel time off reques?");
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
-      maxWidth: "400px",
       data: dialogData
     });
 
@@ -355,7 +349,6 @@ DropOpenShift(id) {
       const dialogData = 
     new ConfirmDialogModel("Confirm Action","Are you sure you want to drop shift?",true);
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
-      maxWidth: "400px",
       data: dialogData
     });
  dialogRef.afterClosed().subscribe(dialogResult => {
@@ -369,7 +362,6 @@ PickupOpenShift(id) {
       const dialogData = 
     new ConfirmDialogModel("Confirm Action","Are you sure you want to pickup shift?",true);
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
-      maxWidth: "400px",
       data: dialogData
     });
  dialogRef.afterClosed().subscribe(dialogResult => {
@@ -386,14 +378,13 @@ CancelTrip() {
    const dialogData = 
     new ConfirmDialogModel("Confirm Action","Are you sure you want to cancel trip?");
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
-      maxWidth: "400px",
       data: dialogData
     });
 
 
  dialogRef.afterClosed().subscribe(dialogResult => {
 if (dialogResult) { 
-  this.sendcommand((f)=>{},"CancelTrip",{tripId:this.lasttrip.Id})
+  this.sendcommand((f)=>{this.sendcommand((f)=>{this.lasttrip=f;},"GetLastIncompleteTrip") },"CancelTrip",{tripId:this.lasttrip.Id})
    }
     }); 
 }
@@ -404,7 +395,6 @@ EndTrip() {
    const dialogData = 
     new ConfirmDialogModel("Confirm Action","Are you sure you want to finish trip?");
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
-      maxWidth: "400px",
       data: dialogData
     });
 
@@ -413,7 +403,7 @@ EndTrip() {
 if (dialogResult) { 
 
   this.getLocation(()=>{
-this.sendcommand((f)=>{},"ConfirmTripFinished",{date:new Date().f1(),tripId:this.lasttrip.Id,latitude:this.location.latitude,longitude:this.location.longitude}) 
+this.sendcommand((f)=>{this.sendcommand((f)=>{this.lasttrip=f;},"GetLastIncompleteTrip")},"ConfirmTripFinished",{date:new Date().f1(),tripId:this.lasttrip.Id,latitude:this.location.latitude,longitude:this.location.longitude}) 
  }) 
 
 

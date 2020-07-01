@@ -10,10 +10,10 @@
     <h1 class="example-app-name">Mileage Tracking</h1>
   </mat-toolbar>
 
-
+<ng-container *ngIf="bksvc.lasttrip.Id==0" >
 <button (click)= starttrip() class="round-corners"  mat-flat-button color="accent"  ><mat-icon>swap</mat-icon>Start Trip</button>
-
-
+</ng-container>
+<ng-container *ngIf="bksvc.lasttrip.Id!=0" >
 <button (click)= bksvc.EndTrip() class="round-corners"  mat-stroked-button color="warn" > <mat-icon>close</mat-icon> End Trip</button>
 
 <button (click)= starttrip() class="round-corners"  mat-flat-button color="accent"><mat-icon>swap</mat-icon> Add Location</button>
@@ -29,7 +29,7 @@
 
 </mat-card>
 </ng-container>
-
+</ng-container>
 <app-footer></app-footer>
  
     </mat-sidenav-content>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component,Input, OnInit,Output, EventEmitter } from '@angular/core';
 import {BackendService} from '../backend.service'
 
 @Component({
@@ -7,6 +7,10 @@ import {BackendService} from '../backend.service'
   styleUrls: ['./chooseemployee.component.css']
 })
 export class ChooseemployeeComponent implements OnInit {
+ @Input() ngModel
+ @Input() filter:Function
+ @Input() rightside="Id"
+ @Output() ngModelChange: EventEmitter<any> = new EventEmitter();
 
   constructor(private bksvc:BackendService) { }
 
@@ -14,6 +18,9 @@ export class ChooseemployeeComponent implements OnInit {
     console.log(this.bksvc.employeelist);
   }
 chooseme(i) {
+  this.ngModel=i
+  this.ngModelChange.emit(i)
+
   console.log(i)
 }
 filterme(a,i) {

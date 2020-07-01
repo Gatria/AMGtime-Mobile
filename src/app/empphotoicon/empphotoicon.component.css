@@ -4,4 +4,5 @@ p {
   text-align:center;
   vertical-align:middle;
 }
-img, p { display:inline-block;     margin: 0 1em 0 0;border-radius:50%; width:45px;height:45px}
+img, p { display:inline-block;     margin: 0 1em 0 0;border-radius:50%;
+vertical-align: middle; width:45px;height:45px}

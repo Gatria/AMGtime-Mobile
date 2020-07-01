@@ -18,6 +18,7 @@ import { PunchanalysisComponent } from '../punchanalysis/punchanalysis.component
 import { OpenshiftComponent } from '../openshift/openshift.component';
 import { ShiftrequestComponent } from '../shiftrequest/shiftrequest.component';
 import { TrackingComponent } from '../tracking/tracking.component';
+import { TimeoffuserComponent } from '../timeoffuser/timeoffuser.component';
 
 export const routes: Routes = [
  { path: 'test', component: ChooseemployeeComponent},
@@ -44,7 +45,8 @@ export const routes: Routes = [
 { path: 'shiftrequest', component:  ShiftrequestComponent, canActivate: [AuthguardService] }
 ,
 { path: 'tracking', component:  TrackingComponent , canActivate: [AuthguardService] }
-
+,
+{ path: 'timeoffuser', component:  TimeoffuserComponent , canActivate: [AuthguardService] }
 ];
 
 
