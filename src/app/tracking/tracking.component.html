@@ -11,20 +11,23 @@
   </mat-toolbar>
 
 <ng-container *ngIf="bksvc.lasttrip.Id==0" >
-<button (click)= starttrip() class="round-corners"  mat-flat-button color="accent"  ><mat-icon>swap</mat-icon>Start Trip</button>
+<button (click)= starttrip() class="round-corners"  mat-flat-button color="accent"  ><mat-icon>truck</mat-icon>Start Trip</button>
 </ng-container>
 <ng-container *ngIf="bksvc.lasttrip.Id!=0" >
-<button (click)= bksvc.EndTrip() class="round-corners"  mat-stroked-button color="warn" > <mat-icon>close</mat-icon> End Trip</button>
 
-<button (click)= starttrip() class="round-corners"  mat-flat-button color="accent"><mat-icon>swap</mat-icon> Add Location</button>
-
-<button (click)= bksvc.CancelTrip() class="round-corners"  mat-stroked-button color="primary" > <mat-icon>done</mat-icon> Cancel Trip</button>
-
-<agm-map [latitude]="lat" [longitude]="lng">
+<div class="stb sm-round-corners  mat-elevation-z2 topinfo" > 
+<agm-map class="sm-round-corners" (mapReady)="mapReady()" [zoom]=18 [latitude]="lat" [longitude]="lng">
 <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
 </agm-map>
+<p>{{address}}</p>
 
 
+<button (click)= bksvc.EndTrip() class="round-corners"  mat-stroked-button color="warn" > <mat-icon>finish</mat-icon> End Trip</button>
+
+<button (click)= starttrip() class="round-corners"  mat-flat-button color="accent"><mat-icon>location</mat-icon> Add Location</button>
+
+<button (click)= bksvc.CancelTrip() class="round-corners"  mat-stroked-button color="primary" > <mat-icon>done</mat-icon> Cancel Trip</button>
+</div>
 
 <ng-container *ngIf="bksvc.lasttrip!=undefined">
 <mat-card  class="stb" *ngFor="let item of bksvc.lasttrip.Locations let i = index">

@@ -57,7 +57,7 @@ this.SideNavigation.push({icon:"shiftrequest", text:"Shift Requests", action:"/s
 if (this.AMGSettings.Benefits) this.SideNavigation.push({icon:"benefits", text:"Benefits", action:"/benefit",footer:true});
 this.SideNavigation.push({icon:"timeoffrequestevent", text:"Time Off Requests", action:"/timeoff",footer:true});
 this.SideNavigation.push({icon:"tracking", text:"Mileage Tracking", action:"/tracking",footer:false});
-if (this.AMGSettings.Usigned) this.SideNavigation.push({icon:"usigned", text:"USigned", action:"/usigned",footer:false});
+if (this.AMGSettings.Usigned) this.SideNavigation.push({icon:"quill", text:"USigned", action:"/usigned",footer:false});
 this.SideNavigation.push({icon:"swap", text:"Switch to User", action:"/toUser",footer:false});
 } else
 {
@@ -67,7 +67,7 @@ this.SideNavigation.push({icon:"shiftrequest", text:"Shift Requests", action:"/s
 this.SideNavigation.push({icon:"statusboard", text:"Status Board", action:"/statusboard",footer:true});
 this.SideNavigation.push({icon:"punchanalysis", text:"Punch Analysis", action:"/punchanalysis",footer:true});
 this.SideNavigation.push({icon:"timeoff", text:"Time Off Requests", action:"/timeoffuser",footer:true});
-if (this.AMGSettings.Usigned) this.SideNavigation.push({icon:"usigned", text:"USigned", action:"/usigned",footer:false});
+if (this.AMGSettings.Usigned) this.SideNavigation.push({icon:"quill", text:"USigned", action:"/usigned",footer:false});
 this.SideNavigation.push({icon:"swap", text:"Switch to Employee", action:"/toEmp",footer:false});
 
 }
