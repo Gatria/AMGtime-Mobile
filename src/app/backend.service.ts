@@ -191,7 +191,30 @@ const message = "Do you really want to logout ?";
 }
 
 
+ApproveOrDenyTimeOff(id,a) {
+const s=["approve","deny"];
+ let message= "Do you really want to "+s[a]+" timecard?"
 
+    const dialogData = 
+    new ConfirmDialogModel("Confirm Action", message ,true);
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      data: dialogData
+    });
+
+ dialogRef.afterClosed().subscribe(dialogResult => {
+  if (dialogResult || typeof dialogResult=="string") { 
+this.loading=true
+
+this.sendcommand((f)=>{
+this.loading=false;
+},"ApproveOrDenyTimeOf",{id:id,approve:a,comment:dialogResult})
+
+
+   } 
+    }); 
+
+
+}
 
 
 approverejecttimecard(i,s) {

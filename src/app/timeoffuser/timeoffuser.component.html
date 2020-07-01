@@ -45,9 +45,13 @@
    </mat-card-subtitle>
 
 <mat-card-title class=title>{{item.Category}} 
- <button *ngIf="item.Status!=2" mat-stroked-button color="warn" class="round-corners button" (click)="bksvc.canceltimeoff(item.Id)"><span class="material-icons">
+  <div class="button" *ngIf="item.Status==0">
+<button class="round-corners" mat-flat-button  (click)=bksvc.ApproveOrDenyTimeOff(item.Id,0) color="accent"><span class="material-icons">done</span> Approve</button>
+<br><br>
+   <button class="round-corners" mat-flat-button (click)=bksvc.ApproveOrDenyTimeOff(item.Id,1) color="warn"><span class="material-icons">
 close
-</span>Cancel</button>
+</span> Deny</button>
+ </div>
 <mat-card-content ngClass="{{item.StatusStr}}">{{item.StatusStr}}</mat-card-content>
 
 <mat-card-content *ngIf="item.Duration>''" class="t3">Duration: {{item.Duration}}</mat-card-content>

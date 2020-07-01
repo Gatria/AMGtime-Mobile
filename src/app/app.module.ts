@@ -35,6 +35,8 @@ import { OpenshiftComponent } from './openshift/openshift.component';
 import { ShiftrequestComponent } from './shiftrequest/shiftrequest.component';
 import { TrackingComponent } from './tracking/tracking.component';
 import { TimeoffuserComponent } from './timeoffuser/timeoffuser.component';
+import { AgmCoreModule } from '@agm/core';
+
 
 interface Date {
     f1(): number;
@@ -66,7 +68,9 @@ Date.prototype.f1 = function () {
 
 @NgModule({
 
-    imports:      [SignaturePadModule ,WebcamModule,AllMaterialModule, AppRouterModule, HttpClientModule ,BrowserAnimationsModule, BrowserModule, FormsModule,StorageServiceModule,NgxChartsModule],
+    imports:      [SignaturePadModule ,WebcamModule,AllMaterialModule, AppRouterModule, HttpClientModule ,BrowserAnimationsModule, BrowserModule, FormsModule,StorageServiceModule,NgxChartsModule,AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyB5wbecefqYqGVuEsW4erTBOCqXPqthrIc'
+    })],
   declarations: [ AppComponent, CameraComponent, LoginComponent, HomescreenComponent, EmpphotoiconComponent, TimecardComponent, BenefitsComponent, ScheduleComponent, TimeoffComponent, MatSidenavComponent, PasswordresetComponent, SettingsComponent, ComplogoComponent,  ConfirmDialogComponent, USignedComponent,SignitureComponent, StatusboardComponent, PunchdialogComponent, FooterComponent,ChooseemployeeComponent, PunchanalysisComponent, DatechooserComponent, OpenshiftComponent, ShiftrequestComponent, TrackingComponent, TimeoffuserComponent],
   bootstrap:    [ AppComponent ],
   providers: [BackendService],
