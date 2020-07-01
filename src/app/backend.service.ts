@@ -203,10 +203,10 @@ const s=["approve","deny"];
 
  dialogRef.afterClosed().subscribe(dialogResult => {
   if (dialogResult || typeof dialogResult=="string") { 
-this.loading=true
+this.cancel[id]=1;
 
 this.sendcommand((f)=>{
-this.loading=false;
+delete(this.cancel[id]);
 this.timeofrequests=f;
 },"ApproveOrDenyTimeOff",{id:id,status:1,approve:a==0,comment:dialogResult})
 
