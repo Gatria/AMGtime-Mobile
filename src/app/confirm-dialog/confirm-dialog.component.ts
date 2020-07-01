@@ -18,6 +18,7 @@ export class ConfirmDialogComponent implements OnInit {
     this.title = data.title;
     this.message = data.message;
     this.comment = data.comment;
+    this.data.MaxWidth="400px"
   }
   
   onConfirm(): void {
