@@ -13,13 +13,12 @@ export class TrackingComponent implements OnInit {
 
   ngOnInit() {
 this.bksvc.sendcommand((f)=>{this.bksvc.lasttrip=f;},"GetLastIncompleteTrip") 
-  this.lat=34.189849599999995;
-  this.lng=-118.4513455;
+   this.bksvc.getLocation(()=>{});
   }
 
 
 mapReady() {
-    this.getAddress(this.lat,this.lng);
+   this.getAddress(this.bksvc.location.latitude,this.bksvc.location.longitude);
 }
 
 
@@ -42,7 +41,7 @@ getAddress( lat: number, lng: number ) {
            if (e.types[0]!=="country" && e.types[0]!=="postal_code_suffix" && e.types[0]!=="administrative_area_level_2" && e.types[0]!=="locality" ) this.address =this.address+" "+e.short_name;
            })
           } else {
-            alert('No address available!');
+            this.bksvc.showerror('No address available!');
           }
         }
       });
@@ -51,7 +50,7 @@ getAddress( lat: number, lng: number ) {
  starttrip()
  {
 this.bksvc.getLocation(()=>{
-this.bksvc.sendcommand((f)=>{this.bksvc.sendcommand((f)=>{this.bksvc.lasttrip=f;},"GetLastIncompleteTrip") },"AddTripLocation",{date:new Date().f1(),tripId:this.bksvc.lasttrip.Id,latitude:this.bksvc.location.latitude,longitude:this.bksvc.location.longitude}) 
+this.bksvc.sendcommand((f)=>{this.bksvc.sendcommand((f)=>{this.bksvc.lasttrip=f;},"GetLastIncompleteTrip") },"AddTripLocation",{date:new Date().f1(),tripId:this.bksvc.lasttrip.Id,latitude:this.bksvc.location.latitude,longitude:this.bksvc.location.longitude,AddressLine:this.address}) 
  }) 
  } 
 

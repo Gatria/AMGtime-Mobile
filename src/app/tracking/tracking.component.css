@@ -1,2 +1,40 @@
 agm-map   {height: 30vh;}
-.topinfo button {width:120px; margin:5px}
+.topinfo button {width:170px;     font-size: 18px;
+    font-weight: 400;margin:5px}
+    .date { width: 100px;
+    text-align: center;
+    line-height: 2em;
+   vertical-align: text-bottom;
+    padding-right: 1.8vw;
+    margin:0px;
+    display: inline-block;
+    }
+   .date button {bottom: 0px;
+    display: block;
+    height: 0px;} 
+.comment {
+margin: 10px 0 0 !important;
+    font-style: italic;
+}    
+.title {
+     display: inline-block;
+    border-left: 3px solid #eee;
+    font-size:18px;
+    padding-left: 1.8vw;
+    width: calc(100% - 107px - 3vw);
+    vertical-align: top;
+}
+
+
+   @media screen and (orientation:landscape) {
+       mat-chip {width: 15%;
+    justify-content: center;
+    font-size:2.4vh;
+    }
+
+     .float {position:fixed;right:10px;bottom:10px}
+    .title {
+    padding-left: 1.8vw;
+    width: calc(100% - 107px - 5vw);
+}
+     }
