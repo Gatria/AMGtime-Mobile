@@ -14,6 +14,7 @@
 
 
 <div class="stb sm-round-corners  mat-elevation-z2 topinfo" > 
+  <button  (click)="this.bksvc.getLocation()" mat-mini-fab color=primary> <mat-icon>tracking</mat-icon></button> Current Location
 <agm-map *ngIf="bksvc.location!=undefined" class="sm-round-corners" (mapReady)="mapReady()" [zoom]=18 [latitude]="bksvc.location.latitude" [longitude]="bksvc.location.longitude">
 <agm-marker [latitude]="bksvc.location.latitude" [longitude]="bksvc.location.longitude"></agm-marker>
 </agm-map>
@@ -22,7 +23,7 @@
 <ng-container *ngIf="bksvc.lasttrip.Id!=0" >
 <button (click)= bksvc.EndTrip() class="round-corners"  mat-flat-button color="primary" > <mat-icon>finish</mat-icon> End Trip</button>
 
-<button (click)= starttrip() class="round-corners"  mat-flat-button color="accent"><mat-icon>location</mat-icon> Add Location</button>
+<button (click)= starttrip() class="round-corners"  mat-flat-button color="accent"><mat-icon>location</mat-icon> Add Stop</button>
 
 <button (click)= bksvc.CancelTrip() class="round-corners"  mat-stroked-button color="warn" > <mat-icon>close</mat-icon> Cancel Trip</button>
 </ng-container>

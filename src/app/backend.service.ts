@@ -469,7 +469,7 @@ if (dialogResult || typeof dialogResult=="string") {
 
 
 
-getLocation(f) {
+getLocation(f=()=>{}) {
   if(navigator.geolocation) {
     navigator.geolocation.getCurrentPosition((position)=>{
  this.location = {

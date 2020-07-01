@@ -13,7 +13,7 @@ export class TrackingComponent implements OnInit {
 
   ngOnInit() {
 this.bksvc.sendcommand((f)=>{this.bksvc.lasttrip=f;},"GetLastIncompleteTrip") 
-   this.bksvc.getLocation(()=>{});
+   this.bksvc.getLocation();
   }
 
 
