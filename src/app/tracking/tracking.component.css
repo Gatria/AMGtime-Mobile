@@ -13,7 +13,7 @@ agm-map   {height: 40vh;}
     border-right: 3px solid #eee;
     vertical-align: text-bottom;
     padding: 15px 0.8vw 15px 0px;
-    margin: -15px 0px -15px;
+    margin: -15px 0px -15px!important;
     display: inline-block;
     }
    .date button {bottom: 0px;
