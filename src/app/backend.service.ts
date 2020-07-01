@@ -426,7 +426,36 @@ EndTrip() {
 if (dialogResult) { 
 
   this.getLocation(()=>{
-this.sendcommand((f)=>{this.sendcommand((f)=>{this.lasttrip=f;},"GetLastIncompleteTrip")},"ConfirmTripFinished",{date:new Date().f1(),tripId:this.lasttrip.Id,latitude:this.location.latitude,longitude:this.location.longitude}) 
+this.sendcommand((e)=>{
+
+
+
+
+
+ const dialogData = 
+    new ConfirmDialogModel("Confirm Action","Mileage covered: "+e.Mileage+" mile.\n Do you want to  save comment?",true);
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      data: dialogData });
+  dialogRef.afterClosed().subscribe(dialogResult => {
+if (dialogResult || typeof dialogResult=="string") { 
+  this.sendcommand((f)=>{},"ConfirmTripComment",{miscId:e.MiscId,comment:dialogResult})
+   }
+    }) 
+
+
+
+
+
+
+
+
+
+
+
+
+  this.sendcommand((f)=>{this.lasttrip=f;},"GetLastIncompleteTrip")
+  
+  },"ConfirmTripFinished",{date:new Date().f1(),tripId:this.lasttrip.Id,latitude:this.location.latitude,longitude:this.location.longitude}) 
  }) 
 
 
@@ -449,7 +478,7 @@ getLocation(f) {
   f();
 },()=>{delete(this.location);f()});
   return true } else {
-    this.senderror("Geo Location not supported");
+    this.showerror("Geo Location not supported");
     return false;
   }
 }
