@@ -18,7 +18,7 @@ mat-divider:last-of-type {display:none}
 }
 .rightside {    border-left: 2px solid #eee;
     width: 50px;
-    height: 20px;
+    height: 25px;
     padding: 14px 0px;
     margin: auto;
     display: inline-block;
