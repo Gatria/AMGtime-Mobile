@@ -8,23 +8,24 @@ import {BackendService} from '../backend.service'
 })
 export class ChooseemployeeComponent implements OnInit {
  @Input() ngModel
- @Input() filter:Function
+ @Input() filter=(e)=>{return true}
  @Input() rightside="Id"
  @Output() ngModelChange: EventEmitter<any> = new EventEmitter();
+
 
   constructor(private bksvc:BackendService) { }
 
   ngOnInit() {
-    console.log(this.bksvc.employeelist);
+ 
   }
 chooseme(i) {
   this.ngModel=i
   this.ngModelChange.emit(i)
-
   console.log(i)
 }
 filterme(a,i) {
   //console.log(a,i);
-  return a.toLowerCase().includes(i.toLowerCase());
+  var d=a.Code+a.Name
+  return this.filter(a) && d.toLowerCase().includes(i.toLowerCase());
 }
 }

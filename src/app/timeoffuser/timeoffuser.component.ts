@@ -17,7 +17,10 @@ first=true;
      this.bksvc.sendcommand((f)=>{ this.bksvc.timeofrequests=f;this.chips(0)},"GetTimeOffs",{date:new Date().f1()},{ withCredentials: true});
 this.bksvc.loading=false
   }
-
+chooseemployee(e) {
+this.myEmplyee=e;
+this.scrollto(1)  
+}
 scroll() {
  this.first= document.getElementById("slider").scrollLeft==0;
 }
@@ -35,11 +38,14 @@ if (e.From=="("+b.Code+") "+b.Name && ((this.filter % 4 >= 2 && e.Status==0) || 
 
 scrollto(a)
 {
-
+console.log(this.myEmployee)
 setTimeout(()=>{document.querySelector("mat-sidenav-content").scrollTop=0;document.getElementById("slider").scrollLeft=document.getElementById("slider").parentElement.clientWidth*a},100);  
 
   if (a==1)  { } else {  }
 } 
+
+filterfn(e)
+{return e.requescount>0}
 
 chips(a) {
       this.filter= this.filter ^ a;  

@@ -10,8 +10,8 @@
     <mat-icon class="icon mat-primary-color" matSuffix>search</mat-icon>
   </mat-form-field>
 <ng-container *ngFor="let item of bksvc.employeelist; let i = index">
-  <ng-container *ngIf="filterme(item.Code+item.Name,filter.value)">
-  <a class="click" matRipple (click)="chooseme(item.Id)">
+  <ng-container *ngIf="filterme(item,filter.value)">
+  <a class="click" matRipple (click)="chooseme(item)">
    <app-empphotoicon EmpID="{{bksvc.codetoid[item.Code]}}" name="{{item.Name}}"></app-empphotoicon>
   <mat-card-subtitle class="name">  
       ({{item.Code}}) {{item.Name}}
