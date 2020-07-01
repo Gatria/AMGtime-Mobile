@@ -1,4 +1,10 @@
 agm-map   {height: 40vh;}
+.cord {position: absolute;
+    bottom: 5px;
+    margin-bottom: 2px;
+    
+  }
+  .topinfo {margin:2px}
 .topinfo>button {width:130px;     font-size: 15px;
     font-weight: 400;margin:5px}
     .date { width: 100px;
