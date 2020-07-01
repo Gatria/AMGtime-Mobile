@@ -56,7 +56,16 @@ Cant Punch
 </ng-container>
 
 
-   <mat-action-row *ngIf="bksvc.StatusBoard!=null" class="nopadding noborder">
+
+
+
+
+
+
+<ng-container *ngIf="this.bksvc.AMGSettings.IsEmployee==false">
+<ng-container *ngIf="this.bksvc.SummeryInfo.length!=0">
+<mat-card class="stb"><mat-card-title>{{Sections[1]}}</mat-card-title>
+   <mat-card-actions class="nopadding noborder">
    <ngx-charts-pie-grid
 
   animations=true
@@ -65,14 +74,8 @@ Cant Punch
   >
   
 </ngx-charts-pie-grid>
-</mat-action-row>
-
-
-
-
-
-<ng-container *ngIf="this.bksvc.AMGSettings.IsEmployee==false">
-<ng-container *ngIf="this.bksvc.SummeryInfo.length!=0">
+</mat-card-actions>
+</mat-card>
 
 <ng-container  *ngFor="let section of this.Sections; let i = index" tabindex="0">
 {{section}}

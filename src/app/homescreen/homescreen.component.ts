@@ -22,11 +22,8 @@ GetSummaryInfo() {
 
 
 this.bksvc.sendcommand((f)=>{this.bksvc.SummeryInfo=f;
-this.colorScheme.domain=[];
-this.single=[]
-if (this.work>0) {this.colorScheme.domain.push('#0f7da2'); this.single.push({"name": this.bksvc.SummeryInfo[2].Name,"value": this.bksvc.SummeryInfo[2].Count});}
-if (this.out>0) {this.colorScheme.domain.push('#049275'); this.single.push({"name": this.bksvc.SummeryInfo[3].Name,"value": this.bksvc.SummeryInfo[3].Count});}
-if (this.abs>0) {this.colorScheme.domain.push('#c62828'); this.single.push({"name": this.bksvc.SummeryInfo[4].Name,"value": this.bksvc.SummeryInfo[4].Count});}
+this.colorScheme.domain=['#0f7da2','#049275','#c62828'];
+this.single=[{"name": this.bksvc.SummeryInfo[2].Name,"value": this.bksvc.SummeryInfo[2].Count},{"name": this.bksvc.SummeryInfo[3].Name,"value": this.bksvc.SummeryInfo[3].Count},{"name": this.bksvc.SummeryInfo[1].Name,"value": this.bksvc.SummeryInfo[4].Count}];
 
 },"GetSummaryInfo",{time:new Date().f1()})  
 
