@@ -19,6 +19,7 @@ AMGSettings={}
 timecard=[]
 timeoff={}
 cancel=[]
+SummeryInfo=[]
 loggedin=false
 codetoid={}
 empimage={}
