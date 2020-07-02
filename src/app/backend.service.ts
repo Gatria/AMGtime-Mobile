@@ -18,7 +18,6 @@ export class BackendService {
 AMGSettings={}
 timecard=[]
 timeoff={}
-SummeryInfo=[]
 cancel=[]
 loggedin=false
 codetoid={}

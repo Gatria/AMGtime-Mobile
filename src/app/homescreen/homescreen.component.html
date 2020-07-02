@@ -58,15 +58,15 @@ Cant Punch
 
 
 
- <mat-progress-spinner style="margin: 30vh auto" *ngIf="this.bksvc.SummeryInfo==undefined" mode="indeterminate"></mat-progress-spinner>
 
 
 
 <ng-container *ngIf="this.bksvc.AMGSettings.IsEmployee==false">
+ <mat-progress-spinner style="margin: 30vh auto" *ngIf="this.bksvc.SummeryInfo==undefined" mode="indeterminate"></mat-progress-spinner>
 <ng-container *ngIf="this.bksvc.SummeryInfo.length!=0">
 <mat-card class="stb"  ><mat-card-subtitle >{{Sections[1]}}
 </mat-card-subtitle> 
-<mat-card-content style="display: flex;">
+<mat-card-actions>
    <ngx-charts-advanced-pie-chart
   (select)="onSelect($event)"
   [animations]=true
@@ -75,7 +75,7 @@ Cant Punch
   [results]="single"
 >
 </ngx-charts-advanced-pie-chart>
-</mat-card-content> 
+</mat-card-actions> 
 
 
 </mat-card>
