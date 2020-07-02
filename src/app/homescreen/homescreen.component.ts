@@ -16,7 +16,7 @@ Sections=["Late Comers","Employee Current Statuses","Time Off Requests"];
   constructor(private bksvc:BackendService,private router: Router) { }
  colorScheme={domain:['#0f7da2','#C7B42C','#c62828','#AAAAAA','#008266']}
   ngOnInit() { 
-    /delete(this.bksvc.SummeryInfo);
+    this.bksvc.SummeryInfo=[];
     if (!this.bksvc.AMGSettings.IsEmployee)  this.GetSummaryInfo()
 
   }
