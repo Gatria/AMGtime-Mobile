@@ -64,17 +64,19 @@ Cant Punch
 
 <ng-container *ngIf="this.bksvc.AMGSettings.IsEmployee==false">
 <ng-container *ngIf="this.bksvc.SummeryInfo.length!=0">
-<mat-card class="stb"><mat-card-title>{{Sections[1]}}</mat-card-title>
-   <mat-card-actions class="nopadding noborder">
+<mat-card class="stb"  ><mat-card-title >{{Sections[1]}}
+</mat-card-title> 
+<mat-card-content style="display: flex;">
    <ngx-charts-pie-grid
-
-  animations=true
+  (select)="onSelect($event)"
+  [animations]=true
   [scheme]="colorScheme"
   [results]="single"
-  >
-  
+  [minWidth]="550">
 </ngx-charts-pie-grid>
-</mat-card-actions>
+</mat-card-content> 
+
+
 </mat-card>
 
 <ng-container  *ngFor="let section of this.Sections; let i = index" tabindex="0">

@@ -31,7 +31,9 @@ this.single=[{"name": this.bksvc.SummeryInfo[2].Name,"value": this.bksvc.Summery
 
 }
 
-
+onSelect(event) {
+    console.log(event);
+  }
 
   openDialog(): void {
     const dialogRef = this.bksvc.dialog.open("eeee", {
