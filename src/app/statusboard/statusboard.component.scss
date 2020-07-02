@@ -21,8 +21,22 @@ mat-chip {width: 14%;
     text-align: center;
 }
 
+.graph {
+display: flex;
+width: 140vw;
+margin: -100px -20px;
+}
+
 
     @media screen and (orientation:landscape) {
+      
+     .graph {
+width: 100vw;
+margin: -10px -20px;
+}
+ 
+      
+      
        mat-chip {width: 15%;
     font-size:2.4vh;
     }
@@ -57,7 +71,11 @@ mat-chip {width: 14%;
     width: calc(100% - 80px);
     border-top: 1px solid #eee;
 }
- .t3 {width: calc(50vw - 48px); display: inline-block}
+ .t3 {    width: calc(50vw - 37px);
+    display: inline-block;
+    margin-right: 0px!important;
+    padding: 13px;}
+    .t3 a {vertical-align:middle}
 
 .icon {padding: 0px 6px 0px 0px;
     font-size: 31px;

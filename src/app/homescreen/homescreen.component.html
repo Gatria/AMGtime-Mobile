@@ -66,7 +66,7 @@ Cant Punch
 <ng-container *ngIf="bksvc.SummeryInfo.length!=0">
 <mat-card class="stb"  ><mat-card-subtitle >{{Sections[1]}}
 </mat-card-subtitle> 
-<mat-card-actions style="display:flex;width:120vw">
+<mat-card-actions class="graph">
    <ngx-charts-advanced-pie-chart
   (select)="onSelect($event)"
   [animations]=true
