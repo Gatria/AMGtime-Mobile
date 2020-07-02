@@ -19,11 +19,11 @@ ngOnDestroy() {
 }
   ngOnInit() {
 
- if (this.router.url=="/timeoffuser1") { this.filter=1; this.hidegraph=true} 
+ if (this.router.url=="/statusboard1") { this.filter=1; this.hidegraph=true} 
  else
- if (this.router.url=="/timeoffuser2") {this.filter=2; this.hidegraph=true}
+ if (this.router.url=="/statusboard2") {this.filter=2; this.hidegraph=true}
  else
- if (this.router.url=="/timeoffuser3") {this.filter=4; this.hidegraph=true}
+ if (this.router.url=="/statusboard3") {this.filter=4; this.hidegraph=true}
  else   this.filter=31;
 
   this.loaddata()
