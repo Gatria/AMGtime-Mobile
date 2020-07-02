@@ -46,7 +46,8 @@ export const routes: Routes = [
 ,
 { path: 'tracking', component:  TrackingComponent , canActivate: [AuthguardService] }
 ,
-{ path: 'timeoffuser', component:  TimeoffuserComponent , canActivate: [AuthguardService] }
+{ path: 'timeoffuser', component:  TimeoffuserComponent , canActivate: [AuthguardService] },
+{ path: 'timeoffuser2', component:  TimeoffuserComponent , canActivate: [AuthguardService] }
 ];
 
 

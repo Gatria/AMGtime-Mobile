@@ -17,10 +17,11 @@ constructor(private bksvc:BackendService,private router: Router) { }
 ngOnInit() {
 this.show=false
 
-
+if (this.router!=undefined) {
     if (this.router.url=="/toUser") this.login(2); 
     if (this.router.url=="/toEmp") this.login(1);
-    if (this.router.url=="/login") this.bksvc.loggedin=false; 
+    if (this.router.url=="/login") this.bksvc.loggedin=false; }
+
   }
 
 

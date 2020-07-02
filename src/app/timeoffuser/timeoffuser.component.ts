@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {BackendService} from '../backend.service'
-import { ActivatedRoute } from '@angular/router';
+import { Router} from '@angular/router';
 
 @Component({
   selector: 'app-timeoffuser',
@@ -9,11 +9,13 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class TimeoffuserComponent implements OnInit {
 
-   constructor(public activatedRoute: ActivatedRoute, private bksvc:BackendService) { }
+   constructor( private bksvc:BackendService,private router: Router) { }
 first=true;
   ngOnInit() {
-       this.filter=7;
-       console.log(this.activatedRoute);
+       if (this.router.url=="/timeoffuser2") this.filter=2; else   this.filter=7;
+     
+
+
        this.bksvc.cancel=[];
      this.bksvc.sendcommand((f)=>{ this.bksvc.timeofrequests=f;this.chips(0)},"GetTimeOffs",{date:new Date().f1()},{ withCredentials: true});
 this.bksvc.loading=false
