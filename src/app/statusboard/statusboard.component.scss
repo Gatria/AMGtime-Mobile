@@ -24,16 +24,12 @@ mat-chip {width: 14%;
 .graph {
 display: flex;
 width: 140vw;
-margin: -100px -20px;
+margin:-20px;
 }
 
 
     @media screen and (orientation:landscape) {
       
-     .graph {
-width: 100vw;
-margin: -10px -20px;
-}
  
       
       
@@ -74,6 +70,7 @@ margin: -10px -20px;
  .t3 {    width: calc(50vw - 37px);
     display: inline-block;
     margin-right: 0px!important;
+    margin-top: 0px!important;
     padding: 13px;}
     .t3 a {vertical-align:middle}
 
