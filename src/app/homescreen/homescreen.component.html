@@ -10,7 +10,7 @@
 
   <mat-toolbar color="primary" class="example-toolbar">
     <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
-    <h1 class="example-app-name"></h1>
+    <h1 class="example-app-name">Main Screen</h1>
   </mat-toolbar>
 
 
@@ -64,8 +64,8 @@ Cant Punch
 
 <ng-container *ngIf="this.bksvc.AMGSettings.IsEmployee==false">
 <ng-container *ngIf="this.bksvc.SummeryInfo.length!=0">
-<mat-card class="stb"  ><mat-card-title >{{Sections[1]}}
-</mat-card-title> 
+<mat-card class="stb"  ><mat-card-subtitle >{{Sections[1]}}
+</mat-card-subtitle> 
 <mat-card-content style="display: flex;">
    <ngx-charts-pie-grid
   (select)="onSelect($event)"
@@ -79,12 +79,23 @@ Cant Punch
 
 </mat-card>
 
-<ng-container  *ngFor="let section of this.Sections; let i = index" tabindex="0">
-{{section}}
-<ng-container  *ngFor="let item of this.bksvc.SummeryInfo" class="mdc-list-item" tabindex="0">
-         <div *ngIf="i==item['Section']">{{i}} {{item.Name}} {{item.Count}}</div>
-          </ng-container>
-</ng-container>
+
+<mat-card class="stb t3"  ><mat-card-subtitle ><a>{{Sections[0]}}:
+
+ {{bksvc.SummeryInfo[0].Count}} <mat-icon>arrowright</mat-icon></a>
+</mat-card-subtitle>  
+
+</mat-card>
+
+<mat-card class="stb t3"  ><mat-card-subtitle ><a>{{Sections[2]}}:
+ {{bksvc.SummeryInfo[4].Count}} <mat-icon>arrowright</mat-icon></a>
+</mat-card-subtitle> 
+
+</mat-card>
+
+
+<button class="center round-corners" mat-flat-button (click)="GetSummaryInfo() " color="primary"><mat-icon>tao</mat-icon> Punch For Employee</button>
+
 
 </ng-container></ng-container>
 

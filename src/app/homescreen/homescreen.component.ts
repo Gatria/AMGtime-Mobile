@@ -9,7 +9,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 styleUrls: ['../statusboard/statusboard.component.scss']
 })
 export class HomescreenComponent implements OnInit {
-Sections=["Today's","Employee Current Statuses","New"];
+Sections=["Late Comers","Employee Current Statuses","Time Off Requests"];
 
 
   constructor(private bksvc:BackendService) { }
