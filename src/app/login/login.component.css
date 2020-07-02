@@ -3,8 +3,9 @@ div {background-color:#fff}
 .mat-form-field  {width:100%}
 mat-checkbox {float:left}
 a {float:right}
-button.round-corners {width:70%;padding:1vw;font-size:4vw}
+
 app-complogo {max-width:300px; display: block;width:40%;margin:0px auto 4vh auto}
+button.round-corners {width:70%;padding:1vw;font-size:4vw}
 @media screen and (orientation:landscape) {
  button.round-corners { padding:1vh;font-size:3vh;
 

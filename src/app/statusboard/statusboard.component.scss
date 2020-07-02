@@ -67,7 +67,7 @@ margin:-20px;
     width: calc(100% - 80px);
     border-top: 1px solid #eee;
 }
- .t3 {    width: calc(50vw - 45px);
+ .t3 {    width: calc(50vw - 37px);
     display: inline-block;
     margin-right: 0px!important;
     margin-top: 0px!important;
@@ -79,5 +79,10 @@ margin:-20px;
     font-size: 31px;
 }
 
-.punch {width:90vw}
+.punch {width:70%;padding:1vw;font-size:4vw}
+@media screen and (orientation:landscape) {
+.punch{ padding:1vh;font-size:3vh;
+
+}
+}
 
