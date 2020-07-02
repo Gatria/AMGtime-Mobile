@@ -81,21 +81,21 @@ Cant Punch
 </mat-card>
 
 
-<mat-card class="stb t3"  ><mat-card-subtitle ><a>{{Sections[0]}}:
+<mat-card class="stb t3"  ><mat-card-subtitle ><a class="mat-primary-color settings" routerLink='/latecomers'>{{Sections[0]}}:
 
- {{bksvc.SummeryInfo[0].Count}} <mat-icon>arrowright</mat-icon></a>
+ {{bksvc.SummeryInfo[0].Count}}</a>
 </mat-card-subtitle>  
 
 </mat-card>
 
-<mat-card class="stb t3"  ><mat-card-subtitle ><a>{{Sections[2]}}:
- {{bksvc.SummeryInfo[4].Count}} <mat-icon>arrowright</mat-icon></a>
+<mat-card class="stb t3"  ><mat-card-subtitle ><a [state]='{filter:2}' class="mat-primary-color settings" routerLink='/timeoffuser'>{{Sections[2]}}:
+ {{bksvc.SummeryInfo[4].Count}}</a>
 </mat-card-subtitle> 
 
 </mat-card>
 
 
-<button class="center round-corners" mat-flat-button (click)="GetSummaryInfo() " color="primary"><mat-icon>tao</mat-icon> Punch For Employee</button>
+<button class="center round-corners punch" mat-flat-button (click)="GetSummaryInfo() " color="primary"><mat-icon>tao</mat-icon> Punch For Employee</button>
 
 
 </ng-container></ng-container>
