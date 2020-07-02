@@ -13,7 +13,7 @@
 
 
    <mat-action-row *ngIf="bksvc.StatusBoard!=null" class="nopadding noborder">
-   <ngx-charts-pie-grid
+   <ngx-charts-pie-grid *ngIf="!hidegraph"
 
   animations=true
   [scheme]="colorScheme"

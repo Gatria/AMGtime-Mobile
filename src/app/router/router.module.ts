@@ -40,6 +40,12 @@ export const routes: Routes = [
 { path: 'punchanalysis', component:  PunchanalysisComponent, canActivate: [AuthguardService] },
 { path: 'statusboard', component: StatusboardComponent, canActivate: [AuthguardService] }
 ,
+{ path: 'statusboard1', component: StatusboardComponent, canActivate: [AuthguardService] }
+,
+{ path: 'statusboard2', component: StatusboardComponent, canActivate: [AuthguardService] }
+,
+{ path: 'statusboard3', component: StatusboardComponent, canActivate: [AuthguardService] }
+,
 { path: 'openshift', component: OpenshiftComponent, canActivate: [AuthguardService] }
 ,
 { path: 'shiftrequest', component:  ShiftrequestComponent, canActivate: [AuthguardService] }

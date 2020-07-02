@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {BackendService} from '../backend.service'
 import { ChooseemployeeComponent } from '../chooseemployee/chooseemployee.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { Router} from '@angular/router';
 
 @Component({
   selector: 'app-homescreen',
@@ -12,7 +13,7 @@ export class HomescreenComponent implements OnInit {
 Sections=["Late Comers","Employee Current Statuses","Time Off Requests"];
 
 
-  constructor(private bksvc:BackendService) { }
+  constructor(private bksvc:BackendService,private router: Router) { }
  colorScheme={domain:['#0f7da2','#C7B42C','#c62828','#AAAAAA','#008266']}
   ngOnInit() { 
     //delete(this.bksvc.SummeryInfo);
@@ -33,7 +34,12 @@ this.single=[{"name": this.bksvc.SummeryInfo[2].Name,"value": this.bksvc.Summery
 }
 
 onSelect(event) {
-    console.log(event);
+      this.bksvc.buildnavigation();
+      if (event.name="In") this.router.navigate(['/statusboard1']);
+if (event.name="Out") this.router.navigate(['/statusboard2']);
+if (event.name="Absences") this.router.navigate(['/statusboard3']);
+
+
   }
 
   openDialog(): void {

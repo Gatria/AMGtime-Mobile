@@ -1,7 +1,7 @@
-
 import { Component, OnInit } from '@angular/core';
 import {BackendService} from '../backend.service'
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { Router} from '@angular/router';
 
 @Component({
   selector: 'app-statusboard',
@@ -9,8 +9,8 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
   styleUrls: ['./statusboard.component.scss']
 })
 export class StatusboardComponent implements OnInit {
-
-  constructor(private bksvc:BackendService) { }
+hidegraph=false
+  constructor(private bksvc:BackendService,private router: Router) { }
 
 ngOnDestroy() {
   if (this.intervalid) {
@@ -18,7 +18,13 @@ ngOnDestroy() {
   }
 }
   ngOnInit() {
-    this.filter=31;
+
+ if (this.router.url=="/timeoffuser1") { this.filter=1; this.hidegraph=true} 
+ else
+ if (this.router.url=="/timeoffuser2") {this.filter=2; this.hidegraph=true}
+ else
+ if (this.router.url=="/timeoffuser3") {this.filter=4; this.hidegraph=true}
+ else   this.filter=31;
 
   this.loaddata()
  
