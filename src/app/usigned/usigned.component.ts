@@ -28,7 +28,8 @@ setTimeout(()=>{if (z) document.querySelector("mat-sidenav-content").scrollTop=0
 scroll() {
  this.first= document.getElementById("slider").scrollLeft==0;
  this.currentslide=document.getElementById("slide"+document.getElementById("slider").scrollLeft/document.getElementById("slider").parentElement.clientWidth)
- if ( this.currentslide!=undefined) document.getElementById("slider").clientHeight=this.currentslide.clientHeight
+ console.log(this.currentslide.clientHeight+"px")
+ if ( this.currentslide!=undefined) document.getElementById("slider").style.height=this.currentslide.clientHeight-(-30)+"px"
 }
 getdocument(a) {
   
