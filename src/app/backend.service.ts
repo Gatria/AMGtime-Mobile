@@ -80,7 +80,7 @@ this.SideNavigation.push({icon:"logout", text:"Log Out", action:"/logout"});
 
 
 private showinfo (error:string) {
-  this._snackBar.open( error, "", { duration: 6000, panelClass: [ 'mat-accent-bg'] });
+  this._snackBar.open( error, "X", { duration: 6000, panelClass: [ 'mat-accent-bg'] });
   console.info(error)
   this.loading=false
 }
@@ -88,7 +88,7 @@ private showinfo (error:string) {
 
 private showerror (error) {
   if (error.statusText!=undefined) error=error.statusText;
-  this._snackBar.open( error, "", { duration: 6000, panelClass: ['mat-warn-bg'] });
+  this._snackBar.open( error, "X", { duration: 6000, panelClass: ['mat-warn-bg'] });
   console.error(error)
   this.loading=false
 }
