@@ -63,7 +63,7 @@ document.querySelector(selector+">th:last-child").classList.add('sticked1');
 
 
 }
-
+ this.bksvc.scroll()
 }
 
  

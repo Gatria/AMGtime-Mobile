@@ -23,9 +23,8 @@ this.bksvc.loading=false
 scroll() {
  
  this.first= document.getElementById("slider").scrollLeft==0;
- 
- 
- if ( this.first) delete(this.AvailableWorkDays); 
+ if ( this.first) delete(this.AvailableWorkDays);
+  this.bksvc.scroll() 
 }
 
 scrollto(a)

@@ -175,7 +175,7 @@ punchmenu () {
 
 scroll()
 { this.currentslide=document.getElementById("slide"+document.getElementById("slider").scrollLeft/document.getElementById("slider").parentElement.clientWidth)
- if ( this.currentslide!=undefined) document.getElementById("slider").style.height=this.currentslide.clientHeight-(-30)+"px"
+ if ( this.currentslide!=undefined) document.getElementById("slider").style.height=this.currentslide.clientHeight-(-25)+"px"
 }
 
 logout () {

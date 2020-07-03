@@ -23,6 +23,7 @@ this.bksvc.loading=false
 
 scroll() {
  this.first= document.getElementById("slider").scrollLeft==0;
+  this.bksvc.scroll()
 }
 
 calculate ()
