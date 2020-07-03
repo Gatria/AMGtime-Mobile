@@ -58,7 +58,7 @@
 </div>
 </div>
 <ng-container *ngFor="let item of Image; let i = index" > 
-<div *ngIf="item!=null" id="slide{{i}}" class="slide snap">
+<div *ngIf="item!=null" id="slide{{i+1}}" class="slide snap">
 <div class="mat-elevation-z7 imageframe round-corners"> <img class="img round-corners"  [src]="item" />
 
 <div *ngIf="this.bksvc.currentDocument.CanSign" class="sigbody">

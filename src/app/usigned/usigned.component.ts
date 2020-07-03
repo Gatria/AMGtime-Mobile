@@ -27,6 +27,8 @@ setTimeout(()=>{if (z) document.querySelector("mat-sidenav-content").scrollTop=0
 
 scroll() {
  this.first= document.getElementById("slider").scrollLeft==0;
+ this.currentslide=document.getElementById("slide"+document.getElementById("slider").scrollLeft/document.getElementById("slider").parentElement.clientWidth)
+ if ( this.currentslide!=undefined) document.getElementById("slider").clientHeight=this.currentslide.clientHeight
 }
 getdocument(a) {
   
@@ -62,14 +64,14 @@ sign() {
           dialogRef.afterClosed().subscribe(dialogResult => {
   if (dialogResult)   {
 
- console.log(typeof this.bksvc.currentDocument.Sign)
+
  if (typeof this.bksvc.currentDocument.Sign=="object") 
 
 const sigimg=this.bksvc.currentDocument.Sign.changingThisBreaksApplicationSecurity.split("base64,")
 else 
 const sigimg=this.bksvc.currentDocument.Sign.split("base64,")
 
-console.log(sigimg[1])
+
 
     this.bksvc.sendcommand((f)=>{
   delete(this.Document);
