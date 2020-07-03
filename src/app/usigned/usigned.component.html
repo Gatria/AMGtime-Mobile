@@ -37,7 +37,7 @@
 <div class="norecord">No Documents Found</div>
 <div class="list">
 <ng-container *ngFor="let item of Document; let i = index">
-<mat-expansion-panel  class="stb" *ngIf="(filter % 4 >= 2 && item.Status==4) || (filter % 2 >= 1 && item.Status==1) || (filter % 8 >= 4 && item.Status==5) || (filter % 16 >= 8 && item.Status==0)|| (filter % 32 >= 16 && item.Status==2)|| (filter % 64 >= 32 && item.Status==3) " >
+<mat-expansion-panel (afterExpand)=scroll() (afterCollapse)=scroll() class="stb" *ngIf="(filter % 4 >= 2 && item.Status==4) || (filter % 2 >= 1 && item.Status==1) || (filter % 8 >= 4 && item.Status==5) || (filter % 16 >= 8 && item.Status==0)|| (filter % 32 >= 16 && item.Status==2)|| (filter % 64 >= 32 && item.Status==3) " >
 <mat-expansion-panel-header>
 <mat-panel-title class="middle">{{item.DisplayName}} </mat-panel-title >
 <mat-panel-description class="right middle" ngClass="{{item.StatusStr}}">
@@ -78,7 +78,7 @@
 </div><br>
 <div class="pagination" *ngIf="Image.length>1">
 <ng-container *ngFor="let item1 of Image;let page = index" >
- <button [disabled]="page==i" mat-mini-fab (click)="scrollto(page+1,false)" >{{page+1}}</button> 
+ <button [disabled]="page==i" mat-mini-fab (click)="scrollto(page+1)" >{{page+1}}</button> 
  </ng-container>
 </div>
 </div>
