@@ -28,9 +28,7 @@ setTimeout(()=>{
 
 scroll() {
  this.first= document.getElementById("slider").scrollLeft==0;
- this.currentslide=document.getElementById("slide"+document.getElementById("slider").scrollLeft/document.getElementById("slider").parentElement.clientWidth)
- console.log(this.currentslide.clientHeight+"px")
- if ( this.currentslide!=undefined) document.getElementById("slider").style.height=this.currentslide.clientHeight-(-30)+"px"
+ this.bksvc.scroll()
 }
 getdocument(a) {
   
