@@ -13,12 +13,66 @@
 <app-datechooser  [pastonly]=true (thdateChange)=godate($event) [(thdate)]="mydate">
  <mat-progress-spinner style="margin: 30vh auto" *ngIf="bksvc.LateComers==undefined" mode="indeterminate"></mat-progress-spinner>
 
+
+
+
 <ng-container *ngIf="bksvc.LateComers!=undefined">
 <div *ngIf="bksvc.LateComers.length==0" class="norecord">No Late Comers</div>
+</ng-container>
 
 
-<mat-card  class="stb" *ngFor="let item of bksvc.LateComers; let i = index">
-</mat-card></ng-container>
+
+
+<div class="sm-round-corners mat-elevation-z16 stb" *ngIf="bksvc.LateComers.length>0">
+
+
+<mat-card>
+ <mat-form-field class="block" appearance="outline">
+    <mat-label>Filter by Code or Name</mat-label>
+    <input type="text" #filter1 matInput placeholder="">
+    <mat-icon class="icon mat-primary-color" matSuffix>search</mat-icon>
+  </mat-form-field>
+      
+
+
+   
+<ng-container  *ngFor="let item of bksvc.LateComers; let i = index">
+
+   <ng-container *ngIf="filterme(item.Code+item.Name,filter1.value)">
+
+       <mat-card-content class="nomargin middle inflex"><app-empphotoicon EmpID="{{bksvc.codetoid[item.Code]}}" name="{{item.Name}}"></app-empphotoicon> </mat-card-content>
+     <mat-card-subtitle class="nomargin middle name inflex"> ({{item.Code}}) {{item.Name}}</mat-card-subtitle>
+     <mat-card-content></mat-card-content>
+      <mat-divider class="limited"></mat-divider>
+ 
+
+
+ </ng-container>
+</ng-container>
+ </mat-card>
+
+</div>
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </app-datechooser>
 <app-footer></app-footer>
  
