@@ -86,7 +86,7 @@ if ((this.work>0 && a==1) || (this.out>0 && a==2) || (this.abs>0 && a==4) || (th
 this.filter= this.filter ^ a; }
 
 if (this.filter==31) document.getElementById("all").innerHTML="None"; else document.getElementById("all").innerHTML="All";
-this.calculate()
+
 }
 
 

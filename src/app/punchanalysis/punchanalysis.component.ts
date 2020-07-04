@@ -43,7 +43,7 @@ chips(a) {
     this.filter= this.filter ^ a;  
 
 if (this.filter==31) document.getElementById("all").innerHTML="None"; else document.getElementById("all").innerHTML="All";
-this.calculate()
+
 
 }
 
