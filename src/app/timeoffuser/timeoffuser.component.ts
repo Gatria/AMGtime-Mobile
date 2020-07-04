@@ -48,8 +48,11 @@ setTimeout(()=>{document.querySelector("mat-sidenav-content").scrollTop=0;docume
 filterfn(e)
 {return e.requescount>0}
 
-chips(a) {
-    if (a==31 and this.filter<31)  
+chips(a,e) {
+console.log(e)
+if (e!==undefined) e.innerHTML="None"
+
+    if (a==31 && this.filter<31)  
     this.filter=31
     else 
     if (a==31)
