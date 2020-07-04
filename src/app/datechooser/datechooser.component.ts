@@ -36,7 +36,7 @@ return (d1<new Date() && this.futureonly)
 checkpast()
 {
  var d1 = new Date(this.mydate);
-    d1.setDate(d1.getDate())
+    d1.setDate(d1.getDate()+1)
     d1.setHours(0,0,0);
 return (d1>new Date() && this.pastonly)
 
