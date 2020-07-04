@@ -54,7 +54,7 @@
      <mat-card-content><table class="dd">
       <ng-container *ngIf="i==0 && ((filter % 4 >= 2) || (filter % 2 >= 1) || (filter % 8 >= 4) || (filter % 16 >= 8)|| (filter % 32 >= 16))"> 
        
-       <tr id="topth"><th ><th>Scheduled</th><th>Actual</th><th>Differance</th></tr>
+       <tr [ngClass]="{'topthmat-elevation-z8':vpos>335}" id="topth"><th ><th>Scheduled</th><th>Actual</th><th>Differance</th></tr>
 </ng-container>
      <tr *ngIf="(filter % 2 >= 1)"><th class='zz'>Work<td>{{item.TotalScheduled}}</td><td>{{item.TotalActual}}</td><td>{{item.TotalDifference}}
        </td></tr>

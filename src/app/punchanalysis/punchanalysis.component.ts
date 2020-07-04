@@ -18,9 +18,7 @@ export class PunchanalysisComponent implements OnInit {
 
   }
 scroll() {
-
-if (document.getElementById("main").scrollTop>335) 
-document.getElementById("topth").classList.add(["topth","mat-elevation-z5"]); else document.getElementById("topth").classList.remove(["topth","mat-elevation-z5"])
+this.vpos=document.getElementById("main").scrollTop
 }
 godate(a=0)
 {
