@@ -17,7 +17,9 @@ filterme(a,i) {
   //console.log(a,i);
   return a.toLowerCase().includes(i.toLowerCase());
 }
-
+scroll() {
+this.vpos=document.getElementById("main").scrollTop
+}
 godate(a=0)
 {
  if (a!==0) this.mydate=a;delete(this.bksvc.LateComers);
