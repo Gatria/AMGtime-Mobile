@@ -13,7 +13,7 @@
   <ng-container *ngIf="filterme(item,filter.value)">
   <a class="click" matRipple (click)="chooseme(item)">
    <app-empphotoicon EmpID="{{bksvc.codetoid[item.Code]}}" name="{{item.Name}}"></app-empphotoicon>
-  <mat-card-subtitle class="name">  
+  <mat-card-subtitle [ngClass]="{'width1':item[rightside]!=null}" class="name">  
       ({{item.Code}}) {{item.Name}}
   </mat-card-subtitle>
   <mat-card-subtitle *ngIf="item[rightside]!=null"  class="rightside">  

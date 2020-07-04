@@ -2,12 +2,12 @@
     max-width: 98%;
     position: relative!important;}
 mat-divider:last-of-type {display:none}
-
+.width1 {  width: calc(100% - 110px)!important;}
 .name {
     display: inline-block;
         line-height: 160%;
     margin-bottom: 0px!important;
-    max-width: calc(100% - 66px);
+    width: calc(100% - 66px);
     vertical-align: middle;}
     .click {display: block;
     margin: -7px -16px;

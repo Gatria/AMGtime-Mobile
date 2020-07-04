@@ -9,7 +9,7 @@ import {BackendService} from '../backend.service'
 export class ChooseemployeeComponent implements OnInit {
  @Input() ngModel
  @Input() filter=(e)=>{return true}
- @Input() rightside="Id"
+ @Input() rightside
  @Output() ngModelChange: EventEmitter<any> = new EventEmitter();
 
 
