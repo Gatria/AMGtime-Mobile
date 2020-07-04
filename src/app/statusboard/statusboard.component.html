@@ -24,7 +24,7 @@
 </mat-action-row>
  
 <mat-chip-list class="i" multiple="true">
-  <mat-chip selected (click)="chips(31)" color="accent" >All</mat-chip>
+  <mat-chip id="all" selected (click)="chips(31)" color="accent" >All</mat-chip>
   <mat-chip [disabled]="this.work==0" [selected]="filter % 2 >= 1" (click)="chips(1)">Work</mat-chip>
   <mat-chip [disabled]="this.out==0" [selected]="filter % 4 >= 2"  (click)="chips(2)">Out</mat-chip>
     <mat-chip [disabled]="this.abs==0" [selected]="filter % 8 >= 4"  (click)="chips(4)">ABS</mat-chip>

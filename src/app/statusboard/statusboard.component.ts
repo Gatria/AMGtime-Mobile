@@ -33,7 +33,7 @@ this.intervalid=setInterval(()=>this.loaddata(),100000 )
   }
 
 loaddata() {
-this.bksvc.sendcommand((f)=>{this.bksvc.StatusBoard=f;this.recalculate()},"GetStatusBoard",{_in:true,_out:true,_lunch:true,_break:true,_absent:true,time:new Date().f1()})  
+this.bksvc.sendcommand((f)=>{this.bksvc.StatusBoard=f;this.chips(0);this.recalculate()},"GetStatusBoard",{_in:true,_out:true,_lunch:true,_break:true,_absent:true,time:new Date().f1()})  
 }
 
 recalculate()
@@ -76,9 +76,17 @@ filterme(a,i) {
   return a.toLowerCase().includes(i.toLowerCase());
 }
 chips(a) {
+      if (a==31 && this.filter<31)  
+    this.filter=31
+    else 
+    if (a==31)
+    this.filter=0;
+    else
 if ((this.work>0 && a==1) || (this.out>0 && a==2) || (this.abs>0 && a==4) || (this.lunch>0 && a==16) || (this.br>0 && a==32) || (a==31)) {
 this.filter= this.filter ^ a; }
 
+if (this.filter==31) document.getElementById("all").innerHTML="None"; else document.getElementById("all").innerHTML="All";
+this.calculate()
 }
 
 
