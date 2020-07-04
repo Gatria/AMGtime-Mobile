@@ -54,3 +54,8 @@ mat-divider:last-of-type {display:none}
     font-size: 31px;
 }
 .limit {width:200px}
+.topth {    position: fixed;
+    width: calc(75vw);
+    right: 11px;
+    top: 0px;
+    display: inherit;}
