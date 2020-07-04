@@ -19,6 +19,8 @@ this.reset_time_off_form()
 this.bksvc.loading=false
   }
 
+filterfn(e)
+{return e.requescount>0}
 
 scroll() {
  

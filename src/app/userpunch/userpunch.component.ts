@@ -9,7 +9,7 @@ import {BackendService} from '../backend.service'
 export class UserpunchComponent implements OnInit {
 
   constructor(private bksvc:BackendService) { }
-
+first=true;
   ngOnInit() {
   }
 
@@ -21,7 +21,7 @@ scroll() {
 
 scrollto(a)
 {
-
+console.log(this.myEmployee)
 setTimeout(()=>{document.querySelector("mat-sidenav-content").scrollTop=0;document.getElementById("slider").scrollLeft=document.getElementById("slider").parentElement.clientWidth*a},100);  
 
   if (a==1)  { } else {  }

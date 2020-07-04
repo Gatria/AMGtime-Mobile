@@ -20,7 +20,7 @@ scroll() {
 
 scrollto(a)
 {
-
+console.log(this.myEmployee)
 setTimeout(()=>{document.querySelector("mat-sidenav-content").scrollTop=0;document.getElementById("slider").scrollLeft=document.getElementById("slider").parentElement.clientWidth*a},100);  
 
   if (a==1)  { } else {  }
