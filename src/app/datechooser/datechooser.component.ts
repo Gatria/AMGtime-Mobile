@@ -37,7 +37,7 @@ checkpast()
 {
  var d1 = new Date(this.mydate);
     d1.setDate(d1.getDate() - this.step1[this.datemode])
-    d1.setHours(00,00,00);
+    d1.setHours(0,0,0);
 return (d1>new Date() && this.pastonly)
 
 }
