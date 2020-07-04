@@ -40,7 +40,6 @@ import { LatecomersComponent } from './latecomers/latecomers.component';
 import { AttendanceComponent } from './attendance/attendance.component';
 import { UserpunchComponent } from './userpunch/userpunch.component';
 
-
 interface Date {
     f1(): number;
     week1(): string;
