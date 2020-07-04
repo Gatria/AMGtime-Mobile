@@ -12,12 +12,12 @@ export class TimeoffuserComponent implements OnInit {
    constructor( private bksvc:BackendService,private router: Router) { }
 first=true;
   ngOnInit() {
-       if (this.router.url=="/timeoffuser2") this.filter=2; else   this.filter=7;
+       if (this.router.url=="/timeoffuser2") this.filter=2; else   this.filter=31;
      
 
 
        this.bksvc.cancel=[];
-     this.bksvc.sendcommand((f)=>{ this.bksvc.timeofrequests=f;this.chips(0)},"GetTimeOffs",{date:new Date().f1()},{ withCredentials: true});
+     this.bksvc.sendcommand((f)=>{ this.bksvc.timeofrequests=f;this.chips(this.filter)},"GetTimeOffs",{date:new Date().f1()},{ withCredentials: true});
 this.bksvc.loading=false
   }
 
