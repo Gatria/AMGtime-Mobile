@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import {BackendService} from '../backend.service'
 @Component({
   selector: 'app-attendance',
   templateUrl: './attendance.component.html',
@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AttendanceComponent implements OnInit {
 
-  constructor() { }
+  constructor(private bksvc:BackendService) { }
 
   ngOnInit() {
   }

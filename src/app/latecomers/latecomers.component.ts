@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import {BackendService} from '../backend.service'
 @Component({
   selector: 'app-latecomers',
   templateUrl: './latecomers.component.html',
@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LatecomersComponent implements OnInit {
 
-  constructor() { }
+  constructor(private bksvc:BackendService) { }
 
   ngOnInit() {
   }
