@@ -49,7 +49,13 @@ filterfn(e)
 {return e.requescount>0}
 
 chips(a) {
-      this.filter= this.filter ^ a;  
+    if (a==31 and this.filter<31)  
+    this.filter=31
+    else 
+    if (a==31)
+    this.filter=0;
+    else
+    this.filter= this.filter ^ a;  
 this.calculate()
 }
 
