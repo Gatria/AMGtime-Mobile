@@ -13,6 +13,10 @@ ngOnInit() {
     this.mydate=new Date();
 this.godate()
   }
+filterme(a,i) {
+  //console.log(a,i);
+  return a.toLowerCase().includes(i.toLowerCase());
+}
 
 godate(a=0)
 {
