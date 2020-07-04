@@ -17,7 +17,7 @@ first=true;
 
 
        this.bksvc.cancel=[];
-     this.bksvc.sendcommand((f)=>{ this.bksvc.timeofrequests=f;this.chips(this.filter)},"GetTimeOffs",{date:new Date().f1()},{ withCredentials: true});
+     this.bksvc.sendcommand((f)=>{ this.bksvc.timeofrequests=f;this.chips(0)},"GetTimeOffs",{date:new Date().f1()},{ withCredentials: true});
 this.bksvc.loading=false
   }
 

@@ -12,9 +12,9 @@ export class TimeoffComponent implements OnInit,DoCheck{
 first=true;
 
   ngOnInit() {
-       this.filter=7;
+       this.filter=31;
        this.bksvc.cancel=[];
-     this.bksvc.sendcommand((f)=>{ this.bksvc.timeofrequests=f},"GetTimeOffs",{date:new Date().f1()},{ withCredentials: true});
+     this.bksvc.sendcommand((f)=>{ this.bksvc.timeofrequests=f;this.chips(0)},"GetTimeOffs",{date:new Date().f1()},{ withCredentials: true});
 this.reset_time_off_form()   
 this.bksvc.loading=false
   }
@@ -69,6 +69,18 @@ else delete(this.bksvc.timeoff.AvailableWorkDays)},100);
 
 
 chips(a) {
-          this.filter= this.filter ^ a;  
-          }
+
+
+    if (a==31 && this.filter<31)  
+    this.filter=31
+    else 
+    if (a==31)
+    this.filter=0;
+    else
+    this.filter= this.filter ^ a;  
+
+if (this.filter==31) document.getElementById("all").innerHTML="None"; else document.getElementById("all").innerHTML="All";
+this.calculate()
+
+}
 }

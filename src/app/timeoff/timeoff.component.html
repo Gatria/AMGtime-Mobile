@@ -18,7 +18,7 @@
 <div id="slide0" class="slide snap">
  
 <mat-chip-list class="i" multiple="true">
-  <mat-chip selected (click)="chips(31)" color="accent" >All</mat-chip>
+  <mat-chip id="all" selected (click)="chips(31)" color="accent" >All</mat-chip>
   <mat-chip [selected]="filter % 2 >= 1" (click)="chips(1)">Approved</mat-chip>
   <mat-chip [selected]="filter % 4 >= 2"  (click)="chips(2)">Pending</mat-chip>
     <mat-chip [selected]="filter % 8 >= 4"  (click)="chips(4)">Denied</mat-chip>
