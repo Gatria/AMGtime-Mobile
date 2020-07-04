@@ -19,6 +19,10 @@ import { OpenshiftComponent } from '../openshift/openshift.component';
 import { ShiftrequestComponent } from '../shiftrequest/shiftrequest.component';
 import { TrackingComponent } from '../tracking/tracking.component';
 import { TimeoffuserComponent } from '../timeoffuser/timeoffuser.component';
+import { LatecomersComponent } from '../latecomers/latecomers.component';
+import { AttendanceComponent } from '../attendance/attendance.component';
+
+
 
 export const routes: Routes = [
  { path: 'test', component: ChooseemployeeComponent},
@@ -54,6 +58,10 @@ export const routes: Routes = [
 ,
 { path: 'timeoffuser', component:  TimeoffuserComponent , canActivate: [AuthguardService] },
 { path: 'timeoffuser2', component:  TimeoffuserComponent , canActivate: [AuthguardService] }
+,
+{ path: 'latecomers', component:  LatecomersComponent , canActivate: [AuthguardService] }
+,
+{ path: 'attendance', component:  AttendanceComponent , canActivate: [AuthguardService] }
 ];
 
 

@@ -61,7 +61,7 @@ if (this.AMGSettings.Usigned) this.SideNavigation.push({icon:"quill", text:"USig
 this.SideNavigation.push({icon:"swap", text:"Switch to User", action:"/toUser",footer:false});
 } else
 {
-this.SideNavigation.push({icon:"attendance", text:"Attendance", action:"/test",footer:true});
+this.SideNavigation.push({icon:"attendance", text:"Attendance", action:"/attendance",footer:true});
 this.SideNavigation.push({icon:"shift", text:"Open Shifts", action:"/openshift"});
 this.SideNavigation.push({icon:"shiftrequest", text:"Shift Requests", action:"/shiftrequest",footer:false});
 this.SideNavigation.push({icon:"statusboard", text:"Status Board", action:"/statusboard",footer:true});
