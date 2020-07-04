@@ -17,7 +17,9 @@ export class PunchanalysisComponent implements OnInit {
       this.godate();
 
   }
-
+scroll(e) {
+console.log(e)  
+}
 godate(a=0)
 {
  if (a!==0) this.mydate=a;
