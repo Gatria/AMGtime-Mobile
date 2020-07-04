@@ -11,7 +11,7 @@ export class LatecomersComponent implements OnInit {
 
 ngOnInit() {
     this.mydate=new Date();
-
+this.godate()
   }
 
 godate(a=0)
