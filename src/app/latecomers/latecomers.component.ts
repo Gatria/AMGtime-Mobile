@@ -3,7 +3,7 @@ import {BackendService} from '../backend.service'
 @Component({
   selector: 'app-latecomers',
   templateUrl: './latecomers.component.html',
-  styleUrls: ['./latecomers.component.css']
+   styleUrls: ['../punchanalysis/punchanalysis.component.scss']
 })
 export class LatecomersComponent implements OnInit {
 
