@@ -55,5 +55,6 @@ var tomorrow = new Date(this.mydate);
     constructor() { }
   ngOnInit()  {
     this.mydate=new Date(this.thdate)
+     this.today = new Date();
    }
 }

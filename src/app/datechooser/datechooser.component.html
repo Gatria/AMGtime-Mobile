@@ -12,7 +12,7 @@
    <span *ngIf="datemode==2">{{mydate.month1()}}</span>
 
 <div *ngIf="datemode==0" class="limit">
-   <input style="display:none" matInput readonly (ngModelChange)="mydate=$event;change(0)" [(ngModel)]="mydate" [matDatepicker]="picker">
+   <input style="display:none" [min]="futureonly?today:null" [max]="pastonly?today:null" matInput readonly (ngModelChange)="mydate=$event;change(0)" [(ngModel)]="mydate" [matDatepicker]="picker">
       <span>{{mydate.toDateString() }}</span>
   <mat-datepicker-toggle  class="mat-primary-color" matSuffix [for]="picker"></mat-datepicker-toggle>
   <mat-datepicker touchUi [dateClass]="dateClass" #picker></mat-datepicker>
