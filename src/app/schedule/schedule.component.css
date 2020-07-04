@@ -2,10 +2,10 @@
     max-width: 98%;
     position: relative!important;}
 mat-divider:last-of-type {display:none}
-.t3 {display:block}
+.t3 {width:50%;display:inline-block}
 
 @media only screen and (max-width: 600px) {
-.t3 {width:50%;display:inline-block}
+.t3 {width:100%!important}
 
 }
 
