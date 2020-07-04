@@ -17,8 +17,10 @@ export class PunchanalysisComponent implements OnInit {
       this.godate();
 
   }
-scroll(e) {
-console.log(e)  
+scroll() {
+
+if (document.getElementById("main").scrollTop>335) 
+document.getElementById("topth").classList.add("topth"); else document.getElementById("topth").classList.remove("topth")
 }
 godate(a=0)
 {
