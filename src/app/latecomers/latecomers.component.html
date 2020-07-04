@@ -10,8 +10,13 @@
     <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
     <h1 class="example-app-name">Late Comers</h1>
   </mat-toolbar>
+<app-datechooser  (thdateChange)=godate($event) [(thdate)]="mydate">
+ <mat-progress-spinner style="margin: 30vh auto" *ngIf="bksvc.AdvancedScheduling==undefined"> mode="indeterminate"></mat-progress-spinner>
 
-
+<ng-container *ngIf="bksvc.LateComers!=undefined">
+<mat-card  class="stb" *ngFor="let item of bksvc.LateComers; let i = index">
+</mat-card></ng-container>
+</app-datechooser>
 <app-footer></app-footer>
  
     </mat-sidenav-content>
