@@ -12,8 +12,9 @@
   </mat-toolbar>
 <app-datechooser  [pastonly]=true (thdateChange)=godate($event) [(thdate)]="mydate">
  <mat-progress-spinner style="margin: 30vh auto" *ngIf="bksvc.LateComers==undefined"> mode="indeterminate"></mat-progress-spinner>
-<span *ngIf="bksvc.LateComers.length==0">No Late Comers</span>
+
 <ng-container *ngIf="bksvc.LateComers!=undefined">
+<h3 *ngIf="bksvc.LateComers.length==0">No Late Comers</h3>
 <mat-card  class="stb" *ngFor="let item of bksvc.LateComers; let i = index">
 </mat-card></ng-container>
 </app-datechooser>
