@@ -17,6 +17,6 @@ ngOnInit() {
 godate(a=0)
 {
  if (a!==0) this.mydate=a;
-this.bksvc.sendcommand((f)=>{this.bksvc.AdvancedScheduling=f;},"GetLateComers",{date:this.mydate.f1(),rounding:true}) 
+this.bksvc.sendcommand((f)=>{this.bksvc.LateComers=f;},"GetLateComers",{date:this.mydate.f1(),rounding:true}) 
 }
 }
