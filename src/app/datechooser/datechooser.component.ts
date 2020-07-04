@@ -11,6 +11,7 @@ export class DatechooserComponent  implements OnInit  {
  @Input() datemode=0;
  @Input() buttons=[];
  @Input() futureonly=false;
+ @Input() pastonly=false;
  step1=[1,7,30]
  @Output() thdateChange: EventEmitter<any> = new EventEmitter();
  @Output() datemodeChange: EventEmitter<any> = new EventEmitter();
@@ -27,6 +28,17 @@ checkfuture()
     d1.setDate(d1.getDate() - this.step1[this.datemode])
     d1.setHours(23,59,59);
 return (d1<new Date() && this.futureonly)
+
+}
+
+
+
+checkpast()
+{
+ var d1 = new Date(this.mydate);
+    d1.setDate(d1.getDate() - this.step1[this.datemode])
+    d1.setHours(00,00,00);
+return (d1>new Date() && this.pastonly)
 
 }
 

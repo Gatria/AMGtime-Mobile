@@ -17,7 +17,7 @@
   <mat-datepicker-toggle  class="mat-primary-color" matSuffix [for]="picker"></mat-datepicker-toggle>
   <mat-datepicker touchUi [dateClass]="dateClass" #picker></mat-datepicker>
 </div></div>
-<button  mat-mini-fab class="arrow-button right-button" (click)=change(1)>
+<button [disabled]="checkpast()" mat-mini-fab class="arrow-button right-button" (click)=change(1)>
   <mat-icon>arrowright</mat-icon>
   </button>
 </div> 
