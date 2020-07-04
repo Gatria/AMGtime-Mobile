@@ -13,4 +13,18 @@ export class UserpunchComponent implements OnInit {
   ngOnInit() {
   }
 
+scroll() {
+ this.first= document.getElementById("slider").scrollLeft==0;
+  this.bksvc.scroll()
+}
+
+
+scrollto(a)
+{
+
+setTimeout(()=>{document.querySelector("mat-sidenav-content").scrollTop=0;document.getElementById("slider").scrollLeft=document.getElementById("slider").parentElement.clientWidth*a},100);  
+
+  if (a==1)  { } else {  }
+} 
+
 }

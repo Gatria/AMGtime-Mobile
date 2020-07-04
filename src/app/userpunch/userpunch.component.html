@@ -10,8 +10,13 @@
     <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
     <h1 class="example-app-name">Punch As Employee</h1>
   </mat-toolbar>
-
-
+  <div id="slider" (scroll)=scroll() class="slider noscrollbar" >
+<div id="slide0" class="slide snap">
+<app-chooseemployee (ngModelChange)="myEmployee=$event;scrollto(1)" [filter]=filterfn ></app-chooseemployee>
+</div>
+<div id="slide1" class="slide snap">
+</div>
+</div>
 <app-footer></app-footer>
  
     </mat-sidenav-content>
