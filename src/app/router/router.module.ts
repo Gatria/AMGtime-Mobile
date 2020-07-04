@@ -21,7 +21,7 @@ import { TrackingComponent } from '../tracking/tracking.component';
 import { TimeoffuserComponent } from '../timeoffuser/timeoffuser.component';
 import { LatecomersComponent } from '../latecomers/latecomers.component';
 import { AttendanceComponent } from '../attendance/attendance.component';
-
+import { UserpunchComponent } from '../userpunch/userpunch.component';
 
 
 export const routes: Routes = [
@@ -62,6 +62,8 @@ export const routes: Routes = [
 { path: 'latecomers', component:  LatecomersComponent , canActivate: [AuthguardService] }
 ,
 { path: 'attendance', component:  AttendanceComponent , canActivate: [AuthguardService] }
+,
+{ path: 'userpunch', component: UserpunchComponent , canActivate: [AuthguardService] }
 ];
 
 
