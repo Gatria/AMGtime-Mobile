@@ -14,23 +14,20 @@
 <div id="slider" (scroll)=scroll() class="slider noscrollbar" >
 <div id="slide0" class="slide snap">
 
-<app-chooseemployee (ngModelChange)="myEmployee=$event;scrollto(1)" ></app-chooseemployee>
+<app-chooseemployee (ngModelChange)="myEmployee=$event;this.getperiod(0);scrollto(1)" ></app-chooseemployee>
 </div>
 <div id="slide1" class="slide snap">
-
+  <ng-container *ngIf="this.bksvc.timecard!=null">
 <div class="stb round-corners  mat-elevation-z2 topinfo" id=top{{i}}> 
-  <button mat-mini-fab  class="arrow-button left-button" [disabled]="i==0" (click)=gototab(-1)>  <mat-icon>arrowleft</mat-icon></button>
-  <div  class="mid-title">
-{{item.StartDate}} - 
-{{item.EndDate}}</div>
-<button  mat-mini-fab  class="arrow-button right-button" [disabled]="i==bksvc.AMGSettings.PayPeriodBackLimit-1" (click)=gototab(1)>
+  <button mat-mini-fab  class="arrow-button left-button"  (click)="period=period+1">  <mat-icon>arrowleft</mat-icon></button>
+  <div  class="mid-title"></div>
+<button  mat-mini-fab  class="arrow-button right-button" [disabled]="period<=0" (click)="period=period-1">
   <mat-icon>arrowright</mat-icon>
   </button>
 </div> 
+  </ng-container> 
 
-
-    <app-datechooser [empname]="myEmployee!==undefined?'('+myEmployee.Code+') '+myEmployee.Name:null" (thdateChange)=godate($event) [(thdate)]="mydate">
-       </app-datechooser>
+    
 </div></div>
 <app-footer></app-footer>
  

@@ -10,7 +10,7 @@ export class AttendanceComponent implements OnInit {
   constructor(private bksvc:BackendService) { }
 first=true;
   ngOnInit() {
-   this.getperiod(0)
+  
   }
 
 scroll() {
