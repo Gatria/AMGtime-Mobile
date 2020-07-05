@@ -54,7 +54,7 @@ close
 
 
 
-<app-subtimecard *ngIf="item!=undefined"  [item]=item></app-subtimecard>
+<app-subtimecard *ngIf="item!=undefined" [i]=i [item]=item></app-subtimecard>
  </ng-container>
 <mat-progress-spinner (focus)=getperiod(i) style="margin: auto;margin-top: 30vh" *ngIf="item==null" mode="indeterminate"></mat-progress-spinner>
   

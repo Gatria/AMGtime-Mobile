@@ -7,6 +7,7 @@ import {Component,Input, OnInit,Output, EventEmitter } from '@angular/core';
 })
 export class SubtimecardComponent implements OnInit {
 @Input() item
+@Input() i
 displayedColumns: string[]=["Date","Hours","Reg","OTs","Unpaid","Amount"]; 
   constructor() { }
 
@@ -14,7 +15,7 @@ displayedColumns: string[]=["Date","Hours","Reg","OTs","Unpaid","Amount"];
   ngOnInit() {
 console.log(this.item)
   }
-  
+
 getRow(b) {
 if (b!='') return 2; else return 1;
 }
