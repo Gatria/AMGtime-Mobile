@@ -16,8 +16,7 @@ period=0;
   }
 
 scroll() {
- var a=Math.round(document.querySelector("div.slider").scrollLeft/document.querySelector("div.slider").parentElement.clientWidth);
-if (a>0) { this.getperiod(a);this.getperiod(a-1);}
+ var a=this.period;
 let selector="#tbl"+a+">tr";
 
 if (document.getElementById("tbl"+a)!=null) {
