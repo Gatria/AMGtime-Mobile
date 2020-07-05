@@ -15,6 +15,10 @@
 
 <div id="slider" class="slider noscrollbar" (window:resize)=onResize() (scroll)=onResize()>
 <div id="slide{{i}}" class="slide" *ngFor="let item of bksvc.timecard;index as i;">
+
+
+
+
 <mat-progress-spinner style="margin: auto;margin-top: 30vh" *ngIf="bksvc.loading" mode="indeterminate"></mat-progress-spinner>
 
    <ng-container *ngIf="item!=null && bksvc.loading==false">
@@ -47,6 +51,9 @@ close
 </div> 
   </ng-container>
 </div> 
+
+<app-subtimecard *ngIf="item.Timecard!=undefined"  [item]=item.Timecard></app-subtimecard>
+
 
 <table id="tbl{{i}}" class="mat-elevation-z8 mat-table" >
  <tr mat-header-cell class="mat-header-row"> <th class="mat-header-cell" *ngFor="let col of displayedColumns">{{col}}</th></tr>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component,Input, OnInit,Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-subtimecard',
@@ -6,10 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['../timecard.component.css']
 })
 export class SubtimecardComponent implements OnInit {
+@Input() item
 displayedColumns: string[]=["Date","Hours","Reg","OTs","Unpaid","Amount"]; 
   constructor() { }
 
+ 
   ngOnInit() {
+
   }
 
 }
