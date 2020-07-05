@@ -2,8 +2,8 @@
  <tr mat-header-cell class="mat-header-row"> <th class="mat-header-cell" *ngFor="let col of displayedColumns">{{col}}</th></tr>
 
    <tbody>
-  <ng-container *ngFor="let data of item.Timecard; last as Footer">
-  <ng-container *ngIf="Footer!=data">
+  <ng-container *ngFor="let data of item.Timecard; last as isLast">
+  <ng-container *ngIf="!isLast">
  <tr  class="mat-row"> 
    <td class="mat-cell" [attr.rowspan]=getRow(data.Details)>{{data.Date}}</td>
    <td [ngClass]="{'noborder': data.Details!=''}" class="mat-cell">{{data.Hours}}</td>
@@ -13,20 +13,23 @@
    <td [ngClass]="{'noborder': data.Details!=''}" class="mat-cell">{{data.Money}}</td>
    </tr>
    <tr  [ngClass]="{'hidecell': data.Details==''}"  class="mat-row"><td class="newpadding mat-cell" colspan=5>{{data.Details}}</td><tr>
-   </ng-container>   
+   </ng-container>
+
+<ng-container *ngIf="isLast">
+<tr  class="mat-footer-row"> 
+   <td class="footer1 mat-footer-cell" [attr.rowspan]=getRow(data.Details)>{{data.Date}}</td>
+   <td [ngClass]="{'noborder': data.Details!=''}" class="mat-footer-cell">{{data.Hours}}</td>
+   <td [ngClass]="{'noborder': data.Details!=''}" class="mat-footer-cell">{{data.REG}}</td>
+   <td [ngClass]="{'noborder':data.Details!=''}" class="mat-footer-cell">{{data.TotalOT}}</td>
+   <td [ngClass]="{'noborder':data.Details!=''}" class="mat-footer-cell">{{data.Unpaid}}</td>
+   <td [ngClass]="data.Details!='' ? 'noborder footer2 mat-footer-cell' : 'footer4 mat-footer-cell'">{{data.Money}}</td>
+   </tr>
+  <tr [ngClass]="{'hidecell': data.Details==''}"  class="mat-row"><td 
+  class="footer3 newpadding mat-footer-cell" colspan=5>{{data.Details}}</td><tr>
+ </ng-container>
+
+
   </ng-container>
 </tbody>
-<ng-container *ngIf="Footer!=undefined">
-<tr  class="mat-footer-row"> 
-   <td class="footer1 mat-footer-cell" [attr.rowspan]=getRow(Footer.Details)>{{Footer.Date}}</td>
-   <td [ngClass]="{'noborder': Footer.Details!=''}" class="mat-footer-cell">{{Footer.Hours}}</td>
-   <td [ngClass]="{'noborder': Footer.Details!=''}" class="mat-footer-cell">{{Footer.REG}}</td>
-   <td [ngClass]="{'noborder':Footer.Details!=''}" class="mat-footer-cell">{{Footer.TotalOT}}</td>
-   <td [ngClass]="{'noborder':Footer.Details!=''}" class="mat-footer-cell">{{Footer.Unpaid}}</td>
-   <td [ngClass]="Footer.Details!='' ? 'noborder footer2 mat-footer-cell' : 'footer4 mat-footer-cell'">{{Footer.Money}}</td>
-   </tr>
-  <tr [ngClass]="{'hidecell': Footer.Details==''}"  class="mat-row"><td 
-  
-  class="footer3 newpadding mat-footer-cell" colspan=5>{{Footer.Details}}</td><tr>
- </ng-container>
+
  </table>

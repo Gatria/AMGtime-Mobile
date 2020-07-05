@@ -17,9 +17,9 @@ constructor(private bksvc:BackendService) {}
 getperiod(p)
 {
 if (this.bksvc.timecard[p]==null) this.bksvc.sendcommand((f)=>{ 
-let tmp=f.Timecard.pop();
+//let tmp=f.Timecard.pop();
 this.bksvc.timecard[p]=f;
-this.bksvc.timecard[p].Footer=tmp;
+//this.bksvc.timecard[p].Footer=tmp;
 setTimeout(()=>{document.getElementById("slide"+p).classList.add("snap");this.onResize()},1000);
 } ,"GetEmployeeTimeCard",{id:this.bksvc.AMGSettings.Id,period:this.bksvc.AMGSettings.PayPeriodBackLimit-1-p});
 
