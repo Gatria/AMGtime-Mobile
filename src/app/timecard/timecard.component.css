@@ -6,12 +6,20 @@
 .left-button {margin-right:5px}
 .right-button {margin-left:5px}
 
-
+ 
 
 table.mat-table {
     border-spacing: 0;
 	border-radius: 25px;
     background: #fff;
+}
+
+
+
+th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
+    padding: 0;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
 }
 
 th.mat-header-cell {
@@ -24,14 +32,6 @@ td.mat-footer-cell {
    padding: 4px 0px 4px 0px;
 
 }
-
-th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
-    padding: 0;
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
-}
-
-
 
  td.mat-cell {
    padding: 14px 0px 14px 0px;
