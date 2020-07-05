@@ -6,25 +6,25 @@
   <ng-container *ngIf="!isLast">
  <tr  class="mat-row"> 
    <td class="mat-cell" [attr.rowspan]=getRow(data.Details)>{{data.Date}}</td>
-   <td [ngClass]="{'noborder': check(data)}" class="mat-cell">{{data.Hours}}</td>
-   <td [ngClass]="{'noborder': check(data)}" class="mat-cell">{{data.REG}}</td>
-   <td [ngClass]="{'noborder': check(data)}" class="mat-cell">{{data.TotalOT}}</td>
-   <td [ngClass]="{'noborder': check(data)}" class="mat-cell">{{data.Unpaid}}</td>
-   <td [ngClass]="{'noborder': check(data)}" class="mat-cell">{{data.Money}}</td>
+   <td [ngClass]="check(data)?'noborder mat-cell':'mat-cell'">{{data.Hours}}</td>
+   <td [ngClass]="check(data)?'noborder mat-cell':'mat-cell'">{{data.REG}}</td>
+   <td [ngClass]="check(data)?'noborder mat-cell':'mat-cell'">{{data.TotalOT}}</td>
+   <td [ngClass]="check(data)?'noborder mat-cell':'mat-cell'">{{data.Unpaid}}</td>
+   <td [ngClass]="check(data)?'noborder mat-cell':'mat-cell'">{{data.Money}}</td>
    </tr>
-   <tr  [ngClass]="{'hidecell': !(check(data))}"  class="mat-row"><td class="newpadding mat-cell" colspan=5>{{data.Details}}</td><tr>
+   <tr  [ngClass]="check(data)?'mat-row':'hidecell'"><td class="newpadding mat-cell" colspan=5>{{data.Details}}</td><tr>
    </ng-container>
 
 <ng-container *ngIf="isLast">
 <tr  class="mat-footer-row"> 
    <td class="footer1 mat-footer-cell" [attr.rowspan]=getRow(data.Details)>{{data.Date}}</td>
-   <td [ngClass]="{'noborder': check(data)}" class="mat-footer-cell">{{data.Hours}}</td>
-   <td [ngClass]="{'noborder': check(data)}" class="mat-footer-cell">{{data.REG}}</td>
-   <td [ngClass]="{'noborder': check(data)}" class="mat-footer-cell">{{data.TotalOT}}</td>
-   <td [ngClass]="{'noborder': check(data)}" class="mat-footer-cell">{{data.Unpaid}}</td>
-   <td [ngClass]=" check(data)? 'noborder footer2 mat-footer-cell' : 'footer4 mat-footer-cell'">{{data.Money}}</td>
+   <td [ngClass]="check(data)?'noborder mat-cell':'mat-footer-cell'">{{data.Hours}}</td>
+   <td [ngClass]="check(data)?'noborder mat-cell':'mat-footer-cell'">{{data.REG}}</td>
+   <td [ngClass]="check(data)?'noborder mat-cell':'mat-footer-cell'">{{data.TotalOT}}</td>
+   <td [ngClass]="check(data)?'noborder mat-cell':'mat-footer-cell'">{{data.Unpaid}}</td>
+   <td [ngClass]="check(data)?'noborder footer2 mat-footer-cell':'footer4 mat-footer-cell'">{{data.Money}}</td>
    </tr>
-  <tr [ngClass]="{'hidecell': !(check(data))}"  class="mat-row"><td 
+  <tr [ngClass]="check(data)?'mat-row':'hidecell'"><td 
   class="footer3 newpadding mat-footer-cell" colspan=5>{{data.Details}}</td><tr>
  </ng-container>
 
