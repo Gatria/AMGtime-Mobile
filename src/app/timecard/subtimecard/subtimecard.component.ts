@@ -12,9 +12,7 @@ displayedColumns: string[]=["Date","Hours","Reg","OTs","Unpaid","Amount"];
   constructor() { }
 
  
-  ngOnInit() {
-console.log(this.item)
-  }
+  ngOnInit() { }
 check (a) {
  return (check.Details!=undefined && check.Details!='') 
 }
