@@ -16,10 +16,13 @@ table.mat-table {
 
 th.mat-header-cell {
  background: #fff;
+padding: 18px 0px 18px 0px;
 }
 
 td.mat-footer-cell {
  background: #fff;
+   padding: 4px 0px 4px 0px;
+
 }
 
 th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
@@ -29,17 +32,11 @@ th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
 }
 
 
-th.mat-header-cell {
-   padding: 18px 0px 18px 0px;
-}
+
  td.mat-cell {
    padding: 14px 0px 14px 0px;
 }
 
-td.mat-footer-cell {
-   padding: 4px 0px 4px 0px;
-
-}
 
 .mat-cell, .mat-footer-cell {
     font-size: 16px;
