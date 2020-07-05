@@ -10,7 +10,7 @@ export class AttendanceComponent implements OnInit {
   constructor(private bksvc:BackendService) { }
 first=true;
   ngOnInit() {
-      this.period=0;
+   this.getperiod(0)
   }
 
 scroll() {
@@ -22,7 +22,8 @@ scroll() {
 
 getperiod(p)
 {
-if (this.bksvc.timecard[p]==null) this.bksvc.sendcommand((f)=>{} ,"GetTimeCard",{id:this.myEmployee.Id,period:this.period});
+ this.period=p; 
+this.bksvc.sendcommand((f)=>{this.bksvc.timecard=f} ,"GetTimeCard",{id:this.myEmployee.Id,period:p});
 
 
 }

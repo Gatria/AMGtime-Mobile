@@ -26,26 +26,6 @@
 <button  mat-mini-fab  class="arrow-button right-button" [disabled]="i==bksvc.AMGSettings.PayPeriodBackLimit-1" (click)=gototab(1)>
   <mat-icon>arrowright</mat-icon>
   </button>
-
-  <ng-container *ngIf="i==bksvc.AMGSettings.PayPeriodBackLimit-2">
-<div *ngIf='item.TimeCardApprovalStatus==2'>
-
-  <button class="center round-corners" mat-flat-button  (click)=bksvc.approverejecttimecard(i,true) color="accent"><span class="material-icons">done</span> Approve</button>
-&nbsp;
-   <button class="center round-corners" mat-flat-button (click)=bksvc.approverejecttimecard(i,false) color="warn"><span class="material-icons">
-close
-</span> Reject</button>
-</div> 
-
-<div *ngIf='item.TimeCardApprovalStatus==1' class='mat-accent-color'>
- <h3> Approved</h3>
- 
-</div> 
-<div *ngIf='item.TimeCardApprovalStatus==0' class='mat-warn-color'>
- <h3> Rejected</h3>
- 
-</div> 
-  </ng-container>
 </div> 
 
 
