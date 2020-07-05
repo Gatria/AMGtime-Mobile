@@ -25,7 +25,7 @@ scroll() {
 getperiod(p)
 {
  this.period+=p; 
-this.bksvc.sendcommand((f)=>{this.bksvc.timecard=f;  this.bksvc.scroll()} ,"GetTimeCard",{id:this.myEmployee.Id,period:this.period});
+this.bksvc.sendcommand((f)=>{this.bksvc.timecard=f; setTimeout(this.bksvc.scroll,100)} ,"GetTimeCard",{id:this.myEmployee.Id,period:this.period});
 
 
 }

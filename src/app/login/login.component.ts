@@ -52,7 +52,7 @@ login(a = 0) {
               if (z.Id=t.Id) p[i].canPunch=true;  
               })});  
              console.log(this.bksvc.employeelist) },"GetEmployees",{canPunch:true})
-          },"GetEmployees",{canPunch:false})
+          },"GetEmployees")
         this.bksvc.buildnavigation();
         this.router.navigate(['/home']);}
   },"GetLoginNew",Object.assign(b[a],{name:this.bksvc.name,password:this.bksvc.password,time:new Date().f1()}),c[a]);
