@@ -12,7 +12,11 @@ displayedColumns: string[]=["Date","Hours","Reg","OTs","Unpaid","Amount"];
 
  
   ngOnInit() {
-
+console.log(this.item)
   }
+  
+getRow(b) {
+if (b!='') return 2; else return 1;
+}
 
 }

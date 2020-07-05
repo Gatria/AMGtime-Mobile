@@ -52,7 +52,7 @@ close
   </ng-container>
 </div> 
 
-<app-subtimecard *ngIf="item.Timecard!=undefined"  [item]=item.Timecard></app-subtimecard>
+
 
 
 <table id="tbl{{i}}" class="mat-elevation-z8 mat-table" >
@@ -83,7 +83,7 @@ close
   
   class="footer3 newpadding mat-footer-cell" colspan=5>{{item.Footer.Details}}</td><tr>
  </table> <br>
-
+<app-subtimecard *ngIf="item!=undefined"  [item]=item></app-subtimecard>
  </ng-container>
 <mat-progress-spinner (focus)=getperiod(i) style="margin: auto;margin-top: 30vh" *ngIf="item==null" mode="indeterminate"></mat-progress-spinner>
   
