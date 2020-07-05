@@ -18,10 +18,10 @@
 <ng-container *ngIf="isLast">
 <tr  class="mat-footer-row"> 
    <td class="footer1 mat-footer-cell" [attr.rowspan]=getRow(data.Details)>{{data.Date}}</td>
-   <td [ngClass]="ck(data)?'noborder mat-cell':'mat-footer-cell'">{{data.Hours}}</td>
-   <td [ngClass]="ck(data)?'noborder mat-cell':'mat-footer-cell'">{{data.REG}}</td>
-   <td [ngClass]="ck(data)?'noborder mat-cell':'mat-footer-cell'">{{data.TotalOT}}</td>
-   <td [ngClass]="ck(data)?'noborder mat-cell':'mat-footer-cell'">{{data.Unpaid}}</td>
+   <td [ngClass]="ck(data)?'noborder mat-footer-cell':'mat-footer-cell'">{{data.Hours}}</td>
+   <td [ngClass]="ck(data)?'noborder mat-footer-cell':'mat-footer-cell'">{{data.REG}}</td>
+   <td [ngClass]="ck(data)?'noborder mat-footer-cell':'mat-footer-cell'">{{data.TotalOT}}</td>
+   <td [ngClass]="ck(data)?'noborder mat-footer-cell':'mat-footer-cell'">{{data.Unpaid}}</td>
    <td [ngClass]="ck(data)?'noborder footer2 mat-footer-cell':'footer4 mat-footer-cell'">{{data.Money}}</td>
    </tr>
   <tr [ngClass]="ck(data)?'mat-row':'hidecell'"><td 
