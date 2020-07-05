@@ -20,5 +20,6 @@
 <button [disabled]="checkpast()" mat-mini-fab class="arrow-button right-button" (click)=change(1)>
   <mat-icon>arrowright</mat-icon>
   </button>
+  <span *ngIf="empname!=null">{{empname}}</span>
 </div> 
 <ng-content></ng-content>

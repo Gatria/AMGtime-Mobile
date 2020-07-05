@@ -9,6 +9,7 @@ import { Component,Input, OnInit,Output, EventEmitter } from '@angular/core';
 export class DatechooserComponent  implements OnInit  {
  @Input() thdate:string; 
  @Input() datemode=0;
+@Input() empname;
  @Input() buttons=[];
  @Input() futureonly=false;
  @Input() pastonly=false;

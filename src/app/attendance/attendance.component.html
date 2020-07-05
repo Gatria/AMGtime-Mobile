@@ -17,9 +17,8 @@
 <app-chooseemployee (ngModelChange)="myEmployee=$event;scrollto(1)" ></app-chooseemployee>
 </div>
 <div id="slide1" class="slide snap">
- <ng-container *ngIf="myEmployee!==undefined">
- <div  class="stb mat-elevation-z2 topinfo"><span>  ({{myEmployee.Code}}) {{myEmployee.Name}}</span></div> 
-  </ng-container>
+    <app-datechooser [empname]="myEmployee!==undefined?'('+myEmployee.Code+') '+myEmployee.Name:null" (thdateChange)=godate($event) [(thdate)]="mydate">
+       </app-datechooser>
 </div></div>
 <app-footer></app-footer>
  
