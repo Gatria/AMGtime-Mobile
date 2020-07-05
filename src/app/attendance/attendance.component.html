@@ -11,7 +11,7 @@
     <button *ngIf="!first" (click)=scrollto(0) mat-icon-button><mat-icon>arrow_back_ios</mat-icon></button>
     <h1 class="example-app-name">Attendance</h1>
   </mat-toolbar>
-<div id="slider" (scroll)=scroll() class="slider noscrollbar" >
+<div id="slider"  (window:resize)=scroll() (scroll)=scroll() class="slider noscrollbar" >
 <div id="slide0" class="slide snap">
 
 <app-chooseemployee (ngModelChange)="myEmployee=$event;getperiod(0);scrollto(1)" ></app-chooseemployee>

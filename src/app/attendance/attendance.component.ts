@@ -3,7 +3,7 @@ import {BackendService} from '../backend.service'
 @Component({
   selector: 'app-attendance',
   templateUrl: './attendance.component.html',
-  styleUrls: ['./attendance.component.css']
+  styleUrls: ['../timecard/timecard.component.css']
 })
 export class AttendanceComponent implements OnInit {
 
@@ -16,6 +16,31 @@ period=0;
   }
 
 scroll() {
+ var a=Math.round(document.querySelector("div.slider").scrollLeft/document.querySelector("div.slider").parentElement.clientWidth);
+if (a>0) { this.getperiod(a);this.getperiod(a-1);}
+let selector="#tbl"+a+">tr";
+
+if (document.getElementById("tbl"+a)!=null) {
+var pos=document.querySelector("mat-sidenav-content").scrollTop-document.getElementById("tbl"+a).offsetTop;
+
+  
+ let f=document.querySelectorAll(selector+">th")
+  f.forEach((d) => { 
+  if (pos>0) d.style.top=  pos+"px"; else d.style.top= 0; 
+   });   
+if (pos<0) {
+
+
+  document.querySelector(selector+">th:first-child").classList.remove('sticked1');
+   document.querySelector(selector+">th:last-child").classList.remove('sticked1');
+} else {
+document.querySelector(selector+">th:first-child").classList.add('sticked1');
+document.querySelector(selector+">th:last-child").classList.add('sticked1');
+
+}
+
+
+} 
  this.first= document.getElementById("slider").scrollLeft==0;
   this.bksvc.scroll()
 }
