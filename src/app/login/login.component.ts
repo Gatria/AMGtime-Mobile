@@ -47,9 +47,9 @@ login(a = 0) {
               this.bksvc.employeelist=f;
               if (Array.isArray(f)) f.forEach(e => this.bksvc.codetoid[e.Code]=e.Id);
               this.bksvc.sendcommand((e)=>{
-              if (Array.isArray(e)) e.forEach(e => {this.bksvc.employeelist.forEach(z=>{
+              if (Array.isArray(e)) e.forEach(t => {this.bksvc.employeelist.forEach((z,i,p)=>{
 
-              if (z.Id=e.Id) e.canPunch=true;  
+              if (z.Id=t.Id) p[i].canPunch=true;  
               })});  
              console.log(this.bksvc.employeelist) },"GetEmployees",{canPunch:true})
           },"GetEmployees",{canPunch:false})
