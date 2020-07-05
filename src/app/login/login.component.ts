@@ -46,7 +46,13 @@ login(a = 0) {
           if (a==2) this.bksvc.sendcommand((f)=>{
               this.bksvc.employeelist=f;
               if (Array.isArray(f)) f.forEach(e => this.bksvc.codetoid[e.Code]=e.Id);
-          },"GetEmployees")
+              this.bksvc.sendcommand((e)=>{
+              if (Array.isArray(e)) e.forEach(e => {this.bksvc.employeelist.forEach(z=>{
+
+              if (z.Id=e.Id) e.canPunch=true;  
+              })});  
+             console.log(this.bksvc.employeelist) },"GetEmployees",{canPunch:true})
+          },"GetEmployees",{canPunch:false})
         this.bksvc.buildnavigation();
         this.router.navigate(['/home']);}
   },"GetLoginNew",Object.assign(b[a],{name:this.bksvc.name,password:this.bksvc.password,time:new Date().f1()}),c[a]);
