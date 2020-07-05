@@ -9,6 +9,8 @@ export class AttendanceComponent implements OnInit {
 
   constructor(private bksvc:BackendService) { }
 first=true;
+period=0;
+
   ngOnInit() {
   
   }

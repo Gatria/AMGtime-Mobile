@@ -39,6 +39,7 @@ import { AgmCoreModule } from '@agm/core';
 import { LatecomersComponent } from './latecomers/latecomers.component';
 import { AttendanceComponent } from './attendance/attendance.component';
 import { UserpunchComponent } from './userpunch/userpunch.component';
+import { SubtimecardComponent } from './timecard/subtimecard/subtimecard.component';
 
 interface Date {
     f1(): number;
@@ -73,7 +74,7 @@ Date.prototype.f1 = function () {
     imports:      [SignaturePadModule ,WebcamModule,AllMaterialModule, AppRouterModule, HttpClientModule ,BrowserAnimationsModule, BrowserModule, FormsModule,StorageServiceModule,NgxChartsModule,AgmCoreModule.forRoot({
       apiKey: 'AIzaSyB5wbecefqYqGVuEsW4erTBOCqXPqthrIc'
     })],
-  declarations: [ AppComponent, CameraComponent, LoginComponent, HomescreenComponent, EmpphotoiconComponent, TimecardComponent, BenefitsComponent, ScheduleComponent, TimeoffComponent, MatSidenavComponent, PasswordresetComponent, SettingsComponent, ComplogoComponent,  ConfirmDialogComponent, USignedComponent,SignitureComponent, StatusboardComponent, PunchdialogComponent, FooterComponent,ChooseemployeeComponent, PunchanalysisComponent, DatechooserComponent, OpenshiftComponent, ShiftrequestComponent, TrackingComponent, TimeoffuserComponent, LatecomersComponent, AttendanceComponent, UserpunchComponent],
+  declarations: [ AppComponent, CameraComponent, LoginComponent, HomescreenComponent, EmpphotoiconComponent, TimecardComponent, BenefitsComponent, ScheduleComponent, TimeoffComponent, MatSidenavComponent, PasswordresetComponent, SettingsComponent, ComplogoComponent,  ConfirmDialogComponent, USignedComponent,SignitureComponent, StatusboardComponent, PunchdialogComponent, FooterComponent,ChooseemployeeComponent, PunchanalysisComponent, DatechooserComponent, OpenshiftComponent, ShiftrequestComponent, TrackingComponent, TimeoffuserComponent, LatecomersComponent, AttendanceComponent, UserpunchComponent, SubtimecardComponent],
   bootstrap:    [ AppComponent ],
   providers: [BackendService],
                 entryComponents: [SignitureComponent,ConfirmDialogComponent,PunchdialogComponent]
