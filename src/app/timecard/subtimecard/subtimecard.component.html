@@ -1,5 +1,5 @@
 <table *ngIf="ttype==0" id="tbl{{i}}" class="mat-elevation-z8 mat-table" >
- <tr mat-header-cell class="mat-header-row"> <th class="mat-header-cell" *ngFor="let col of displayedColumns">{{col}}</th></tr>
+ <tr mat-header-cell class="mat-header-row"> <th class="mat-header-cell" *ngFor="let col of displayedColumns[ttype]">{{col}}</th></tr>
 
    <tbody>
   <ng-container *ngFor="let data of item.Timecard; last as isLast;first as isFirst">
@@ -18,4 +18,45 @@
   </ng-container>
 </tbody>
 
- </table><br>
+ </table>
+ 
+ 
+ 
+ 
+ 
+ <table *ngIf="ttype==2" id="tbl{{i}}" class="mat-elevation-z8 mat-table" >
+ <tr mat-header-cell class="mat-header-row"> <th class="mat-header-cell" *ngFor="let col of displayedColumns[ttype]">{{col}}</th></tr>
+
+   <tbody>
+  <ng-container *ngFor="let data of item.Transactions; last as isLast;first as isFirst">
+
+ <tr [ngClass]="isLast?'mat-footer-row':isFirst?'noborder mat-row':'mat-row'" class="mat-row"> 
+   <td [attr.rowspan]=getRow(data)>{{data.Date}}</td>
+   <td>{{data.Time}}</td>
+   <td>{{data.Action}}</td>
+   <td [ngClass]="!ck(data)?'footer4':'footer2'">{{data.Type}}</td>
+   </tr>
+
+  </ng-container>
+</tbody>
+
+ </table>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ <br>
