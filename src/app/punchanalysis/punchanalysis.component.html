@@ -15,7 +15,7 @@
 
 
 
-  <app-datechooser (thdateChange)=godate($event) [(thdate)]="mydate">
+  <app-datechooser [pastonly]=true (thdateChange)=godate($event) [(thdate)]="mydate">
 
 
 <mat-chip-list class="i" multiple="true">
