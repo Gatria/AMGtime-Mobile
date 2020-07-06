@@ -13,7 +13,7 @@
    <td [ngClass]="!ck(data)?'footer4':'footer2'">{{data.Money}}</td>
    </tr>
    <ng-container *ngIf="ck(data)">
-   <tr [ngClass]="isLast?'footer1 mat-footer-row':'mat-row'"><td class="newpadding footer3" colspan=5>{{data.Details}}</td><tr>
+   <tr [ngClass]="isLast?'footer1 mat-footer-row':' noborder mat-row'"><td class="newpadding footer3" colspan=5>{{data.Details}}</td><tr>
    </ng-container>
   </ng-container>
 </tbody>
