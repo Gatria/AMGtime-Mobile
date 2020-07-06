@@ -100,7 +100,7 @@ tr.mat-footer-row  td.footer4 {  border-radius:0 25px 25px 0;
 transition:0.2s;
  height:44px!important; }
 
-tr.noborder td  {border:none!important;bottom:27px!important}
+tr.noborder td,tr:nth-of-type(1)   {border:none!important;bottom:27px!important}
 
 
 
