@@ -3,32 +3,18 @@
 
    <tbody>
   <ng-container *ngFor="let data of item.Timecard; last as isLast">
-  <ng-container *ngIf="!isLast">
- <tr  class="mat-row"> 
+
+ <tr [ngClass]="{isLast?'footer1 mat-footer-row':'mat-row'}" class="mat-row"> 
    <td [attr.rowspan]=getRow(data.Details)>{{data.Date}}</td>
    <td [ngClass]="{'noborder':ck(data)}">{{data.Hours}}</td>
    <td [ngClass]="{'noborder':ck(data)}">{{data.REG}}</td>
    <td [ngClass]="{'noborder':ck(data)}">{{data.TotalOT}}</td>
    <td [ngClass]="{'noborder':ck(data)}">{{data.Unpaid}}</td>
-   <td [ngClass]="{'noborder':ck(data)}">{{data.Money}}</td>
+   <td [ngClass]="ck(data)?'noborder footer2':'footer4'">{{data.Money}}</td>
    </tr>
-   <tr  [ngClass]="ck(data)?'mat-row':'hidecell'"><td class="newpadding mat-cell" colspan=5>{{data.Details}}</td><tr>
+   <ng-container *ngIf="!ck(data)">
+   <tr [ngClass]="{isLast?'footer1 mat-footer-row':'mat-row'}"><td class="newpadding footer3" colspan=5>{{data.Details}}</td><tr>
    </ng-container>
-
-<ng-container *ngIf="isLast">
-<tr  class="mat-footer-row"> 
-   <td class="footer1 mat-footer-cell" [attr.rowspan]=getRow(data.Details)>{{data.Date}}</td>
-   <td [ngClass]="ck(data)?'noborder mat-footer-cell':'mat-footer-cell'">{{data.Hours}}</td>
-   <td [ngClass]="ck(data)?'noborder mat-footer-cell':'mat-footer-cell'">{{data.REG}}</td>
-   <td [ngClass]="ck(data)?'noborder mat-footer-cell':'mat-footer-cell'">{{data.TotalOT}}</td>
-   <td [ngClass]="ck(data)?'noborder mat-footer-cell':'mat-footer-cell'">{{data.Unpaid}}</td>
-   <td [ngClass]="ck(data)?'noborder footer2 mat-footer-cell':'footer4 mat-footer-cell'">{{data.Money}}</td>
-   </tr>
-  <tr [ngClass]="ck(data)?'mat-row':'hidecell'"><td 
-  class="footer3 newpadding mat-footer-cell" colspan=5>{{data.Details}}</td><tr>
- </ng-container>
-
-
   </ng-container>
 </tbody>
 
