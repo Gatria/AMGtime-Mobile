@@ -12,7 +12,7 @@ mat-divider:last-of-type {display:none}
     .click {display: block;
     margin: -7px -16px;
     padding: 7px 16px;}
-    .click:hover {background-color:#eee}
+    .click:hover {background-color:#e5f0fa;cursor:pointer}
     .icon {padding: 0px 6px 0px 0px;
     font-size: 31px;
 }
