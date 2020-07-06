@@ -1,6 +1,5 @@
 
 .noheight {height:0px}
-.newpadding {font-size:small!important;padding: 5px 0 10px 0!important;text-align:left!important}
 .newpadding {font-size:small!important; padding: 5px 0 7px 0!important;text-align:left!important}
 
 .left-button {margin-right:5px}
@@ -27,11 +26,7 @@ th.mat-header-cell {
 padding: 18px 0px 18px 0px;
 }
 
-td.mat-footer-cell {
- background: #fff;
-   padding: 4px 0px 4px 0px;
 
-}
 
 tr.mat-row td{
 
@@ -43,9 +38,11 @@ tr.mat-row td{
 }
 
 
-.mat-footer-cell {
+tr.mat-footer-row td {
     font-size: 16px;
     text-align:center;
+    background: #fff;
+   padding: 4px 0px 4px 0px;
 }
 
 
@@ -66,7 +63,8 @@ filter:drop-shadow(0px 0px 4px #777);}
 
 
 table { border-radius:25px}
-table tr th:last-child, .footer2{
+
+table tr th:last-child, tr.mat-row td.footer2{
   border-radius:0 25px 25px 0;
 transition:0.2s;
 transition-property: border-radius;
@@ -82,24 +80,24 @@ table tr th {position: relative}
 }
 
 
-  table tr th:first-child, .footer1{
+  table tr th:first-child, tr.mat-row td.footer1{
   border-radius:25px 0 0 25px;
 transition:0.2s;
 transition-property: border-radius;
 }
 
-.footer3{
+tr.mat-row td.footer3{
   border-radius:0 0 25px 0;
 transition:0.2s;
    position:relative;
     white-space: nowrap;
 }
-.footer2{
+tr.mat-row td.footer2{
   border-radius:0 25px 0 0;
 transition:0.2s;
 }
 
-.footer4 {  border-radius:0 25px 25px 0;
+tr.mat-row td.footer4 {  border-radius:0 25px 25px 0;
 transition:0.2s;
  height:44px!important; }
 
