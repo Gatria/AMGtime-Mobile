@@ -145,7 +145,7 @@ transition: width 1s;
 .slide {
   width: 100%;
   height: fit-content;
-  min-height: calc(100vh - 20px);
+  min-height: calc(100vh - 30px - 3vw);
  flex: 0 0 auto;  
 
 }
@@ -154,6 +154,7 @@ transition: width 1s;
 
 
     @media screen and (orientation:landscape) {
+      .slide { min-height: calc(100vh - 30px) }
       .mat-drawer-container, .mat-drawer-content {
   height:calc(100vh)!important}
      }
