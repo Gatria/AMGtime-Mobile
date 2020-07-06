@@ -36,7 +36,7 @@
    <td>{{data.Action}}</td>
    <td [ngClass]="!ck(data.Comment)?'footer4':'footer2'">{{data.User}}</td>
     <ng-container *ngIf="ck(data.Comment)">
-   <tr [ngClass]="isLast?'footer1 mat-footer-row':' noborder mat-row'"><td class="newpadding footer3" colspan=5>{{data.Comment}}</td><tr>
+   <tr [ngClass]="isLast?'footer1 mat-footer-row':' noborder mat-row'"><td class="newpadding footer3" colspan=3>{{data.Comment}}</td><tr>
    </ng-container>
    </tr>
 
