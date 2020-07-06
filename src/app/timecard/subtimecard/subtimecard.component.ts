@@ -17,7 +17,7 @@ ck(a) {
  return (a.Details!=undefined && a.Details!='') 
 }
 getRow(b) {
-if (this.ck(b)) return 2; else return 1;
+if (this.ck(b)) return 1; else return 2;
 }
 
 }
