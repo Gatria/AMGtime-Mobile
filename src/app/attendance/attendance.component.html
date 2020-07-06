@@ -32,7 +32,7 @@
 <app-subtimecard ttype=0 *ngIf="bksvc.timecard!=undefined" [i]=1 [item]=this.bksvc.timecard></app-subtimecard>
 </ng-container> 
 
- <mat-progress-spinner style="margin: 30vh auto" *ngIf="this.bksvc.timecard==null" mode="indeterminate"></mat-progress-spinner>
+ <mat-progress-spinner style="margin: 30vh auto" *ngIf="this.bksvc.timecard==undefined" mode="indeterminate"></mat-progress-spinner>
 </div>
 
 

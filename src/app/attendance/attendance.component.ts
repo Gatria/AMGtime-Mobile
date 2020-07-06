@@ -49,6 +49,7 @@ document.querySelector(selector+">th:last-child").classList.add('sticked1');
 getperiod(p)
 {
  this.period+=p; 
+delete(this.bksvc.timecard); 
 this.bksvc.sendcommand((f)=>{this.bksvc.timecard=f; setTimeout(this.bksvc.scroll,100)} ,"GetTimeCard",{id:this.myEmployee.Id,period:this.period});
 
 
