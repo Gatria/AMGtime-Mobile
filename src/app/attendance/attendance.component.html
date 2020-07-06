@@ -16,9 +16,10 @@
 
 <app-chooseemployee (ngModelChange)="myEmployee=$event;getperiod(0);scrollto(1)" ></app-chooseemployee>
 </div>
+
 <div id="slide1" class="slide snap">
-  <ng-container *ngIf="this.bksvc.timecard!=null">
-<div class="stb round-corners  mat-elevation-z2 topinfo" id=top{{i}}> 
+<ng-container *ngIf="this.bksvc.timecard!=null">
+<div class="stb round-corners  mat-elevation-z2 topinfo"> 
   <button mat-mini-fab  class="arrow-button left-button"  (click)="getperiod(1)">  <mat-icon>arrowleft</mat-icon></button>
   <div  class="mid-title">{{bksvc.timecard.StartDate}} - 
 {{bksvc.timecard.EndDate}}</div>
@@ -27,16 +28,17 @@
   </button>
   <span *ngIf="myEmployee!=undefined">({{myEmployee.Code}}) {{myEmployee.Name}}&nbsp;
 &nbsp;&nbsp;&nbsp;<span [ngClass]="bksvc.timecard.StatusStr"> {{bksvc.timecard.StatusStr}}</span>
+  </span></div> 
+<app-subtimecard ttype=0 *ngIf="bksvc.timecard!=undefined" [i]=1 [item]=this.bksvc.timecard></app-subtimecard>
+</ng-container> 
 
-  </span>
-</div> 
+ <mat-progress-spinner style="margin: 30vh auto" *ngIf="this.bksvc.timecard==null" mode="indeterminate"></mat-progress-spinner>
+</div>
 
 
-<app-subtimecard ttype=1 *ngIf="bksvc.timecard!=undefined" [i]=period [item]=this.bksvc.timecard></app-subtimecard>
-  </ng-container> 
 
-    
-</div></div>
+
+</div>
 <app-footer></app-footer>
  
     </mat-sidenav-content>
