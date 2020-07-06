@@ -16,7 +16,7 @@
 
 <app-chooseemployee (ngModelChange)="myEmployee=$event;getperiod(0);scrollto(1)" ></app-chooseemployee>
 </div>
-
+<ng-container *ngIf="myEmployee!=undefine">
 <div id="slide1" class="slide snap">
 <ng-container *ngIf="this.bksvc.timecard!=null">
 <div class="stb round-corners  mat-elevation-z2 topinfo"> 
@@ -130,7 +130,7 @@
 
  <mat-progress-spinner style="margin: 30vh auto" *ngIf="this.bksvc.timecard==undefined" mode="indeterminate"></mat-progress-spinner>
 </div>
-
+</ng-container> 
 </div>
 <app-footer></app-footer>
  
