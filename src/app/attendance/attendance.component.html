@@ -37,6 +37,99 @@
 
 
 
+<div id="slide2" class="slide snap">
+<ng-container *ngIf="this.bksvc.timecard!=null">
+<div class="stb round-corners  mat-elevation-z2 topinfo"> 
+  <button mat-mini-fab  class="arrow-button left-button"  (click)="getperiod(1)">  <mat-icon>arrowleft</mat-icon></button>
+  <div  class="mid-title">{{bksvc.timecard.StartDate}} - 
+{{bksvc.timecard.EndDate}}</div>
+<button  mat-mini-fab  class="arrow-button right-button" [disabled]="period<=0" (click)="getperiod(-1)">
+  <mat-icon>arrowright</mat-icon>
+  </button>
+  <span *ngIf="myEmployee!=undefined">({{myEmployee.Code}}) {{myEmployee.Name}}&nbsp;
+&nbsp;&nbsp;&nbsp;<span [ngClass]="bksvc.timecard.StatusStr"> {{bksvc.timecard.StatusStr}}</span>
+  </span></div> 
+<app-subtimecard ttype=1 *ngIf="bksvc.timecard!=undefined" [i]=2 [item]=this.bksvc.timecard></app-subtimecard>
+</ng-container> 
+
+ <mat-progress-spinner style="margin: 30vh auto" *ngIf="this.bksvc.timecard==undefined" mode="indeterminate"></mat-progress-spinner>
+</div>
+
+
+
+
+
+
+
+<div id="slide3" class="slide snap">
+<ng-container *ngIf="this.bksvc.timecard!=null">
+<div class="stb round-corners  mat-elevation-z2 topinfo"> 
+  <button mat-mini-fab  class="arrow-button left-button"  (click)="getperiod(1)">  <mat-icon>arrowleft</mat-icon></button>
+  <div  class="mid-title">{{bksvc.timecard.StartDate}} - 
+{{bksvc.timecard.EndDate}}</div>
+<button  mat-mini-fab  class="arrow-button right-button" [disabled]="period<=0" (click)="getperiod(-1)">
+  <mat-icon>arrowright</mat-icon>
+  </button>
+  <span *ngIf="myEmployee!=undefined">({{myEmployee.Code}}) {{myEmployee.Name}}&nbsp;
+&nbsp;&nbsp;&nbsp;<span [ngClass]="bksvc.timecard.StatusStr"> {{bksvc.timecard.StatusStr}}</span>
+  </span></div> 
+<app-subtimecard ttype=2 *ngIf="bksvc.timecard!=undefined" [i]=3 [item]=this.bksvc.timecard></app-subtimecard>
+</ng-container> 
+
+ <mat-progress-spinner style="margin: 30vh auto" *ngIf="this.bksvc.timecard==undefined" mode="indeterminate"></mat-progress-spinner>
+</div>
+
+
+
+
+
+
+
+
+<div id="slide4" class="slide snap">
+<ng-container *ngIf="this.bksvc.timecard!=null">
+<div class="stb round-corners  mat-elevation-z2 topinfo"> 
+  <button mat-mini-fab  class="arrow-button left-button"  (click)="getperiod(1)">  <mat-icon>arrowleft</mat-icon></button>
+  <div  class="mid-title">{{bksvc.timecard.StartDate}} - 
+{{bksvc.timecard.EndDate}}</div>
+<button  mat-mini-fab  class="arrow-button right-button" [disabled]="period<=0" (click)="getperiod(-1)">
+  <mat-icon>arrowright</mat-icon>
+  </button>
+  <span *ngIf="myEmployee!=undefined">({{myEmployee.Code}}) {{myEmployee.Name}}&nbsp;
+&nbsp;&nbsp;&nbsp;<span [ngClass]="bksvc.timecard.StatusStr"> {{bksvc.timecard.StatusStr}}</span>
+  </span></div> 
+<app-subtimecard ttype=3 *ngIf="bksvc.timecard!=undefined" [i]=4 [item]=this.bksvc.timecard></app-subtimecard>
+</ng-container> 
+
+ <mat-progress-spinner style="margin: 30vh auto" *ngIf="this.bksvc.timecard==undefined" mode="indeterminate"></mat-progress-spinner>
+</div>
+
+
+
+
+
+
+
+
+
+
+<div id="slide5" class="slide snap">
+<ng-container *ngIf="this.bksvc.timecard!=null">
+<div class="stb round-corners  mat-elevation-z2 topinfo"> 
+  <button mat-mini-fab  class="arrow-button left-button"  (click)="getperiod(1)">  <mat-icon>arrowleft</mat-icon></button>
+  <div  class="mid-title">{{bksvc.timecard.StartDate}} - 
+{{bksvc.timecard.EndDate}}</div>
+<button  mat-mini-fab  class="arrow-button right-button" [disabled]="period<=0" (click)="getperiod(-1)">
+  <mat-icon>arrowright</mat-icon>
+  </button>
+  <span *ngIf="myEmployee!=undefined">({{myEmployee.Code}}) {{myEmployee.Name}}&nbsp;
+&nbsp;&nbsp;&nbsp;<span [ngClass]="bksvc.timecard.StatusStr"> {{bksvc.timecard.StatusStr}}</span>
+  </span></div> 
+<app-subtimecard ttype=4 *ngIf="bksvc.timecard!=undefined" [i]=3 [item]=this.bksvc.timecard></app-subtimecard>
+</ng-container> 
+
+ <mat-progress-spinner style="margin: 30vh auto" *ngIf="this.bksvc.timecard==undefined" mode="indeterminate"></mat-progress-spinner>
+</div>
 
 </div>
 <app-footer></app-footer>
