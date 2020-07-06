@@ -49,9 +49,9 @@ login(a = 0) {
               this.bksvc.sendcommand((e)=>{
               if (Array.isArray(e)) e.forEach(t => {this.bksvc.employeelist.forEach((z,i,p)=>{
 
-              if (z.Id=t.Id) p[i].canPunch=true;  
+              if (z.Id==t.Id) p[i].canPunch=true;  
               })});  
-             console.log(this.bksvc.employeelist) },"GetEmployees",{canPunch:true})
+           },"GetEmployees",{canPunch:true})
           },"GetEmployees")
         this.bksvc.buildnavigation();
         this.router.navigate(['/home']);}
