@@ -23,7 +23,7 @@
  <tr [ngClass]="isLast?'mat-row1':isFirst?'noborder mat-row':'mat-row'" class="mat-row"> 
    <td [attr.rowspan]=getRow(data.Misc)>{{data.Date}}</td>
    <td>{{data.Shift}}</td>
-   <td [ngClass]="!ck(data.Misc)?'footer3':''">{{data.Job+" "+data.Department | empty}}</td>
+   <td [ngClass]="!ck(data.Misc)?'footer3 jd3':'jd3'">{{data.Job+" "+data.Department | empty}}</td>
    </tr>
     <ng-container *ngIf="ck(data.Misc)">
    <tr [ngClass]="isLast?'noborder footer1 mat-row1':' noborder mat-row'"><td class="newpadding footer3" colspan=3>{{data.Misc}}</td><tr>
