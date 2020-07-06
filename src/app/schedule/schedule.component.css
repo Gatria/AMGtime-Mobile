@@ -10,7 +10,7 @@ mat-divider:last-of-type {display:none}
 }
 
 h4 {display:inline-block}
-.h5 {width:100%;text-align:center}
+.h5 {width:100%;text-align:center;display:inline-block}
 .name {
     display: inline-block;
         line-height: 160%;
