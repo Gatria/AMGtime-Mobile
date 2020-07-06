@@ -5,7 +5,7 @@ agm-map   {height: 40vh;}
     
   }
   .topinfo {padding:2px!important}
-.topinfo>button {width:120px;     font-size: 14px;
+.topinfo>button {width:110px;     font-size: 14px;
     font-weight: 400;margin:3px}
     .date { width: 95px;
     text-align: center;
