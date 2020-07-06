@@ -128,7 +128,7 @@ close
    <h3 class="t3 mat-primary-color">Total Hours:</h3><h3 class="t3 mat-primary-color">{{bksvc.timeoff.AvailableWorkDays.Total}}</h3>
   </mat-card-content>
   
-<button  *ngIf="bksvc.timeoff.AvailableWorkDays!=undefined" (click)=bksvc.sendtimeoffrequest(this) color="accent" mat-fab class="float"><mat-icon>done</mat-icon></button>
+<button  *ngIf="bksvc.timeoff.AvailableWorkDays!=undefined && !first" (click)=bksvc.sendtimeoffrequest(this) color="accent" mat-fab class="float"><mat-icon>done</mat-icon></button>
 
 </ng-container>
 </mat-card>
