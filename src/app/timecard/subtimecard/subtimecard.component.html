@@ -50,6 +50,27 @@
  
  
  
+  <table *ngIf="ttype==3" id="tbl{{3}}" class="mat-elevation-z8 mat-table" >
+ <tr mat-header-cell class="mat-header-row"> <th class="mat-header-cell" *ngFor="let col of displayedColumns[ttype]">{{col}}</th></tr>
+
+   <tbody>
+  <ng-container *ngFor="let data of item.MiscEntries; last as isLast;first as isFirst">
+
+ <tr [ngClass]="isLast?'mat-row1':isFirst?'noborder mat-row':'mat-row'" class="mat-row"> 
+   <td [attr.rowspan]=getRow(data.Comment)>{{data.Date}}</td>
+   <td>{{data.Time}}</td>
+   <td>{{data.Action}}</td>
+   <td [ngClass]="!ck(data.Comment)?'footer3':''">{{data.Device}}</td>
+   </tr>
+    <ng-container *ngIf="ck(data.Comment)">
+   <tr [ngClass]="isLast?'noborder footer1 mat-row1':' noborder mat-row'"><td class="newpadding footer3" colspan=3>{{data.Comment}}</td><tr>
+   </ng-container>
+   
+
+  </ng-container>
+</tbody>
+
+ </table>
  
  
  
