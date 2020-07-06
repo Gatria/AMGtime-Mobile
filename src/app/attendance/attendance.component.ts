@@ -43,7 +43,7 @@ document.querySelector(selector+">th:last-child").classList.add('sticked1');
 
 
 } 
- this.first= document.getElementById("slider").scrollLeft==0;
+ this.first= a;
   this.bksvc.scroll()
 }
 
