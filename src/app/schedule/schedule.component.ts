@@ -12,6 +12,7 @@ export class ScheduleComponent implements OnInit {
 viewmode=0
   ngOnInit() {
     this.mydate=new Date();
+    this.setHours(0,0,0);
     this.godate() 
   }
 
