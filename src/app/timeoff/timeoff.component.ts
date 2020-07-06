@@ -65,7 +65,7 @@ const m=new Date(this.bksvc.timeoff.date)
 const s=("0" + (m.getMonth()+1)).slice(-2)+"/" + ("0" + m.getDate()).slice(-2) + "/" + m.getFullYear();
 if (fd) s=s+" 00:00:00"; else s=s+" "+this.bksvc.timeoff.time; 
 if (this.bksvc.timeoff.category!=null && this.bksvc.timeoff.days!=null && this.bksvc.timeoff.date!=null && (this.bksvc.timeoff.dtype==1 || (this.bksvc.timeoff.time!=null && this.bksvc.timeoff.hours!=null)) )  
-this.bksvc.sendcommand((f)=>{ this.bksvc.timeoff.AvailableWorkDays=f;  this.bksvc.scroll() },"GetEmployeeAvailableWorkDays",{start:s,days:this.bksvc.timeoff.days,hours:this.bksvc.timeoff.hours},{ withCredentials: true});
+this.bksvc.sendcommand((f)=>{ this.bksvc.timeoff.AvailableWorkDays=f;  setTimeout(this.bksvc.scroll,100) },"GetEmployeeAvailableWorkDays",{start:s,days:this.bksvc.timeoff.days,hours:this.bksvc.timeoff.hours},{ withCredentials: true});
 else delete(this.bksvc.timeoff.AvailableWorkDays)},100);
 }
 
