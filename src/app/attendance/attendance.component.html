@@ -25,11 +25,14 @@
 <button  mat-mini-fab  class="arrow-button right-button" [disabled]="period<=0" (click)="getperiod(-1)">
   <mat-icon>arrowright</mat-icon>
   </button>
-  <span *ngIf="myEmployee!=undefined">({{myEmployee.Code}}) {{myEmployee.Name}}</span>
+  <span *ngIf="myEmployee!=undefined">({{myEmployee.Code}}) {{myEmployee.Name}}
+<span [ngClass]={{bksvc.timecard.StatusStr}}> {{bksvc.timecard.StatusStr}}</span>
+
+  </span>
 </div> 
 
 
-<app-subtimecard ttype=4 *ngIf="this.bksvc.timecard!=undefined" [i]=period [item]=this.bksvc.timecard></app-subtimecard>
+<app-subtimecard ttype=4 *ngIf="bksvc.timecard!=undefined" [i]=period [item]=this.bksvc.timecard></app-subtimecard>
   </ng-container> 
 
     

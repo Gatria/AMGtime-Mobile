@@ -108,7 +108,7 @@ transition:0.2s;
 tr.noborder td  {border:none!important}
 
 tr td:first-child {padding-left:3px}
-trtd:last-child {padding-right:3px}
+tr td:last-child {padding-right:3px}
 
 
 
