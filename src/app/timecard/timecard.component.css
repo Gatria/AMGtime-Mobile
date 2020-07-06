@@ -105,7 +105,7 @@ tr.mat-footer-row  td.footer4, tr.mat-row1  td.footer4 {  border-radius:0 25px 2
 transition:0.2s;
  height:44px!important; }
 
-tr.noborder td  {border:none!important;bottom:27px!important}
+tr.noborder td  {border:none!important}
 
 
 
