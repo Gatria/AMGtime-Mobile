@@ -23,7 +23,6 @@
  <tr [ngClass]="isLast?'mat-row1':isFirst?'noborder mat-row':'mat-row'" class="mat-row"> 
    <td [attr.rowspan]=getRow(data.Comment)>{{data.Date}}</td>
    <td>{{data.Shift}}</td>
-   <td>{{data.Action}}</td>
    <td [ngClass]="!ck(data.Misc)?'footer3':''">{{data.Job}} {{data.Department}} </td>
    </tr>
     <ng-container *ngIf="ck(data.Misc)">

@@ -11,7 +11,7 @@ export class SubtimecardComponent implements OnInit {
 @Input() i
 @Input() ttype=0
 displayedColumns: string[]=[["Date","Hours","Reg","OTs","Unpaid","Amount"],
-["Date","Shift","Job|Department"],
+["Date","Shift","Job |Department"],
 ["Date","Time","Action","Type"],
 ["Date","Time","Action"],
 ["Code","Name","Taken","Pending","Left"],
