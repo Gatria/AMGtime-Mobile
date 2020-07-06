@@ -26,7 +26,7 @@
   <mat-icon>arrowright</mat-icon>
   </button>
   <span *ngIf="myEmployee!=undefined">({{myEmployee.Code}}) {{myEmployee.Name}}
-<span [ngClass]={{bksvc.timecard.StatusStr}}> {{bksvc.timecard.StatusStr}}</span>
+<span [ngClass]="bksvc.timecard.StatusStr"> {{bksvc.timecard.StatusStr}}</span>
 
   </span>
 </div> 
