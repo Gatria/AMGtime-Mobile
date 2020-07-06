@@ -18,7 +18,7 @@ displayedColumns: string[]=[["Date","Hours","Reg","OTs","Unpaid","Amount"],
  
   ngOnInit() { }
 ck(a) {
- return (a.Details!=undefined && a.Details!='' && a.Details!=null) 
+ return (a!=undefined && a!='' && a!=null) 
 }
 getRow(b) {
 if (this.ck(b)) return 2; else return 1;
