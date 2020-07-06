@@ -1,9 +1,8 @@
-<table *ngIf="ttype==0" id="tbl{{0}}" class="mat-elevation-z8 mat-table" >
+<table id="tbl{{ttype}}" class="mat-elevation-z8 mat-table" >
  <tr mat-header-cell class="mat-header-row"> <th class="mat-header-cell" *ngFor="let col of displayedColumns[ttype]">{{col}}</th></tr>
 
-   <tbody>
+<ng-container *ngIf="ttype==0">
   <ng-container *ngFor="let data of item.Timecard; last as isLast;first as isFirst">
-
  <tr [ngClass]="isLast?'mat-footer-row':isFirst?'noborder mat-row':'mat-row'" class="mat-row"> 
    <td [attr.rowspan]=getRow(data.Details)>{{data.Date}}</td>
    <td>{{data.Hours}}</td>
@@ -16,18 +15,26 @@
    <tr [ngClass]="isLast?'footer1 mat-footer-row':' noborder mat-row'"><td class="newpadding footer3" colspan=5>{{data.Details}}</td><tr>
    </ng-container>
   </ng-container>
-</tbody>
+</ng-container>
 
- </table>
- 
- 
- 
- 
- 
- <table *ngIf="ttype==2" id="tbl{{2}}" class="mat-elevation-z8 mat-table" >
- <tr mat-header-cell class="mat-header-row"> <th class="mat-header-cell" *ngFor="let col of displayedColumns[ttype]">{{col}}</th></tr>
+<ng-container *ngIf="ttype==1"> 
+  <ng-container *ngFor="let data of item.Schedule; last as isLast;first as isFirst">
 
-   <tbody>
+ <tr [ngClass]="isLast?'mat-row1':isFirst?'noborder mat-row':'mat-row'" class="mat-row"> 
+   <td [attr.rowspan]=getRow(data.Comment)>{{data.Date}}</td>
+   <td>{{data.Shift}}</td>
+   <td>{{data.Action}}</td>
+   <td [ngClass]="!ck(data.Misc)?'footer3':''">{{data.Job}} {{data.Department}} </td>
+   </tr>
+    <ng-container *ngIf="ck(data.Misc)">
+   <tr [ngClass]="isLast?'noborder footer1 mat-row1':' noborder mat-row'"><td class="newpadding footer3" colspan=3>{{data.Misc}}</td><tr>
+   </ng-container>
+   
+ </ng-container>
+  </ng-container>
+
+ 
+ <ng-container *ngIf="ttype==2"> 
   <ng-container *ngFor="let data of item.Transactions; last as isLast;first as isFirst">
 
  <tr [ngClass]="isLast?'mat-row1':isFirst?'noborder mat-row':'mat-row'" class="mat-row"> 
@@ -40,20 +47,11 @@
    <tr [ngClass]="isLast?'noborder footer1 mat-row1':' noborder mat-row'"><td class="newpadding footer3" colspan=3>{{data.Comment}}</td><tr>
    </ng-container>
    
-
+ </ng-container>
   </ng-container>
-</tbody>
 
- </table>
- 
- 
- 
- 
- 
-  <table *ngIf="ttype==3" id="tbl{{3}}" class="mat-elevation-z8 mat-table" >
- <tr mat-header-cell class="mat-header-row"> <th class="mat-header-cell" *ngFor="let col of displayedColumns[ttype]">{{col}}</th></tr>
 
-   <tbody>
+<ng-container *ngIf="ttype==3">  
   <ng-container *ngFor="let data of item.MiscEntries; last as isLast;first as isFirst">
 
  <tr [ngClass]="isLast?'mat-row1':isFirst?'noborder mat-row':'mat-row'" class="mat-row"> 
@@ -64,21 +62,10 @@
     <ng-container *ngIf="ck(data.Comment)">
    <tr [ngClass]="isLast?'noborder footer1 mat-row1':' noborder mat-row'"><td class="newpadding footer3" colspan=2>{{data.Comment}}</td><tr>
    </ng-container>
-   
-
+    </ng-container>
   </ng-container>
-</tbody>
 
- </table>
-
-
-
-  
-  <table *ngIf="ttype==4" id="tbl{{4}}" class="mat-elevation-z8 mat-table" >
- <tr mat-header-cell class="mat-header-row"> <th class="mat-header-cell" *ngFor="let col of displayedColumns[ttype]">{{col}}</th></tr>
-
-   <tbody>
-  <ng-container *ngFor="let data of item.Benefits; last as isLast;first as isFirst">
+<ng-container *ngIf="ttype==4">  <ng-container *ngFor="let data of item.Benefits; last as isLast;first as isFirst">
 
  <tr [ngClass]="isLast?'mat-row1':isFirst?'noborder mat-row':'mat-row'" class="mat-row"> 
    <td [attr.rowspan]=getRow(data.Comment)  [ngStyle]="bksvc.stringToHslColor(data.Name.substring(0,2),true)">{{data.Code}}</td>
@@ -87,9 +74,8 @@
      <td>{{data.Pending}}</td>
    <td class='footer3'>{{data.Left}}</td>
    </tr>
-
+ </ng-container>
   </ng-container>
-</tbody>
 
  </table>
  
