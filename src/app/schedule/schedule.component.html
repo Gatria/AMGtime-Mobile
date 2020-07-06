@@ -50,8 +50,14 @@
 <button class="round-corners"  mat-flat-button color="accent" *ngIf="item.CanSwap"> <mat-icon>switch</mat-icon> Swap</button>
 
 <button (click)=this.bksvc.PickupOpenShift(item.Id) class="round-corners"  mat-stroked-button color="primary" *ngIf="item.CanPickup"> <mat-icon>done</mat-icon> Pickup</button>
+
+
+<ng-container *ngIf="item.Shift==''">
+<mat-card-content><span class="h5">You have no shift assigned</span></mat-card-content>
+</ng-container>
+
 <ng-container *ngIf="item.Shift>''">
-<mat-card-content class="t3"><h4 class="mat-primary-color">Shift:</h4> {{item.Shift}}
+<mat-card-content class="t3"><h4 class="mat-primary-color">My Shift:</h4> {{item.Shift}}
 </mat-card-content>
   <mat-divider class="limited"></mat-divider>
 </ng-container>
