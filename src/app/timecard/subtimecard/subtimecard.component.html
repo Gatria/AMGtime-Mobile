@@ -30,14 +30,14 @@
    <tbody>
   <ng-container *ngFor="let data of item.Transactions; last as isLast;first as isFirst">
 
- <tr [ngClass]="isLast?'mat-row':isFirst?'noborder mat-row':'mat-row'" class="mat-row"> 
+ <tr [ngClass]="isLast?'mat-row1':isFirst?'noborder mat-row':'mat-row'" class="mat-row"> 
    <td [attr.rowspan]=getRow(data.Comment)>{{data.Date}}</td>
    <td>{{data.Time}}</td>
    <td>{{data.Action}}</td>
    <td [ngClass]="!ck(data.Comment)?'footer4':'footer2'">{{data.Device}}</td>
    </tr>
     <ng-container *ngIf="ck(data.Comment)">
-   <tr [ngClass]="isLast?'footer1 mat-row':' noborder mat-row'"><td class="newpadding footer3" colspan=3>{{data.Comment}}</td><tr>
+   <tr [ngClass]="isLast?'footer1 mat-row1':' noborder mat-row'"><td class="newpadding footer3" colspan=3>{{data.Comment}}</td><tr>
    </ng-container>
    
 
