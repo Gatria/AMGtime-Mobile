@@ -5,12 +5,12 @@
   <ng-container *ngFor="let data of item.Timecard; last as isLast">
   <ng-container *ngIf="!isLast">
  <tr  class="mat-row"> 
-   <td class="mat-cell" [attr.rowspan]=getRow(data.Details)>{{data.Date}}</td>
-   <td [ngClass]="ck(data)?'noborder mat-cell':'mat-cell'">{{data.Hours}}</td>
-   <td [ngClass]="ck(data)?'noborder mat-cell':'mat-cell'">{{data.REG}}</td>
-   <td [ngClass]="ck(data)?'noborder mat-cell':'mat-cell'">{{data.TotalOT}}</td>
-   <td [ngClass]="ck(data)?'noborder mat-cell':'mat-cell'">{{data.Unpaid}}</td>
-   <td [ngClass]="ck(data)?'noborder mat-cell':'mat-cell'">{{data.Money}}</td>
+   <td [attr.rowspan]=getRow(data.Details)>{{data.Date}}</td>
+   <td [ngClass]="{'noborder':ck(data)}">{{data.Hours}}</td>
+   <td [ngClass]="{'noborder':ck(data)}">{{data.REG}}</td>
+   <td [ngClass]="{'noborder':ck(data)}">{{data.TotalOT}}</td>
+   <td [ngClass]="{'noborder':ck(data)}">{{data.Unpaid}}</td>
+   <td [ngClass]="{'noborder':ck(data)}">{{data.Money}}</td>
    </tr>
    <tr  [ngClass]="ck(data)?'mat-row':'hidecell'"><td class="newpadding mat-cell" colspan=5>{{data.Details}}</td><tr>
    </ng-container>

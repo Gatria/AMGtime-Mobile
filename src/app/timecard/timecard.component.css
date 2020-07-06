@@ -16,7 +16,7 @@ table.mat-table {
 
 
 
-th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
+th.mat-header-cell,  td.mat-footer-cell {
     padding: 0;
     border-bottom-width: 1px;
     border-bottom-style: solid;
@@ -33,12 +33,17 @@ td.mat-footer-cell {
 
 }
 
- td.mat-cell {
+tr.mat-row td{
+
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    font-size: 16px;
+    text-align:center;
    padding: 14px 0px 14px 0px;
 }
 
 
-.mat-cell, .mat-footer-cell {
+.mat-footer-cell {
     font-size: 16px;
     text-align:center;
 }
