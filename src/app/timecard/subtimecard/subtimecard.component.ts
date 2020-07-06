@@ -12,7 +12,8 @@ export class SubtimecardComponent implements OnInit {
 displayedColumns: string[]=[["Date","Hours","Reg","OTs","Unpaid","Amount"],
 ["Date","Hours","Reg","OTs","Unpaid","Amount"],
 ["Date","Time","Action","Type"],
-["Date","Time","Action"]
+["Date","Time","Action"],
+["Code","Name","Taken","Pending","Left"],
 ]; 
   constructor() { }
 
