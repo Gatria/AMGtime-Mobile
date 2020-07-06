@@ -17,7 +17,7 @@ viewmode=0
   }
 stringtodate(a)
 {
- return a.substr(0,4)+"-"; 
+ return a.substr(0,4)+"-"+a.substr(4,6)+"-"+a.substr(8,10); 
 }
 godate(a=0)
 {
