@@ -51,29 +51,35 @@
 
 <button (click)=this.bksvc.PickupOpenShift(item.Id) class="round-corners"  mat-stroked-button color="primary" *ngIf="item.CanPickup"> <mat-icon>done</mat-icon> Pickup</button>
 <ng-container *ngIf="item.Shift>''">
-<mat-card-content class="t3"> <h3 class="mat-primary-color">Shift:</h3> {{item.Shift}}</mat-card-content>
+<mat-card-content class="t3"><h4 class="mat-primary-color">Shift:</h4> {{item.Shift}}
+</mat-card-content>
+  <mat-divider class="limited"></mat-divider>
 </ng-container>
 
 
 <ng-container *ngIf="item.DepName>''">
-<mat-card-content class="t3">Department: {{item.DepName}}</mat-card-content>
+<mat-card-content class="t3"><h4 class="mat-primary-color">Department:</h4> {{item.DepName}}</mat-card-content>
+  <mat-divider class="limited"></mat-divider>
 </ng-container>
 
 <ng-container *ngIf="item.DivisionName>''">
-<mat-card-content class="t3">Division: {{item.DivisionName}}</mat-card-content>
+<mat-card-content class="t3"><h4 class="mat-primary-color">Division:</h4> {{item.DivisionName}}</mat-card-content>
+  <mat-divider class="limited"></mat-divider>
 </ng-container>
 
 <ng-container *ngIf="item.GroupName>''">
-<mat-card-content class="t3">Group: {{item.GroupName}}</mat-card-content>
+<mat-card-content class="t3"><h4 class="mat-primary-color">Group:</h4> {{item.GroupName}}</mat-card-content>
+  <mat-divider class="limited"></mat-divider>
 </ng-container>
 
 <ng-container *ngIf="item.JobName>''">
-<mat-card-content class="t3">Job: {{item.JobName}}</mat-card-content>
+<mat-card-content class="t3"><h4 class="mat-primary-color">Job:</h4> {{item.JobName}}</mat-card-content>
+  <mat-divider class="limited"></mat-divider>
 </ng-container>
 
 
 <ng-container *ngIf="item.SkillName>''">
-<mat-card-content class="t3">Skill: {{item.SkillName}}</mat-card-content>
+<mat-card-content class="t3"><h4 class="mat-primary-color">Skill:</h4> {{item.SkillName}}</mat-card-content>
 </ng-container>
 </mat-card-title>
 </mat-card>
