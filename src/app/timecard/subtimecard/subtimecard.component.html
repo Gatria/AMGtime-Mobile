@@ -2,9 +2,9 @@
  <tr mat-header-cell class="mat-header-row"> <th class="mat-header-cell" *ngFor="let col of displayedColumns">{{col}}</th></tr>
 
    <tbody>
-  <ng-container *ngFor="let data of item.Timecard; last as isLast">
+  <ng-container *ngFor="let data of item.Timecard; last as isLast;first as isFirst">
 
- <tr [ngClass]="isLast?'mat-footer-row':'mat-row'" class="mat-row"> 
+ <tr [ngClass]="isLast?'mat-footer-row':isFirst?'noborder mat-row':'mat-row'" class="mat-row"> 
    <td [attr.rowspan]=getRow(data)>{{data.Date}}</td>
    <td>{{data.Hours}}</td>
    <td>{{data.REG}}</td>
