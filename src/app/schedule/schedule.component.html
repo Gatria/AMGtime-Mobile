@@ -29,7 +29,7 @@
  <span *ngIf="bksvc.cancel[item.Id]==undefined"> {{item.Date}}
    
 
-{{item.Shift}}
+
   </span>
    </mat-card-subtitle>
 <mat-card-title class=title>
@@ -50,6 +50,9 @@
 <button class="round-corners"  mat-flat-button color="accent" *ngIf="item.CanSwap"> <mat-icon>switch</mat-icon> Swap</button>
 
 <button (click)=this.bksvc.PickupOpenShift(item.Id) class="round-corners"  mat-stroked-button color="primary" *ngIf="item.CanPickup"> <mat-icon>done</mat-icon> Pickup</button>
+<ng-container *ngIf="item.Shift>''">
+<mat-card-content class="t3"> <h3 class="mat-primary-color">Shift:</h3> {{item.Shift}}</mat-card-content>
+</ng-container>
 
 
 <ng-container *ngIf="item.DepName>''">
