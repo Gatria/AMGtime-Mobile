@@ -5,7 +5,7 @@
   <ng-container *ngFor="let data of item.Timecard; last as isLast">
 
  <tr [ngClass]="isLast?'footer1 mat-footer-row':'mat-row'" class="mat-row"> 
-   <td [attr.rowspan]=getRow(data.Details)>{{data.Date}}</td>
+   <td [attr.rowspan]=getRow(data)>{{data.Date}}</td>
    <td [ngClass]="{'noborder':ck(data)}">{{data.Hours}}</td>
    <td [ngClass]="{'noborder':ck(data)}">{{data.REG}}</td>
    <td [ngClass]="{'noborder':ck(data)}">{{data.TotalOT}}</td>
