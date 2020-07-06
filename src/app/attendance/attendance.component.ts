@@ -16,9 +16,10 @@ period=0;
   }
 
 scroll() {
+const title=["Attendance","Timecard","Schedule","Transactions","Misc. Entries","Benefits"];
+ 
 var a=Math.round(document.querySelector("div.slider").scrollLeft/document.querySelector("div.slider").parentElement.clientWidth);
-
-console.log(":::"+a)
+document.getElementById("title").innerHTML(title[a]) 
 let selector="#tbl"+a+">tr";
 
 if (document.getElementById("tbl"+a)!=null) {
