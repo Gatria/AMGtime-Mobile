@@ -60,10 +60,9 @@
    <td [attr.rowspan]=getRow(data.Comment)>{{data.Date}}</td>
    <td>{{data.Time}}</td>
    <td>{{data.Action}}</td>
-   <td [ngClass]="!ck(data.Comment)?'footer3':''">{{data.Device}}</td>
    </tr>
     <ng-container *ngIf="ck(data.Comment)">
-   <tr [ngClass]="isLast?'noborder footer1 mat-row1':' noborder mat-row'"><td class="newpadding footer3" colspan=3>{{data.Comment}}</td><tr>
+   <tr [ngClass]="isLast?'noborder footer1 mat-row1':' noborder mat-row'"><td class="newpadding footer3" colspan=2>{{data.Comment}}</td><tr>
    </ng-container>
    
 
