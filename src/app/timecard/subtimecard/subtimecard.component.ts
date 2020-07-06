@@ -1,4 +1,5 @@
 import {Component,Input, OnInit,Output, EventEmitter } from '@angular/core';
+import {BackendService} from '../../backend.service'
 
 @Component({
   selector: 'app-subtimecard',
@@ -15,7 +16,7 @@ displayedColumns: string[]=[["Date","Hours","Reg","OTs","Unpaid","Amount"],
 ["Date","Time","Action"],
 ["Code","Name","Taken","Pending","Left"],
 ]; 
-  constructor() { }
+  constructor(private bksvc:BackendService) { }
 
  
   ngOnInit() { }

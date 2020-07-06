@@ -81,11 +81,11 @@
   <ng-container *ngFor="let data of item.Benefits; last as isLast;first as isFirst">
 
  <tr [ngClass]="isLast?'mat-row1':isFirst?'noborder mat-row':'mat-row'" class="mat-row"> 
-   <td [attr.rowspan]=getRow(data.Comment)>{{data.Code}}</td>
+   <td [attr.rowspan]=getRow(data.Comment)  [ngStyle]="bksvc.stringToHslColor(data.Name.substring(0,2),true)">{{data.Code}}</td>
    <td>{{data.Name}}</td>
     <td>{{data.Taken}}</td>
      <td>{{data.Pending}}</td>
-   <td [ngClass]='footer3'>{{data.Left}}</td>
+   <td class='footer3'>{{data.Left}}</td>
    </tr>
 
   </ng-container>
