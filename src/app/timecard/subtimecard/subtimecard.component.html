@@ -37,7 +37,7 @@
    <td [ngClass]="!ck(data.Comment)?'footer3':''">{{data.Device}}</td>
    </tr>
     <ng-container *ngIf="ck(data.Comment)">
-   <tr [ngClass]="isLast?'footer1 mat-row1':' noborder mat-row'"><td class="newpadding footer3" colspan=3>{{data.Comment}}</td><tr>
+   <tr [ngClass]="isLast?'noborder footer1 mat-row1':' noborder mat-row'"><td class="newpadding footer3" colspan=3>{{data.Comment}}</td><tr>
    </ng-container>
    
 
