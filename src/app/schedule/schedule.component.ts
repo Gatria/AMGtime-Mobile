@@ -17,7 +17,7 @@ viewmode=0
   }
 stringtodate(a)
 {
-return new Date(a.substr(0,4)+"-"+a.substr(4,2)+"-"+a.substr(6,2)).f1(); 
+return new Date(a.substr(0,4)+"-"+a.substr(4,2)+"-"+a.substr(6,2)).toDateString(); 
 }
 godate(a=0)
 {
