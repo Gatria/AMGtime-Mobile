@@ -25,6 +25,7 @@
 <button  mat-mini-fab  class="arrow-button right-button" [disabled]="period<=0" (click)="getperiod(-1)">
   <mat-icon>arrowright</mat-icon>
   </button>
+  <span *ngIf="myEmployee!=undefined">({{myEmployee.Code}}) {{myEmployee.Name}}</span>
 </div> 
 
 

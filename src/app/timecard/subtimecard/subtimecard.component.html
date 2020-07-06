@@ -1,4 +1,4 @@
-<table id="tbl{{i}}" class="mat-elevation-z8 mat-table" >
+<table *ngIf="ttype==0" id="tbl{{i}}" class="mat-elevation-z8 mat-table" >
  <tr mat-header-cell class="mat-header-row"> <th class="mat-header-cell" *ngFor="let col of displayedColumns">{{col}}</th></tr>
 
    <tbody>

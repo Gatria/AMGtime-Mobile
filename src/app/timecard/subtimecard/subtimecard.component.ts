@@ -8,6 +8,7 @@ import {Component,Input, OnInit,Output, EventEmitter } from '@angular/core';
 export class SubtimecardComponent implements OnInit {
 @Input() item
 @Input() i
+@Input() ttype=0
 displayedColumns: string[]=["Date","Hours","Reg","OTs","Unpaid","Amount"]; 
   constructor() { }
 
