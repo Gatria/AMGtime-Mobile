@@ -26,7 +26,7 @@
 
 <mat-card-subtitle class=date>
    <mat-progress-spinner style="margin:-5px 2px -25px" *ngIf="bksvc.cancel[item.Id]==1" mode="indeterminate"></mat-progress-spinner>
- <span *ngIf="bksvc.cancel[item.Id]==undefined"> {{item.Date}}
+ <span *ngIf="bksvc.cancel[item.Id]==undefined"> {{stringtodate(item.Date)}}
    
 
 

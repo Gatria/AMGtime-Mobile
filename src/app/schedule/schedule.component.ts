@@ -15,7 +15,10 @@ viewmode=0
     this.mydate.setHours(0,0,0);
     this.godate() 
   }
-
+stringtodate(a)
+{
+ return a.substr(0,4)+"-"; 
+}
 godate(a=0)
 {
  if (a!==0) this.mydate=a;
