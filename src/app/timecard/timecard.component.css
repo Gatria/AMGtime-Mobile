@@ -63,7 +63,7 @@ filter:drop-shadow(0px 0px 4px #777)}
 
 table { border-radius:25px}
 
-table tr th:last-child, tr.mat-footer-row td.footer2, tr.mat-row1 td.footer2{
+table tr th:last-child, tr.mat-footer-row td.footer2{
   border-radius:0 25px 25px 0;
 transition:0.2s;
 transition-property: border-radius;
@@ -91,7 +91,7 @@ transition:0.2s;
    position:relative;
     white-space: nowrap;
 }
-tr.mat-footer-row  td.footer2, tr.mat-row1  td.footer2{
+tr.mat-footer-row  td.footer2{
   border-radius:0 25px 0 0;
 transition:0.2s;
 }
