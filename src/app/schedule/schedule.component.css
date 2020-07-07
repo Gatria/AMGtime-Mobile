@@ -51,7 +51,7 @@ margin: 10px 0 0 !important;
      display: inline-block;
     border-left: 3px solid #eee;
     padding-left: 1.8vw;
-    width: calc(100% - 107px - 5vw);
+    width: calc(100% - 117px - 5vw);
     vertical-align: top;
 }
 .button {float:right}
