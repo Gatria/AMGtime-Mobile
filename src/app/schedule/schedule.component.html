@@ -28,13 +28,6 @@
    <mat-progress-spinner style="margin:-5px 2px -25px" *ngIf="bksvc.cancel[item.Id]==1" mode="indeterminate"></mat-progress-spinner>
  <span *ngIf="bksvc.cancel[item.Id]==undefined"> {{stringtodate(item.Date)}}
    
-
-
-  </span>
-   </mat-card-subtitle>
-<mat-card-title class=title>
-
-
 <div class=right>
 <button (click)=this.bksvc.DropOpenShift(item.Id) class="round-corners"  mat-stroked-button color="warn" *ngIf="!item.CanDrop"> <mat-icon>close</mat-icon> Drop</button>
 
@@ -42,6 +35,13 @@
 
 <button (click)=this.bksvc.PickupOpenShift(item.Id) class="round-corners"  mat-stroked-button color="primary" *ngIf="!item.CanPickup"> <mat-icon>done</mat-icon> Pickup</button>
 </div>
+
+  </span>
+   </mat-card-subtitle>
+<mat-card-title class=title>
+
+
+
 
 <ng-container *ngIf="item.Shift==''">
 <mat-card-content><span class="h5">You have no shift assigned</span></mat-card-content>
