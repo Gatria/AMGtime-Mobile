@@ -52,9 +52,7 @@ mat-card-subtitle.date { width: 90px;
        margin: 0 0 0 -10px;
     display: inline-block;
     }
-   .date button {bottom: 0px;
-    display: block;
-    height: 0px;} 
+   
 .comment {
 margin: 10px 0 0 !important;
     font-style: italic;
