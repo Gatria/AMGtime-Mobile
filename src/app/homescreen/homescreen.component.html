@@ -22,7 +22,7 @@
     <input type=text matInput [(ngModel)]="Comment">
   </mat-form-field>
 
-<div class="center">
+<div class="buttonpos">
   <button mat-raised-button class="b1"  (click)="this.bksvc.transact(this.bksvc.AMGSettings.ExpectedAction.Value)" color="primary">{{this.bksvc.AMGSettings.ExpectedAction.StrValue}}</button>
 <button mat-flat-button class="b2"  (click)="this.bksvc.punchmenu()"><mat-icon>dropdown</mat-icon></button>
 </div>
