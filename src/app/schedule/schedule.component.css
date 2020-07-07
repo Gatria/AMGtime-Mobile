@@ -5,7 +5,7 @@ mat-divider:last-of-type {display:none}
 .t3 {width:50%;display:inline-block}
 
 @media only screen and (max-width: 600px) {
-.t3 {width: calc(100% - 65px)!important}
+.t3 {width: calc(100% - 75px)!important}
 
 }
 
@@ -25,8 +25,8 @@ h4 {display:inline-block}
     font-size: 31px;
 }
 
-.right {float: right;width:65px}
-.right button {margin: 0 0 7px 0px;}
+.right {float: right;width:75px}
+.right button {margin: 0 0 7px 0px;width:100px}
 .limit {width:200px}
 
 
