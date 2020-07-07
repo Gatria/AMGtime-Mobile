@@ -50,8 +50,9 @@ interface Date {
 
 // Add the implementation
 Date.prototype.week1 = function () {  
-const firstDay = new Date(this.getFullYear(), this.getMonth(), this.getDate() - this.getDay()+1)
-const lastDay = new Date(this.getFullYear(), this.getMonth(), firstDay.getDate() + 6);
+const firstDay = new Date(this.getDate() - this.getDay()+1)
+
+const lastDay = new Date(firstDay.getDate() + 6);
 return firstDay.toLocaleDateString(undefined,{year: 'numeric', month: 'short', day: 'numeric' })+" - "+lastDay.toLocaleDateString(undefined,{year: 'numeric', month: 'short', day: 'numeric' })   
 }
 
