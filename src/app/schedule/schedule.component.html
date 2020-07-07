@@ -29,11 +29,11 @@
  <span *ngIf="bksvc.cancel[item.Id]==undefined"> {{stringtodate(item.Date)}}
    
 <div class=right>
-<button (click)=this.bksvc.DropOpenShift(item.Id) class="round-corners"  mat-stroked-button color="warn" *ngIf="!item.CanDrop"> <mat-icon>close</mat-icon> Drop</button>
+<button (click)=this.bksvc.DropOpenShift(item.Id) class="round-corners"  mat-stroked-button color="warn" *ngIf="item.CanDrop"> <mat-icon>close</mat-icon> Drop</button>
 
-<button class="round-corners"  mat-flat-button color="accent" *ngIf="!item.CanSwap"> <mat-icon>switch</mat-icon> Swap</button>
+<button class="round-corners"  mat-flat-button color="accent" *ngIf="item.CanSwap"> <mat-icon>switch</mat-icon> Swap</button>
 
-<button (click)=this.bksvc.PickupOpenShift(item.Id) class="round-corners"  mat-stroked-button color="primary" *ngIf="!item.CanPickup"> <mat-icon>done</mat-icon> Pickup</button>
+<button (click)=this.bksvc.PickupOpenShift(item.Id) class="round-corners"  mat-stroked-button color="primary" *ngIf="item.CanPickup"> <mat-icon>done</mat-icon> Pickup</button>
 </div>
 
   </span>
