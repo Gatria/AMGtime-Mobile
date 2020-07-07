@@ -25,11 +25,7 @@ h4 {display:inline-block}
     font-size: 31px;
 }
 
-.right {    float: right;
-    width: 75px;
-    background-color: white;
-    z-index: 1;
-    position: relative;}
+.right {}
 .right button {margin: 0 0 7px 0px;width:100px}
 .limit {width:200px}
 
@@ -38,13 +34,7 @@ h4 {display:inline-block}
 
 
 
-
-
-
-
-
-
-mat-card-subtitle.date { width: 90px;
+mat-card-subtitle.date { width: 105px;
     text-align: center;
     line-height: 2em;
    vertical-align: text-bottom;
