@@ -35,22 +35,13 @@
 <mat-card-title class=title>
 
 
-
-
-
-
-
-
-
-
-
-
+<div class=right>
 <button (click)=this.bksvc.DropOpenShift(item.Id) class="round-corners"  mat-stroked-button color="warn" *ngIf="item.CanDrop"> <mat-icon>close</mat-icon> Drop</button>
 
 <button class="round-corners"  mat-flat-button color="accent" *ngIf="item.CanSwap"> <mat-icon>switch</mat-icon> Swap</button>
 
 <button (click)=this.bksvc.PickupOpenShift(item.Id) class="round-corners"  mat-stroked-button color="primary" *ngIf="item.CanPickup"> <mat-icon>done</mat-icon> Pickup</button>
-
+</div>
 
 <ng-container *ngIf="item.Shift==''">
 <mat-card-content><span class="h5">You have no shift assigned</span></mat-card-content>
