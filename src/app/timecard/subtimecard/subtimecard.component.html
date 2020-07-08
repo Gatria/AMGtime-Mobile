@@ -4,7 +4,7 @@
 <ng-container *ngIf="ttype==0">
   <ng-container *ngFor="let data of item.Timecard; last as isLast;first as isFirst">
  <tr [ngClass]="isLast?'mat-footer-row':isFirst?'noborder mat-row':'mat-row'" class="mat-row"> 
-   <td [attr.rowspan]=getRow(data.Details)>{{data.Date}}</td>
+   <td class="fdate" [attr.rowspan]=getRow(data.Details)>{{data.Date}}</td>
    <td>{{data.Hours}}</td>
    <td>{{data.REG}}</td>
    <td>{{data.TotalOT}}</td>
@@ -21,7 +21,7 @@
   <ng-container *ngFor="let data of item.Schedule; last as isLast;first as isFirst">
 
  <tr [ngClass]="isLast?'mat-row1':isFirst?'noborder mat-row':'mat-row'" class="mat-row"> 
-   <td [attr.rowspan]=getRow(data.Misc)>{{data.Date}}</td>
+   <td class="fdate" [attr.rowspan]=getRow(data.Misc)>{{data.Date}}</td>
    <td>{{data.Shift}}</td>
    <td [ngClass]="!ck(data.Misc)?'footer3 jd3':'jd3'">{{data.Job+" "+data.Department | empty}}</td>
    </tr>
@@ -37,7 +37,7 @@
   <ng-container *ngFor="let data of item.Transactions; last as isLast;first as isFirst">
 
  <tr [ngClass]="isLast?'mat-row1':isFirst?'noborder mat-row':'mat-row'" class="mat-row"> 
-   <td [attr.rowspan]=getRow(data.Comment)>{{data.Date}}</td>
+   <td class="fdate" [attr.rowspan]=getRow(data.Comment)>{{data.Date}}</td>
    <td>{{data.Time}}</td>
    <td>{{data.Action}}</td>
    <td [ngClass]="!ck(data.Comment)?'footer3':''">{{data.Device}}</td>
@@ -54,7 +54,7 @@
   <ng-container *ngFor="let data of item.MiscEntries; last as isLast;first as isFirst">
 
  <tr [ngClass]="isLast?'mat-row1':isFirst?'noborder mat-row':'mat-row'" class="mat-row"> 
-   <td [attr.rowspan]=getRow(data.Comment)>{{data.Date}}</td>
+   <td class="fdate" [attr.rowspan]=getRow(data.Comment)>{{data.Date}}</td>
    <td>{{data.Time}}</td>
    <td [ngClass]="!ck(data.Comment)?'footer3':''">{{data.Action}}</td>
    </tr>
