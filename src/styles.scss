@@ -130,13 +130,15 @@ mat-toolbar>button {position:absolute!important}
   .mat-chip-list-wrapper {justify-content: center;
    }
 
+
+.smoothscroll {  scroll-behavior: smooth;}
  .slider {
   width: 100vw;
 
 display: flex;
   flex-wrap: nowrap;
   overflow-x: auto;
-  scroll-behavior: smooth;
+
   overflow-y:hidden;
   scroll-snap-type: x mandatory;
    -webkit-overflow-scrolling: auto;
