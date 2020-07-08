@@ -179,7 +179,7 @@ scroll()
   const left=document.getElementById("slider").scrollLeft;
   this.currentslide=document.getElementById("slide"+left/document.getElementById("slider").parentElement.clientWidth)
  if ( this.currentslide!=undefined) {
-   this.timeout=setTimeout(()=>document.getElementById("slider").style.height=this.currentslide.clientHeight-(-25)+"px",1000)
+   this.timeout=setTimeout(()=>document.getElementById("slider").style.height=this.currentslide.clientHeight-(-25)+"px",10)
 
  
  }
