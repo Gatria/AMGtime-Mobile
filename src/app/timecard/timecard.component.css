@@ -110,5 +110,5 @@ tr.noborder td  {border:none!important}
 tr td:first-child {padding-left:3px}
 tr td:last-child {padding-right:3px}
 .jd3 {max-width: calc(100vw - 200px)}
-.fdate {max-width:100px;min-width:40px;padding:5px}
+.fdate {max-width:100px;min-width:70px}
 
