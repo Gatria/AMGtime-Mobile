@@ -22,8 +22,8 @@ this.bksvc.sendcommand((f)=>{this.Document=f;},"*GetDocuments")
 
 scrollto(a)
 {
-
-  document.getElementById("slider").scrollLeft=document.getElementById("slider").parentElement.clientWidth*a
+setTimeout(()=>{
+  document.getElementById("slider").scrollLeft=document.getElementById("slider").parentElement.clientWidth*a},100);  
 }
 
 scroll() {
