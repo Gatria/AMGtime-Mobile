@@ -45,8 +45,7 @@ this.bksvc.currentDocument.Sign=this.domSanitizer.bypassSecurityTrustUrl("data:i
  f.Pages.forEach ((d,i)=> {    
  
   this.bksvc.sendcommand((f)=>{this.Image[i]=this.domSanitizer.bypassSecurityTrustUrl("data:image/png;base64, "+f.image);
-
-this.scrollto(1);
+if (i==0) this.scrollto(1);
   },"*GetDocumentImage","imageName="+d.FileName+"&docId="+a)
   
    }) 
