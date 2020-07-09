@@ -20,6 +20,7 @@ timecard=[]
 timeoff={}
 cancel=[]
 SummeryInfo=[]
+touch=false
 loggedin=false
 codetoid={}
 empimage={}
@@ -175,11 +176,11 @@ punchmenu () {
 
 scroll()
 { 
-   clearTimeout(this.timeout);
+ 
   const left=document.getElementById("slider").scrollLeft;
   this.currentslide=document.getElementById("slide"+left/document.getElementById("slider").parentElement.clientWidth)
- if ( this.currentslide!=undefined) {
-   this.timeout=setTimeout(()=>document.getElementById("slider").style.height=this.currentslide.clientHeight-(-25)+"px",10)
+ if ( this.currentslide!=undefined && !this.touch) {
+   document.getElementById("slider").style.height=this.currentslide.clientHeight-(-25)+"px"
 
  
  }
