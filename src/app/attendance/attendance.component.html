@@ -11,7 +11,7 @@
     <button *ngIf="first>0" (click)=scrollto(first-1) mat-icon-button><mat-icon>arrow_back_ios</mat-icon></button>
     <div class="center">
     <h1 class="example-app-name"
-    [matMenuTriggerFor]="menu" id="title"></h1>
+    [matMenuTriggerFor]="menu" id="title">Attendance</h1>
     <mat-menu #menu="matMenu">
   <button [disabled]="first==1" (click)=scrollto(1) mat-menu-item>
     <mat-icon>timecard</mat-icon>
