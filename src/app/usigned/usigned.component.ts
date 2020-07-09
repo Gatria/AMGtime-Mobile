@@ -96,7 +96,10 @@ this.scrollto(0);
 
 
 
-
+touch (a) {
+this.bksvc.touch=a
+console.log(this.bksvc.touch)
+}
 
 
 

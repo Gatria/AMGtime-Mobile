@@ -21,7 +21,7 @@
 
 
 
-<div id="slider" (touchstart)="bksvc.touch=true;console.log(bksvc.touch)" (touchend)="bksvc.touch=false;console.log(bksvc.touch)" (scroll)=scroll() class="slider noscrollbar" >
+<div id="slider" (touchstart)=touch(true) (touchend)=touch(false) (scroll)=scroll() class="slider noscrollbar" >
 <div id="slide0" class="slide snap">
 <mat-chip-list class="i" multiple="true">
   <mat-chip [selected]="filter % 2 >= 1" (click)="chips(1)">Signed</mat-chip>
