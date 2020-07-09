@@ -43,7 +43,7 @@
   <button  class="mat-primary-color" *ngIf="item.Comment" mat-icon-button (click)="showDiv = !showDiv"><mat-icon>info</mat-icon></button>
   </span>
    </mat-card-subtitle>
-
+   <div class="vertical"></div>
 <mat-card-title class=title>{{item.Category}} 
   <div class="button" *ngIf="item.Status==0">
 <button class="round-corners" mat-flat-button  (click)=bksvc.ApproveOrDenyTimeOff(item.Id,0) color="accent"><span class="material-icons">done</span> Approve</button>
