@@ -1,6 +1,6 @@
 <mat-chip-list *ngIf='buttons.length>0' class="i" >
   <mat-chip *ngIf=buttons.includes(0) [selected]="datemode==0" (click)="topbuttonclick(0)">Daily</mat-chip>
-  <mat-chip *ngIf=buttons.includes(1) [selected]="datemode==1"  (click)="topbuttonclick(1)">Weekly</mat-chip>
+  <mat-chip *ngIf=buttons.includes(1) [selected]="datemode==1" style="z-index:1" (click)="topbuttonclick(1)">Weekly</mat-chip>
   <mat-chip *ngIf=buttons.includes(2) [selected]="datemode==2"  (click)="topbuttonclick(2)">Monthly</mat-chip>
 </mat-chip-list>
 
