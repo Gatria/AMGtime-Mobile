@@ -50,7 +50,7 @@
    <ng-container *ngIf="filterme(item.Code+item.Name,filter1.value)">
 
        <mat-card-content class="nomargin middle inflex"><app-empphotoicon EmpID="{{bksvc.codetoid[item.Code]}}" name="{{item.Name}}"></app-empphotoicon> </mat-card-content>
-     <mat-card-subtitle class="nomargin middle name inflex"> ({{item.Code}}) {{item.Name}}</mat-card-subtitle>
+     <mat-card-subtitle class="nomargin middle name inflex"><h3 class="mat-primary-color"> ({{item.Code}}) {{item.Name}}</h3></mat-card-subtitle>
      <mat-card-content><table class="dd">
       <ng-container *ngIf="i==0 && ((filter % 4 >= 2) || (filter % 2 >= 1) || (filter % 8 >= 4) || (filter % 16 >= 8)|| (filter % 32 >= 16))"> 
        
