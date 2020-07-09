@@ -13,7 +13,7 @@
   </mat-toolbar>
 
 
-<div id="slider" class="slider noscrollbar" (window:resize)=onResize() (scroll)=onResize()>
+<div id="slider" class="slider noscrollbar" appSlider (window:resize)=onResize() (scroll)=onResize()>
 <div id="slide{{i}}" class="slide" *ngFor="let item of bksvc.timecard;index as i;">
 
 

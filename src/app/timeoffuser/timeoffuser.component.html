@@ -20,7 +20,7 @@
     <mat-chip [selected]="filter % 8 >= 4"  (click)="chips(4)">Denied</mat-chip>
 </mat-chip-list>
 
-<div id="slider" (scroll)=scroll() class="slider noscrollbar" >
+<div id="slider" appSlider (scroll)=scroll() class="slider noscrollbar" >
 <div id="slide0" class="slide snap">
 <mat-progress-spinner style="margin: 30vh auto" *ngIf="bksvc.timeofrequests==undefined" mode="indeterminate"></mat-progress-spinner>
 

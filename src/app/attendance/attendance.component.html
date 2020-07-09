@@ -13,7 +13,7 @@
 
     <button ngClass="rightbutton" *ngIf="first>0 && first<5" (click)=scrollto(first+1) mat-icon-button><mat-icon>arrow_back_ios</mat-icon></button>
   </mat-toolbar>
-<div id="slider"  (window:resize)=scroll() (scroll)=scroll() class="slider noscrollbar" >
+<div id="slider" appSlider (window:resize)=scroll() (scroll)=scroll() class="slider noscrollbar" >
 <div id="slide0" class="slide snap">
 
 <app-chooseemployee (ngModelChange)="myEmployee=$event;getperiod(0);scrollto(1)" ></app-chooseemployee>
