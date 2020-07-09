@@ -36,7 +36,7 @@
   <button  class="mat-primary-color" *ngIf="item.Comment" mat-icon-button (click)="showDiv = !showDiv"><mat-icon>info</mat-icon></button>
   </span>
    </mat-card-subtitle>
-
+   <div class="vertical"></div>
 <mat-card-title class=title>{{item.Category}} 
  <button *ngIf="item.Status!=2" mat-stroked-button color="warn" class="round-corners button" (click)="bksvc.canceltimeoff(item.Id)"><span class="material-icons">
 close
