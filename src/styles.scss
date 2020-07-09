@@ -209,3 +209,9 @@ display: flex;
 
 .rightbutton {right:10px}
 .mat-card {overflow:hidden}
+.vertical {display:inline-block;
+  border-left: 3px solid #eee;
+  height: 110%;
+    margin: -20px 0 0 0;
+    position: absolute;
+  }

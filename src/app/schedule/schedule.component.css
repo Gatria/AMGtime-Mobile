@@ -106,9 +106,3 @@ mat-chip {width: 20%;
 
 .st {text-align:center;font-size: 17px;
     margin: 17px 0px;}
-.vertical {display:inline-block;
-  border-left: 3px solid #eee;
-  height: 110%;
-    margin: -20px 0 0 0;
-    position: absolute;
-  }
