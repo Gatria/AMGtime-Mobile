@@ -48,14 +48,11 @@ margin: 10px 0 0 !important;
     font-style: italic;
 }    
 .title {
-	display: inline-block;
+     display: inline-block;
     border-left: 3px solid #eee;
-    padding: 10px 0 0 1.8vw;
-    position: absolute;
+    padding-left: 1.8vw;
     width: calc(100% - 107px - 5vw);
     vertical-align: top;
-    height: 100%;
-    margin: -16px 0px;
 }
 .button {float:right}
 .button .material-icons {    font-size: 17px;
@@ -103,12 +100,8 @@ mat-chip {width: 20%;
 
      .float {position:fixed;right:10px;bottom:10px}
     .title {
- padding: 11px 0 0 1.8vw;
+    padding-left: 1.8vw;
     width: calc(100% - 117px - 5vw);
-    min-height: 40px;
-    position: absolute;
-    height: 100%;
-    margin: -16px 0px;
 }
      }
 .limited:last-of-type {border-color:#0f7da2}
