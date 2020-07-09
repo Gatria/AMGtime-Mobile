@@ -1,5 +1,5 @@
-import {  Directive, ElementRef, HostListener  } from '@angular/core';
-
+import {  Directive, HostListener  } from '@angular/core';
+import {BackendService} from './backend.service'
 
 @Directive({
   selector: '[appSlider]'
