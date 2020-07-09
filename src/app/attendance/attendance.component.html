@@ -12,23 +12,23 @@
     <div class="center">
     <h1 class="example-app-name" [matMenuTriggerFor]="menu"  id="title">Attendance</h1>
     <mat-menu #menu="matMenu">
-  <button (click)=scrollto(1) mat-menu-item>
+  <button [disabled]="first==1" (click)=scrollto(1) mat-menu-item>
     <mat-icon>timecard</mat-icon>
     <span>Timecard</span>
   </button>
-  <button (click)=scrollto(2) mat-menu-item>
+  <button [disabled]="first==2" (click)=scrollto(2) mat-menu-item>
     <mat-icon>schedule</mat-icon>
     <span>Schedule</span>
   </button>
-  <button (click)=scrollto(3) mat-menu-item>
+  <button [disabled]="first==3" (click)=scrollto(3) mat-menu-item>
     <mat-icon>transaction</mat-icon>
     <span>Transactions</span>
   </button>
-  <button (click)=scrollto(4) mat-menu-item>
+  <button [disabled]="first==4"  (click)=scrollto(4) mat-menu-item>
     <mat-icon>miscentry</mat-icon>
     <span>Misc. Entries</span>
   </button>
-    <button [disabled]="first=5" (click)=scrollto(5) mat-menu-item>
+    <button [disabled]="first==5" (click)=scrollto(5) mat-menu-item>
     <mat-icon>benefits</mat-icon>
     <span>Benefits</span>
   </button>
