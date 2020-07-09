@@ -49,7 +49,6 @@ margin: 10px 0 0 !important;
 }    
 .title {
      display: inline-block;
-    border-left: 3px solid #eee;
     padding-left: 1.8vw;
     width: calc(100% - 107px - 5vw);
     vertical-align: top;
@@ -100,7 +99,6 @@ mat-chip {width: 20%;
 
      .float {position:fixed;right:10px;bottom:10px}
     .title {
-    padding-left: 1.8vw;
     width: calc(100% - 117px - 5vw);
 }
      }
@@ -110,4 +108,7 @@ mat-chip {width: 20%;
     margin: 17px 0px;}
 .vertical {display:inline-block;
   border-left: 3px solid #eee;
-  height:100;position:absolute}
+  height: 110%;
+    margin: -20px 0 0 0;
+    position: absolute;
+  }
