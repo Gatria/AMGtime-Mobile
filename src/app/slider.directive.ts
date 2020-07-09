@@ -13,10 +13,12 @@ export class SliderDirective {
 
   @HostListener('touchstart') touchstart() {
 this.touch=true
+console.log(this.touch)
 }
 
 @HostListener('touchend') touchend() {
   this.touch=false
+  console.log(this.touch)
 }
 
 }
