@@ -10,7 +10,6 @@ agm-map   {height: 40vh;}
     .date { width: 95px;
     text-align: center;
     line-height: 2em;
-    border-right: 3px solid #eee;
     vertical-align: text-bottom;
     padding: 15px 0.8vw 15px 0px;
     margin: -15px 0px -15px -14px!important;

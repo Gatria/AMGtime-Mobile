@@ -36,6 +36,7 @@
 <ng-container *ngIf="bksvc.lasttrip!=undefined">
 <mat-card  class="stb" *ngFor="let item of bksvc.lasttrip.Locations let i = index">
 <mat-card-subtitle class=date>{{item.DateStr}}</mat-card-subtitle>
+   <div class="vertical"></div>
 <mat-card-title class=title>
 {{item.AddressLine}}
 <mat-card-subtitle class="cord">
