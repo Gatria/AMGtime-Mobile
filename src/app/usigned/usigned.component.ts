@@ -28,7 +28,7 @@ setTimeout(()=>{
 
 scroll() {
  this.first= document.getElementById("slider").scrollLeft==0;
- console.log(this.touch)
+ console.log( this.bksvc.touch)
  this.bksvc.scroll()
 }
 getdocument(a) {
