@@ -6,19 +6,18 @@ import {BackendService} from './backend.service'
 })
 export class SliderDirective {
 
-  constructor() { }
+  constructor(private bksvc:BackendService) { }
 
 
 
 
   @HostListener('touchstart') touchstart() {
-this.touch=true
-console.log(this.touch)
+this.bksvc.touch=true
 }
 
 @HostListener('touchend') touchend() {
-  this.touch=false
-  console.log(this.touch)
+  this.bksvc.touch=false
+
 }
 
 }
