@@ -15,10 +15,7 @@ viewmode=0
     this.mydate.setHours(0,0,0);
     this.godate() 
   }
-stringtodate(a)
-{
-return new Date(a.substr(0,4)+"-"+a.substr(4,2)+"-"+a.substr(6,2)).toLocaleDateString(undefined,{year: 'numeric', month: 'short', day: 'numeric' })
-}
+
 godate(a=0)
 {
  if (a!==0) this.mydate=a;

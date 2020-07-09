@@ -26,11 +26,11 @@
 
 <mat-card-subtitle class=date>
    <mat-progress-spinner style="margin:-5px 2px -25px" *ngIf="bksvc.cancel[item.OpenShiftId]==1" mode="indeterminate"></mat-progress-spinner>
- <span *ngIf="bksvc.cancel[item.OpenShiftId]==undefined"> {{stringtodate(item.Date)}}
+ <span *ngIf="bksvc.cancel[item.OpenShiftId]==undefined"> {{bksvc.stringtodate(item.Date)}}
    
 <div class=right>
 
-<button (click)=this.bksvc.PickupOpenShift(item.OpenShiftId) class="round-corners"  mat-stroked-button color="primary"> <mat-icon>done</mat-icon> Pickup</button>
+<button  *ngIf="this.bksvc.AMGSettings.IsEmployee" (click)=this.bksvc.PickupOpenShift(item.OpenShiftId) class="round-corners"  mat-stroked-button color="primary"> <mat-icon>done</mat-icon> Pickup</button>
 </div>
 
   </span>

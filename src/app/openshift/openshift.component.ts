@@ -14,10 +14,7 @@ viewmode=0
     this.godate() 
   }
 
-  stringtodate(a)
-{
-return new Date(a.substr(0,4)+"-"+a.substr(4,2)+"-"+a.substr(6,2)).toLocaleDateString(undefined,{year: 'numeric', month: 'short', day: 'numeric' })
-}
+
 
 godate(a=0)
 {
