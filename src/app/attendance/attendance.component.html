@@ -13,6 +13,10 @@
     <h1 class="example-app-name"
     [matMenuTriggerFor]="menu" id="title">Attendance</h1>
     <mat-menu #menu="matMenu">
+        <button [disabled]="first==0" (click)=scrollto(0) mat-menu-item>
+    <mat-icon>attendance</mat-icon>
+    <span>Choose Employee</span>
+  </button>
   <button [disabled]="first==1" (click)=scrollto(1) mat-menu-item>
     <mat-icon>timecard</mat-icon>
     <span>Timecard</span>
