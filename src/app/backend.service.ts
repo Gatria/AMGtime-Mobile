@@ -80,7 +80,7 @@ this.SideNavigation.push({icon:"logout", text:"Log Out", action:"/logout"});
 
   stringtodate(a)
 {
-return new Date(a.substr(0,4)+"-"+a.substr(4,2)+"-"+a.substr(6,2)).toLocaleDateString(undefined,{year: 'numeric', month: 'short', day: 'numeric' })
+return new Date(a.substr(0,4),a.substr(4,2),a.substr(6,2)).toLocaleDateString(undefined,{year: 'numeric', month: 'short', day: 'numeric' })
 }
 
 private showinfo (error:string) {
