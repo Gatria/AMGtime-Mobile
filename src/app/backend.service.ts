@@ -387,7 +387,7 @@ CancelOpenShiftRequest(a)
 this.sendcommand(
  [ (f)=>{
 this.sendcommand((f)=>{ delete(this.cancel[a]);
-delete(this.shiftrequest.find(x => x.RequestId === a))},"CancelOpenShiftRequest",{id:a,comment:dialogResult},{ withCredentials: true});
+delete(this.ShiftRequest.find(x => x.RequestId === a))},"CancelOpenShiftRequest",{id:a,comment:dialogResult},{ withCredentials: true});
 
 },(f)=>{delete(this.cancel[a])}]
 
