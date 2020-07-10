@@ -117,11 +117,11 @@ div.mat-tab-body-wrapper {
     height: -webkit-fill-available}
 
 
-mat-dialog-container {max-height: calc(100vh - 20px)!important;overflow:hidden!important};
+mat-dialog-container {max-height: calc(100vh - 20px)!important;}
    .noscrollbar::-webkit-scrollbar, .mat-drawer-inner-container::-webkit-scrollbar  {
     width: 0 !important }
 
-.noscrollbar, .mat-drawer-inner-container { overflow: -moz-scrollbars-none!important;  -ms-overflow-style: none!important; }
+mat-dialog-container ,.noscrollbar, .mat-drawer-inner-container { overflow: -moz-scrollbars-none!important;  -ms-overflow-style: none!important; }
 mat-toolbar>button {position:absolute!important}
    
    .mat-expansion-panel-header {
