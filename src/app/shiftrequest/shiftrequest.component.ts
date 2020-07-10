@@ -13,7 +13,7 @@ export class ShiftrequestComponent implements OnInit {
 
   ngOnInit() {
    this.bksvc.sendcommand((f)=>{this.bksvc.ShiftRequest=f;
-   if (f.length==0) this.bksvc.showinfo("List Empty. No Shift Requests Found.");
+   if (f.length==0) this.bksvc.showinfo("List is Empty.");
    },"GetOpenShiftRequests")  
   }
 
