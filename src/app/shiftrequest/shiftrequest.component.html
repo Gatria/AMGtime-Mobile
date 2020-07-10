@@ -28,7 +28,7 @@
    
 <div class=right>
 
-<button  *ngIf="this.bksvc.AMGSettings.IsEmployee" (click)=this.bksvc.PickupOpenShift(item.ShiftRequest) class="round-corners"  mat-stroked-button color="primary"> <mat-icon>done</mat-icon> Pickup</button>
+<button  *ngIf="this.bksvc.AMGSettings.IsEmployee && item.CanCancel " (click)=this.bksvc.CancelOpenShiftRequest(item.RequestId) class="round-corners"  mat-stroked-button color="warn"> <mat-icon>close</mat-icon> Cancel</button>
 </div>
 
   </span>

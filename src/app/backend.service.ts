@@ -344,7 +344,7 @@ CategoryId:this.timeoff.category,forceAdd:true,FullDay:fd.toString(),Comment:thi
 
 canceltimeoff(a)
 {
-    const dialogData = new ConfirmDialogModel("Confirm Action", "Do you really want to cancel time off reques?");
+    const dialogData = new ConfirmDialogModel("Confirm Action", "Do you really want to cancel time off request?");
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       data: dialogData
     });
@@ -366,6 +366,39 @@ this.timeofrequests=f},"GetTimeOffs",{date:new Date().f1()},{ withCredentials: t
     }); 
 
 }
+
+
+
+
+
+
+
+
+CancelOpenShiftRequest(a)
+{
+    const dialogData = new ConfirmDialogModel("Confirm Action", "Do you really want to cancel open shift request?");
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      data: dialogData
+    });
+
+ dialogRef.afterClosed().subscribe(dialogResult => {
+  if (dialogResult || typeof dialogResult=="string") { 
+  this.cancel[a]=1;  
+this.sendcommand(
+ [ (f)=>{
+this.sendcommand((f)=>{ delete(this.cancel[a]);
+delete(this.shiftrequest.find(x => x.RequestId === a))},"CancelOpenShiftRequest",{id:a,comment:dialogResult},{ withCredentials: true});
+
+},(f)=>{delete(this.cancel[a])}]
+
+,"DeleteTimeOff",{id:a})
+
+
+   }
+    }); 
+
+}
+
 
 
 
