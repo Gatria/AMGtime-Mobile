@@ -404,7 +404,6 @@ PickupOpenShift(id) {
     });
  dialogRef.afterClosed().subscribe(dialogResult => {
 if (dialogResult || typeof dialogResult=="string") { 
-  this.cancel[id]=true;
   this.sendcommand((f)=>{},"PickupOpenShift",{id:id,comment:dialogResult})
    }
     }); 
