@@ -84,7 +84,7 @@ return new Date(a.substr(0,4)+"-"+a.substr(4,2)+"-"+a.substr(6,2)).toLocaleDateS
 }
 
 private showinfo (error:string) {
-  this._snackBar.open( error, "X", { duration: 6000, panelClass: [ 'mat-accent-bg'] });
+  this._snackBar.open( error, "X", { duration: 6000, panelClass: [ 'mat-accent-bg','shake'] });
   console.info(error)
   this.loading=false
 }
@@ -92,7 +92,7 @@ private showinfo (error:string) {
 
 private showerror (error) {
   if (error.statusText!=undefined) error=error.statusText;
-  this._snackBar.open( error, "X", { duration: 6000, panelClass: ['mat-warn-bg'] });
+  this._snackBar.open( error, "X", { duration: 6000, panelClass: ['mat-warn-bg','shake'] });
   console.error(error)
   this.loading=false
 }
