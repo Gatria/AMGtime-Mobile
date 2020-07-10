@@ -374,7 +374,7 @@ this.timeofrequests=f},"GetTimeOffs",{date:new Date().f1()},{ withCredentials: t
 
 
 
-CancelOpenShiftRequest(a)
+CancelOpenShiftRequest(a,e)
 {
     const dialogData = new ConfirmDialogModel("Confirm Action", "Do you really want to cancel open shift request?");
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
@@ -383,9 +383,7 @@ CancelOpenShiftRequest(a)
 
  dialogRef.afterClosed().subscribe(dialogResult => {
   if (dialogResult || typeof dialogResult=="string") { 
-  this.cancel[a]=1;  
-this.sendcommand((f)=>{ delete(this.cancel[a]);
-delete(this.ShiftRequest.find(x => x.RequestId === a))},"CancelOpenShiftRequest",{id:a,comment:dialogResult},{ withCredentials: true});
+this.sendcommand((f)=>{ if (e!==undefined) e.ngOnInit() },"CancelOpenShiftRequest",{id:a,comment:dialogResult},{ withCredentials: true});
 
 
 

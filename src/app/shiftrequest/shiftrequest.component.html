@@ -23,12 +23,12 @@
 
 
 <mat-card-subtitle class=date>
-   <mat-progress-spinner style="margin:-5px 2px -25px" *ngIf="bksvc.cancel[item.ShiftRequest]==1" mode="indeterminate"></mat-progress-spinner>
- <span *ngIf="bksvc.cancel[item.ShiftRequest]==undefined"> {{bksvc.stringtodate(item.Date)}}
+  
+ <span> {{bksvc.stringtodate(item.Date)}}
    
 <div class=right>
 
-<button  *ngIf="this.bksvc.AMGSettings.IsEmployee && item.CanCancel " (click)=this.bksvc.CancelOpenShiftRequest(item.RequestId) class="round-corners"  mat-stroked-button color="warn"> <mat-icon>close</mat-icon> Cancel</button>
+<button  *ngIf="this.bksvc.AMGSettings.IsEmployee && item.CanCancel " (click)=this.bksvc.CancelOpenShiftRequest(item.RequestId,this) class="round-corners"  mat-stroked-button color="warn"> <mat-icon>close</mat-icon> Cancel</button>
 </div>
 
   </span>
