@@ -384,14 +384,10 @@ CancelOpenShiftRequest(a)
  dialogRef.afterClosed().subscribe(dialogResult => {
   if (dialogResult || typeof dialogResult=="string") { 
   this.cancel[a]=1;  
-this.sendcommand(
- [ (f)=>{
 this.sendcommand((f)=>{ delete(this.cancel[a]);
 delete(this.ShiftRequest.find(x => x.RequestId === a))},"CancelOpenShiftRequest",{id:a,comment:dialogResult},{ withCredentials: true});
 
-},(f)=>{delete(this.cancel[a])}]
 
-,"DeleteTimeOff",{id:a})
 
 
    }
