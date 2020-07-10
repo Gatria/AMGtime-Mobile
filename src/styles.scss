@@ -118,7 +118,7 @@ div.mat-tab-body-wrapper {
 
 
 mat-dialog-container {max-height: calc(100vh - 20px)!important;}
-   .noscrollbar::-webkit-scrollbar, mat-dialog-container ,.mat-drawer-inner-container::-webkit-scrollbar  {
+   .noscrollbar::-webkit-scrollbar, mat-dialog-container::-webkit-scrollbar  ,.mat-drawer-inner-container::-webkit-scrollbar  {
     width: 0 !important }
 
 mat-dialog-container ,.noscrollbar, .mat-drawer-inner-container { overflow: -moz-scrollbars-none!important;  -ms-overflow-style: none!important; }
