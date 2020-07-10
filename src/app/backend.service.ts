@@ -84,7 +84,7 @@ return new Date(a.substr(0,4)+"-"+a.substr(4,2)+"-"+a.substr(6,2)).toLocaleDateS
 }
 
 private showinfo (error:string) {
-  this._snackBar.open( error, "X", { duration: 6000, panelClass: [ 'mat-accent-bg','shake'] });
+  this._snackBar.open( error, "X", { duration: 600000, panelClass: [ 'mat-accent-bg','shake'] });
   console.info(error)
   this.loading=false
 }

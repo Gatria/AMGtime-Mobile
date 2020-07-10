@@ -11,6 +11,7 @@ export class OpenshiftComponent implements OnInit {
 viewmode=0
   ngOnInit() {
     this.mydate=new Date();
+    this.mydate.setHours(0,0,0);
     this.godate() 
   }
 
