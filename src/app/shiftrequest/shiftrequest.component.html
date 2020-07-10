@@ -13,7 +13,7 @@
  <mat-progress-spinner style="margin: 30vh auto" *ngIf="bksvc.ShiftRequest==undefined"> mode="indeterminate"></mat-progress-spinner>
 
 <ng-container *ngIf="bksvc.ShiftRequest!=undefined">
-<div *ngIf="bksvc.ShiftRequest.length==0" class="norecord">No Shift Requests</div>
+
 <mat-card  class="stb" *ngFor="let item of bksvc.ShiftRequest; let i = index">
 
 
