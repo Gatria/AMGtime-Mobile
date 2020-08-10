@@ -1,168 +1,156 @@
+<mat-sidenav-container appSlider>
+	<mat-sidenav #snav>
+		<app-mat-sidenav></app-mat-sidenav>
+	</mat-sidenav>
+	<mat-sidenav-content  (scroll)=scroll1() class="noscrollbar">
+		<mat-toolbar color="primary">
+			<button mat-icon-button *ngIf="first==0" (click)=snav.toggle()>
+				<mat-icon>menu</mat-icon>
+			</button>
+			<button mat-icon-button *ngIf="first>0" (click)=scrollto(first-1)>
+				<mat-icon>arrow_back_ios</mat-icon>
+			</button>
+			<div class="center">
+				<h1 class="center100" [matMenuTriggerFor]="menu" id="title">Attendance</h1>
+				<mat-menu #menu="matMenu">
+					<button mat-menu-item [disabled]="first==0" (click)=scrollto(0)>
+						<mat-icon>attendance</mat-icon>
+						<span>Choose Employee</span>
+					</button>
+					<button mat-menu-item [disabled]="first==1 || myEmployee==undefined" (click)=scrollto(1)>
+						<mat-icon>timecard</mat-icon>
+						<span>Timecard</span>
+					</button>
+					<button mat-menu-item [disabled]="first==2 || myEmployee==undefined" (click)=scrollto(2)>
+						<mat-icon>schedule</mat-icon>
+						<span>Schedule</span>
+					</button>
+					<button mat-menu-item [disabled]="first==3 || myEmployee==undefined" (click)=scrollto(3)>
+						<mat-icon>transaction</mat-icon>
+						<span>Transactions</span>
+					</button>
+					<button mat-menu-item [disabled]="first==4 || myEmployee==undefined" (click)=scrollto(4)>
+						<mat-icon>miscentry</mat-icon>
+						<span>Misc. Entries</span>
+					</button>
+					<button mat-menu-item [disabled]="first==5 || myEmployee==undefined" (click)=scrollto(5)>
+						<mat-icon>benefits</mat-icon>
+						<span>Benefits</span>
+					</button>
+				</mat-menu>
+			</div>
+			<button mat-icon-button *ngIf="first>0 && first
+				<5" ngClass="rightbutton" (click)=scrollto(first+1)>
+					<mat-icon>arrow_righ_ios</mat-icon>
+				</button>
+		</mat-toolbar>
+		<div id="slider" appSlider (window:resize)=scroll() (scroll)=scroll() class="slider noscrollbar">
+			<div id="slide0" class="slide snap">
+				<app-chooseemployee (ngModelChange)="myEmployee=$event;getperiod(0);scrollto(1)"></app-chooseemployee>
+			</div>
+			<ng-container *ngIf="myEmployee!=undefined">
+				<div id="slide1" class="slide snap">
+					<ng-container *ngIf="this.bksvc.timecard!=null">
+						<div class="stb round-corners mat-elevation-z2 topinfo">
+							<button mat-mini-fab class="arrow-button left-button" (click)=getperiod(1)>
+									<mat-icon>arrowleft</mat-icon>
+								</button>
+							<div class="mid-title">{{bksvc.timecard.StartDate}} - {{bksvc.timecard.EndDate}}</div>
+							<button mat-mini-fab class="arrow-button right-button" [disabled]="period<=0" (click)=getperiod(-1)>
+									<mat-icon>arrowright</mat-icon>
+								</button>
+							<span *ngIf="myEmployee!=undefined">({{myEmployee.Code}}) {{myEmployee.Name}}&nbsp;&nbsp;&nbsp;&nbsp;
+									<span [ngClass]="bksvc.timecard.StatusStr">{{bksvc.timecard.StatusStr}}</span>
+							</span>
+						</div>
+						<app-subtimecard ttype=0 *ngIf="bksvc.timecard!=undefined" [i]=1 [item]=this.bksvc.timecard>
+						</app-subtimecard>
+					</ng-container>
+					<mat-progress-spinner *ngIf="this.bksvc.timecard==undefined" class="loading" mode="indeterminate">
+					</mat-progress-spinner>
+				</div>
+				<div id="slide2" class="slide snap">
+					<ng-container *ngIf="this.bksvc.timecard!=null">
+						<div class="stb round-corners mat-elevation-z2 topinfo">
+							<button mat-mini-fab class="arrow-button left-button" (click)=getperiod(1)>
+									<mat-icon>arrowleft</mat-icon>
+								</button>
+							<div class="mid-title">{{bksvc.timecard.StartDate}} - {{bksvc.timecard.EndDate}}</div>
+							<button mat-mini-fab class="arrow-button right-button" [disabled]="period<=0" (click)=getperiod(-1)>
+									<mat-icon>arrowright</mat-icon>
+								</button>
+							<span *ngIf="myEmployee!=undefined">({{myEmployee.Code}}) {{myEmployee.Name}}&nbsp;&nbsp;&nbsp;&nbsp;
+									<span [ngClass]="bksvc.timecard.StatusStr">{{bksvc.timecard.StatusStr}}</span>
+							</span>
+						</div>
+						<app-subtimecard ttype=1 *ngIf="bksvc.timecard!=undefined" [i]=2 [item]=this.bksvc.timecard>
+						</app-subtimecard>
+					</ng-container>
+					<mat-progress-spinner *ngIf="this.bksvc.timecard==undefined" class="loading" mode="indeterminate">
+					</mat-progress-spinner>
+				</div>
+				<div id="slide3" class="slide snap">
+					<ng-container *ngIf="this.bksvc.timecard!=null">
+						<div class="stb round-corners mat-elevation-z2 topinfo">
+							<button mat-mini-fab class="arrow-button left-button" (click)=getperiod(1)>
+									<mat-icon>arrowleft</mat-icon>
+								</button>
+							<div class="mid-title">{{bksvc.timecard.StartDate}} - {{bksvc.timecard.EndDate}}</div>
+							<button mat-mini-fab class="arrow-button right-button" [disabled]="period<=0" (click)=getperiod(-1)>
+									<mat-icon>arrowright</mat-icon>
+								</button>
+							<span *ngIf="myEmployee!=undefined">({{myEmployee.Code}}) {{myEmployee.Name}}&nbsp;&nbsp;&nbsp;&nbsp;
+									<span [ngClass]="bksvc.timecard.StatusStr">{{bksvc.timecard.StatusStr}}</span>
+							</span>
+						</div>
+						<app-subtimecard ttype=2 *ngIf="bksvc.timecard!=undefined" [i]=3 [item]=this.bksvc.timecard>
+						</app-subtimecard>
+					</ng-container>
+					<mat-progress-spinner *ngIf="this.bksvc.timecard==undefined" class="loading" mode="indeterminate">
+					</mat-progress-spinner>
+				</div>
+				<div id="slide4" class="slide snap">
+					<ng-container *ngIf="this.bksvc.timecard!=null">
+						<div class="stb round-corners mat-elevation-z2 topinfo">
+							<button mat-mini-fab class="arrow-button left-button" (click)=getperiod(1)>
+									<mat-icon>arrowleft</mat-icon>
+								</button>
+							<div class="mid-title">{{bksvc.timecard.StartDate}} - {{bksvc.timecard.EndDate}}</div>
+							<button mat-mini-fab class="arrow-button right-button" [disabled]="period<=0" (click)=getperiod(-1)>
+									<mat-icon>arrowright</mat-icon>
+								</button>
+							<span *ngIf="myEmployee!=undefined">({{myEmployee.Code}}) {{myEmployee.Name}}&nbsp;&nbsp;&nbsp;&nbsp;
+									<span [ngClass]="bksvc.timecard.StatusStr">{{bksvc.timecard.StatusStr}}</span>
+							</span>
+						</div>
+						<app-subtimecard ttype=3 *ngIf="bksvc.timecard!=undefined" [i]=4 [item]=this.bksvc.timecard>
+						</app-subtimecard>
+					</ng-container>
+					<mat-progress-spinner *ngIf="this.bksvc.timecard==undefined" class="loading" mode="indeterminate">
+					</mat-progress-spinner>
+				</div>
+				<div id="slide5" class="slide snap">
+					<ng-container *ngIf="this.bksvc.timecard!=null">
+						<div class="stb round-corners mat-elevation-z2 topinfo">
+							<button mat-mini-fab class="arrow-button left-button" (click)=getperiod(1)>
+									<mat-icon>arrowleft</mat-icon>
+								</button>
+							<div class="mid-title">{{bksvc.timecard.StartDate}} - {{bksvc.timecard.EndDate}}</div>
+							<button mat-mini-fab class="arrow-button right-button" [disabled]="period<=0" (click)=getperiod(-1)>
+									<mat-icon>arrowright</mat-icon>
+								</button>
+							<span *ngIf="myEmployee!=undefined">({{myEmployee.Code}}) {{myEmployee.Name}}&nbsp;&nbsp;&nbsp;&nbsp;
+									<span [ngClass]="bksvc.timecard.StatusStr">{{bksvc.timecard.StatusStr}}</span>
+							</span>
+						</div>
+						<app-subtimecard ttype=4 *ngIf="bksvc.timecard!=undefined" [i]=5 [item]=this.bksvc.timecard>
+						</app-subtimecard>
+					</ng-container>
+					<mat-progress-spinner *ngIf="this.bksvc.timecard==undefined" class="loading" mode="indeterminate">
+					</mat-progress-spinner>
+				</div>
+			</ng-container>
+		</div>
+		</mat-sidenav-content>
+</mat-sidenav-container>
 
-  <mat-sidenav-container class="example-sidenav-container">
-    <mat-sidenav #snav> 
-<app-mat-sidenav></app-mat-sidenav>
-    </mat-sidenav>
-
-    <mat-sidenav-content (scroll)=scroll() class="noscrollbar">
-
-   <mat-toolbar color="primary" class="example-toolbar">
- <button *ngIf="first==0" mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
-    <button *ngIf="first>0" (click)=scrollto(first-1) mat-icon-button><mat-icon>arrow_back_ios</mat-icon></button>
-    <div class="center">
-    <h1 class="example-app-name"
-    [matMenuTriggerFor]="menu" id="title">Attendance</h1>
-    <mat-menu #menu="matMenu">
-        <button [disabled]="first==0" (click)=scrollto(0) mat-menu-item>
-    <mat-icon>attendance</mat-icon>
-    <span>Choose Employee</span>
-  </button>
-  <button [disabled]="first==1" (click)=scrollto(1) mat-menu-item>
-    <mat-icon>timecard</mat-icon>
-    <span>Timecard</span>
-  </button>
-  <button [disabled]="first==2" (click)=scrollto(2) mat-menu-item>
-    <mat-icon>schedule</mat-icon>
-    <span>Schedule</span>
-  </button>
-  <button [disabled]="first==3" (click)=scrollto(3) mat-menu-item>
-    <mat-icon>transaction</mat-icon>
-    <span>Transactions</span>
-  </button>
-  <button [disabled]="first==4"  (click)=scrollto(4) mat-menu-item>
-    <mat-icon>miscentry</mat-icon>
-    <span>Misc. Entries</span>
-  </button>
-    <button [disabled]="first==5" (click)=scrollto(5) mat-menu-item>
-    <mat-icon>benefits</mat-icon>
-    <span>Benefits</span>
-  </button>
-</mat-menu>
-</div>
-    <button ngClass="rightbutton" *ngIf="first>0 && first<5" (click)=scrollto(first+1) mat-icon-button><mat-icon>arrow_back_ios</mat-icon></button>
-  </mat-toolbar>
-<div id="slider" appSlider (window:resize)=scroll() (scroll)=scroll() class="slider noscrollbar" >
-<div id="slide0" class="slide snap">
-
-<app-chooseemployee (ngModelChange)="myEmployee=$event;getperiod(0);scrollto(1)" ></app-chooseemployee>
-</div>
-<ng-container *ngIf="myEmployee!=undefine">
-<div id="slide1" class="slide snap">
-<ng-container *ngIf="this.bksvc.timecard!=null">
-<div class="stb round-corners  mat-elevation-z2 topinfo"> 
-  <button mat-mini-fab  class="arrow-button left-button"  (click)="getperiod(1)">  <mat-icon>arrowleft</mat-icon></button>
-  <div  class="mid-title">{{bksvc.timecard.StartDate}} - 
-{{bksvc.timecard.EndDate}}</div>
-<button  mat-mini-fab  class="arrow-button right-button" [disabled]="period<=0" (click)="getperiod(-1)">
-  <mat-icon>arrowright</mat-icon>
-  </button>
-  <span *ngIf="myEmployee!=undefined">({{myEmployee.Code}}) {{myEmployee.Name}}&nbsp;
-&nbsp;&nbsp;&nbsp;<span [ngClass]="bksvc.timecard.StatusStr"> {{bksvc.timecard.StatusStr}}</span>
-  </span></div> 
-<app-subtimecard ttype=0 *ngIf="bksvc.timecard!=undefined" [i]=1 [item]=this.bksvc.timecard></app-subtimecard>
-</ng-container> 
-
- <mat-progress-spinner style="margin: 30vh auto" *ngIf="this.bksvc.timecard==undefined" mode="indeterminate"></mat-progress-spinner>
-</div>
-
-
-
-<div id="slide2" class="slide snap">
-<ng-container *ngIf="this.bksvc.timecard!=null">
-<div class="stb round-corners  mat-elevation-z2 topinfo"> 
-  <button mat-mini-fab  class="arrow-button left-button"  (click)="getperiod(1)">  <mat-icon>arrowleft</mat-icon></button>
-  <div  class="mid-title">{{bksvc.timecard.StartDate}} - 
-{{bksvc.timecard.EndDate}}</div>
-<button  mat-mini-fab  class="arrow-button right-button" [disabled]="period<=0" (click)="getperiod(-1)">
-  <mat-icon>arrowright</mat-icon>
-  </button>
-  <span *ngIf="myEmployee!=undefined">({{myEmployee.Code}}) {{myEmployee.Name}}&nbsp;
-&nbsp;&nbsp;&nbsp;<span [ngClass]="bksvc.timecard.StatusStr"> {{bksvc.timecard.StatusStr}}</span>
-  </span></div> 
-<app-subtimecard ttype=1 *ngIf="bksvc.timecard!=undefined" [i]=2 [item]=this.bksvc.timecard></app-subtimecard>
-</ng-container> 
-
- <mat-progress-spinner style="margin: 30vh auto" *ngIf="this.bksvc.timecard==undefined" mode="indeterminate"></mat-progress-spinner>
-</div>
-
-
-
-
-
-
-
-<div id="slide3" class="slide snap">
-<ng-container *ngIf="this.bksvc.timecard!=null">
-<div class="stb round-corners  mat-elevation-z2 topinfo"> 
-  <button mat-mini-fab  class="arrow-button left-button"  (click)="getperiod(1)">  <mat-icon>arrowleft</mat-icon></button>
-  <div  class="mid-title">{{bksvc.timecard.StartDate}} - 
-{{bksvc.timecard.EndDate}}</div>
-<button  mat-mini-fab  class="arrow-button right-button" [disabled]="period<=0" (click)="getperiod(-1)">
-  <mat-icon>arrowright</mat-icon>
-  </button>
-  <span *ngIf="myEmployee!=undefined">({{myEmployee.Code}}) {{myEmployee.Name}}&nbsp;
-&nbsp;&nbsp;&nbsp;<span [ngClass]="bksvc.timecard.StatusStr"> {{bksvc.timecard.StatusStr}}</span>
-  </span></div> 
-<app-subtimecard ttype=2 *ngIf="bksvc.timecard!=undefined" [i]=3 [item]=this.bksvc.timecard></app-subtimecard>
-</ng-container> 
-
- <mat-progress-spinner style="margin: 30vh auto" *ngIf="this.bksvc.timecard==undefined" mode="indeterminate"></mat-progress-spinner>
-</div>
-
-
-
-
-
-
-
-
-<div id="slide4" class="slide snap">
-<ng-container *ngIf="this.bksvc.timecard!=null">
-<div class="stb round-corners  mat-elevation-z2 topinfo"> 
-  <button mat-mini-fab  class="arrow-button left-button"  (click)="getperiod(1)">  <mat-icon>arrowleft</mat-icon></button>
-  <div  class="mid-title">{{bksvc.timecard.StartDate}} - 
-{{bksvc.timecard.EndDate}}</div>
-<button  mat-mini-fab  class="arrow-button right-button" [disabled]="period<=0" (click)="getperiod(-1)">
-  <mat-icon>arrowright</mat-icon>
-  </button>
-  <span *ngIf="myEmployee!=undefined">({{myEmployee.Code}}) {{myEmployee.Name}}&nbsp;
-&nbsp;&nbsp;&nbsp;<span [ngClass]="bksvc.timecard.StatusStr"> {{bksvc.timecard.StatusStr}}</span>
-  </span></div> 
-<app-subtimecard ttype=3 *ngIf="bksvc.timecard!=undefined" [i]=4 [item]=this.bksvc.timecard></app-subtimecard>
-</ng-container> 
-
- <mat-progress-spinner style="margin: 30vh auto" *ngIf="this.bksvc.timecard==undefined" mode="indeterminate"></mat-progress-spinner>
-</div>
-
-
-
-
-
-
-
-
-
-
-<div id="slide5" class="slide snap">
-<ng-container *ngIf="this.bksvc.timecard!=null">
-<div class="stb round-corners  mat-elevation-z2 topinfo"> 
-  <button mat-mini-fab  class="arrow-button left-button"  (click)="getperiod(1)">  <mat-icon>arrowleft</mat-icon></button>
-  <div  class="mid-title">{{bksvc.timecard.StartDate}} - 
-{{bksvc.timecard.EndDate}}</div>
-<button  mat-mini-fab  class="arrow-button right-button" [disabled]="period<=0" (click)="getperiod(-1)">
-  <mat-icon>arrowright</mat-icon>
-  </button>
-  <span *ngIf="myEmployee!=undefined">({{myEmployee.Code}}) {{myEmployee.Name}}&nbsp;
-&nbsp;&nbsp;&nbsp;<span [ngClass]="bksvc.timecard.StatusStr"> {{bksvc.timecard.StatusStr}}</span>
-  </span></div> 
-<app-subtimecard ttype=4 *ngIf="bksvc.timecard!=undefined" [i]=5 [item]=this.bksvc.timecard></app-subtimecard>
-</ng-container> 
-
- <mat-progress-spinner style="margin: 30vh auto" *ngIf="this.bksvc.timecard==undefined" mode="indeterminate"></mat-progress-spinner>
-</div>
-</ng-container> 
-</div>
-<app-footer></app-footer>
- 
-    </mat-sidenav-content>
-  </mat-sidenav-container>

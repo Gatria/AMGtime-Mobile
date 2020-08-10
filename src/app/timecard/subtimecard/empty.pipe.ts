@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class EmptyPipe implements PipeTransform {
 
   transform(value: any, args?: any): any {
-    if (value.replace(" ","")=="") return "-"; else return value;
+    if (value.replace(" ","")=="") return "-"; else return (value.trim());
   }
 
 }

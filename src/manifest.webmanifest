@@ -1,0 +1,25 @@
+{
+  "gcm_sender_id": "103953800507",
+  "name": "AMG Mobile",
+  "short_name": "AMG Mobile",
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "scope": "./",
+  "start_url": "./",
+  "icons": [
+
+    {
+      "src": "assets/icons/Icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "assets/icons/Icon-1024x1024.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

@@ -1,167 +1,88 @@
+<mat-sidenav-container appSlider>
+	<mat-sidenav #snav>
+		<app-mat-sidenav></app-mat-sidenav>
+	</mat-sidenav>
+	<mat-sidenav-content class="noscrollbar">
+		<mat-toolbar color="primary"><button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+			<h1 class="center100">Shift Requests</h1>
+		</mat-toolbar>
+		<mat-progress-spinner *ngIf="bksvc.ShiftRequest==undefined" class="loading" mode="indeterminate">
+		</mat-progress-spinner>
+		<ng-container *ngIf="!this.bksvc.AMGSettings.IsEmployee">
+			<ng-container *ngIf="bksvc.ShiftRequest!=undefined">
+				<div *ngIf="(bksvc.ShiftRequest| json) == '{}'" class="norecord">{{bksvc.tm.s5}}</div>
+				<mat-card *ngIf="(bksvc.ShiftRequest| json) != '{}'" class="stb  mat-elevation-z4">
+					<mat-form-field appearance="outline" class="block">
+						<mat-label>{{bksvc.tm.f2}}</mat-label><input type="text" [(ngModel)]=filter matInput placeholder="">
+						<mat-icon class="icon mat-primary-color" matSuffix>search</mat-icon>
+					</mat-form-field>
+				</mat-card>
+				<ng-container *ngFor="let item1 of bksvc.ShiftRequest| keyvalue">
+					<ng-container *ngFor="let item of item1.value">
+						<mat-card class="stb mat-elevation-z4" *ngIf="filterme(item,filter)">
+							<mat-card-subtitle class=date>
+								<app-empphotoicon EmpID="{{item.EmployeeId}}" name="{{item.EmployeeName}}">
+								</app-empphotoicon>
+								<br><span>{{bksvc.stringtodate(item.Date)}}<div class=right></div></span>
+							</mat-card-subtitle>
+							<div class="vertical"></div>
+							<mat-card-title class=title>
+								<mat-card-subtitle>
+									<h3 class="mat-primary-color">{{item.EmployeeName}}</h3>
+								</mat-card-subtitle>
+								<mat-card-content>{{item.StatusStr}}</mat-card-content>
+								<ng-container *ngIf="item.Shift>''">
+									<mat-card-content class="t3">
+										<h4 class="mat-primary-color">My Shift:</h4>{{item.Shift}}
+									</mat-card-content>
+									<mat-divider class="limited"></mat-divider>
+								</ng-container>
+								<ng-container *ngIf="item.JobName>''">
+									<mat-card-content class="t3">
+										<h4 class="mat-primary-color">Job:</h4>{{item.JobName}}
+									</mat-card-content>
+									<mat-divider class="limited"></mat-divider>
+								</ng-container>
+								<div class='buttongroup' *ngIf='item.CanCancel'>
+									<button class="center round-corners" mat-flat-button (click)=bksvc.ApproveOpenShiftRequest(item.RequestId,this) color="accent"><span class="material-icons">done</span>Approve</button>&nbsp;<button class="center round-corners" mat-flat-button (click)=bksvc.RejectOpenShiftRequest(item.RequestId,this) color="warn"><span class="material-icons">close</span>Reject</button>
+								</div>
+							</mat-card-title>
+						</mat-card>
+					</ng-container>
+				</ng-container>
+			</ng-container>
+		</ng-container>
+		<ng-container *ngIf="this.bksvc.AMGSettings.IsEmployee">
+			<ng-container *ngIf="bksvc.ShiftRequest!=undefined">
+				<div *ngIf="bksvc.ShiftRequest.length==0" class="norecord">{{bksvc.tm.s5}}</div>
+				<ng-container *ngIf="bksvc.ShiftRequest.length>0">
+					<mat-card class="stb  mat-elevation-z4" *ngFor="let item of bksvc.ShiftRequest; let i = index">
+						<mat-card-subtitle class=date>
+							<span>{{bksvc.stringtodate(item.Date)}}<div class=right><button *ngIf="item.CanCancel " (click)=this.bksvc.CancelOpenShiftRequest(item.RequestId,this) class="round-corners" mat-stroked-button color="warn"><mat-icon>close</mat-icon>Cancel</button></div></span>
+						</mat-card-subtitle>
+						<div class="vertical"></div>
+						<mat-card-title class=title>
+							<ng-container *ngIf="item.Shift>''">
+								<mat-card-content class="t3">
+									<h4 class="mat-primary-color">My Shift:</h4>{{item.Shift}}
+								</mat-card-content>
+								<mat-divider class="limited"></mat-divider>
+							</ng-container>
 
-  <mat-sidenav-container class="example-sidenav-container">
-    <mat-sidenav #snav> 
-<app-mat-sidenav></app-mat-sidenav>
-    </mat-sidenav>
+							<ng-container *ngIf="item.JobName>''">
+								<mat-card-content class="t3">
+									<h4 class="mat-primary-color">Job:</h4>{{item.JobName}}
+								</mat-card-content>
+								<mat-divider class="limited"></mat-divider>
+							</ng-container>
 
-       <mat-sidenav-content class="noscrollbar">
+                	<mat-card-subtitle><br>{{item.StatusStr}}
+                    	<ng-container *ngIf="item.IsSwap"> with {{item.EmployeeName}}	</ng-container> </mat-card-subtitle>
 
-  <mat-toolbar color="primary" class="example-toolbar">
-    <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
-    <h1 class="example-app-name">Shift Requests</h1>
-  </mat-toolbar>
- <mat-progress-spinner style="margin: 30vh auto" *ngIf="bksvc.ShiftRequest==undefined"> mode="indeterminate"></mat-progress-spinner>
-
-
-
-
-
-<ng-container *ngIf="!this.bksvc.AMGSettings.IsEmployee">
-<ng-container *ngIf="bksvc.ShiftRequest!=undefined">
-<ng-container *ngFor="let item1 of bksvc.ShiftRequest| keyvalue">
-<mat-card  class="stb" *ngFor="let item of item1.value">
-
-<mat-card-subtitle class=date>
- {{item.Date}} 
- <span> {{bksvc.stringtodate(item.Date)}}
-   
-<div class=right>
-
-<button  *ngIf="item.CanCancel " (click)=this.bksvc.CancelOpenShiftRequest(item.RequestId,this) class="round-corners"  mat-stroked-button color="warn"> <mat-icon>close</mat-icon> Cancel</button>
-</div>
-
-  </span>
-   </mat-card-subtitle>
-   <div class="vertical"></div>
-<mat-card-title class=title>
-
-
-
-
-<ng-container *ngIf="item.Shift==''">
-<mat-card-content class="t3 h5">You have no shift assigned</mat-card-content>
-</ng-container>
-
-<ng-container *ngIf="item.Shift>''">
-<mat-card-content class="t3"><h4 class="mat-primary-color">My Shift:</h4> {{item.Shift}}
-</mat-card-content>
-  <mat-divider class="limited"></mat-divider>
-</ng-container>
-
-
-<ng-container *ngIf="item.DepName>''">
-<mat-card-content class="t3"><h4 class="mat-primary-color">Department:</h4> {{item.DepName}}</mat-card-content>
-  <mat-divider class="limited"></mat-divider>
-</ng-container>
-
-<ng-container *ngIf="item.DivisionName>''">
-<mat-card-content class="t3"><h4 class="mat-primary-color">Division:</h4> {{item.DivisionName}}</mat-card-content>
-  <mat-divider class="limited"></mat-divider>
-</ng-container>
-
-<ng-container *ngIf="item.GroupName>''">
-<mat-card-content class="t3"><h4 class="mat-primary-color">Group:</h4> {{item.GroupName}}</mat-card-content>
-  <mat-divider class="limited"></mat-divider>
-</ng-container>
-
-<ng-container *ngIf="item.JobName>''">
-<mat-card-content class="t3"><h4 class="mat-primary-color">Job:</h4> {{item.JobName}}</mat-card-content>
-  <mat-divider class="limited"></mat-divider>
-</ng-container>
-
-
-<ng-container *ngIf="item.SkillName>''">
-<mat-card-content class="t3"><h4 class="mat-primary-color">Skill:</h4> {{item.SkillName}}</mat-card-content>
-</ng-container>
-</mat-card-title>
-</mat-card>
-</ng-container>
-</ng-container>
-</ng-container>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<ng-container *ngIf="this.bksvc.AMGSettings.IsEmployee">
-<ng-container *ngIf="bksvc.ShiftRequest!=undefined">
-
-<mat-card  class="stb" *ngFor="let item of bksvc.ShiftRequest; let i = index">
-
-<mat-card-subtitle class=date>
-  
- <span> {{bksvc.stringtodate(item.Date)}}
-   
-<div class=right>
-
-<button  *ngIf="item.CanCancel " (click)=this.bksvc.CancelOpenShiftRequest(item.RequestId,this) class="round-corners"  mat-stroked-button color="warn"> <mat-icon>close</mat-icon> Cancel</button>
-</div>
-
-  </span>
-   </mat-card-subtitle>
-   <div class="vertical"></div>
-<mat-card-title class=title>
-
-
-
-
-<ng-container *ngIf="item.Shift==''">
-<mat-card-content class="t3 h5">You have no shift assigned</mat-card-content>
-</ng-container>
-
-<ng-container *ngIf="item.Shift>''">
-<mat-card-content class="t3"><h4 class="mat-primary-color">My Shift:</h4> {{item.Shift}}
-</mat-card-content>
-  <mat-divider class="limited"></mat-divider>
-</ng-container>
-
-
-<ng-container *ngIf="item.DepName>''">
-<mat-card-content class="t3"><h4 class="mat-primary-color">Department:</h4> {{item.DepName}}</mat-card-content>
-  <mat-divider class="limited"></mat-divider>
-</ng-container>
-
-<ng-container *ngIf="item.DivisionName>''">
-<mat-card-content class="t3"><h4 class="mat-primary-color">Division:</h4> {{item.DivisionName}}</mat-card-content>
-  <mat-divider class="limited"></mat-divider>
-</ng-container>
-
-<ng-container *ngIf="item.GroupName>''">
-<mat-card-content class="t3"><h4 class="mat-primary-color">Group:</h4> {{item.GroupName}}</mat-card-content>
-  <mat-divider class="limited"></mat-divider>
-</ng-container>
-
-<ng-container *ngIf="item.JobName>''">
-<mat-card-content class="t3"><h4 class="mat-primary-color">Job:</h4> {{item.JobName}}</mat-card-content>
-  <mat-divider class="limited"></mat-divider>
-</ng-container>
-
-
-<ng-container *ngIf="item.SkillName>''">
-<mat-card-content class="t3"><h4 class="mat-primary-color">Skill:</h4> {{item.SkillName}}</mat-card-content>
-</ng-container>
-</mat-card-title>
-</mat-card>
-
-</ng-container>
-</ng-container>
-
-<app-footer></app-footer>
- 
-    </mat-sidenav-content>
-  </mat-sidenav-container>
+						</mat-card-title>
+					</mat-card>
+				</ng-container>
+			</ng-container>
+		</ng-container>
+	</mat-sidenav-content>
+</mat-sidenav-container>

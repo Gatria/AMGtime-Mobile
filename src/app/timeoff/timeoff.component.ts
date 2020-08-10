@@ -1,88 +1,133 @@
-import { Component, OnInit} from '@angular/core'
-import {BackendService} from '../backend.service'
+import { Component, OnInit } from '@angular/core';
+import { BackendService } from '../backend.service';
 
 @Component({
   selector: 'app-timeoff',
   templateUrl: './timeoff.component.html',
-  styleUrls: ['./timeoff.component.css']
+  styleUrls: ['./timeoff.component.css'],
 })
-export class TimeoffComponent implements OnInit,DoCheck{
-
-  constructor(private bksvc:BackendService) { }
-first=true;
+export class TimeoffComponent implements OnInit {
+  constructor(public bksvc: BackendService) {}
+  first = true;
+  showDiv:any={};
+  filter = 31;
+  AvailableWorkDays: any;
 
   ngOnInit() {
-       this.filter=31;
-       this.bksvc.cancel=[];
-     this.bksvc.sendcommand((f)=>{ this.bksvc.timeofrequests=f;this.chips(0)},"GetTimeOffs",{date:new Date().f1()},{ withCredentials: true});
-this.reset_time_off_form()   
-this.bksvc.loading=false
+    this.bksvc.heightadjustemnt()
+    delete this.bksvc.timeofrequests;
+    delete this.bksvc.timeoff.AvailableWorkDays;
+    this.bksvc.cancel = [];
+    this.bksvc.sendcommand(
+      (f) => {
+        this.bksvc.timeofrequests = f;
+        this.chips(0);
+        setTimeout(this.bksvc.scroll, 100);
+      },
+      'GetTimeOffs',
+      { date: new Date().f1() },
+      { withCredentials: true }
+    );
+    this.reset_time_off_form();
+    this.bksvc.loading = false;
   }
 
-filterfn(e)
-{return e.requescount>0}
-
-scroll() {
- 
- this.first= document.getElementById("slider").scrollLeft==0;
- if ( this.first) delete(this.AvailableWorkDays);
-  this.bksvc.scroll() 
-}
-
-scrollto(a)
-{
-
-setTimeout(()=>{document.querySelector("mat-sidenav-content").scrollTop=0;document.getElementById("slider").scrollLeft=document.getElementById("slider").parentElement.clientWidth*a},100);  
-
-  if (a==1)  { 
-    this.reset_time_off_form()     
-  this.bksvc.sendcommand((f)=>{ this.bksvc.Categories=f},"GetCategoriesAndUsers");} else { delete(this.bksvc.timeofrequests); delete(this.bksvc.timeoff.AvailableWorkDays)
-    this.bksvc.loading=false;
-  this.bksvc.sendcommand((f)=>{this.bksvc.timeofrequests=f},"GetTimeOffs",{date:new Date().f1()},{ withCredentials: true});
+  filterfn(e) {
+    return e.requescount > 0;
   }
-} 
+
+  scroll() {
+    this.first = document.getElementById('slider').scrollLeft == 0;
+    if (this.first) delete this.AvailableWorkDays;
+    setTimeout(() => {this.bksvc.scroll()}, 100);
+  }
+
+  scrollto(a) {
+    setTimeout(() => {
+      const slider = document.getElementById('slider');
+      const left = slider.scrollLeft;
+      const width= slider.getBoundingClientRect().width
 
 
+      document.querySelector('mat-sidenav-content').scrollTop = 0;
+      slider.scrollLeft =  width * a;
+    }, 100);
 
-reset_time_off_form ()
-{
-  const today = new Date()
-  const dateobj = new Date(today)
-  dateobj.setDate(dateobj.getDate() + 1)
-  this.bksvc.timeoff.date=dateobj.toISOString();
-     this.bksvc.timeoff.days="1"
-     this.bksvc.timeoff.time=('0'+dateobj.getHours()).slice(-2)+":"+('0'+dateobj.getMinutes()).slice(-2)
-     this.bksvc.timeoff.hours="1"
-     this.bksvc.timeoff.dtype="1"
-     this.bksvc.timeoff.comment=""
-     this.bksvc.timeoff.category=null
- } 
-change() {
-setTimeout(()=>{
+    if (a == 1) {
+      this.reset_time_off_form();
+      this.bksvc.sendcommand((f) => {
+        this.bksvc.Categories = f;
+      }, 'GetCategoriesAndUsers');
+    } else this.ngOnInit();
+  }
 
-let fd=this.bksvc.timeoff.dtype==1
-const m=new Date(this.bksvc.timeoff.date)
-const s=("0" + (m.getMonth()+1)).slice(-2)+"/" + ("0" + m.getDate()).slice(-2) + "/" + m.getFullYear();
-if (fd) s=s+" 00:00:00"; else s=s+" "+this.bksvc.timeoff.time; 
-if (this.bksvc.timeoff.category!=null && this.bksvc.timeoff.days!=null && this.bksvc.timeoff.date!=null && (this.bksvc.timeoff.dtype==1 || (this.bksvc.timeoff.time!=null && this.bksvc.timeoff.hours!=null)) )  
-this.bksvc.sendcommand((f)=>{ this.bksvc.timeoff.AvailableWorkDays=f;  setTimeout(this.bksvc.scroll,100) },"GetEmployeeAvailableWorkDays",{start:s,days:this.bksvc.timeoff.days,hours:this.bksvc.timeoff.hours},{ withCredentials: true});
-else delete(this.bksvc.timeoff.AvailableWorkDays)},100);
-}
+  reset_time_off_form() {
+    const today = new Date();
+    const dateobj = new Date(today);
+    dateobj.setDate(dateobj.getDate() + 1);
+    this.bksvc.timeoff.date = dateobj.toISOString();
+    this.bksvc.timeoff.days = '1';
+    this.bksvc.timeoff.time =
+      ('0' + dateobj.getHours()).slice(-2) +
+      ':' +
+      ('0' + dateobj.getMinutes()).slice(-2);
+    this.bksvc.timeoff.hours = '1';
+    this.bksvc.timeoff.dtype = '1';
+    this.bksvc.timeoff.comment = '';
+    this.bksvc.timeoff.category = null;
+  }
+  change() {
+    setTimeout(() => {
+      let fd = this.bksvc.timeoff.dtype == 1;
 
+      const m = new Date(this.bksvc.timeoff.date);
+      var s =
+        ('0' + (m.getMonth() + 1)).slice(-2) +
+        '/' +
+        ('0' + m.getDate()).slice(-2) +
+        '/' +
+        m.getFullYear();
+      var tt = {};
+      //if (fd) s=s+" 00:00:00"; else s=s+" "+this.bksvc.timeoff.time;
+      if (!fd)
+        tt = {
+          hours: this.bksvc.timeoff.hours,
+          start: s + ' ' + this.bksvc.timeoff.time,
+        };
+      else tt = { start: s + ' 00:00:00' };
+      if (
+        this.bksvc.timeoff.category != null &&
+        this.bksvc.timeoff.days != null &&
+        this.bksvc.timeoff.date != null &&
+        (this.bksvc.timeoff.dtype == 1 ||
+          (this.bksvc.timeoff.time != null && this.bksvc.timeoff.hours != null))
+      )
+        this.bksvc.sendcommand(
+          (f) => {
+            this.bksvc.timeoff.AvailableWorkDays = f;
+            setTimeout(this.bksvc.scroll, 100);
+          },
+          'GetEmployeeAvailableWorkDays',
+          Object.assign({ days: this.bksvc.timeoff.days }, tt)
+        );
+      else delete this.bksvc.timeoff.AvailableWorkDays;
+    }, 100);
+  }
+  infocolapse(a=false)
+  {
 
-chips(a) {
+    setTimeout(this.bksvc.scroll, 100);
+    return !a;
+  }
+  chips(a) {
+    if (a == 31 && this.filter < 31) this.filter = 31;
+    else if (a == 31) this.filter = 0;
+    else this.filter = this.filter ^ a;
 
-
-    if (a==31 && this.filter<31)  
-    this.filter=31
-    else 
-    if (a==31)
-    this.filter=0;
-    else
-    this.filter= this.filter ^ a;  
-
-if (this.filter==31) document.getElementById("all").innerHTML="None"; else document.getElementById("all").innerHTML="All";
-
-
-}
+    if (this.filter == 31) document.getElementById('all').innerHTML = 'None';
+    else document.getElementById('all').innerHTML = 'All';
+    setTimeout(() => {
+      this.bksvc.scroll();
+    }, 1000);
+  }
 }

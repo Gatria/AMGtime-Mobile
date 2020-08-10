@@ -1,41 +1,45 @@
-
- 
-  <mat-toolbar color="primary" class="example-toolbar">
-      <button  (click)="show=false" *ngIf="show" mat-icon-button><mat-icon>arrow_back_ios</mat-icon></button>
-      
-   <a class="mat-primary-color settings" routerLink="/settings"><button  mat-icon-button ><mat-icon>iconsettings</mat-icon></button></a>
+<div *ngIf="!noscreen" class="noscrollbar allscreen" appSlider>
+<mat-toolbar color="primary">
+	<button  (click)="show=false" *ngIf="show" mat-icon-button><mat-icon>arrow_back_ios</mat-icon></button>
+	<a class="mat-primary-color settings"
+		routerLink="/settings"><button  mat-icon-button ><mat-icon>iconsettings</mat-icon></button></a>
 </mat-toolbar>
-
 <app-complogo class="center"></app-complogo>
 <hr class="round-corners  title">
 <h2>SIGN IN</h2>
-<div class="mat-elevation-z16 round-corners center">
-<ng-container *ngIf="!show">
-  <mat-form-field appearance="outline" class="center">
-    <mat-label>Username</mat-label>
-     <mat-icon class="icon mat-primary-color" matPrefix>user</mat-icon>
-    <input matInput [(ngModel)]="bksvc.name">
-
+<mat-card class="mat-elevation-z16 round-corners center">
+	<ng-container *ngIf="!show">
+		<mat-form-field appearance="outline" class="center">
+			<mat-label>Username</mat-label>
+			<mat-icon class="icon mat-primary-color" matPrefix>user</mat-icon>
+			<input matInput [(ngModel)]="bksvc.name">
   </mat-form-field>
-  <br> 
-  <br>
-  <mat-form-field appearance="outline" class="center">
-    <mat-label>Password</mat-label>
-     <mat-icon class="icon mat-primary-color"  matPrefix>lock</mat-icon>
-    <input type=password matInput [(ngModel)]="bksvc.password">
+			<br>
+			<br>
+			<mat-form-field appearance="outline" class="center">
+				<mat-label>Password</mat-label>
+				<mat-icon class="icon mat-primary-color" matPrefix>lock</mat-icon>
+				<input type=password matInput [(ngModel)]="bksvc.password">
   </mat-form-field>
-<br>
-<mat-checkbox class="mat-primary-color">Remember Me</mat-checkbox>
+				<br>
+				<mat-checkbox (ngModelChange)="bksvc.SaveVal('rememberme',$event);" [(ngModel)]="bksvc.rememberme" class="mat-primary-color">Remember Me</mat-checkbox>
+				<a class="mat-primary-color" [ngClass]="{'disablelink':!ValidateEmail(bksvc.name)}"
+					routerLink="/passwordreset">Forgot Password ?</a>
+				<br><br><br>
+				<button class="center round-corners" mat-flat-button (click)="login()" color="primary">Login</button>
+	</ng-container>
+	<ng-container *ngIf="show">
+    	<ng-container *ngIf="a==0 || this.bksvc.Companies.length<2">
+		<button class="center round-corners" mat-flat-button (click)=" login(1)" color="primary">Employee</button><br><br><button class="center round-corners" mat-flat-button (click)=" login(2)"  color="primary">User (Admin)</button>
+		</ng-container>
 
-<a class="mat-primary-color" [ngClass]="{'disablelink':!ValidateEmail(bksvc.name)}" routerLink="/passwordreset">Forgot Password ?</a>
-<br><br><br>
- <button class="center round-corners" mat-flat-button (click)="login()" color="primary">Login</button>
- </ng-container>
-<ng-container *ngIf="show" >
-
-
- <button class="center round-corners" mat-flat-button (click)=" login(1)" color="primary">Employee</button><br><br><button class="center round-corners" mat-flat-button (click)=" login(2)"  color="primary">User</button>
+  	<ng-container *ngIf="a==2 && this.bksvc.Companies.length>1">
+      <h3>Choose Company</h3>
+	  <div  class="m1">
+  	<button (click)=switchcomp(nav.Id) *ngFor="let nav of this.bksvc.Companies" mat-menu-item >{{nav.Name}}
+					</button>
+      </div>
+	</ng-container>
 </ng-container>
+</mat-card>
 </div>
-
-

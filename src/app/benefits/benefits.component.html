@@ -1,32 +1,24 @@
-
-  <mat-sidenav-container class="example-sidenav-container">
- <mat-sidenav #snav> 
-<app-mat-sidenav></app-mat-sidenav>
-    </mat-sidenav>
-
-    <mat-sidenav-content class="noscrollbar">
-
-  <mat-toolbar color="primary" class="example-toolbar">
-    <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
-    <h1 class="example-app-name">Benefits</h1>
-  </mat-toolbar>
-
-<mat-progress-spinner style="margin: 30vh auto" *ngIf="benefits==undefined" mode="indeterminate"></mat-progress-spinner>
-
-<div *ngIf="benefits==null" class="norecord">No Benefit Found</div>
-
-
-<ng-container *ngFor="let item of benefits; let i = index" >
-<mat-card class="stb mat-elevation-z4">
-<mat-card-subtitle [ngStyle]="bksvc.stringToHslColor(item.Name.substring(0,2),true)">{{item.Name}} </mat-card-subtitle>
-<mat-card-content class="t3">Taken: {{item.Taken}}</mat-card-content>
-<mat-card-content class="t3">Pending: {{item.Pending}}</mat-card-content>
-<mat-card-content class="t3">Left: {{item.Left}}</mat-card-content>
-</mat-card>
-</ng-container>
-
-  
-<app-footer></app-footer>
- 
-    </mat-sidenav-content>
-  </mat-sidenav-container>
+<mat-sidenav-container appSlider>
+	<mat-sidenav #snav>
+		<app-mat-sidenav></app-mat-sidenav>
+	</mat-sidenav>
+	<mat-sidenav-content class="noscrollbar">
+		<mat-toolbar color="primary">
+			<button mat-icon-button (click)="snav.toggle()">
+				<mat-icon>menu</mat-icon>
+			</button>
+			<h1 class="center100">Benefits</h1>
+		</mat-toolbar>
+		<mat-progress-spinner *ngIf="benefits==undefined" class="loading" mode="indeterminate"></mat-progress-spinner>
+		<div *ngIf="benefits!=undefined && benefits.length==0" class="norecord">{{bksvc.tm.b2}}</div>
+		<ng-container *ngFor="let item of benefits; let i = index">
+			<mat-card class="stb mat-elevation-z4">
+				<mat-card-subtitle [ngStyle]="bksvc.stringToHslColor(item.Name.substring(0,2),true)">{{item.Name}}
+				</mat-card-subtitle>
+				<mat-card-content class="t3">Taken: {{item.Taken}}</mat-card-content>
+				<mat-card-content class="t3">Pending: {{item.Pending}}</mat-card-content>
+				<mat-card-content class="t3">Left: {{item.Left}}</mat-card-content>
+      </mat-card>
+		</ng-container>
+	</mat-sidenav-content>
+</mat-sidenav-container>

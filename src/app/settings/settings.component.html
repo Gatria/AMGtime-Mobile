@@ -1,22 +1,12 @@
-
-  <mat-toolbar color="primary" class="example-toolbar">
-    <a class="mat-primary-color" routerLink="/login" ><button  mat-icon-button><mat-icon>arrow_back_ios</mat-icon></button></a>
-
-</mat-toolbar>
-
+<div class="noscrollbar allscreen" appSlider>
+<mat-toolbar color="primary" ><a class="mat-primary-color"
+		routerLink="/login"><button mat-icon-button><mat-icon>arrow_back_ios</mat-icon></button></a></mat-toolbar>
 <app-complogo class="center"></app-complogo>
-<hr class="round-corners  title">
+<hr class="round-corners title">
 <h2>Settings</h2>
-<div class="mat-elevation-z16 round-corners center">
-
-  <mat-form-field appearance="outline" class="center">
-    <mat-label>IP Address of Host Name</mat-label>
-    <input matInput [(ngModel)]="bksvc.url">
-
-  </mat-form-field>
-
-<br>
- <button class="center round-corners" mat-flat-button (click)="check()" color="primary">Check</button>
-  <br><br>
-  <button class="center round-corners"mat-stroked-button (click)="bksvc.url=bksvc.defurl" color="primary">Restore Defaults</button>
+<mat-card class="mat-elevation-z16 round-corners center">
+	<mat-form-field appearance="outline" class="center">
+		<mat-label>{{bksvc.tm.i1}}</mat-label><input matInput [(ngModel)]="bksvc.url"></mat-form-field>
+		<br><button class="center round-corners" mat-flat-button (click)="check()" color="primary">Check</button><br><br><button class="center round-corners"mat-stroked-button (click)="bksvc.url=bksvc.defurl" color="primary">Restore Defaults</button>
+</mat-card>
 </div>

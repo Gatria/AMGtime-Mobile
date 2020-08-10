@@ -1,102 +1,91 @@
+<mat-sidenav-container appSlider>
+	<mat-sidenav #snav>
+		<app-mat-sidenav></app-mat-sidenav>
+	</mat-sidenav>
+	<mat-sidenav-content class="noscrollbar">
+		<mat-toolbar color="primary"><button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+			<h1 class="center100">Status Board</h1>
+		</mat-toolbar>
+		<mat-action-row *ngIf="bksvc.StatusBoard!=null" class="nopadding noborder">
+			<ngx-charts-pie-grid class="stgraph" *ngIf="!hidegraph" animations=true [scheme]="colorScheme" [results]="single">
+			</ngx-charts-pie-grid>
+		</mat-action-row>
+		<mat-chip-list class="i" multiple="true">
+			<mat-chip id="all" selected (click)="chips(31)" color="accent">All</mat-chip>
+			<mat-chip [disabled]="this.work==0" [selected]="filter % 2>= 1" (click)="chips(1)">Work</mat-chip>
+			<mat-chip [disabled]="this.out==0" [selected]="filter % 4>= 2" (click)="chips(2)">Out</mat-chip>
+			<mat-chip [disabled]="this.abs==0" [selected]="filter % 8>= 4" (click)="chips(4)">ABS</mat-chip>
+			<mat-chip [disabled]="this.lunch==0" [selected]="filter % 16>= 8" (click)="chips(8)">LUNCH</mat-chip>
+			<mat-chip [disabled]="this.br==0" [selected]="filter % 32>= 16" (click)="chips(16)">BRK</mat-chip>
+		</mat-chip-list>
+		<mat-progress-spinner *ngIf="bksvc.StatusBoard==null" class="loading" mode="indeterminate">
+		</mat-progress-spinner>
+		<div class="sm-round-corners mat-elevation-z16 stb" *ngIf="bksvc.StatusBoard!=null">
+			<mat-accordion multi displayMode="flat">
+				<mat-card class="mm">
+					<mat-form-field class="block" appearance="outline">
+						<mat-label>{{bksvc.tm.f2}}</mat-label><input type="text" #filter1 matInput placeholder="">
+						<mat-icon class="icon mat-primary-color" matSuffix>search</mat-icon>
+					</mat-form-field>
 
-  <mat-sidenav-container class="example-sidenav-container">
-    <mat-sidenav #snav> 
-<app-mat-sidenav></app-mat-sidenav>
-    </mat-sidenav>
-
-    <mat-sidenav-content  class="noscrollbar">
-
-  <mat-toolbar color="primary" class="example-toolbar">
-    <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
-    <h1 class="example-app-name">Status Board</h1>
-  </mat-toolbar>
-
-
-   <mat-action-row *ngIf="bksvc.StatusBoard!=null" class="nopadding noborder">
-   <ngx-charts-pie-grid *ngIf="!hidegraph"
-
-  animations=true
-  [scheme]="colorScheme"
-  [results]="single"
-  >
-  
-</ngx-charts-pie-grid>
-</mat-action-row>
- 
-<mat-chip-list class="i" multiple="true">
-  <mat-chip id="all" selected (click)="chips(31)" color="accent" >All</mat-chip>
-  <mat-chip [disabled]="this.work==0" [selected]="filter % 2 >= 1" (click)="chips(1)">Work</mat-chip>
-  <mat-chip [disabled]="this.out==0" [selected]="filter % 4 >= 2"  (click)="chips(2)">Out</mat-chip>
-    <mat-chip [disabled]="this.abs==0" [selected]="filter % 8 >= 4"  (click)="chips(4)">ABS</mat-chip>
-    <mat-chip [disabled]="this.lunch==0" [selected]="filter % 16 >= 8" (click)="chips(8)">LUNCH</mat-chip>
-    <mat-chip [disabled]="this.br==0" [selected]="filter % 32 >= 16"  (click)="chips(16)">BRK</mat-chip>
-</mat-chip-list>
-
-
+				<ng-container *ngFor="let item of bksvc.StatusBoard; let i = index">
+					<ng-container
+						*ngIf="filterme(item.Code+item.Name,filter1.value) && ((filter % 4>= 2 && item.Status==3) || (filter % 2>= 1 && item.Status==0) || (filter % 8>= 4 && item.Status==4) || (filter % 16>= 8 && item.Status==1)|| (filter % 32>= 16 && item.Status==2))">
 
 
-<mat-progress-spinner style="margin: auto;margin-top: 30vh" *ngIf="bksvc.StatusBoard==null" mode="indeterminate"></mat-progress-spinner>
-
-<div class="sm-round-corners mat-elevation-z16 stb" *ngIf="bksvc.StatusBoard!=null">
-
-
-<mat-accordion  multi displayMode="flat">
-<mat-card class="mm">
- <mat-form-field class="block" appearance="outline">
-    <mat-label>Filter by Code or Name</mat-label>
-    <input type="text" #filter1 matInput placeholder="">
-    <mat-icon class="icon mat-primary-color" matSuffix>search</mat-icon>
-  </mat-form-field>
- </mat-card>
-      
+         <mat-card class="vv" *ngIf="!(item.LastPunch>'' || item.DailyOvertime>'' || item.WeeklyOvertime>'' || item.Department>'' || item.Job>'')">
+            		<mat-panel-description class="nomargin middle inflex">
+									<app-empphotoicon EmpID="{{bksvc.codetoid[item.Code]}}" name="{{item.Name}}">
+									</app-empphotoicon>
+								</mat-panel-description>
+								<mat-panel-description class="nomargin middle name inflex">({{item.Code}}) {{item.Name}}
+								</mat-panel-description>
+								<mat-panel-description class="nomargin right1 middle inflex"
+									ngClass="{{item.StatusStr}}">
+									<span class="small material-icons">infofull</span><span class="m4">{{item.StatusStr}}</span>
+								</mat-panel-description>
+           </mat-card>
 
 
-   
-<ng-container  *ngFor="let item of bksvc.StatusBoard; let i = index">
+          	<mat-expansion-panel class="vv1"
+            *ngIf="(item.LastPunch>'' || item.DailyOvertime>'' || item.WeeklyOvertime>'' || item.Department>'' || item.Job>'')"
+              >
+							<mat-expansion-panel-header>
+								<mat-panel-description class="nomargin middle inflex">
+									<app-empphotoicon EmpID="{{bksvc.codetoid[item.Code]}}" name="{{item.Name}}">
+									</app-empphotoicon>
+								</mat-panel-description>
+								<mat-panel-description class="nomargin middle name inflex">({{item.Code}}) {{item.Name}}
+								</mat-panel-description>
+								<mat-panel-description class="nomargin right1 middle inflex"
+									ngClass="{{item.StatusStr}}">
+									<span class="small material-icons">infofull</span><span class="m4">{{item.StatusStr}}</span>
+								</mat-panel-description>
+							</mat-expansion-panel-header>
+							<mat-panel-description class='pp'
+								*ngIf="item.LastPunch>'' || item.DailyOvertime>'' || item.WeeklyOvertime>'' || item.Department>'' || item.Job>''">
+								<mat-panel-description *ngIf="item.LastPunch>''">Last Punch: {{item.LastPunch}}
+								</mat-panel-description>
+								<mat-panel-description *ngIf="item.DailyOvertime>''">Daily
+									Overtime:&nbsp;<span class="mat-primary-color">{{item.DailyOvertime}}</span>
+								</mat-panel-description>
+								<mat-panel-description *ngIf="item.WeeklyOvertime>''">Weekly
+									Overtime:&nbsp;<span class="mat-primary-color">{{item.WeeklyOvertime}}</span>
+								</mat-panel-description>
+								<mat-panel-description *ngIf="item.Department>''">
+									Department:&nbsp;<span class="mat-primary-color">{{item.Department}}</span>
+								</mat-panel-description>
+								<mat-panel-description *ngIf="item.Job>''">
+									Job:&nbsp;<span class="mat-primary-color">{{item.Job}}</span>
+								</mat-panel-description>
+							</mat-panel-description>
+            </mat-expansion-panel>
+            <mat-divider class="limited"></mat-divider>
+          </ng-container>
 
-   <ng-container *ngIf="filterme(item.Code+item.Name,filter1.value) && ((filter % 4 >= 2 && item.Status==3) || (filter % 2 >= 1 && item.Status==0) || (filter % 8 >= 4 && item.Status==4) || (filter % 16 >= 8 && item.Status==1)|| (filter % 32 >= 16 && item.Status==2))">
-
-<mat-expansion-panel >
-  <mat-expansion-panel-header>
-       <mat-panel-description class="nomargin middle inflex"><app-empphotoicon EmpID="{{bksvc.codetoid[item.Code]}}" name="{{item.Name}}"></app-empphotoicon> </mat-panel-description>
-     <mat-panel-description class="nomargin middle name inflex"> ({{item.Code}}) {{item.Name}}
- 
-    </mat-panel-description>
-    
-    <mat-panel-description class="nomargin right middle inflex" ngClass="{{item.StatusStr}}">
-   <span class="small material-icons">infofull</span><span class="m4">{{item.StatusStr}}</span>
-    </mat-panel-description>
-     </mat-expansion-panel-header>
-
-     <mat-panel-description class='pp' *ngIf="item.LastPunch>'' || item.DailyOvertime>'' || item.WeeklyOvertime>'' || item.Department>'' || item.Job>''"> 
-     <mat-panel-description *ngIf="item.LastPunch>''">Last Punch: {{item.LastPunch}}</mat-panel-description> 
-
-     <mat-panel-description *ngIf="item.DailyOvertime>''">Daily Overtime:&nbsp;<span class="mat-primary-color">{{item.DailyOvertime}}</span></mat-panel-description>
-
-     <mat-panel-description *ngIf="item.WeeklyOvertime>''">Weekly Overtime:&nbsp;<span class="mat-primary-color">{{item.WeeklyOvertime}}</span></mat-panel-description>
-
-     <mat-panel-description *ngIf="item.Department>''">Department:&nbsp;<span class="mat-primary-color">{{item.Department}}</span></mat-panel-description>
-
-     <mat-panel-description *ngIf="item.Job>''">Job:&nbsp;<span class="mat-primary-color">{{item.Job}}</span></mat-panel-description></mat-panel-description>
-
-</mat-expansion-panel>
-
- 
-
- </ng-container>
-</ng-container>
-</mat-accordion> 
-</div>
-<br>
-
-
-
-
-
-
-
-
-<app-footer></app-footer>
- 
-    </mat-sidenav-content>
-  </mat-sidenav-container>
+        </ng-container>
+        	</mat-card>
+			</mat-accordion>
+		</div><br>
+	</mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,26 +1,99 @@
+<mat-sidenav-container appSlider>
+  <mat-sidenav #snav>
+    <app-mat-sidenav>
+    </app-mat-sidenav>
+  </mat-sidenav>
+  <mat-sidenav-content class="noscrollbar">
+    <mat-toolbar color="primary">
+      <button *ngIf="first==0" mat-icon-button (click)="snav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <button *ngIf="first>0" (click)=scrollto(first-(bksvc.AMGSettings.IsEmployee?0:1)) mat-icon-button>
+        <mat-icon>arrow_back_ios</mat-icon>
+      </button>
+      <h1 id='title' class="center100">Employee Punch</h1>
+    </mat-toolbar>
+    <div id="slider" (scroll)=scroll() class="slider noscrollbar">
+      <div id="slide0" *ngIf="!bksvc.AMGSettings.IsEmployee" class="slide snap">
+        <app-chooseemployee (ngModelChange)="myEmployee=$event;chooseemployee();
+"></app-chooseemployee>
+      </div>
+      <div *ngIf="bksvc.lastaction!=undefined" id="slide1" class="slide snap">
+        <ng-container *ngIf="myEmployee!==undefined">
+          <div class="stb mat-elevation-z4 topinfo">
+            <h2><b>Hello,</b><br><span>({{myEmployee.Code}}{{myEmployee.Badge}})
+                {{myEmployee.Name}}{{myEmployee.FullName}}</span></h2>
+            <app-empphotoicon [big]=true EmpID="{{myEmployee.Id}}"></app-empphotoicon>
+            <ng-container *ngIf="bksvc.lastaction.Message>''">
+              <h3>
+                <mat-icon class="mat-primary-color">chat</mat-icon> {{bksvc.lastaction.Message}}
+              </h3>
+            </ng-container>
 
-  <mat-sidenav-container class="example-sidenav-container">
-    <mat-sidenav #snav> 
-<app-mat-sidenav></app-mat-sidenav>
-    </mat-sidenav>
+            <div class="buttonpos">
+              <button mat-raised-button class="b1" (click)=punch(0,bksvc.lastaction.ExpectedAction.Value)
+                color="primary">{{bksvc.lastaction.ExpectedAction.StrValue}}</button>
+              <button mat-flat-button class="b2" (click)=turning()>
+                <mat-icon [ngClass]="{'turn':turn}" class="mat-primary-color">dropdown</mat-icon>
+              </button>
 
-     <mat-sidenav-content class="noscrollbar">
 
-  <mat-toolbar color="primary" class="example-toolbar">
- <button *ngIf="first" mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
-    <button *ngIf="!first" (click)=scrollto(0) mat-icon-button><mat-icon>arrow_back_ios</mat-icon></button>
-    <h1 class="example-app-name">Employee Punch</h1>
-  </mat-toolbar>
-  <div id="slider" (scroll)=scroll() class="slider noscrollbar" >
-<div id="slide0" class="slide snap">
-<app-chooseemployee (ngModelChange)="myEmployee=$event;scrollto(1)"></app-chooseemployee>
-</div>
-<div id="slide1" class="slide snap">
-  <ng-container *ngIf="myEmployee!==undefined">
- <div  class="stb mat-elevation-z2 topinfo"><span>  ({{myEmployee.Code}}) {{myEmployee.Name}}</span></div> </ng-container>
-</div>
-</div>
-<app-footer></app-footer>
- 
-    </mat-sidenav-content>
-  </mat-sidenav-container>
+            </div>
+            <ng-container *ngIf="bksvc.lastaction.PrevAction!=undefined">
+              <h3>Last Transaction Was {{bksvc.lastaction.PrevAction.Action.StrValue}}</h3>
+              <h3 *ngIf="bksvc.lastaction.PrevAction.DepJob!=null && bksvc.lastaction.PrevAction.Action.IntValue==0">
+                Department: {{bksvc.lastaction.PrevAction.DepJob.Name}}</h3>
+              <h3 *ngIf="bksvc.lastaction.PrevAction.DepJob!=null && bksvc.lastaction.PrevAction.Action.IntValue==1">
+                Job: {{bksvc.lastaction.PrevAction.DepJob.Name}}</h3>
+              <h4>Performed on: {{bksvc.lastaction.PrevAction.Date}} at
+                {{bksvc.lastaction.PrevAction.Time}}</h4>
+
+            </ng-container>
+          </div>
+        </ng-container>
+      </div>
+      <div id="slide2" *ngIf="bksvc.lastaction!=undefined" class="slide snap">
+        <div class="sm-round-corners  mat-elevation-z4 stb">
+          <mat-card class='nopadding'>
+            <mat-nav-list>
+              <ng-container *ngFor="let item of bksvc.lastaction.DevActions; let i = index">
+                <a mat-list-item (click)=punch(1,item.Value) class="click mat-primary-color-f mdc-list-item"
+                  tabindex="i">
+                  <mat-icon class="icons">{{item.StrValue}}</mat-icon>&nbsp;&nbsp; {{item.StrValue}}
+                  <mat-icon *ngIf="item.Value==bksvc.action" color="accent" class="right icons">done</mat-icon>
+
+                </a>
+                <mat-divider class="limited"></mat-divider>
+              </ng-container>
+            </mat-nav-list>
+          </mat-card>
+
+
+        </div><br>
+      </div>
+
+      <div id="slide3" *ngIf="bksvc.list!=undefined" class="slide snap">
+        <div class="sm-round-corners  mat-elevation-z4 stb">
+          <mat-card class='nopadding'>
+            <mat-nav-list>
+            <ng-container *ngFor="let item of bksvc.list; let i = index">
+              <a mat-list-item
+                class="click mat-primary-color-f mdc-list-item" (click)=punch(2,item.Code) tabindex="i">
+                ({{item.Code}}) {{item.Name}}
+                <mat-icon *ngIf="item.Code==JobDepartment" color="accent" class="right icons">done</mat-icon>
+                            </a>
+              <mat-divider class="limited"></mat-divider>
+            </ng-container>
+            </mat-nav-list>
+          </mat-card>
+        </div><br>
+      </div>
+      <div id="slide4"
+        *ngIf="bksvc.lastaction!=undefined && bksvc.action!=undefined && bksvc.lastaction.TakePictureOnPunch"
+        class="slide snap">
+        <app-camera (pictureTaken)=sendphoto($event)></app-camera>
+      </div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+

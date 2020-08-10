@@ -1,4 +1,4 @@
-app-complogo {display: inline-block;width:40%;filter:contrast(0.1) brightness(10);}
+app-complogo {display: inline-block;width:40%;filter:contrast(0.1) brightness(10);max-width:200px}
 .span {display: inline-block;color:white;vertical-align: middle;    padding-right: 15px;
     line-height: 1.4em;}
     .logo {float: right;
@@ -8,3 +8,7 @@ app-complogo {display: inline-block;width:40%;filter:contrast(0.1) brightness(10
 .ss {    margin-top: 70px;}
 
 .menu:last-child {margin-top:20px}
+
+.mat-list-base .mat-list-item {  color:#f4f6f8!important;   }
+
+

@@ -1,130 +1,88 @@
-
-  <mat-sidenav-container class="example-sidenav-container">
-
-
- <mat-sidenav #snav> 
-<app-mat-sidenav></app-mat-sidenav>
-    </mat-sidenav>
-
-    <mat-sidenav-content class="noscrollbar">
-
-  <mat-toolbar color="primary" class="example-toolbar">
-    <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
-    <h1 class="example-app-name">Home Dashboard</h1>
-  </mat-toolbar>
-
-
-
 <ng-container *ngIf="this.bksvc.AMGSettings.IsEmployee">
-<ng-container *ngIf="this.bksvc.AMGSettings.CanPunch">
-<mat-form-field  *ngIf="this.bksvc.AMGSettings.Comments" appearance="fill">
-    <mat-label>Comment</mat-label>
-    <input type=text matInput [(ngModel)]="Comment">
-  </mat-form-field>
-
-<div class="buttonpos">
-  <button mat-raised-button class="b1"  (click)="this.bksvc.transact(this.bksvc.AMGSettings.ExpectedAction.Value)" color="primary">{{this.bksvc.AMGSettings.ExpectedAction.StrValue}}</button>
-<button mat-flat-button class="b2"  (click)="this.bksvc.punchmenu()"><mat-icon class="mat-primary-color">dropdown</mat-icon></button>
-</div>
-
-       
+  <app-userpunch *ngIf="this.bksvc.AMGSettings.CanPunch"></app-userpunch>
 </ng-container>
+<mat-sidenav-container *ngIf="!this.bksvc.AMGSettings.IsEmployee" appSlider>
+  <mat-sidenav #snav>
+    <app-mat-sidenav></app-mat-sidenav>
+  </mat-sidenav>
+  <mat-sidenav-content class="noscrollbar">
 
+    <mat-toolbar color="primary" class="example-toolbar">
+      <button mat-icon-button (click)="snav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <h1 class="center100">Home Dashboard</h1>
+    </mat-toolbar>
 
+    <mat-progress-spinner *ngIf="bksvc.SummeryInfo.length==0" class="loading" mode="indeterminate">
+    </mat-progress-spinner>
+    <ng-container *ngIf="bksvc.SummeryInfo.length!=0">
+      <mat-expansion-panel [expanded]=true class="stb mat-elevation-z4">
+        <mat-expansion-panel-header>
+          <h3>{{Sections[1]}}</h3>
+        </mat-expansion-panel-header>
+        <mat-panel-description class="graph">
+          <ngx-charts-advanced-pie-chart (select)="onSelect($event)" [scheme]="colorScheme" [results]="single"
+            label="Total Employees">
+          </ngx-charts-advanced-pie-chart>
+        </mat-panel-description>
+      </mat-expansion-panel>
 
 
-<ng-container *ngIf="this.bksvc.AMGSettings.CanPunch==false">
-Cant Punch
-</ng-container>
+      <ng-container *ngIf="bksvc.LateLunch!=undefined && bksvc.LateLunch.length!=[]">
+        <mat-expansion-panel class="stb mat-elevation-z4">
+          <mat-expansion-panel-header>
+            <h3>{{Sections[3]}}</h3>
+          </mat-expansion-panel-header>
 
 
+          <ng-container *ngFor="let item of bksvc.LateLunch; let i = index">
 
 
+            <app-empphotoicon EmpID="{{bksvc.codetoid[item.Code]}}" name="{{item.Name}}"></app-empphotoicon>
+            <mat-card-subtitle class="name">
+              <h3>({{item.Code}})
+                {{item.Name}}</h3>
+              <div> Late: {{item.Late}}</div>
 
 
+            </mat-card-subtitle>
+            <button class="float" mat-stroked-button (click)="bksvc.sendlate(item.Id)" color="accent">
+              <mat-icon>send</mat-icon> Notify
+            </button>
 
+            <mat-divider class="limited"></mat-divider>
 
+          </ng-container>
+        </mat-expansion-panel>
+      </ng-container>
 
 
 
 
 
 
+      <mat-card class="stb  mat-elevation-z4 t3">
+        <mat-card-subtitle><a class="mat-primary-color settings" routerLink='/latecomers'>{{Sections[0]}}:
 
+            {{bksvc.SummeryInfo[0].Count}}</a>
+        </mat-card-subtitle>
+      </mat-card>
+      <mat-card class="stb  mat-elevation-z4 t3">
+        <mat-card-subtitle><a class="mat-primary-color settings" routerLink='/timeoffuser' [queryParams]="{type:2}">{{Sections[2]}}:
+            {{bksvc.SummeryInfo[4].Count}}</a>
+        </mat-card-subtitle>
 
-</ng-container>
+      </mat-card>
 
+      <bR>
+      <button *ngIf="this.bksvc.AMGSettings.CanPunchForEmployees" class="center round-corners punch" mat-flat-button
+        (click)=" router.navigate(['/userpunch'])" color="primary">Punch For Employee</button>
 
 
+    </ng-container>
 
 
+  </mat-sidenav-content>
+</mat-sidenav-container>
 
-
-<ng-container *ngIf="this.bksvc.AMGSettings.IsEmployee==false">
- <mat-progress-spinner style="margin: 30vh auto" *ngIf="bksvc.SummeryInfo.length==0" mode="indeterminate"></mat-progress-spinner>
-<ng-container *ngIf="bksvc.SummeryInfo.length!=0">
-<mat-card class="stb"  ><mat-card-subtitle >{{Sections[1]}}
-</mat-card-subtitle> 
-<mat-card-actions class="graph">
-   <ngx-charts-advanced-pie-chart
-  (select)="onSelect($event)"
-  [gradient]="gradient"
-  [scheme]="colorScheme"
-  [results]="single"
-  label="Total Employees"
->
-</ngx-charts-advanced-pie-chart>
-</mat-card-actions> 
-
-
-</mat-card>
-
-
-<mat-card class="stb t3"  ><mat-card-subtitle ><a class="mat-primary-color settings" routerLink='/latecomers'>{{Sections[0]}}:
-
- {{bksvc.SummeryInfo[0].Count}}</a>
-</mat-card-subtitle>  
-
-</mat-card>
-
-<mat-card class="stb t3"  ><mat-card-subtitle ><a  class="mat-primary-color settings" routerLink='/timeoffuser2'>{{Sections[2]}}:
- {{bksvc.SummeryInfo[4].Count}}</a>
-</mat-card-subtitle> 
-
-</mat-card>
-
-<bR>
-<button class="center round-corners punch" mat-flat-button (click)=" router.navigate(['/userpunch'])" color="primary">Punch For Employee</button>
-
-
-</ng-container></ng-container>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<app-footer></app-footer>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    </mat-sidenav-content>
-  </mat-sidenav-container>

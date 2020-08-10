@@ -1,2 +1,6 @@
-mat-chip {margin: 0 -15px 15px!important;
+mat-chip {margin: 10px -15px 0px!important;
     justify-content: center; width: 130px;justify-content: center;}
+  
+z {
+    margin: 10px 0 -13px 0!important;
+}

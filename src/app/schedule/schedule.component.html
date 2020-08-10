@@ -1,121 +1,118 @@
-
-  <mat-sidenav-container class="example-sidenav-container">
-    <mat-sidenav #snav> 
-<app-mat-sidenav></app-mat-sidenav>
-    </mat-sidenav>
-    <mat-sidenav-content class="noscrollbar">
-
-  <mat-toolbar color="primary" class="example-toolbar">
-    <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
-    <h1 class="example-app-name">Schedule</h1>
-  </mat-toolbar>
- 
-
-  <app-datechooser buttons=[0,1] [(datemode)]="viewmode" (thdateChange)=godate($event) [(thdate)]="mydate">
- <mat-progress-spinner style="margin: 30vh auto" *ngIf="bksvc.AdvancedScheduling==undefined"> mode="indeterminate"></mat-progress-spinner>
-
-<ng-container *ngIf="bksvc.AdvancedScheduling!=undefined">
-   <div *ngIf="bksvc.AdvancedScheduling.Schedules.length==0" class="norecord">No Schedule</div> 
-<mat-card  class="stb" *ngFor="let item of bksvc.AdvancedScheduling.Schedules; let i = index">
+<mat-sidenav-container appSlider>
+	<mat-sidenav #snav>
+		<app-mat-sidenav></app-mat-sidenav>
+	</mat-sidenav>
+	<mat-sidenav-content class="noscrollbar">
+		<mat-toolbar color="primary"><button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+			<h1 class="center100">Schedule</h1>
+		</mat-toolbar>
+		<app-datechooser [buttons]=set[bksvc.schedulemode] [(datemode)]="viewmode" (thdateChange)=godate($event) [(thdate)]="mydate">
+			<mat-progress-spinner *ngIf="bksvc.AdvancedScheduling==undefined" class="loading" mode="indeterminate">
+			</mat-progress-spinner>
+			<ng-container *ngIf="bksvc.AdvancedScheduling!=undefined">
+  <ng-container *ngIf="bksvc.schedulemode==1">
 
 
+	<ng-container *ngIf='bksvc.AdvancedScheduling!=undefined && bksvc.AdvancedScheduling.Coworkers!=undefined && bksvc.AdvancedScheduling.Coworkers.length>0'>
+						<mat-card class="stb  mat-elevation-z4" *ngFor="let item of bksvc.AdvancedScheduling.Coworkers; let i = index">
+							<app-empphotoicon EmpID="{{item.EmployeeId}}" name="{{item.Name}} {{item.LastName}}">
+							</app-empphotoicon>
+							<mat-card-subtitle class="name">
+								<h3 class="mat-primary-color">{{item.Name}} {{item.LastName}}</h3>
+								<span class="t3" *ngIf='item.DepName>""'>Department: {{item.DepName}}</span><span class="t3" *ngIf='item.DivisionName>""'>Division: {{item.DivisionName}}</span><span class="t3" *ngIf='item.JobName>""'>Job: {{item.JobName}}</span><span class="t3" *ngIf='item.Shift>""'>Shift: {{item.Shift}}</span>
 
-
-
-
-
-
-<mat-card-subtitle class=date>
-   <mat-progress-spinner style="margin:-5px 2px -25px" *ngIf="bksvc.cancel[item.Id]==1" mode="indeterminate"></mat-progress-spinner>
- <span *ngIf="bksvc.cancel[item.Id]==undefined"> {{bksvc.stringtodate(item.Date)}}
-   
-<div class=right>
-<button (click)=this.bksvc.DropOpenShift(item.Id) class="round-corners"  mat-stroked-button color="warn" *ngIf="item.CanDrop"> <mat-icon>close</mat-icon> Drop</button>
-
-<button class="round-corners"  mat-flat-button color="accent" *ngIf="item.CanSwap"> <mat-icon>switch</mat-icon> Swap</button>
-
-<button (click)=this.bksvc.PickupOpenShift(item.Id) class="round-corners"  mat-stroked-button color="primary" *ngIf="item.CanPickup"> <mat-icon>done</mat-icon> Pickup</button>
-</div>
-
-  </span>
-   </mat-card-subtitle>
-   <div class="vertical"></div>
-<mat-card-title class=title>
-
-
-
-
-<ng-container *ngIf="item.Shift==''">
-<mat-card-content class="t3 h5">You have no shift assigned</mat-card-content>
-</ng-container>
-
-<ng-container *ngIf="item.Shift>''">
-<mat-card-content class="t3"><h4 class="mat-primary-color">My Shift:</h4> {{item.Shift}}
-</mat-card-content>
-  <mat-divider class="limited"></mat-divider>
-</ng-container>
-
-
-<ng-container *ngIf="item.DepName>''">
-<mat-card-content class="t3"><h4 class="mat-primary-color">Department:</h4> {{item.DepName}}</mat-card-content>
-  <mat-divider class="limited"></mat-divider>
-</ng-container>
-
-<ng-container *ngIf="item.DivisionName>''">
-<mat-card-content class="t3"><h4 class="mat-primary-color">Division:</h4> {{item.DivisionName}}</mat-card-content>
-  <mat-divider class="limited"></mat-divider>
-</ng-container>
-
-<ng-container *ngIf="item.GroupName>''">
-<mat-card-content class="t3"><h4 class="mat-primary-color">Group:</h4> {{item.GroupName}}</mat-card-content>
-  <mat-divider class="limited"></mat-divider>
-</ng-container>
-
-<ng-container *ngIf="item.JobName>''">
-<mat-card-content class="t3"><h4 class="mat-primary-color">Job:</h4> {{item.JobName}}</mat-card-content>
-  <mat-divider class="limited"></mat-divider>
-</ng-container>
-
-
-<ng-container *ngIf="item.SkillName>''">
-<mat-card-content class="t3"><h4 class="mat-primary-color">Skill:</h4> {{item.SkillName}}</mat-card-content>
-</ng-container>
-</mat-card-title>
-</mat-card>
-
-
-<ng-container *ngIf="viewmode==0">
-
-
-
-
-   <mat-expansion-panel [expanded]="true" class="stb" *ngIf='bksvc.AdvancedScheduling!=undefined && bksvc.AdvancedScheduling.Coworkers.length>0'>
-      <mat-expansion-panel-header>
-      <mat-panel-title><h2>Coworkers</h2></mat-panel-title>
-       </mat-expansion-panel-header>
-  <ng-container *ngFor="let item of bksvc.AdvancedScheduling.Coworkers; let i = index">
-
-   <app-empphotoicon EmpID="{{item.EmployeeId}}" name="{{item.Name}} {{item.LastName}}"></app-empphotoicon>
-  <mat-card-subtitle class="name">  
-   
-  <h3 class="mat-primary-color">{{item.Name}} {{item.LastName}}</h3>
-  <span class="t3" *ngIf='item.DepName>""'>Department: {{item.DepName}} </span>
- 
-   <span class="t3" *ngIf='item.DivisionName>""'>Division: {{item.DivisionName}} </span>
-   <span class="t3" *ngIf='item.JobName>""'>Job: {{item.JobName}} </span>
-   <span class="t3" *ngIf='item.Shift>""'>Shift: {{item.Shift}} </span> 
-
-  </mat-card-subtitle>
-  <mat-divider class="limited"></mat-divider>
-</ng-container>
- </mat-expansion-panel>
+                <button class="round-corners rightswap" mat-flat-button color="accent" (click)="swapshift(item.OpenShiftId)" *ngIf="item.CanSwap"><mat-icon>switch</mat-icon>Swap</button>
+							</mat-card-subtitle>
+						</mat-card>
+					</ng-container>
 
 </ng-container>
-</ng-container>
 
-  </app-datechooser>
 
-<app-footer></app-footer>
- 
-    </mat-sidenav-content>
-  </mat-sidenav-container>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <ng-container *ngIf="bksvc.schedulemode==0">
+				<div *ngIf=" bksvc.AdvancedScheduling.Schedules.length==0" class="norecord">No Schedule</div>
+				<mat-card class="stb  mat-elevation-z4" *ngFor="let item of bksvc.AdvancedScheduling.Schedules; let i = index">
+					<mat-card-subtitle class=date>
+						<mat-progress-spinner style="margin:-5px 2px -25px" *ngIf="bksvc.cancel[item.Id]==1"
+							mode="indeterminate"></mat-progress-spinner>
+						<span *ngIf="bksvc.cancel[item.Id]==undefined">{{bksvc.stringtodate(item.Date)}}<div class=right><button (click)=this.bksvc.DropOpenShift(item.Id) class="round-corners" mat-stroked-button color="warn" *ngIf="item.CanDrop"><mat-icon>close</mat-icon>Drop</button><button class="round-corners" mat-flat-button color="accent" (click)="bksvc.swapshift(item.Id);viewmode=0;godate()" *ngIf="item.CanSwap"><mat-icon>switch</mat-icon>Swap</button><button (click)="bksvc.OpenShiftDate=bksvc.stringtodate(item.Date,1);bksvc.router.navigate(['/openshift'])" class="round-corners" mat-stroked-button color="primary" *ngIf="item.CanPickup"><mat-icon>done</mat-icon>Pickup</button></div></span>
+					</mat-card-subtitle>
+					<div class="vertical"></div>
+					<mat-card-title class=title>
+						<ng-container *ngIf="item.Shift==''">
+							<mat-card-content class="t3 h5">{{bksvc.tm.o1}}</mat-card-content>
+						</ng-container>
+						<ng-container *ngIf="item.Shift>''">
+							<mat-card-content class="t3">
+								<h4 class="mat-primary-color">My Shift:</h4>{{item.Shift}}
+							</mat-card-content>
+							<mat-divider class="limited"></mat-divider>
+						</ng-container>
+						<ng-container *ngIf="item.DepName>''">
+							<mat-card-content class="t3">
+								<h4 class="mat-primary-color">Department:</h4>{{item.DepName}}
+							</mat-card-content>
+							<mat-divider class="limited"></mat-divider>
+						</ng-container>
+						<ng-container *ngIf="item.DivisionName>''">
+							<mat-card-content class="t3">
+								<h4 class="mat-primary-color">Division:</h4>{{item.DivisionName}}
+							</mat-card-content>
+							<mat-divider class="limited"></mat-divider>
+						</ng-container>
+						<ng-container *ngIf="item.GroupName>''">
+							<mat-card-content class="t3">
+								<h4 class="mat-primary-color">Group:</h4>{{item.GroupName}}
+							</mat-card-content>
+							<mat-divider class="limited"></mat-divider>
+						</ng-container>
+						<ng-container *ngIf="item.JobName>''">
+							<mat-card-content class="t3">
+								<h4 class="mat-primary-color">Job:</h4>{{item.JobName}}
+							</mat-card-content>
+							<mat-divider class="limited"></mat-divider>
+						</ng-container>
+						<ng-container *ngIf="item.SkillName>''">
+							<mat-card-content class="t3">
+								<h4 class="mat-primary-color">Skill:</h4>{{item.SkillName}}
+							</mat-card-content>
+						</ng-container>
+					</mat-card-title>
+				</mat-card>
+				<ng-container *ngIf="viewmode==0">
+					<mat-expansion-panel [expanded]="true" class="stb mat-elevation-z4"
+						*ngIf='bksvc.AdvancedScheduling!=undefined && bksvc.AdvancedScheduling.Coworkers!=undefined && bksvc.AdvancedScheduling.Coworkers.length>0'>
+						<mat-expansion-panel-header>
+							<mat-panel-title>
+								<h2>Coworkers</h2>
+							</mat-panel-title>
+						</mat-expansion-panel-header>
+						<ng-container *ngFor="let item of bksvc.AdvancedScheduling.Coworkers; let i = index">
+							<app-empphotoicon EmpID="{{item.EmployeeId}}" name="{{item.Name}} {{item.LastName}}">
+							</app-empphotoicon>
+							<mat-card-subtitle class="name">
+								<h3 class="mat-primary-color">{{item.Name}} {{item.LastName}}</h3>
+								<span class="t3" *ngIf='item.DepName>""'>Department: {{item.DepName}}</span><span class="t3" *ngIf='item.DivisionName>""'>Division: {{item.DivisionName}}</span><span class="t3" *ngIf='item.JobName>""'>Job: {{item.JobName}}</span><span class="t3" *ngIf='item.Shift>""'>Shift: {{item.Shift}}</span>
+							</mat-card-subtitle>
+							<mat-divider class="limited"></mat-divider>
+						</ng-container>
+					</mat-expansion-panel>
+				</ng-container>
+        	</ng-container>
+			</ng-container>
+		</app-datechooser>
+	</mat-sidenav-content>
+</mat-sidenav-container>

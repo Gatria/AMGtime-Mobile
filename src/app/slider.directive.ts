@@ -6,10 +6,13 @@ import {BackendService} from './backend.service'
 })
 export class SliderDirective {
 
-  constructor(private bksvc:BackendService) { }
+  constructor(public bksvc:BackendService) { }
 
 
-
+@HostListener('contextmenu', ['$event'])
+onRightClick(event) {
+  event.preventDefault();
+}
 
   @HostListener('touchstart') touchstart() {
 this.bksvc.touch=true

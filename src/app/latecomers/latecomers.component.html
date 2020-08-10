@@ -1,89 +1,56 @@
+<mat-sidenav-container appSlider>
+	<mat-sidenav #snav>
+		<app-mat-sidenav></app-mat-sidenav>
+	</mat-sidenav>
+	<mat-sidenav-content id="main" (scroll)=scroll() class="noscrollbar">
+		<mat-toolbar color="primary"><button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+			<h1 class="center100">Late Comers</h1>
+		</mat-toolbar>
+		<app-datechooser [pastonly]=true (thdateChange)=godate($event) [(thdate)]="mydate">
+			<mat-progress-spinner *ngIf="bksvc.LateComers==undefined" class="loading" mode="indeterminate">
+			</mat-progress-spinner>
+			<ng-container *ngIf="bksvc.LateComers!=undefined">
+				<div *ngIf="bksvc.LateComers.length==0" class="norecord">{{bksvc.tm.l1}}</div>
+				<div *ngIf="bksvc.LateComers.length>0" class="sm-round-corners mat-elevation-z16 stb">
+					<mat-card>
+						<mat-form-field class="block" appearance="outline">
+							<mat-label>{{bksvc.tm.f2}}</mat-label><input type="text" #filter1 matInput placeholder="">
+							<mat-icon class="icon mat-primary-color" matSuffix>search</mat-icon>
+						</mat-form-field>
+						<ng-container *ngFor="let item of bksvc.LateComers; let i = index">
+							<ng-container *ngIf="filterme(item.Code+item.Name,filter1.value)">
+								<mat-card-content class="nomargin middle inflex">
+									<app-empphotoicon EmpID="{{bksvc.codetoid[item.Code]}}" name="{{item.Name}}">
+									</app-empphotoicon>
+								</mat-card-content>
+								<mat-card-subtitle class="nomargin middle name inflex">({{item.Code}}) {{item.Name}}
+								</mat-card-subtitle>
+								<mat-card-content>
+									<table class="dd">
+										<ng-container *ngIf="i==0">
+											<tr [ngClass]="{'topth mat-elevation-z8':vpos>315,'animate':true}"
+												id="topth">
+												<th>
+												<th>Scheduled</th>
+												<th>Actual</th>
+												<th>Differance</th>
+											</tr>
+										</ng-container>
+										<tr>
+											<th></th>
+											<td>{{item.InScheduled}}</td>
+											<td>{{item.InActual}}</td>
+											<td>{{item.InDifference}}</td>
+										</tr>
+									</table>
+								</mat-card-content>
+								<mat-divider class="limited"></mat-divider>
+							</ng-container>
+						</ng-container>
+					</mat-card>
+				</div>
+			</ng-container>
+		</app-datechooser>
+	</mat-sidenav-content>
+</mat-sidenav-container>
 
-  <mat-sidenav-container class="example-sidenav-container">
-    <mat-sidenav #snav> 
-<app-mat-sidenav></app-mat-sidenav>
-    </mat-sidenav>
-
-    <mat-sidenav-content id="main" (scroll)=scroll() class="noscrollbar">
-
-  <mat-toolbar color="primary" class="example-toolbar">
-    <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
-    <h1 class="example-app-name">Late Comers</h1>
-  </mat-toolbar>
-<app-datechooser  [pastonly]=true (thdateChange)=godate($event) [(thdate)]="mydate">
- <mat-progress-spinner style="margin: 30vh auto" *ngIf="bksvc.LateComers==undefined" mode="indeterminate"></mat-progress-spinner>
-
-
-
-
-<ng-container *ngIf="bksvc.LateComers!=undefined">
-<div *ngIf="bksvc.LateComers.length==0" class="norecord">No Late Comers</div>
-
-
-
-
-
-<div class="sm-round-corners mat-elevation-z16 stb" *ngIf="bksvc.LateComers.length>0">
-
-
-<mat-card>
- <mat-form-field class="block" appearance="outline">
-    <mat-label>Filter by Code or Name</mat-label>
-    <input type="text" #filter1 matInput placeholder="">
-    <mat-icon class="icon mat-primary-color" matSuffix>search</mat-icon>
-  </mat-form-field>
-      
-
-
-   
-<ng-container  *ngFor="let item of bksvc.LateComers; let i = index">
-
-   <ng-container *ngIf="filterme(item.Code+item.Name,filter1.value)">
-
-       <mat-card-content class="nomargin middle inflex"><app-empphotoicon EmpID="{{bksvc.codetoid[item.Code]}}" name="{{item.Name}}"></app-empphotoicon> </mat-card-content>
-     <mat-card-subtitle class="nomargin middle name inflex"> ({{item.Code}}) {{item.Name}}</mat-card-subtitle>
-  <mat-card-content><table class="dd">
-      <ng-container *ngIf="i==0"> 
-       
-       <tr [ngClass]="{'topth mat-elevation-z8':vpos>315,'animate':true}" id="topth"><th ><th>Scheduled</th><th>Actual</th><th>Differance</th></tr>
-</ng-container>
-     <tr><th></th><td>{{item.InScheduled}}</td><td>{{item.InActual}}</td><td>{{item.InDifference}}
-       </td></tr>
-      
-     </table></mat-card-content>
-      <mat-divider class="limited"></mat-divider>
- 
-
-
- </ng-container>
-</ng-container>
- </mat-card></div>
-</ng-container>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</app-datechooser>
-<app-footer></app-footer>
- 
-    </mat-sidenav-content>
-  </mat-sidenav-container>

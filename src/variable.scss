@@ -2,8 +2,8 @@
 @import '~@angular/material/theming';
 $custom-typography: mat-typography-config(
   $font-family: 'Raleway, sans-serif',
-  $headline: mat-typography-level(32px, 48px, 700),
-  $body-1: mat-typography-level(16px, 24px, 500)
+  $headline: mat-typography-level(24px, 48px, 700),
+  $body-1: mat-typography-level(14px, 24px, 500)
 );
 
 
@@ -41,8 +41,49 @@ $my-green:(
 
 
 $my-app-primary: mat-palette($my-blue, 900,800,700);
+
+
 $my-app-accent:  mat-palette($my-green, 600, 700, 800);
 $my-app-warn:    mat-palette($mat-red,800,900,1000);
-$my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
+$my-app-theme-light: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
+$my-app-theme-dark:   mat-dark-theme($my-app-primary, $my-app-accent, $my-app-warn);
 
-@include angular-material-theme($my-app-theme);
+
+@media (prefers-color-scheme: dark) {
+.topinfo {color:mat-color($my-app-primary,700)}
+.mat-toolbar,h2 { color: mat-color($my-app-primary,700)!important;}
+  body {background-color: #222222fa;}
+    table.mat-table,
+.mat-stroked-button {
+  background: #111111a3 !important;
+}
+  .mat-accent-bg {background-color:mat-color($my-app-accent)!important}
+  .mat-warn-bg {background-color:mat-color($my-app-warn)!important}
+  .mat-accent-color {color:mat-color($my-app-accent)}
+  .mat-warn-color {color:mat-color($my-app-warn,600)!important}
+  .mat-grey-color {color:#999}
+  .mat-primary-color-d {color:mat-color($my-app-primary,700)!important}
+  .mat-primary-color {color:mat-color($my-app-primary,700);text-decoration: none}
+  .mat-primary-color-f {color:mat-color($my-app-primary,600)!important;text-decoration: none;font-size:18px!important}
+    @include angular-material-theme($my-app-theme-dark);
+  }
+
+  @media (prefers-color-scheme: light) {
+  body {background-color: #e5f0fa;}
+  table.mat-table,
+.mat-stroked-button {
+  background: #fff !important;
+}
+.topinfo {color:mat-color($my-app-primary)}
+.mat-toolbar,h2 { color: mat-color($my-app-primary)!important;}
+
+  .mat-accent-bg {background-color:mat-color($my-app-accent)!important}
+  .mat-warn-bg {background-color:mat-color($my-app-warn)!important}
+  .mat-accent-color {color:mat-color($my-app-accent)}
+  .mat-warn-color {color:mat-color($my-app-warn)!important}
+  .mat-grey-color {color:#999}
+  .mat-primary-color-d {color:mat-color($my-app-primary)!important}
+  .mat-primary-color {color:mat-color($my-app-primary);text-decoration: none}
+  .mat-primary-color-f {color:mat-color($my-app-primary,900)!important;text-decoration: none;font-size:18px!important}
+  @include angular-material-theme($my-app-theme-light);
+  }

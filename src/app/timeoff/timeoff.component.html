@@ -1,139 +1,112 @@
-
-  <mat-sidenav-container class="example-sidenav-container">
- <mat-sidenav #snav> 
-<app-mat-sidenav></app-mat-sidenav>
-    </mat-sidenav>
-
-    <mat-sidenav-content class="noscrollbar">
-
-  <mat-toolbar color="primary" class="example-toolbar">
- <button *ngIf="first" mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
-    <button *ngIf="!first" (click)=scrollto(0) mat-icon-button><mat-icon>arrow_back_ios</mat-icon></button>
-    <h1 class="example-app-name">Time Off Requests</h1>
-  </mat-toolbar>
-
-
-  
-<div id="slider" appSlider (scroll)=scroll() class="slider noscrollbar" >
-<div id="slide0" class="slide snap">
- 
-<mat-chip-list class="i" multiple="true">
-  <mat-chip id="all" selected (click)="chips(31)" color="accent" >All</mat-chip>
-  <mat-chip [selected]="filter % 2 >= 1" (click)="chips(1)">Approved</mat-chip>
-  <mat-chip [selected]="filter % 4 >= 2"  (click)="chips(2)">Pending</mat-chip>
-    <mat-chip [selected]="filter % 8 >= 4"  (click)="chips(4)">Denied</mat-chip>
-</mat-chip-list>
-
- <mat-progress-spinner style="margin: 30vh auto" *ngIf="bksvc.timeofrequests==undefined" mode="indeterminate"></mat-progress-spinner>
-
-<div *ngIf="bksvc.timeofrequests==null" class="norecord">No Request Found</div>
-
-<ng-container *ngFor="let item of bksvc.timeofrequests; let i = index" >
-<mat-card *ngIf="(filter % 4 >= 2 && item.Status==0) || (filter % 2 >= 1 && item.Status==1) || (filter % 8 >= 4 && item.Status==2) " class="stb mat-elevation-z4">
-<mat-card-subtitle class=date>
-   <mat-progress-spinner style="margin:-5px 2px -25px" *ngIf="bksvc.cancel[item.Id]==1" mode="indeterminate"></mat-progress-spinner>
- <span *ngIf="bksvc.cancel[item.Id]==undefined"> {{item.Date}}
-  <button  class="mat-primary-color" *ngIf="item.Comment" mat-icon-button (click)="showDiv = !showDiv"><mat-icon>info</mat-icon></button>
-  </span>
-   </mat-card-subtitle>
-   <div class="vertical"></div>
-<mat-card-title class=title>{{item.Category}} 
- <button *ngIf="item.Status!=2" mat-stroked-button color="warn" class="round-corners button" (click)="bksvc.canceltimeoff(item.Id)"><span class="material-icons">
-close
-</span>Cancel</button>
-<mat-card-content ngClass="{{item.StatusStr}}">{{item.StatusStr}}</mat-card-content>
-
-<mat-card-content *ngIf="item.Duration>''" class="t3">Duration: {{item.Duration}}</mat-card-content>
-<mat-card-content *ngIf="item.HoursLeft>''" class="t3">Left: {{item.HoursLeft}}</mat-card-content>
-<ng-container *ngIf="item.Comment">
-
-<mat-card-subtitle class="comment" *ngIf="showDiv">{{item.Comment}} </mat-card-subtitle>
-</ng-container>
-
-</mat-card-title>
-
-
-
-
-</mat-card>
-</ng-container>
-
-<button *ngIf="first" (click)="scrollto(1)" color="primary" mat-fab class="float"><mat-icon>plus</mat-icon></button>
-</div>
-<div id="slide1" class="slide snap">
-
-<mat-progress-spinner style="margin: auto;margin-top: 30vh" *ngIf="bksvc.loading" mode="indeterminate"></mat-progress-spinner>
-
-<ng-container *ngIf="!bksvc.loading">
-
-
-  <mat-card class="mat-elevation-z8 stb"> 
-  <mat-form-field class="block" appearance="outline">
-  <mat-label>Choose Category</mat-label>
-  <mat-select [(ngModel)]="bksvc.timeoff.category" (ngModelChange)="change()">
-    <ng-container *ngIf="bksvc.Categories!=null">
-    <mat-option *ngFor="let item of bksvc.Categories.Categories" [value]="item.Id">
-      {{item.Display}} <span style="float:right"><span class="mat-grey-color">Left:</span> {{item.Left}}</span>
-    </mat-option>
-    </ng-container>
-  </mat-select>
-</mat-form-field>
- 
-<mat-radio-group  (ngModelChange)="change()"  [(ngModel)]="bksvc.timeoff.dtype" aria-label="Select an option" class="block mat-form-field-wrapper">
-  <mat-radio-button value="1" class="t3">Full Day</mat-radio-button>
-  <mat-radio-button value="2" class="t3">Partial Day</mat-radio-button>
-</mat-radio-group>
-
-<mat-form-field appearance="outline" class="t1">
-   <mat-label>Star Days</mat-label>
-  <input (ngModelChange)="change()" required matInput [(ngModel)]="bksvc.timeoff.date" [matDatepicker]="myDatepicker">
-  <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
-  <mat-datepicker touchUi #myDatepicker></mat-datepicker>
-</mat-form-field>
-
- <mat-form-field appearance="outline" class="t2">
-    <mat-label>Number of work days</mat-label>
-    <input (ngModelChange)="change()" required matInput min=1 type=number [(ngModel)]="bksvc.timeoff.days" >
-  </mat-form-field>
-
- <ng-container *ngIf="bksvc.timeoff.dtype==2">
-   <mat-form-field appearance="outline" class="t1">
-    <mat-label>Start Times</mat-label>
-    <input (ngModelChange)="change()" required matInput type=time [(ngModel)]="bksvc.timeoff.time">
-  </mat-form-field>
-
-   <mat-form-field appearance="outline" class="t2">
-    <mat-label>Number of hours</mat-label>
-    <input (ngModelChange)="change()" required matInput type=number min=1 max=24 [(ngModel)]="bksvc.timeoff.hours">
-  </mat-form-field>
-   </ng-container>
-   <mat-form-field appearance="outline" class="block">
-    <mat-label>Comments</mat-label>
-    <textarea matInput  cdkTextareaAutosize
-            #autosize="cdkTextareaAutosize"
-            cdkAutosizeMinRows="1"
-            [(ngModel)]="bksvc.timeoff.comment"
-            cdkAutosizeMaxRows="5"></textarea>
-    
-  </mat-form-field>
-
-
-<ng-container *ngIf="bksvc.timeoff.AvailableWorkDays!=undefined">
-  <mat-card-subtitle class="st mat-primary-color"><h4>Preview of Requested Dates and Hours</h4></mat-card-subtitle>
- <mat-card-content id="div">
-  <ng-container *ngFor="let item of bksvc.timeoff.AvailableWorkDays.Schedules">
-  <span class="t3"> {{item.Date}}</span><span class="t3">{{item.DurationStr}}</span>
-     <mat-divider class="limited"></mat-divider>
-</ng-container> 
-   <h3 class="t3 mat-primary-color">Total Hours:</h3><h3 class="t3 mat-primary-color">{{bksvc.timeoff.AvailableWorkDays.Total}}</h3>
-  </mat-card-content>
-  
-<button  *ngIf="bksvc.timeoff.AvailableWorkDays!=undefined && !first" (click)=bksvc.sendtimeoffrequest(this) color="accent" mat-fab class="float"><mat-icon>done</mat-icon></button>
-
-</ng-container>
-</mat-card>
-</ng-container>
-  </div></div>
- <app-footer></app-footer>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
+<mat-sidenav-container appSlider>
+	<mat-sidenav #snav>
+		<app-mat-sidenav></app-mat-sidenav>
+	</mat-sidenav>
+	<mat-sidenav-content class="noscrollbar">
+		<mat-toolbar color="primary">
+			<button *ngIf="first" mat-icon-button (click)="snav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <button *ngIf="!first" (click)=scrollto(0) mat-icon-button>
+        <mat-icon>arrow_back_ios</mat-icon>
+      </button>
+			<h1 class="center100">Time Off Requests</h1>
+		</mat-toolbar>
+		<div id="slider" (scroll)=scroll() class="slider noscrollbar">
+			<div id="slide0" class="slide snap">
+				<mat-chip-list class="i" multiple="true">
+					<mat-chip id="all" selected (click)="chips(31)" color="accent">All</mat-chip>
+					<mat-chip [selected]="filter % 2>= 1" (click)="chips(1)">Approved</mat-chip>
+					<mat-chip [selected]="filter % 4>= 2" (click)="chips(2)">Pending</mat-chip>
+					<mat-chip [selected]="filter % 8>= 4" (click)="chips(4)">Denied</mat-chip>
+				</mat-chip-list>
+				<mat-progress-spinner *ngIf="bksvc.timeofrequests==undefined" class="loading" mode="indeterminate">
+				</mat-progress-spinner>
+				<div *ngIf="bksvc.timeofrequests==null" class="norecord">No Request Found</div>
+				<ng-container *ngFor="let item of bksvc.timeofrequests; let i = index">
+					<mat-card
+						*ngIf="(filter % 4>= 2 && item.Status==0) || (filter % 2>= 1 && item.Status==1) || (filter % 8>= 4 && item.Status==2) "
+						class="stb mat-elevation-z4">
+						<mat-card-subtitle class=date>
+							<mat-progress-spinner style="margin:-5px 2px 0" *ngIf="bksvc.cancel[item.Id]==1"
+								mode="indeterminate"></mat-progress-spinner>
+							<span *ngIf="bksvc.cancel[item.Id]==undefined">{{item.Date}}
+                <button class="mat-primary-color-d" *ngIf="item.Comment" mat-icon-button (click)="showDiv[item.Id] = infocolapse(showDiv[item.Id])"><mat-icon>info</mat-icon></button></span>
+						</mat-card-subtitle>
+						<div class="vertical"></div>
+						<mat-card-title class=title>
+							{{item.Category}}<button [disabled]="bksvc.cancel[item.Id]==1" *ngIf="item.Status!=2" mat-stroked-button color="warn" class="round-corners button" (click)="bksvc.canceltimeoff(item.Id)"><span class="material-icons">close</span>Cancel</button>
+							<mat-card-content ngClass="{{item.StatusStr}}">{{item.StatusStr}}</mat-card-content>
+							<mat-card-content *ngIf="item.Duration>''" class="t3">Duration: {{item.Duration}}
+							</mat-card-content>
+							<mat-card-content *ngIf="item.HoursLeft>''" class="t3">Left: {{item.HoursLeft}}
+							</mat-card-content>
+							<ng-container *ngIf="item.Comment">
+								<mat-card-subtitle class="comment" *ngIf="showDiv[item.Id]">{{item.Comment}}</mat-card-subtitle>
+							</ng-container>
+						</mat-card-title>
+					</mat-card>
+				</ng-container>
+				<button *ngIf="first" (click)="scrollto(1)" color="primary" mat-fab class="float"><mat-icon>plus</mat-icon></button>
+			</div>
+			<div id="slide1" class="slide snap">
+				<mat-progress-spinner style="margin: auto;margin-top: 30vh" *ngIf="bksvc.loading" mode="indeterminate">
+				</mat-progress-spinner>
+				<ng-container *ngIf="!bksvc.loading">
+					<mat-card class="mat-elevation-z8 stb">
+						<mat-form-field class="block" appearance="outline">
+							<mat-label>Choose Category</mat-label>
+							<mat-select [(ngModel)]="bksvc.timeoff.category" (ngModelChange)="change()">
+								<ng-container *ngIf="bksvc.Categories!=null">
+									<mat-option *ngFor="let item of bksvc.Categories.Categories" [value]="item.Id">
+										{{item.Display}}<span style="float:right"><span class="mat-grey-color">&nbsp;Left:</span>{{item.Left}}</span>
+									</mat-option>
+								</ng-container>
+							</mat-select>
+						</mat-form-field>
+						<mat-radio-group (ngModelChange)="change()" [(ngModel)]="bksvc.timeoff.dtype"
+							aria-label="Select an option" class="block mat-form-field-wrapper">
+							<mat-radio-button value="1" class="t3">Full Day</mat-radio-button>
+							<mat-radio-button value="2" class="t3">Partial Day</mat-radio-button>
+						</mat-radio-group>
+						<mat-form-field appearance="outline" class="t1">
+							<mat-label>Start Days</mat-label><input (ngModelChange)="change()" required matInput [(ngModel)]="bksvc.timeoff.date" [matDatepicker]="myDatepicker">
+							<mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+							<mat-datepicker touchUi #myDatepicker></mat-datepicker>
+						</mat-form-field>
+						<mat-form-field appearance="outline" class="t2">
+							<mat-label>Number of work days</mat-label>
+							<input (ngModelChange)="change()" required matInput min=1 type=number [(ngModel)]="bksvc.timeoff.days"></mat-form-field>
+							<ng-container *ngIf="bksvc.timeoff.dtype==2">
+								<mat-form-field appearance="outline" class="t1">
+									<mat-label>Start Times</mat-label>
+									<input (ngModelChange)="change()" required matInput type=time [(ngModel)]="bksvc.timeoff.time"></mat-form-field>
+									<mat-form-field appearance="outline" class="t2">
+										<mat-label>Number of hours</mat-label>
+										<input (ngModelChange)="change()" required matInput type=number min=1 max=24 [(ngModel)]="bksvc.timeoff.hours"></mat-form-field>
+							</ng-container>
+							<mat-form-field appearance="outline" class="block">
+								<mat-label>Comments</mat-label>
+								<textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" [(ngModel)]="bksvc.timeoff.comment" cdkAutosizeMaxRows="5"></textarea>
+							</mat-form-field>
+							<ng-container *ngIf="bksvc.timeoff.AvailableWorkDays!=undefined">
+								<mat-card-subtitle class="st mat-primary-color">
+									<h3>Preview of Requested Dates and Hours</h3>
+								</mat-card-subtitle>
+								<mat-card-content id="div">
+									<ng-container *ngFor="let item of bksvc.timeoff.AvailableWorkDays.Schedules">
+										<span class="t3">{{item.Date}}</span><span class="t3">{{item.DurationStr}}</span>
+										<mat-divider class="limited"></mat-divider>
+									</ng-container>
+									<h3 class="t3 mat-primary-color">Total Hours:</h3>
+									<h3 class="t3 mat-primary-color">{{bksvc.timeoff.AvailableWorkDays.Total}}</h3>
+								</mat-card-content>
+								<button *ngIf="bksvc.timeoff.AvailableWorkDays!=undefined && !first" (click)=bksvc.sendtimeoffrequest(this) color="accent" mat-fab class="float"><mat-icon>done</mat-icon></button>
+							</ng-container>
+          </mat-card>
+          <br>
+				</ng-container>
+			</div>
+		</div>
+	</mat-sidenav-content>
+</mat-sidenav-container>

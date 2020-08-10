@@ -2,14 +2,20 @@
     max-width: 98%;
     position: relative!important;}
 mat-divider:last-of-type {display:none}
-.t3 {width:50%;display:inline-block}
+.t3 {width:50%;
+font-weight: 400;
+display:inline-block}
 
 @media only screen and (max-width: 600px) {
 .t3 {width: calc(100%)!important}
 
 }
 
-h4 {display:inline-block}
+h4 {display:inline-block;
+margin-right: 4px;
+    font-weight: 400;
+
+}
 .h5 {width:100%;text-align:center;display:inline-block}
 .name {
     display: inline-block;
@@ -25,12 +31,12 @@ h4 {display:inline-block}
     font-size: 31px;
 }
 
-.right {}
 .right button {margin: 9px 0 0 0;width:100px}
 .limit {width:200px}
 
-
-
+.buttongroup {    float: right;
+    margin: 20px 0 0 0;}
+.buttongroup button {margin: 4px 0 0 0;width:110px}
 
 
 
@@ -42,19 +48,19 @@ mat-card-subtitle.date { width: 105px;
        margin: 0 0 0 -10px;
     display: inline-block;
     }
-   
+
 .comment {
 margin: 10px 0 0 !important;
     font-style: italic;
-}    
+}
 .title {
      display: inline-block;
     padding-left: 1.8vw;
-    width: calc(100% - 107px - 5vw);
+    width: calc(100% - 124px - 2vw);
     vertical-align: top;
 }
 .button {float:right}
-.button .material-icons {    font-size: 17px;
+.button .material-icons {    font-size: 16px;
     margin: 0px 5px 2px -5px;
 }
 .t3 {display:inline-block;width:45%;margin-bottom: 0px}
@@ -106,3 +112,8 @@ mat-chip {width: 20%;
 
 .st {text-align:center;font-size: 17px;
     margin: 17px 0px;}
+
+.rightswap{right: 16px;
+    position: absolute;
+    top: 16px;
+}

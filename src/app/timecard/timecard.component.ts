@@ -8,72 +8,109 @@ import {BackendService} from '../backend.service'
 })
 
 export class TimecardComponent implements OnInit {
-displayedColumns: string[]=["Date","Hours","Reg","OTs","Unpaid","Amount"]; 
+displayedColumns: string[]=["Date","Hours","Reg","OTs","Unpaid","Amount"];
 
 
-constructor(private bksvc:BackendService) {}
+constructor(public bksvc:BackendService) {}
+lastpos = { y: -1000, tab: -1 };
 
-
-getperiod(p)
-{
-if (this.bksvc.timecard[p]==null) this.bksvc.sendcommand((f)=>{ 
-this.bksvc.timecard[p]=f;
-setTimeout(()=>{document.getElementById("slide"+p).classList.add("snap");this.onResize()},1000);
-} ,"GetEmployeeTimeCard",{id:this.bksvc.AMGSettings.Id,period:this.bksvc.AMGSettings.PayPeriodBackLimit-1-p});
-
-
+getperiod(p, m = () => {}) {
+  if (this.bksvc.timecard[p] == undefined) {
+    this.bksvc.sendcommand(
+      f => {
+        this.bksvc.timecard[p] = f;
+        setTimeout(m, 10);
+      },
+      "GetEmployeeTimeCard",
+      {
+        id: this.bksvc.AMGSettings.Id,
+        period: this.bksvc.AMGSettings.PayPeriodBackLimit-1-p
+      }
+    );
+  } else m();
 }
 
 
-gototab(a)
-{
-let swidth=document.querySelector("div.slider").parentElement.clientWidth;
-let cpos=document.querySelector("div.slider").scrollLeft;  
-let currentslide=Math.round((cpos+a*swidth)/swidth);
-
-document.getElementById("slide"+currentslide).classList.add("snap");  
-setTimeout(()=>{document.querySelector("div.slider").scrollLeft=cpos+a*swidth},10);
+gototab(a) {
+  const slider = document.getElementById("slider");
+  const cpos = slider.scrollLeft;
+  const swidth = Math.floor(slider.getBoundingClientRect().width);
+  const currentslide = Math.round((cpos + a * swidth) / swidth);
+  this.getperiod(
+    this.bksvc.AMGSettings.PayPeriodBackLimit - 1 - currentslide,
+    () => {
+      slider.scrollLeft = cpos + a * swidth;
+      slider.classList.remove("nosmooth");
+      this.bksvc.scroll();
+      setTimeout(() => {
+        this.bksvc.scroll();
+      }, 1500);
+    }
+  );
 }
+
+
+scroll1()
+{
+  const slider = document.getElementById("slider");
+  const left = slider.scrollLeft;
+  const width = slider.getBoundingClientRect().width;
+  var a = Math.round(left / width);
+  let selector = "#tbl" + a + ">tr";
+  if (document.getElementById("tbl" + a) != null) {
+    var pos =
+      document.querySelector("mat-sidenav-content").scrollTop -
+      document.getElementById("tbl" + a).offsetTop;
+    document.querySelectorAll(selector + ">th").forEach(e => {
+      var d = e as HTMLElement;
+      if (pos > 0) d.style.top = pos + "px";
+      else d.style.top = "0px";
+    });
+
+    if (pos < 0 && this.lastpos.y >= 0) {
+      const first = document.querySelector(selector + ">th:first-child");
+      const last = document.querySelector(selector + ">th:last-child");
+
+      if (first != null) first.classList.remove("sticked1");
+      if (last != null) last.classList.remove("sticked1");
+    } else if (pos > 0 && this.lastpos.y <= 0) {
+      const first = document.querySelector(selector + ">th:first-child");
+      const last = document.querySelector(selector + ">th:last-child");
+
+      if (first != null) first.classList.add("sticked1");
+      if (last != null) last.classList.add("sticked1");
+    }
+  }
+  this.lastpos.y = pos;
+}
+
+
 
 onResize() {
-var a=Math.round(document.querySelector("div.slider").scrollLeft/document.querySelector("div.slider").parentElement.clientWidth);
-if (a>0) { this.getperiod(a);this.getperiod(a-1);}
-let selector="#tbl"+a+">tr";
-
-if (document.getElementById("tbl"+a)!=null) {
-var pos=document.querySelector("mat-sidenav-content").scrollTop-document.getElementById("tbl"+a).offsetTop;
-
-  
- let f=document.querySelectorAll(selector+">th")
-  f.forEach((d) => { 
-  if (pos>0) d.style.top=  pos+"px"; else d.style.top= 0; 
-   });   
-if (pos<0) {
-
-
-  document.querySelector(selector+">th:first-child").classList.remove('sticked1');
-   document.querySelector(selector+">th:last-child").classList.remove('sticked1');
-} else {
-document.querySelector(selector+">th:first-child").classList.add('sticked1');
-document.querySelector(selector+">th:last-child").classList.add('sticked1');
-
+  this.lastpos.y = 0;
+  const slider = document.getElementById("slider");
+  const left = slider.scrollLeft;
+  const width = slider.getBoundingClientRect().width;
+  var a = Math.round(left / width);
+  if (a != this.lastpos.tab) {
+    this.getperiod(a);
+    this.getperiod(a-1);
+    this.scroll1();
+    setTimeout(() => {
+      this.bksvc.scroll();
+    }, 100);
+  } else this.lastpos.tab = a;
 }
 
-
-}
- this.bksvc.scroll()
-}
-
- 
 
 ngOnInit() {
+  this.bksvc.heightadjustemnt()
   this.bksvc.loading=false;this.bksvc.timecard=[];
 this.bksvc.timecard=new Array(this.bksvc.AMGSettings.PayPeriodBackLimit);
-document.getElementById("slider").scrollLeft=document.getElementById("slider").clientWidth;
-this.getperiod(this.bksvc.AMGSettings.PayPeriodBackLimit-1)
+this.gototab(this.bksvc.AMGSettings.PayPeriodBackLimit-1)
 }
 
 
 
-  
+
   }

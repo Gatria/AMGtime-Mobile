@@ -5,7 +5,7 @@ mat-chip {width: 14%;
     text-transform: uppercase;}
     .small {font-size:10px!important}
     .norecord {
-      
+
     text-align: center;
     width: 100%;margin-top:15px}
     .list {margin-top:-30px}
@@ -15,11 +15,23 @@ mat-chip {width: 14%;
     text-align: center;
 }
 
+.topth {     position: fixed;
+  width: calc(78vw - 14px);
+  right: 11px;
+  top: 0px;
+  background: white;
+  border-radius: 0 0px 10px 10px;
+  z-index: 1}
 
     @media screen and (orientation:landscape) {
        mat-chip {width: 15%;
     font-size:2.4vh;
     }
+.topth {
+    width: calc(78vw - 14px - 13vh);
+    right: calc(11px + 14vh);
+}
+
      }
 
 .nomargin {margin:0px!important}
@@ -43,17 +55,17 @@ mat-divider:last-of-type {display:none}
     color: #757575;}
 .dd td {text-align: center;width:25%}
 .dd th {color:mat-color($my-app-primary);font-size: 14px;font-weight: 300;padding-bottom:4px}
+@media (prefers-color-scheme: dark) {
+  .dd th {color:mat-color($my-app-primary,700);}
+}
+
+
 .zz {text-align:right}
 .icon {padding: 0px 6px 0px 0px;
     font-size: 31px;
 }
 .limit {width:200px}
-.topth {     position: fixed;
-    width: calc(78vw - 14px);
-    right: 11px;
-    top: 0px;
-    padding:5px;
-    background: white;
-    display: inherit;
-    border-radius: 0 0px 10px 10px;
-    z-index: 1}
+
+.floattitle {display:none}
+.punch:first-of-type mat-card-content table tr:first-of-type {display:contents}
+.punch:first-of-type mat-card-content table tr.topth:first-of-type {display:inherit}

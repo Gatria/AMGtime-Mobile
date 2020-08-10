@@ -1,5 +1,4 @@
-div.round-corners {min-width:300px;width:50vw;padding:4vw;text-align:center}
-div {background-color:#fff}
+mat-card.round-corners {min-width:300px;width:50vw;padding:4vw;text-align:center}
 .mat-form-field  {width:100%}
 mat-checkbox {float:left}
 a {float:right}
@@ -7,7 +6,7 @@ a {float:right}
 app-complogo {max-width:300px; display: block;width:40%;margin:0px auto 4vh auto}
 button.round-corners {width:70%;padding:1vw;font-size:4vw}
 @media screen and (orientation:landscape) {
- button.round-corners { padding:1vh;font-size:3vh;
+ button.round-corners { padding:1vh;font-size:4vh;
 
 }
 }
@@ -15,3 +14,22 @@ button.round-corners {width:70%;padding:1vw;font-size:4vw}
     font-size: 31px;
 }
 .settings {    position: absolute;    right: 4px;}
+
+.mat-toolbar {
+  background-color: #00000000!important;
+}
+
+
+.m1>button:hover{background-color:#e5f0fa !important;}
+.m1>button { padding: 0 6px 0 6px !important;
+    height: 45px;
+    display: block;
+    font-size:18px;
+    width: 100%;
+    cursor:pointer;
+    border: none;
+    text-align: left; }
+.m1 {border-radius:0px!important;
+margin:10px 0 0 0}
+.m1>button:focus
+{outline:none;}

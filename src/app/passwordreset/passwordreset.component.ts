@@ -1,17 +1,20 @@
-import { Component} from '@angular/core';
-import {BackendService} from '../backend.service'
+import { Component } from '@angular/core';
+import { BackendService } from '../backend.service';
 
 @Component({
   selector: 'app-passwordreset',
   templateUrl: './passwordreset.component.html',
- styleUrls: ['../login/login.component.css']
+  styleUrls: ['../login/login.component.css'],
 })
 export class PasswordresetComponent {
+  validation:any;
+  constructor(public bksvc: BackendService) {}
 
-  constructor(private bksvc:BackendService) { }
-
-
-validate() {
-    this.bksvc.sendcommand((f)=>{  },"ResetPassword",{email:this.bksvc.name,password:this.bksvc.password,securityCode:this.validation})
+  validate() {
+    this.bksvc.sendcommand((f) => {}, 'ResetPassword', {
+      email: this.bksvc.name,
+      password: this.bksvc.password,
+      securityCode: this.validation,
+    });
   }
 }

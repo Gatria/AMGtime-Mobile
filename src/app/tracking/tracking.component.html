@@ -1,56 +1,42 @@
-<mat-sidenav-container class="example-sidenav-container">
-    <mat-sidenav #snav> 
-<app-mat-sidenav></app-mat-sidenav>
-    </mat-sidenav>
-
-       <mat-sidenav-content class="noscrollbar">
-
-  <mat-toolbar color="primary" class="example-toolbar">
-    <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
-    <h1 class="example-app-name">Mileage Tracking</h1>
-  </mat-toolbar>
- <mat-progress-spinner style="margin: 30vh auto" *ngIf="bksvc.lasttrip==undefined" mode="indeterminate"></mat-progress-spinner>
-<ng-container *ngIf="bksvc.lasttrip!=undefined" >
-
-
-<div class="stb sm-round-corners  mat-elevation-z2 topinfo" > 
-<agm-map *ngIf="bksvc.location!=undefined" class="sm-round-corners" (mapReady)="mapReady()" [zoom]=18 [latitude]="bksvc.location.latitude" [longitude]="bksvc.location.longitude">
-<agm-marker [latitude]="bksvc.location.latitude" [longitude]="bksvc.location.longitude"></agm-marker>
-</agm-map>
-<p><button  (click)="this.bksvc.getLocation()" mat-mini-fab color=basic> <mat-icon>tracking</mat-icon></button> {{address}}</p>
-
-<ng-container *ngIf="bksvc.lasttrip.Id!=0" >
-<button (click)= bksvc.EndTrip() class="round-corners"  mat-flat-button color="primary" > <mat-icon>finish</mat-icon> End Trip</button>
-
-<button (click)= starttrip() class="round-corners"  mat-flat-button color="accent"><mat-icon>location</mat-icon> Add Stop</button>
-
-<button (click)= bksvc.CancelTrip() class="round-corners"  mat-stroked-button color="warn" > <mat-icon>close</mat-icon> Cancel</button>
-</ng-container>
-
-<ng-container *ngIf="bksvc.lasttrip.Id==0" >
-<button (click)= starttrip() class="round-corners"  mat-flat-button color="primary"  ><mat-icon>truck</mat-icon>&nbsp;Start Trip</button>
-</ng-container>
-</div>
-
-
-<ng-container *ngIf="bksvc.lasttrip!=undefined">
-<mat-card  class="stb" *ngFor="let item of bksvc.lasttrip.Locations let i = index">
-<mat-card-subtitle class=date>{{item.DateStr}}</mat-card-subtitle>
-   <div class="vertical"></div>
-<mat-card-title class=title>
-{{item.AddressLine}}
-<mat-card-subtitle class="cord">
-{{item.LocationString}}
-</mat-card-subtitle>
-</mat-card-title>
-</mat-card>
-<mat-card *ngIf="bksvc.lasttrip.Locations.length>1" class="stb">
-<mat-card-subtitle>
-Travel Total: {{bksvc.lasttrip.Locations.length}} stops {{bksvc.lasttrip.Mileage}} mile.
-</mat-card-subtitle>
-</mat-card>
-</ng-container></ng-container>
-<app-footer></app-footer>
- 
-    </mat-sidenav-content>
-  </mat-sidenav-container>
+<mat-sidenav-container appSlider>
+	<mat-sidenav #snav>
+		<app-mat-sidenav></app-mat-sidenav>
+	</mat-sidenav>
+	<mat-sidenav-content class="noscrollbar">
+		<mat-toolbar color="primary"><button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+			<h1 class="center100">Mileage Tracking</h1>
+		</mat-toolbar>
+		<mat-progress-spinner *ngIf="bksvc.lasttrip==undefined" class="loading" mode="indeterminate">
+		</mat-progress-spinner>
+		<ng-container *ngIf="bksvc.lasttrip!=undefined">
+			<div class="stb sm-round-corners mat-elevation-z4 topinfo">
+				<agm-map *ngIf="bksvc.location!=undefined" class="sm-round-corners" (mapReady)="mapReady()" [zoom]=18
+					[latitude]="bksvc.location.latitude" [longitude]="bksvc.location.longitude">
+					<agm-marker [latitude]="bksvc.location.latitude" [longitude]="bksvc.location.longitude">
+					</agm-marker>
+				</agm-map>
+				<p><button mat-mini-fab (click)="this.bksvc.getLocation()" color=basic><mat-icon class="b4">tracking</mat-icon></button>{{address}}
+				</p>
+				<ng-container *ngIf="bksvc.lasttrip.Id!=0">
+					<button (click)= bksvc.EndTrip() class="round-corners" mat-flat-button color="primary"><mat-icon class="b3">finish</mat-icon>End Trip</button><button (click)= starttrip() class="round-corners" mat-flat-button color="accent"><mat-icon class="b3">location</mat-icon>Add Stop</button><button (click)= bksvc.CancelTrip() class="round-corners" mat-stroked-button color="warn"><mat-icon class="b3">close</mat-icon>Cancel</button>
+				</ng-container>
+				<ng-container *ngIf="bksvc.lasttrip.Id==0">
+					<button (click)= starttrip() class="round-corners" mat-flat-button color="primary"><mat-icon class="b3">truck</mat-icon>&nbsp;Start Trip</button>
+				</ng-container>
+			</div>
+			<ng-container *ngIf="bksvc.lasttrip!=undefined && bksvc.lasttrip.Locations!=undefined">
+				<mat-card class="stb mat-elevation-z4" *ngFor="let item of bksvc.lasttrip.Locations let i = index">
+					<mat-card-subtitle class=date>{{item.DateStr}}</mat-card-subtitle>
+					<div class="vertical"></div>
+					<mat-card-title class=title>{{item.AddressLine}}<mat-card-subtitle class="cord">
+							{{item.LocationString}}</mat-card-subtitle>
+					</mat-card-title>
+				</mat-card>
+				<mat-card *ngIf="bksvc.lasttrip.Locations.length>1" class="stb">
+					<mat-card-subtitle>Travel Total: {{bksvc.lasttrip.Locations.length}} stops
+						{{bksvc.lasttrip.Mileage}} mile.</mat-card-subtitle>
+				</mat-card>
+			</ng-container>
+		</ng-container>
+	</mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,5 +1,11 @@
 .line-breaker {
   white-space: pre-line;
-}
-mat-form-field {width:100%}
-button {width:110px;margin:10px}
+  }
+mat-form-field {
+  width:100%
+  }
+button {
+  width:90px;
+  margin:5px;
+  display:inline-block
+  }

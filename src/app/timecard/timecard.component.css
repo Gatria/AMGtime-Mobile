@@ -1,11 +1,15 @@
 
 .noheight {height:0px}
-.newpadding {font-size:small!important; padding: 5px 0 7px 0!important;text-align:left!important}
+.newpadding {font-size:small!important; padding: 5px 0 7px 0!important;
+    line-height: 1.5em;
+    text-align:left!important}
 
 .left-button {margin-right:5px}
 .right-button {margin-left:5px}
 
- 
+ .line-breaker {
+  white-space: pre-line;
+  }
 
 table.mat-table {
     border-spacing: 0;
@@ -30,7 +34,7 @@ padding: 18px 0px 18px 0px;
 
 tr.mat-row td, tr.mat-row1 td {
 
- border-top: 1px solid #e0e0e0;
+ border-top: 1px solid #77777739;
     font-size: 16px;
     text-align:center;
    padding: 14px 0px 14px 0px;
@@ -44,21 +48,32 @@ tr.mat-footer-row td{
    padding: 4px 0px 4px 0px;
 }
 
+@media (prefers-color-scheme: dark) {
+  tr.mat-footer-row td,th.mat-header-cell,table.mat-table{background: #222}
+}
+tr.mat-header-row {
+  box-shadow: 0px 0px 4px #777;
+  border-radius: 25px;
+}
+.nocoment {
+    border-radius: 55px!important;
+}
+tr.mat-footer-row  {
+  box-shadow: 0px 0px 4px #777;
+  border-radius: 55px 55px 0 0;
 
+}
+tr.footer1 {
+  box-shadow: unset;
+}
 
-
-
-tr.mat-header-row,tr.mat-footer-row  {
-
-filter:drop-shadow(0px 0px 4px #777)}
-.footer1 {filter:none!important}
 .newpadding:before    { content: "";
     display: block;
     margin-top: -6px;
     width: 95%;
     height: 0px;
     padding-top: 4px;
-    border-top: 1px solid #e0e0e0;}
+    border-top: 1px solid #77777739}
 
 
 table { border-radius:25px}
@@ -94,7 +109,6 @@ tr.mat-footer-row  td.footer3, tr.mat-row1 td.footer3{
   border-radius:0 0 25px 0!important;
 transition:0.2s;
    position:relative;
-    white-space: nowrap;
 }
 tr.mat-footer-row  td.footer2{
   border-radius:0 25px 0 0;
@@ -109,6 +123,6 @@ tr.noborder td  {border:none!important}
 
 tr td:first-child {padding-left:3px}
 tr td:last-child {padding-right:3px}
-.jd3 {max-width: calc(100vw - 200px)}
-.fdate {max-width:100px;min-width:70px}
+.jd3 {max-width: calc(100% - 200px)}
+.fdate {max-width:100px;min-width:70px;padding: 0px 5px!important;}
 

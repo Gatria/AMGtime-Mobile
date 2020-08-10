@@ -1,17 +1,9 @@
-<h1 mat-dialog-title>
-  {{title}}
-</h1>
- 
+<h1 mat-dialog-title class="center100">{{title}}</h1>
 <div mat-dialog-content>
-  <p class="line-breaker">{{message}}</p>
+	<p class="line-breaker">{{message}}</p>
 </div>
- 
-<mat-form-field  *ngIf="comment" appearance="outline">
-    <mat-label>Comment</mat-label>
-    <input [(ngModel)]="mycomment"  type=text matInput id='dialogcomment'>
-  </mat-form-field>
-
-<div mat-dialog-actions>
-  <button class="round-corners" mat-stroked-button color="primary" (click)="onDismiss()">No</button>
-  <button class="round-corners" mat-flat-button color="primary" (click)="onConfirm()">Yes</button>
-</div>
+<mat-form-field *ngIf="comment" appearance="outline">
+	<mat-label>Comment</mat-label><input [(ngModel)]="mycomment" type=text matInput id='dialogcomment'></mat-form-field>
+	<div mat-dialog-actions class="center100">
+		<button mat-stroked-button color="primary" (click)=onDismiss() class="round-corners">No</button><button mat-flat-button color="primary" (click)=onConfirm() class="round-corners">Yes</button>
+	</div>

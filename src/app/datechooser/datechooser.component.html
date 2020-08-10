@@ -1,25 +1,24 @@
-<mat-chip-list *ngIf='buttons.length>0' class="i" >
-  <mat-chip *ngIf=buttons.includes(0) [selected]="datemode==0" (click)="topbuttonclick(0)">Daily</mat-chip>
-  <mat-chip *ngIf=buttons.includes(1) [selected]="datemode==1" style="z-index:1" (click)="topbuttonclick(1)">Weekly</mat-chip>
-  <mat-chip *ngIf=buttons.includes(2) [selected]="datemode==2"  (click)="topbuttonclick(2)">Monthly</mat-chip>
+<mat-chip-list *ngIf='buttons.length>0' class="i">
+	<mat-chip *ngIf=buttons.includes(0) [selected]="datemode==0" (click)="topbuttonclick(0)">Daily</mat-chip>
+	<mat-chip *ngIf=buttons.includes(1) [selected]="datemode==1" style="z-index:1" (click)="topbuttonclick(1)">Weekly
+	</mat-chip>
+	<mat-chip *ngIf=buttons.includes(2) [selected]="datemode==2" (click)="topbuttonclick(2)">Monthly</mat-chip>
 </mat-chip-list>
-
-
-<div class="stb round-corners mat-elevation-z2 topinfo" id=top{{i}}> 
-  <button [disabled]="checkfuture()" mat-mini-fab class="arrow-button left-button" (click)=change(-1)>  <mat-icon>arrowleft</mat-icon></button>
-  <div class="mid-title">
-   <span *ngIf="datemode==1">{{mydate.week1()}}</span>
-   <span *ngIf="datemode==2">{{mydate.month1()}}</span>
-
-<div *ngIf="datemode==0" class="limit">
-   <input style="display:none" [min]="futureonly?today:null" [max]="pastonly?today:null" matInput readonly (ngModelChange)="mydate=$event;change(0)" [(ngModel)]="mydate" [matDatepicker]="picker">
-      <span>{{mydate.toDateString() }}</span>
-  <mat-datepicker-toggle  class="mat-primary-color" matSuffix [for]="picker"></mat-datepicker-toggle>
-  <mat-datepicker touchUi [dateClass]="dateClass" #picker></mat-datepicker>
-</div></div>
-<button [disabled]="checkpast()" mat-mini-fab class="arrow-button right-button" (click)=change(1)>
+<div class="stb round-corners mat-elevation-z2 topinfo" id=top{{i}}>
+	<button [disabled]="checkfuture()" mat-mini-fab class="arrow-button left-button" (click)=change(-1)>  <mat-icon>arrowleft</mat-icon></button>
+	<div class="mid-title">
+		<span *ngIf="datemode==1">{{mydate.week1()}}</span>
+		<span *ngIf="datemode==2">{{mydate.month1()}}</span>
+		<div *ngIf="datemode==0" class="limit">
+			<input style="display:none" [min]="futureonly?today:null" [max]="pastonly?today:null" matInput readonly (ngModelChange)="mydate=$event;change(0)" [(ngModel)]="mydate" [matDatepicker]="picker">
+			<span>{{mydate.toDateString() }}</span>
+			<mat-datepicker-toggle class="mat-primary-color-d" matSuffix [for]="picker"></mat-datepicker-toggle>
+			<mat-datepicker touchUi [dateClass]="dateClass" #picker></mat-datepicker>
+		</div>
+	</div>
+	<button [disabled]="checkpast()" mat-mini-fab class="arrow-button right-button" (click)=change(1)>
   <mat-icon>arrowright</mat-icon>
   </button>
-  <span *ngIf="empname!=null">{{empname}}</span>
-</div> 
+	<span *ngIf="empname!=null">{{empname}}</span>
+</div>
 <ng-content></ng-content>

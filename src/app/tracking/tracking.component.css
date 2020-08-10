@@ -1,46 +1,71 @@
-agm-map   {height: 40vh;}
-.cord {position: absolute;
-    bottom: 5px;
-    margin-bottom: 2px;
-    
-  }
-  .topinfo {padding:2px!important}
-.topinfo>button {width:110px;     font-size: 14px;
-    font-weight: 400;margin:5px}
-    .date { width: 95px;
-    text-align: center;
-    line-height: 2em;
-    vertical-align: text-bottom;
-    padding: 15px 0.8vw 15px 0px;
-    margin: -15px 0px -15px -14px!important;
-    display: inline-block;
-    }
-   .date button {bottom: 0px;
-    display: block;
-    height: 0px;} 
+agm-map {
+  height: 40vh;
+}
+.cord {
+  position: absolute;
+  bottom: 5px;
+  margin-bottom: 2px;
+}
+.topinfo {
+  padding: 2px !important;
+}
+.topinfo > button {
+  width: 110px;
+  font-size: 14px;
+  font-weight: 400;
+  margin: 5px;
+}
+.date {
+  width: 95px;
+  text-align: center;
+  line-height: 2em;
+  vertical-align: text-bottom;
+  padding: 15px 0.8vw 15px 0px;
+  margin: -15px 0px -15px -14px !important;
+  display: inline-block;
+}
+.date button {
+  bottom: 0px;
+  display: block;
+  height: 0px;
+}
 .comment {
-margin: 10px 0 0 !important;
-    font-style: italic;
-}    
+  margin: 10px 0 0 !important;
+  font-style: italic;
+}
 .title {
-     display: inline-block;
- 
-    font-size:16px;
-    padding-left: 1.8vw;
-    width: calc(100% - 112px - 3vw);
-    vertical-align: top;
+  display: inline-block;
+
+  font-size: 16px;
+  padding-left: 1.8vw;
+  width: calc(100% - 112px - 3vw);
+  vertical-align: top;
 }
 
-
-   @media screen and (orientation:landscape) {
-       mat-chip {width: 15%;
+@media screen and (orientation: landscape) {
+  mat-chip {
+    width: 15%;
     justify-content: center;
-    font-size:2.4vh;
-    }
+    font-size: 2.4vh;
+  }
 
-     .float {position:fixed;right:10px;bottom:10px}
-    .title {
+  .float {
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+  }
+  .title {
     padding-left: 1.8vw;
     width: calc(100% - 107px - 5vw);
+  }
 }
-     }
+
+.b3 {
+  font-size: 21px !important;
+  padding-right: 5px;
+}
+
+.b4 {
+  font-size: 37px !important;
+  margin: -8px 13px 5px 0px;
+}

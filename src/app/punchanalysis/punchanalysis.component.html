@@ -1,91 +1,86 @@
-
-  <mat-sidenav-container class="example-sidenav-container">
-    <mat-sidenav #snav> 
-<app-mat-sidenav></app-mat-sidenav>
-    </mat-sidenav>
-
-    <mat-sidenav-content  id="main" (scroll)=scroll() class="noscrollbar">
-
-  <mat-toolbar color="primary" class="example-toolbar">
-    <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
-    <h1 class="example-app-name">Punch Analysis</h1>
-  </mat-toolbar>
-
-
-
-
-
-  <app-datechooser [pastonly]=true (thdateChange)=godate($event) [(thdate)]="mydate">
-
-
-<mat-chip-list class="i" multiple="true">
-  <mat-chip id="all" selected (click)="chips(31)" color="accent" >All</mat-chip>
-  <mat-chip [disabled]="this.work==0" [selected]="filter % 2 >= 1" (click)="chips(1)">Work</mat-chip>
-  <mat-chip [disabled]="this.out==0" [selected]="filter % 4 >= 2"  (click)="chips(2)">IN</mat-chip>
-    <mat-chip [disabled]="this.abs==0" [selected]="filter % 8 >= 4"  (click)="chips(4)">OUT</mat-chip>
-    <mat-chip [disabled]="this.lunch==0" [selected]="filter % 16 >= 8" (click)="chips(8)">LUNCH</mat-chip>
-    <mat-chip [disabled]="this.br==0" [selected]="filter % 32 >= 16"  (click)="chips(16)">BRK</mat-chip>
-</mat-chip-list>
-
-
-
-
-<mat-progress-spinner style="margin: auto;margin-top: 30vh" *ngIf="bksvc.PunchAnalysis==null" mode="indeterminate"></mat-progress-spinner>
-
-<div class="sm-round-corners mat-elevation-z16 stb" *ngIf="bksvc.PunchAnalysis!=null">
-
-
-<mat-card>
- <mat-form-field class="block" appearance="outline">
-    <mat-label>Filter by Code or Name</mat-label>
-    <input type="text" #filter1 matInput placeholder="">
-    <mat-icon class="icon mat-primary-color" matSuffix>search</mat-icon>
-  </mat-form-field>
-      
-
-
-   
-<ng-container  *ngFor="let item of bksvc.PunchAnalysis; let i = index">
-
-   <ng-container *ngIf="filterme(item.Code+item.Name,filter1.value)">
-
-       <mat-card-content class="nomargin middle inflex"><app-empphotoicon EmpID="{{bksvc.codetoid[item.Code]}}" name="{{item.Name}}"></app-empphotoicon> </mat-card-content>
-     <mat-card-subtitle class="nomargin middle name inflex"><h3 class="mat-primary-color"> ({{item.Code}}) {{item.Name}}</h3></mat-card-subtitle>
-     <mat-card-content><table class="dd">
-      <ng-container *ngIf="i==0 && ((filter % 4 >= 2) || (filter % 2 >= 1) || (filter % 8 >= 4) || (filter % 16 >= 8)|| (filter % 32 >= 16))"> 
-       
-       <tr [ngClass]="{'topth mat-elevation-z8':vpos>335,'animate':true}" id="topth"><th ><th>Scheduled</th><th>Actual</th><th>Differance</th></tr>
-</ng-container>
-     <tr *ngIf="(filter % 2 >= 1)"><th class='zz'>Work<td>{{item.TotalScheduled}}</td><td>{{item.TotalActual}}</td><td>{{item.TotalDifference}}
-       </td></tr>
-      <tr *ngIf="(filter % 4 >= 2)"><th class='zz'>In<td>{{item.InScheduled}}</td><td>{{item.InActual}}</td><td>{{item.InDifference}}
-       </td></tr>
-      <tr *ngIf="(filter % 8 >= 4)"><th class='zz'>Out<td>{{item.OutScheduled}}</td><td>{{item.OutActual}}</td><td>{{item.OutDifference}}
-       </td></tr>
-       <tr *ngIf="(filter % 16 >= 8)"><th class='zz'>Lunch<td>{{item.LunchScheduled}}</td><td>{{item.LunchActual}}</td><td>{{item.LunchDifference}}
-       </td></tr>
-       <tr *ngIf="(filter % 32 >= 16)"><th class='zz'>Break<td>{{item.BreakScheduled}}</td><td>{{item.BreakActual}}</td><td>{{item.BreakDifference}}
-       </td></tr>  
-     </table></mat-card-content>
-      <mat-divider class="limited"></mat-divider>
- 
-
-
- </ng-container>
-</ng-container>
- </mat-card>
-
-</div>
-<br>
-
-</app-datechooser>
-
-
-
-
-
-
-<app-footer></app-footer>
- 
-    </mat-sidenav-content>
-  </mat-sidenav-container>
+<mat-sidenav-container appSlider>
+	<mat-sidenav #snav>
+		<app-mat-sidenav></app-mat-sidenav>
+	</mat-sidenav>
+	<mat-sidenav-content  id="main" (scroll)=scroll()  class="noscrollbar">
+		<mat-toolbar color="primary"><button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+			<h1 class="center100">Punch Analysis</h1>
+		</mat-toolbar>
+		<app-datechooser [pastonly]=true (thdateChange)=godate($event) [(thdate)]="mydate">
+			<mat-chip-list class="i" multiple="true">
+				<mat-chip id="all" selected (click)="chips(31)" color="accent">All</mat-chip>
+				<mat-chip [disabled]="this.work==0" [selected]="filter % 2>= 1" (click)="chips(1)">Work</mat-chip>
+				<mat-chip [disabled]="this.out==0" [selected]="filter % 4>= 2" (click)="chips(2)">IN</mat-chip>
+				<mat-chip [disabled]="this.abs==0" [selected]="filter % 8>= 4" (click)="chips(4)">OUT</mat-chip>
+				<mat-chip [disabled]="this.lunch==0" [selected]="filter % 16>= 8" (click)="chips(8)">LUNCH</mat-chip>
+				<mat-chip [disabled]="this.br==0" [selected]="filter % 32>= 16" (click)="chips(16)">BRK</mat-chip>
+			</mat-chip-list>
+			<mat-progress-spinner *ngIf="bksvc.PunchAnalysis==null" class="loading" mode="indeterminate">
+			</mat-progress-spinner>
+			<div class="sm-round-corners mat-elevation-z16 stb" *ngIf="bksvc.PunchAnalysis!=null">
+				<mat-card>
+					<mat-form-field class="block" appearance="outline">
+						<mat-label>{{bksvc.tm.f2}}</mat-label><input type="text" #filter1 matInput placeholder="">
+						<mat-icon class="icon mat-primary-color" matSuffix>search</mat-icon>
+					</mat-form-field>
+					<ng-container *ngFor="let item of bksvc.PunchAnalysis; let i = index">
+						<ng-container *ngIf="filterme(item.Code+item.Name,filter1.value)">
+              <div class="punch">
+							<mat-card-content class="nomargin middle inflex">
+								<app-empphotoicon EmpID="{{bksvc.codetoid[item.Code]}}" name="{{item.Name}}">
+								</app-empphotoicon>
+							</mat-card-content>
+							<mat-card-subtitle class="nomargin middle name inflex">
+								<h3 class="mat-primary-color">({{item.Code}}) {{item.Name}}</h3>
+							</mat-card-subtitle>
+							<mat-card-content>
+								<table class="dd">
+									<ng-container *ngIf="((filter % 4>= 2) || (filter % 2>= 1) || (filter % 8>=
+										4) || (filter % 16>= 8) || (filter % 32>= 16))"><tr id="header"
+											[ngClass]="{'topth mat-elevation-z2':vpos>335,'floattitle animate':true}">
+											<th>
+											<th>Scheduled</th>
+											<th>Actual</th>
+											<th>Differance</th>
+										</tr>
+						</ng-container>
+						<tr *ngIf="(filter % 2>= 1)">
+							<th class='zz'>Work
+							<td>{{item.TotalScheduled}}</td>
+							<td>{{item.TotalActual}}</td>
+							<td>{{item.TotalDifference}}</td>
+						</tr>
+						<tr *ngIf="(filter % 4>= 2)">
+							<th class='zz'>In
+							<td>{{item.InScheduled}}</td>
+							<td>{{item.InActual}}</td>
+							<td>{{item.InDifference}}</td>
+						</tr>
+						<tr *ngIf="(filter % 8>= 4)">
+							<th class='zz'>Out
+							<td>{{item.OutScheduled}}</td>
+							<td>{{item.OutActual}}</td>
+							<td>{{item.OutDifference}}</td>
+						</tr>
+						<tr *ngIf="(filter % 16>= 8)">
+							<th class='zz'>Lunch
+							<td>{{item.LunchScheduled}}</td>
+							<td>{{item.LunchActual}}</td>
+							<td>{{item.LunchDifference}}</td>
+						</tr>
+						<tr *ngIf="(filter % 32>= 16)">
+							<th class='zz'>Break
+							<td>{{item.BreakScheduled}}</td>
+							<td>{{item.BreakActual}}</td>
+							<td>{{item.BreakDifference}}</td>
+						</tr>
+						</table>
+						</mat-card-content>
+            </div>
+						<mat-divider class="limited"></mat-divider>
+					</ng-container>
+					</ng-container>
+				</mat-card>
+			</div><br></app-datechooser>
+	</mat-sidenav-content>
+</mat-sidenav-container>

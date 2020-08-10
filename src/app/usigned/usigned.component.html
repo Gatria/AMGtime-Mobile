@@ -1,91 +1,73 @@
+<mat-sidenav-container appSlider>
+	<mat-sidenav #snav>
+		<app-mat-sidenav> </app-mat-sidenav>
+	</mat-sidenav>
+	<mat-sidenav-content class="noscrollbar">
+		<mat-toolbar color="primary">
+			<button *ngIf="first" mat-icon-button (click)="snav.toggle()">
+				<mat-icon>menu</mat-icon>
+			</button>
+			<button *ngIf="!first" (click)=scrollto(0) mat-icon-button>
+				<mat-icon>arrow_back_ios</mat-icon>
+			</button>
+			<h1 class="center100">Usigned</h1>
+		</mat-toolbar>
+		<div id="slider" (scroll)=scroll() class="slider noscrollbar">
+			<div id="slide0" class="slide snap">
+				<mat-chip-list class="i" multiple="true">
+					<mat-chip [selected]="filter % 2 >= 1" (click)="chips(1)">Signed</mat-chip>
+					<mat-chip [selected]="filter % 4 >= 2" (click)="chips(2)">Declined</mat-chip>
+					<mat-chip [selected]="filter % 8 >= 4" (click)="chips(4)">Canceled</mat-chip>
+					<mat-chip [selected]="filter % 16 >= 8" (click)="chips(8)">Drafts</mat-chip>
+					<mat-chip [selected]="filter % 32 >= 16" (click)="chips(16)">Me</mat-chip>
+					<mat-chip [selected]="filter % 64 >= 32" (click)="chips(32)">Others</mat-chip>
+				</mat-chip-list>
+				<mat-progress-spinner *ngIf="Document==null" class="loading" mode="indeterminate">
+				</mat-progress-spinner>
+				<ng-container *ngIf="Document!=null">
+					<div *ngIf="Document.length>0" class="norecord">{{bksvc.tm.d4}}</div>
+					<div class="list">
+						<ng-container *ngFor="let item of Document; let i = index">
+							<mat-expansion-panel (afterExpand)=scroll() (afterCollapse)=scroll() class="stb mat-elevation-z4"
+								*ngIf="(filter % 4 >= 2 && item.Status==4) || (filter % 2 >= 1 && item.Status==1) || (filter % 8 >= 4 && item.Status==5) || (filter % 16 >= 8 && item.Status==0)|| (filter % 32 >= 16 && item.Status==2)|| (filter % 64 >= 32 && item.Status==3) ">
+								<mat-expansion-panel-header>
+									<mat-panel-title class="middle">{{item.DisplayName}} </mat-panel-title>
+									<mat-panel-description class="right middle" ngClass="{{item.StatusStr}}">
+										<span class="small material-icons">infofull</span><span class="m4">{{item.StatusStr|slice:0:12}}</span>
+									</mat-panel-description>
+								</mat-expansion-panel-header>
+								<p>Modified: {{item.ChangeDate| date:'short'}}</p>
+								<p>Owner: {{item.Owner}}</p>
+								<mat-action-row>
+									<button class="round-corners" mat-stroked-button color="primary" (click)="getdocument(item.DocId)">
+									<mat-icon>usigned</mat-icon> Show</button>
+								</mat-action-row>
+							</mat-expansion-panel>
+						</ng-container>
+					</div>
+				</ng-container>
+			</div>
+			<ng-container *ngFor="let item of Image; let i = index">
+				<div *ngIf="item!=null" id="slide{{i+1}}" class="slide snap">
+					<div class="mat-elevation-z7 imageframe round-corners"> <img class="img round-corners" [attr.src]="item" />
+						<div *ngIf="this.bksvc.currentDocument.CanSign" class="sigbody">
+							<button (click)=sign() class="center round-corners" mat-flat-button color="primary">
+								<mat-icon>quill</mat-icon> Sign</button>
+							<button (click)=decline() class="center round-corners" mat-flat-button color="warn">
+								<mat-icon>close</mat-icon> Decline</button>
+							<button *ngIf="this.bksvc.currentDocument.IsOwner" (click)=cancel() class="center round-corners" mat-stroked-button color="warn">
+								<mat-icon>trash</mat-icon> Cancel</button>
+						</div>
+					</div>
+					<br>
+					<div class="pagination" *ngIf="Image.length>1">
+						<ng-container *ngFor="let item1 of Image;let page = index">
+							<button [disabled]="page==i" mat-mini-fab (click)="scrollto(page+1)">{{page+1}}</button>
+						</ng-container>
+					</div>
+				</div>
+			</ng-container>
+		</div>
+	</mat-sidenav-content>
+</mat-sidenav-container>
 
-  <mat-sidenav-container class="example-sidenav-container">
-    <mat-sidenav #snav> 
-<app-mat-sidenav></app-mat-sidenav>
-    </mat-sidenav>
-
-    <mat-sidenav-content class="noscrollbar">
-
-
-
-
-
-
-  <mat-toolbar color="primary" class="example-toolbar">
-    <button *ngIf="first" mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
-    <button *ngIf="!first" (click)=scrollto(0) mat-icon-button><mat-icon>arrow_back_ios</mat-icon></button>
-    <h1 class="example-app-name">Usigned</h1>
-  </mat-toolbar>
- 
-
-
-
-
-<div id="slider" appSlider (scroll)=scroll() class="slider noscrollbar" >
-<div id="slide0" class="slide snap">
-<mat-chip-list class="i" multiple="true">
-  <mat-chip [selected]="filter % 2 >= 1" (click)="chips(1)">Signed</mat-chip>
-  <mat-chip [selected]="filter % 4 >= 2"  (click)="chips(2)">Declined</mat-chip>
-    <mat-chip [selected]="filter % 8 >= 4"  (click)="chips(4)">Canceled</mat-chip>
-    <mat-chip [selected]="filter % 16 >= 8" (click)="chips(8)">Drafts</mat-chip>
-    <mat-chip [selected]="filter % 32 >= 16"  (click)="chips(16)">Me</mat-chip>
-        <mat-chip [selected]="filter % 64 >= 32"  (click)="chips(32)">Others</mat-chip>
-</mat-chip-list>
-<div *ngIf="Document==null">
-<mat-progress-spinner style="margin: 30vh auto"  mode="indeterminate"></mat-progress-spinner>
-</div>
-<div class="norecord">No Documents Found</div>
-<div class="list">
-<ng-container *ngFor="let item of Document; let i = index">
-<mat-expansion-panel (afterExpand)=scroll() (afterCollapse)=scroll() class="stb" *ngIf="(filter % 4 >= 2 && item.Status==4) || (filter % 2 >= 1 && item.Status==1) || (filter % 8 >= 4 && item.Status==5) || (filter % 16 >= 8 && item.Status==0)|| (filter % 32 >= 16 && item.Status==2)|| (filter % 64 >= 32 && item.Status==3) " >
-<mat-expansion-panel-header>
-<mat-panel-title class="middle">{{item.DisplayName}} </mat-panel-title >
-<mat-panel-description class="right middle" ngClass="{{item.StatusStr}}">
-  <span class="small material-icons">infofull</span><span class="m4">{{item.StatusStr}}</span>
- 
-  </mat-panel-description>
-</mat-expansion-panel-header>
-<p>Modified: {{item.ChangeDate| date:'short'}}</p>
-<p>Owner: {{item.Owner}}</p>
-
-
- <mat-action-row>
-      <button class="round-corners" mat-stroked-button color="primary" (click)="getdocument(item.DocId)"><mat-icon>usigned</mat-icon> Show</button>
-    
-    </mat-action-row>
-</mat-expansion-panel>
-</ng-container>
-</div>
-</div>
-<ng-container *ngFor="let item of Image; let i = index" > 
-<div *ngIf="item!=null" id="slide{{i+1}}" class="slide snap">
-<div class="mat-elevation-z7 imageframe round-corners"> <img class="img round-corners"  [src]="item" />
-
-<div *ngIf="this.bksvc.currentDocument.CanSign" class="sigbody">
-  <button  (click)=sign() class="center round-corners" mat-flat-button color="primary">
-    <mat-icon>quill</mat-icon>
-    Sign</button>
-  <button (click)=decline() class="center round-corners" mat-flat-button  color="warn">
-    <mat-icon>close</mat-icon>
-    Decline</button>
-   <button *ngIf="this.bksvc.currentDocument.IsOwner" (click)=cancel() class="center round-corners" mat-stroked-button  color="warn">
-    <mat-icon>trash</mat-icon>
-    Cancel</button>  
-
-</div>
-
-
-</div><br>
-<div class="pagination" *ngIf="Image.length>1">
-<ng-container *ngFor="let item1 of Image;let page = index" >
- <button [disabled]="page==i" mat-mini-fab (click)="scrollto(page+1)" >{{page+1}}</button> 
- </ng-container>
-</div>
-</div>
-</ng-container>
-</div>
-
-<app-footer></app-footer>
- 
-    </mat-sidenav-content>
-  </mat-sidenav-container>

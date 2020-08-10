@@ -10,13 +10,14 @@ mat-divider:last-of-type {display:none}
     width: calc(100% - 66px);
     vertical-align: middle;}
     .click {display: block;
+    transition-duration:0.5s;
     margin: -7px -16px;
     padding: 7px 16px;}
-    .click:hover {background-color:#e5f0fa;cursor:pointer}
+    .click:hover {background-color:#54aeff44;cursor:pointer; }
     .icon {padding: 0px 6px 0px 0px;
     font-size: 31px;
 }
-.rightside {    border-left: 2px solid #eee;
+.rightside {    border-left: 2px solid #00000015;
     width: 50px;
     height: 21px;
     padding: 14px 0px;

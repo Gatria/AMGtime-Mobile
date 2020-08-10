@@ -1,70 +1,36 @@
-
-  <mat-sidenav-container class="example-sidenav-container">
- <mat-sidenav #snav> 
-<app-mat-sidenav></app-mat-sidenav>
-    </mat-sidenav>
-
-    <mat-sidenav-content class="noscrollbar" (scroll)=onResize()>
-
-  <mat-toolbar  color="primary" class="example-toolbar">
-    <button mat-icon-button (click)="snav.toggle()">
-      <mat-icon>menu</mat-icon></button>
-    <h1 class="example-app-name">Timecard</h1>
-  </mat-toolbar>
-
-
-<div id="slider" class="slider noscrollbar" appSlider (window:resize)=onResize() (scroll)=onResize()>
-<div id="slide{{i}}" class="slide" *ngFor="let item of bksvc.timecard;index as i;">
-
-
-
-
-<mat-progress-spinner style="margin: auto;margin-top: 30vh" *ngIf="bksvc.loading" mode="indeterminate"></mat-progress-spinner>
-
-   <ng-container *ngIf="item!=null && bksvc.loading==false">
-<div class="stb round-corners  mat-elevation-z2 topinfo" id=top{{i}}> 
-  <button mat-mini-fab  class="arrow-button left-button" [disabled]="i==0" (click)=gototab(-1)>  <mat-icon>arrowleft</mat-icon></button>
-  <div  class="mid-title">
-{{item.StartDate}} - 
-{{item.EndDate}}</div>
-<button  mat-mini-fab  class="arrow-button right-button" [disabled]="i==bksvc.AMGSettings.PayPeriodBackLimit-1" (click)=gototab(1)>
-  <mat-icon>arrowright</mat-icon>
-  </button>
-
-  <ng-container *ngIf="i==bksvc.AMGSettings.PayPeriodBackLimit-2">
-<div *ngIf='item.TimeCardApprovalStatus==2'>
-
-  <button class="center round-corners" mat-flat-button  (click)=bksvc.approverejecttimecard(i,true) color="accent"><span class="material-icons">done</span> Approve</button>
-&nbsp;
-   <button class="center round-corners" mat-flat-button (click)=bksvc.approverejecttimecard(i,false) color="warn"><span class="material-icons">
-close
-</span> Reject</button>
-</div> 
-
-<div *ngIf='item.TimeCardApprovalStatus==1' class='mat-accent-color'>
- <h3> Approved</h3>
- 
-</div> 
-<div *ngIf='item.TimeCardApprovalStatus==0' class='mat-warn-color'>
- <h3> Rejected</h3>
- 
-</div> 
-  </ng-container>
-</div> 
-
-
-
-<app-subtimecard *ngIf="item!=undefined" [i]=i [item]=item></app-subtimecard>
- </ng-container>
-<mat-progress-spinner (focus)=getperiod(i) style="margin: auto;margin-top: 30vh" *ngIf="item==null" mode="indeterminate"></mat-progress-spinner>
-  
-</div>  
-
-</div>
-<app-footer></app-footer> 
-
-
-
- 
-    </mat-sidenav-content>
-  </mat-sidenav-container>
+<mat-sidenav-container appSlider>
+	<mat-sidenav #snav>
+		<app-mat-sidenav></app-mat-sidenav>
+	</mat-sidenav>
+	<mat-sidenav-content  (scroll)=scroll1()  class="noscrollbar">
+		<mat-toolbar color="primary"><button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+			<h1 class="center100">Timecard</h1>
+		</mat-toolbar>
+		<div id="slider" class="nosmooth slider noscrollbar"  (window:resize)=onResize() (scroll)=onResize()>
+			<div id="slide{{i}}" class="slide snap" *ngFor="let item of bksvc.timecard;index as i;">
+				<mat-progress-spinner *ngIf="bksvc.loading" class="loading" mode="indeterminate"></mat-progress-spinner>
+				<ng-container *ngIf="item!=null && bksvc.loading==false">
+					<div class="stb round-corners mat-elevation-z2 topinfo" id=top{{i}}>
+						<button mat-mini-fab class="arrow-button left-button" [disabled]="i==0" (click)=gototab(-1)><mat-icon>arrowleft</mat-icon></button>
+						<div class="mid-title">{{item.StartDate}} - {{item.EndDate}}</div>
+						<button mat-mini-fab class="arrow-button right-button" [disabled]="i==bksvc.AMGSettings.PayPeriodBackLimit-1" (click)=gototab(1)><mat-icon>arrowright</mat-icon></button>
+            <ng-container *ngIf="bksvc.AMGSettings.PayPeriodBackLimit-i==2">
+							<div *ngIf='item.TimeCardApprovalStatus==2'>
+								<button class="center round-corners" mat-flat-button (click)=bksvc.approverejecttimecard(i,true) color="accent"><span class="material-icons">done</span>Approve</button>&nbsp;<button class="center round-corners" mat-flat-button (click)=bksvc.approverejecttimecard(i,false) color="warn"><span class="material-icons">close</span>Reject</button>
+							</div>
+							<div *ngIf='item.TimeCardApprovalStatus==1' class='mat-accent-color'>
+								<h3>Approved</h3>
+							</div>
+							<div *ngIf='item.TimeCardApprovalStatus==0' class='mat-warn-color'>
+								<h3>Rejected</h3>
+							</div>
+						</ng-container>
+					</div>
+					<app-subtimecard *ngIf="item!=undefined" [i]=i [item]=item></app-subtimecard>
+				</ng-container>
+				<mat-progress-spinner style="margin: auto;margin-top: 30vh" *ngIf="item==null"
+					mode="indeterminate"></mat-progress-spinner>
+			</div>
+		</div>
+	</mat-sidenav-content>
+</mat-sidenav-container>

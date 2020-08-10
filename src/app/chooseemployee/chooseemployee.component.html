@@ -1,31 +1,28 @@
 <div class="list">
+	<mat-card class="stb">
+<mat-progress-spinner *ngIf="bksvc.employeelist==undefined" class="loading" mode="indeterminate"></mat-progress-spinner>
 
+<ng-container *ngIf="bksvc.employeelist!=undefined">
 
-<mat-card class="stb">
-
-  <mat-form-field appearance="outline" class="block">
-    <mat-label>Filter by Code or Name</mat-label>
-  
-    <input type="text" #filter matInput placeholder="">
-    <mat-icon class="icon mat-primary-color" matSuffix>search</mat-icon>
-  </mat-form-field>
-<ng-container *ngFor="let item of bksvc.employeelist; let i = index">
-  <ng-container *ngIf="filterme(item,filter.value)">
-  <a class="click" matRipple (click)="chooseme(item)">
-   <app-empphotoicon EmpID="{{bksvc.codetoid[item.Code]}}" name="{{item.Name}}"></app-empphotoicon>
-  <mat-card-subtitle [ngClass]="{'width1':item[rightside]!=null}" class="name">  
-      ({{item.Code}}) {{item.Name}}
-  </mat-card-subtitle>
-  <mat-card-subtitle *ngIf="item[rightside]!=null"  class="rightside">  
-      {{item[rightside]}}
-  </mat-card-subtitle></a>
-  
-  <mat-divider class="limited"></mat-divider>
-</ng-container>
-</ng-container>
-
-</mat-card>
-
- 
-
+		<mat-form-field appearance="outline" class="block">
+			<mat-label>{{bksvc.tm.f2}}</mat-label>
+			<input type="text" #filter matInput placeholder="">
+			<mat-icon class="icon mat-primary-color" matSuffix>search</mat-icon>
+		</mat-form-field>
+    	
+		<ng-container *ngFor="let item of bksvc.employeelist; let i = index">
+			<ng-container *ngIf="filterme(item,filter.value)">
+				<a matRipple class="click" (click)="chooseme(item)">
+					<app-empphotoicon EmpID="{{bksvc.codetoid[item.Code]}}" name="{{item.Name}}"></app-empphotoicon>
+					<mat-card-subtitle [ngClass]="{'width1':item[rightside]!=null}" class="name">({{item.Code}})
+						{{item.Name}}
+					</mat-card-subtitle>
+					<mat-card-subtitle *ngIf="item[rightside]!=null" class="rightside">{{item[rightside]}}
+					</mat-card-subtitle>
+				</a>
+				<mat-divider class="limited"></mat-divider>
+			</ng-container>
+		</ng-container>
+    </ng-container>
+	</mat-card>
 </div>
